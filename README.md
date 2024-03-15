@@ -55,7 +55,8 @@ Foremore
 
 #### #3 - Seclect React-Like framework and bundler
 
-- in progress... at [Framework](#framework)
+- Update details at [Framework](#framework)
+- Install Next.js
 
 #### #1 - Set up basis of project
 
