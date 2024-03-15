@@ -53,6 +53,11 @@ Foremore
 
 > _2024.03.15.fri_
 
+#### #4 - Set SASS, ESLint and Prettier, Stylelint, PostCSS sorting or CSS declaration sorter
+
+- in progress... at [Framework](#framework)
+- Install Next.js
+
 #### #3 - Seclect React-Like framework and bundler
 
 - Update details at [Framework](#framework)
