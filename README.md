@@ -53,26 +53,31 @@ Foremore
 
 > _2024.03.16.sat_
 
-#### #5 Set up rules and rough plan
+#### #8 Set up rules and rough plan(how to use languages)
 
-- In process...
+- _In process..._
 
-1. HTML(Next.js)
+1.  ✔️ HTML(Next.js)
 
-   - Use Semantic tag, looking for that in Docs.
-   - Mix elements and Compoenets properly.
+- Use Semantic tag, looking for that in Docs.
+- Mix elements and Compoenets properly.
 
-2. CSS(SCSS)
+2.  ✔️ CSS(SCSS)
 
-   - Tailwind : Use TailwindCSS at first.
-   - OOCSS : When classes in a element is too long to read easily, name according to OOCSS.
-   - BEM : When it is considered a specific element should have a kind of own class name, name according to BEM.
+1.  ✔️ Tailwind : Use TailwindCSS at first.
 
-3. TypeScript
+    - I caught how to use Tailwind especially about theme
+
+- ~~OOCSS : When classes in a element is too long to read easily, name according to OOCSS. : It is the way I wanted~~
+
+2. ✔️ MASCSS(Base, Module) : When Tailwind classes of a element too long, a class name in Base of Module unit is used for some elements which has similar style.
+3. ✔️ BEM(UI, Hierarchy) : When it is considered a specific element should have a kind of own UI name, name a class according to BEM.
+
+4. TypeScript
 
    I am a user to use Typescript at first. so... The document of it and to study it is needed.
 
-- Write the concepts and symantics.
+- Write the concepts and sytactics.
 
 4. React, Next.js
    This is same to TypeScript.
