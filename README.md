@@ -57,6 +57,28 @@ Foremore
 
 - In process...
 
+1. HTML(Next.js)
+
+   - Use Semantic tag, looking for that in Docs.
+   - Mix elements and Compoenets properly.
+
+2. CSS(SCSS)
+
+   - Tailwind : Use TailwindCSS at first.
+   - OOCSS : When classes in a element is too long to read easily, name according to OOCSS.
+   - BEM : When it is considered a specific element should have a kind of own class name, name according to BEM.
+
+3. TypeScript
+
+   I am a user to use Typescript at first. so... The document of it and to study it is needed.
+
+- Write the concepts and symantics.
+
+4. React, Next.js
+   This is same to TypeScript.
+   - Write React hook I didn't know
+   - Write Next.js' main function
+
 #### ~~#4 - Set SASS, ESLint and Prettier, Stylelint, PostCSS sorting or CSS declaration sorter~~
 
 - ✔️ PostCSS Sorting in VScode
