@@ -31,7 +31,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "postcss": "^8",
+    "postcss": "^8.4.35",
     "prettier": "^3.2.5",
     "sass": "^1.72.0",
     "stylelint": "^16.2.1",
