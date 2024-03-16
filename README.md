@@ -10,11 +10,11 @@ It is the reason why to start this project that I had wanted to sing with **kara
 
 This app should have functions for users to enjoy singing at home when they want it.
 
-### v1.0<a name='v1.0'></a>
+### v1.0<span id='v1_0'></span>
 
 #### Framework<a name='framework'></a>
 
-It will be made by React, but I heard offical React document say "Don't use create-react-app".
+It will be made with React, but I heard offical React document say "Don't use create-react-app".
 
 - I must choose what type of React to apply this project
   - ✔️ Next.js : It is mostly used in a lot ofcompany.
@@ -49,15 +49,26 @@ Foremore
    - LocalStorage or
    - Server
 
-## Issues <a name='issues'></a>
+## Issues <span id='issues'></span>
+
+> _2024.03.16.sat_
+
+#### #5 Set up rules and rough plan
+
+- In process...
+
+#### ~~#4 - Set SASS, ESLint and Prettier, Stylelint, PostCSS sorting or CSS declaration sorter~~
+
+- ✔️ PostCSS Sorting in VScode
+- I realized that PostCSS sorting and CSS declaration sorter is definetely different.
 
 > _2024.03.15.fri_
 
-#### #3 - Seclect React-Like framework and bundler
+#### ~~#3 - Seclect React-Like framework and bundler~~
 
 - Update details at [Framework](#framework)
 - Install Next.js
 
-#### #1 - Set up basis of project
+#### ~~#1 - Set up basis of project~~
 
-- Update plan especially at [Goal v.1.0](#v1.0)
+- Update plan especially at [Goal v.1.0](#v1_0)
