@@ -52,6 +52,8 @@ Foremore
 
 ## ✨Issues <a id="issues"></a>
 
+Issues are listed by completion date.
+
 > _2024.03.17.sun_
 
 #### ~~#8 - Set up rules and rough plan(how to use languages)~~
@@ -107,7 +109,7 @@ Foremore
 
 # Memo
 
-## [TypeScript Main Syntactics](#ts_)<a id="ts"></a>
+## [TypeScript's Main Syntactics](#ts_)<a id="ts"></a>
 
 ### Most Usages
 
