@@ -72,6 +72,10 @@ Issues are listed by completion date.
 
 > _2024.03.17.sun_
 
+#### #12 - Pause, Play
+
+- Oh, TJ prevents to use their video... But KY allows those of them.
+
 #### ~~#10 - Install React transition group~~
 
 - In addition, describe what I use in this project.
