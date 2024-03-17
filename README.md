@@ -48,13 +48,13 @@ Foremore
    - LocalStorage or
    - Server
 
-## Issues <a id="issues"></a>
+<br>
 
-> _2024.03.16.sat_
+## ✨Issues <a id="issues"></a>
 
-#### #8 Set up rules and rough plan(how to use languages)
+> _2024.03.17.sun_
 
-- _In process..._
+#### ~~#8 - Set up rules and rough plan(how to use languages)~~
 
 1.  ✔️ **HTML(Next.js)**
 
@@ -84,6 +84,8 @@ Foremore
 
     - ✔️ [Write React hook I didn"t know](#react)<a id="react_"></a>
     - ✔️ [Write Next.js" main function](#next)<a id="next_"></a>
+
+> _2024.03.16.sat_
 
 #### ~~#4 - Set SASS, ESLint and Prettier, Stylelint, PostCSS sorting or CSS declaration sorter~~
 
