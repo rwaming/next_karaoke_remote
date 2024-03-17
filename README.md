@@ -10,9 +10,9 @@ It is the reason why to start this project that I had wanted to sing with **kara
 
 This app should have functions for users to enjoy singing at home when they want it.
 
-### v1.0<span id="v1_0"></span>
+### v1.0<a id="v1_0"></a>
 
-#### Framework<a name="framework"></a>
+#### Framework<a id="framework"></a>
 
 It will be made with React, but I heard offical React document say "Don"t use create-react-app".
 
@@ -48,7 +48,7 @@ Foremore
    - LocalStorage or
    - Server
 
-## Issues <span id="issues"></span>
+## Issues <a id="issues"></a>
 
 > _2024.03.16.sat_
 
@@ -58,8 +58,8 @@ Foremore
 
 1.  ✔️ **HTML(Next.js)**
 
-- Use Semantic tag, looking for that in Docs.
-- Mix elements and Compoenets properly.
+    - Use Semantic tag, looking for that in Docs.
+    - Mix elements and Compoenets properly.
 
 2.  ✔️ **CSS(SCSS)**
 
@@ -72,18 +72,18 @@ Foremore
 
     - ~~OOCSS : When classes in a element is too long to read easily, name according to OOCSS. : It is the way I wanted~~
 
-3.  **TypeScript**
+3.  ✔️ **TypeScript**
 
     I am a user to use Typescript at first. so... The document of it and to study it is needed.
 
-    - ✔️ [Write the concepts and sytactics](#ts)<span id="ts_"></span>
+    - ✔️ [Write the concepts and sytactics](#ts)<a id="ts_"></a>
 
-4.  **React, Next.js**
+4.  ✔️ **React, Next.js**
 
     This is same to TypeScript.
 
-    - [Write React hook I didn"t know](#react)<span id="react_"></span> in progress
-    - Write Next.js" main function
+    - ✔️ [Write React hook I didn"t know](#react)<a id="react_"></a>
+    - ✔️ [Write Next.js" main function](#next)<a id="next_"></a>
 
 #### ~~#4 - Set SASS, ESLint and Prettier, Stylelint, PostCSS sorting or CSS declaration sorter~~
 
@@ -105,24 +105,46 @@ Foremore
 
 # Memo
 
-## [TypeScript Main Syntactics](#ts_)<span id="ts"></span>
+## [TypeScript Main Syntactics](#ts_)<a id="ts"></a>
+
+### Most Usages
+
+1. Interface
+
+   Defines the structure of Object.
+
+2. type
+
+   Defines new custumized type.
+
+   - Union types
+     - `type Type1 = number | string | ...`
+     - `type Type2 = "a" | "b" | ...`
+   - Interaction types
+     - `type Type3 = { x: number... }`
+     - `type Type4 = { x: number } & { y: string }`
+   - Generic Types (defined after declaration, but making structure)
+     - `type Type5<K, V> = { [key: K]: V };`<br>
+       `const value1: Type5<string, number> = {"str": 0, ...}`
+
+3. Be careful about asynchronous function(Next.js has a lot of asynchronous functions)
 
 ### Table of Contents
 
-1. **[Types](#ts_types)** <span id="ts_types_"></span>
-2. **[Variable declaration](#ts_variable)** <span id="ts_variable_"></span>
-3. **[Function declaration](#ts_function)** <span id="ts_function_"></span>
-4. **[Nickname for type](#ts_nickname)** <span id="ts_nickname_"></span>
-5. **[Generic type](#ts_generic)** <span id="ts_generic_"></span>
-6. **[Type Assertion](#ts_assertion)** <span id="ts_assertion_"></span>
-7. **[Optional Parameters](#ts_param)** <span id="ts_param_"></span>
-8. **[Enums](#ts_enums)** <span id="ts_enums_"></span>
-9. **[Modules](#ts_modules)** <span id="ts_modules_"></span>
-10. **[Type Utilities](#ts_utilities)** <span id="ts_utilities_"></span>
+1. **[Types](#ts_types)** <a id="ts_types_"></a>
+2. **[Variable declaration](#ts_variable)** <a id="ts_variable_"></a>
+3. **[Function declaration](#ts_function)** <a id="ts_function_"></a>
+4. **[Nickname for type](#ts_nickname)** <a id="ts_nickname_"></a>
+5. **[Generic type](#ts_generic)** <a id="ts_generic_"></a>
+6. **[Type Assertion](#ts_assertion)** <a id="ts_assertion_"></a>
+7. **[Optional Parameters](#ts_param)** <a id="ts_param_"></a>
+8. **[Enums](#ts_enums)** <a id="ts_enums_"></a>
+9. **[Modules](#ts_modules)** <a id="ts_modules_"></a>
+10. **[Type Utilities](#ts_utilities)** <a id="ts_utilities_"></a>
 
 ### Contents
 
-1. **[Types](#ts_types_)** <span id="ts_types"></span>
+1. **[Types](#ts_types_)** <a id="ts_types"></a>
 
    - number, string, bllean, null, undefined...
    - `any`, `void`, `never`, `unknown`...
@@ -134,17 +156,17 @@ Foremore
    - `typeName[]`, `Array<typeName>`
    - { key: _typeName_ }, interface Name { _keyName_: _typeName_,...}
 
-2. **[Variable declaration](#ts_variable_)** <span id="ts_variable"></span>
+2. **[Variable declaration](#ts_variable_)** <a id="ts_variable"></a>
    `const variableName: type = typeName;`
 
-3. **[Function declaration](#ts_function_)** <span id="ts_function"></span>
+3. **[Function declaration](#ts_function_)** <a id="ts_function"></a>
    `function f1(param1: typeName, param2: typeName): typeNameofReturn {}`
 
-4. **[Nickname for type](#ts_nickname_)** <span id="ts_nickname"></span>
+4. **[Nickname for type](#ts_nickname_)** <a id="ts_nickname"></a>
 
 - `type typeNickname = typeName;`
 
-5. **[Generic type](#ts_generic_)** <span id="ts_generic"></span>
+5. **[Generic type](#ts_generic_)** <a id="ts_generic"></a>
 
    Generic type means the value is confirmed when the function called.
 
@@ -154,7 +176,7 @@ Foremore
    const useReturn = f1<argTypeName>(value)
    ```
 
-6. **[Type Assertion](#ts_assertion_)** <span id="ts_assertion"></span>
+6. **[Type Assertion](#ts_assertion_)** <a id="ts_assertion"></a>
 
    ```
    const str1: string = "this is string";
@@ -162,13 +184,13 @@ Foremore
    const srtLengthBracket: number = (<string>str1).legnth;
    ```
 
-7. **[Optional Parameters](#ts_param_)** <span id="ts_param"></span>
+7. **[Optional Parameters](#ts_param_)** <a id="ts_param"></a>
 
    `function f1(param1?: typeName) {...}`
 
    ?(optional parameter) means this parameter can"t be sent when the function called.
 
-8. **[Enums](#ts_enums)** <span id="ts_enums"></span>
+8. **[Enums](#ts_enums)** <a id="ts_enums"></a>
 
    ```
    enum IsGood {
@@ -180,7 +202,7 @@ Foremore
    }
    ```
 
-9. **[Modules](#ts_modules)** <span id="ts_modules"></span>
+9. **[Modules](#ts_modules)** <a id="ts_modules"></a>
 
    export
 
@@ -206,7 +228,7 @@ Foremore
    import M2 from "./file2"
    ```
 
-10. **[Type Utilities](#ts_utilities_)** <span id="ts_utilities"></span>
+10. **[Type Utilities](#ts_utilities_)** <a id="ts_utilities"></a>
 
     It is a kind of of type tools.
 
@@ -279,7 +301,7 @@ Foremore
     10. ReturnType\<T>
     11. Parameters\<T>
 
-## [React](#react_)<span id="react"></span>
+## [React](#react_)<a id="react"></a>
 
 1. **useRef**
 
@@ -327,3 +349,122 @@ Foremore
 1. **useContext**
 
    Provides access to data stored in a context without unnecessary prop drilling.
+
+## [Next.js](#next_)<a id="next"></a>
+
+1. SSR(Server-Side Rendering)
+
+   Render in server before send HTML
+
+2. SSG(Static Site Generation)
+
+   Build in server before send pages
+
+3. Dynamic routing
+
+   ```
+   // pages/posts/[id].js
+   // [id].js처럼 대괄호로 감싼 파일명 사용할 것
+   // post에서 사용한 컴포넌트당 1.js, 2.js..로 간주한다
+
+   import { useRouter } from 'next/router';
+
+   const Post = () => {
+     const router = useRouter(); // useRouter Hook로 경로 정보를 가져옴
+     const { id } = router.query; // 파일명(상수)을 변수에 할당하여 사용 가능
+
+     return <p>Post ID: {id}</p>;
+   };
+
+   export default Post;
+   ```
+
+4. Custum routing
+
+5. API routing
+
+   API routing work in pages/api/...
+
+   ```
+   // pages/api/hello.js
+
+   export default (req, res) => {
+     res.status(200).json({ message: 'Hello' });
+   };
+   ```
+
+6. CSS Modules and CSS-in-JS
+
+   1. Module
+
+      ```
+      /* in styles.module.css */
+
+      .title {
+        color: red;
+      }
+      ```
+
+      ```
+      // in some conponent
+      import styles from './styles.module.css';
+
+      function MyComponent() {
+        return <h1 className={styles.title}>Hello World</h1>;
+      }
+      ```
+
+   2. CSS-in-JS
+
+      ```
+      import styled from 'styled-components';
+
+      const Title = styled.h1`
+        color: red;
+      `;
+
+      function MyComponent() {
+        return <Title>Hello World</Title>;
+      }
+      ```
+
+7. .env.local
+
+   will be update to the next time.
+
+### Next with TypeScript
+
+1. function f1(): NextPage\<type> {...}
+
+2. API routing
+
+   ```
+   // pages/api/hello.tsx
+   import { NextApiRequest, NextApiResponse } from 'next';
+
+   type T1 = {
+     key: valueType;
+   }
+
+   // Set type of function and params
+   export default function handler1(req: NextApiRequest, res:NextApiRequist<Data>) {
+    // send client json file as response
+     res.statur(200).json({ message: 'Hello' });
+   }
+   ```
+
+   - 200: OK
+   - 201: Created
+   - 400: Bad Request
+   - 401: Unauthorized
+   - 404: Not Found
+
+## Plus
+
+1. **Progressive Enhancment**
+
+   Make function at first, is able to work on old browsers, before newer function.
+
+2. **Graceful Degradation**
+
+   Give all function, include basic functions for old browsers, degrading gracefully.
