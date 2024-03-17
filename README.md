@@ -76,13 +76,13 @@ Foremore
 
     I am a user to use Typescript at first. so... The document of it and to study it is needed.
 
-    - ✔️ [Write the concepts and sytactics](#ts)<span id="ts_"></span>.
+    - ✔️ [Write the concepts and sytactics](#ts)<span id="ts_"></span>
 
 4.  **React, Next.js**
 
     This is same to TypeScript.
 
-    - Write React hook I didn"t know
+    - [Write React hook I didn"t know](#react)<span id="react_"></span> in progress
     - Write Next.js" main function
 
 #### ~~#4 - Set SASS, ESLint and Prettier, Stylelint, PostCSS sorting or CSS declaration sorter~~
@@ -101,7 +101,7 @@ Foremore
 
 - Update plan especially at [Goal v.1.0](#v1_0)
 
----
+<br>
 
 # Memo
 
@@ -109,20 +109,20 @@ Foremore
 
 ### Table of Contents
 
-1. [Types](#ts_types) <span id="ts_types_"></span>
-2. [Variable declaration](#ts_variable) <span id="ts_variable_"></span>
-3. [Function declaration](#ts_function) <span id="ts_function_"></span>
-4. [Nickname for type](#ts_nickname) <span id="ts_nickname_"></span>
-5. [Generic type](#ts_generic) <span id="ts_generic_"></span>
-6. [Type Assertion](#ts_assertion) <span id="ts_assertion_"></span>
-7. [Optional Parameters](#ts_param) <span id="ts_param_"></span>
-8. [Enums](#ts_enums) <span id="ts_enums_"></span>
-9. [Modules](#ts_modules) <span id="ts_modules_"></span>
-10. [Type Utilities](#ts_utilities) <span id="ts_utilities_"></span>
+1. **[Types](#ts_types)** <span id="ts_types_"></span>
+2. **[Variable declaration](#ts_variable)** <span id="ts_variable_"></span>
+3. **[Function declaration](#ts_function)** <span id="ts_function_"></span>
+4. **[Nickname for type](#ts_nickname)** <span id="ts_nickname_"></span>
+5. **[Generic type](#ts_generic)** <span id="ts_generic_"></span>
+6. **[Type Assertion](#ts_assertion)** <span id="ts_assertion_"></span>
+7. **[Optional Parameters](#ts_param)** <span id="ts_param_"></span>
+8. **[Enums](#ts_enums)** <span id="ts_enums_"></span>
+9. **[Modules](#ts_modules)** <span id="ts_modules_"></span>
+10. **[Type Utilities](#ts_utilities)** <span id="ts_utilities_"></span>
 
 ### Contents
 
-1. [Types](#ts_types_) <span id="ts_types"></span>
+1. **[Types](#ts_types_)** <span id="ts_types"></span>
 
    - number, string, bllean, null, undefined...
    - `any`, `void`, `never`, `unknown`...
@@ -134,78 +134,79 @@ Foremore
    - `typeName[]`, `Array<typeName>`
    - { key: _typeName_ }, interface Name { _keyName_: _typeName_,...}
 
-2. [Variable declaration](#ts_variable_) <span id="ts_variable"></span>
+2. **[Variable declaration](#ts_variable_)** <span id="ts_variable"></span>
    `const variableName: type = typeName;`
 
-3. [Function declaration](#ts_function_) <span id="ts_function"></span>
+3. **[Function declaration](#ts_function_)** <span id="ts_function"></span>
    `function f1(param1: typeName, param2: typeName): typeNameofReturn {}`
 
-4. [Nickname for type](#ts_nickname_) <span id="ts_nickname"></span>
+4. **[Nickname for type](#ts_nickname_)** <span id="ts_nickname"></span>
 
 - `type typeNickname = typeName;`
 
-5.  [Generic type](#ts_generic_) <span id="ts_generic"></span>
-    Generic type means the value is confirmed when the function called.
+5. **[Generic type](#ts_generic_)** <span id="ts_generic"></span>
 
-    ```
-    function f1<GenericType>(arg1: GenericType): typeNameofReturn {...}
+   Generic type means the value is confirmed when the function called.
 
-    const useReturn = f1<argTypeName>(value)
-    ```
+   ```
+   function f1<GenericType>(arg1: GenericType): typeNameofReturn {...}
 
-6.  [Type Assertion](#ts_assertion_) <span id="ts_assertion"></span>
+   const useReturn = f1<argTypeName>(value)
+   ```
 
-    ```
-    const str1: string = "this is string";
-    const srtLength: number = (str1 as string).legnth; // it cannot be used in JSX
-    const srtLengthBracket: number = (<string>str1).legnth;
-    ```
+6. **[Type Assertion](#ts_assertion_)** <span id="ts_assertion"></span>
 
-7.  [Optional Parameters](#ts_param_) <span id="ts_param"></span>
+   ```
+   const str1: string = "this is string";
+   const srtLength: number = (str1 as string).legnth; // it cannot be used in JSX
+   const srtLengthBracket: number = (<string>str1).legnth;
+   ```
 
-    `function f1(param1?: typeName) {...}`
+7. **[Optional Parameters](#ts_param_)** <span id="ts_param"></span>
 
-    ?(optional parameter) means this parameter can"t be sent when the function called.
+   `function f1(param1?: typeName) {...}`
 
-8.  [Enums](#ts_enums) <span id="ts_enums"></span>
+   ?(optional parameter) means this parameter can"t be sent when the function called.
 
-    ```
-    enum IsGood {
-      never, //0
-      bad = 3, //3
-      normal, //4
-      good, //5
-      best //6
-    }
-    ```
+8. **[Enums](#ts_enums)** <span id="ts_enums"></span>
 
-9.  [Modules](#ts_modules) <span id="ts_modules"></span>
+   ```
+   enum IsGood {
+     never, //0
+     bad = 3, //3
+     normal, //4
+     good, //5
+     best //6
+   }
+   ```
 
-    export
+9. **[Modules](#ts_modules)** <span id="ts_modules"></span>
 
-    ```
-    // in export file1
-    export module M1 {
-    export f1(p: typename): typeNameOfReturn {...}
-    }
-    ```
+   export
 
-    ```
-    // in export file2
-    export default module M2 {
-    export f1(p: typename): typeNameOfReturn {...}
-    }
-    ```
+   ```
+   // in export file1
+   export module M1 {
+   export f1(p: typename): typeNameOfReturn {...}
+   }
+   ```
 
-    import
+   ```
+   // in export file2
+   export default module M2 {
+   export f1(p: typename): typeNameOfReturn {...}
+   }
+   ```
 
-    ```
-    // in another file
-    import { M1 } from "./file1"
-    import M2 from "./file2"
-    ```
+   import
 
-10. [Type Utilities](#ts_utilities_) <span id="ts_utilities"></span>
+   ```
+   // in another file
+   import { M1 } from "./file1"
+   import M2 from "./file2"
+   ```
+
+10. **[Type Utilities](#ts_utilities_)** <span id="ts_utilities"></span>
 
     It is a kind of of type tools.
 
@@ -277,3 +278,52 @@ Foremore
     9. NonNullable\<T>
     10. ReturnType\<T>
     11. Parameters\<T>
+
+## [React](#react_)<span id="react"></span>
+
+1. **useRef**
+
+   A React selector or a storage for values without causing re-renders.
+
+   1. `const refName = useRef(null);`
+
+      1. Select
+
+         2. `<tag ref={refName}>`
+         3. `refName.current.elementMethod();`
+
+      2. Value
+
+         1. `refName.current = value`;
+
+1. **useMemo**
+
+   Variable not to update continuously but to render when dependencies changed.
+
+1. **useCallback**
+
+   Returns a memoized callback function, preventing unnecessary renders.
+
+1. **useState**
+
+   Manages state with continuous updates triggering re-renders; changes are immediately visible with setState.
+
+1. **useReducer**
+
+   Similar to useState but dispatch return value of reducer(function).
+
+   1. Make `function rd1(state, v)` as reducer
+   2. Use `cosnt [state, dispatch] = useReducer(reducer, initialState)`
+   3. In `<a onClick={() => dispatch(v)}>content</a>`, dispatch updates the state with the return value of `function rd1` when onclick run.
+
+1. **useEffect**
+
+   Runs after state changes or component mounting, asynchronously.
+
+1. **useLayoutEffect**
+
+   Runs after state changes or component mounting, synchronously; occurs **after rendering but before screen repaint**.
+
+1. **useContext**
+
+   Provides access to data stored in a context without unnecessary prop drilling.
