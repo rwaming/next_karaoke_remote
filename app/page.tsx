@@ -52,7 +52,7 @@ export default function Home() {
     <>
       <Script src="https://apis.google.com/js/api.js" defer />
 
-      <div className="wrap">
+      <div className="app">
         <div className="vedio">
           <p className="text-emerald-800">{videoID}</p>
           <p className="text-slate-600">{videoTitle}</p>
