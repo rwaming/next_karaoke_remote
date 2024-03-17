@@ -56,9 +56,7 @@ Issues are listed by completion date.
 
 > _2024.03.17.sun_
 
-#### #9 - Install React transition group
-
-- _in progress..._
+#### ~~#9 - Install React transition group~~
 
 #### ~~#8 - Set up rules and rough plan(how to use languages)~~
 
