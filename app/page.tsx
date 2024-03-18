@@ -57,7 +57,7 @@ export default function Home() {
         </div>
 
         <div className="control border border-blue-500">
-          <button type="button" className="pause bg-blue-300" onClick={pause}>
+          <button type="button" className="pause bg-blue-300">
             ⏯️
           </button>
         </div>
