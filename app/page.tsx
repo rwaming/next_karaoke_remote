@@ -1,13 +1,13 @@
 'use client'
 
-import { type ReactNode, useEffect, useState, type ReactElement } from 'react'
+import { useEffect, useState, type ReactElement, useRef } from 'react'
 import Script from 'next/script'
 import youtubeApiFirst from '@/youtubeApiFirst'
-import YouTube from 'react-youtube'
+import YouTube, { type YouTubeEvent } from 'react-youtube'
 
 export default function Home(): ReactElement {
   const [goVideo, setGoVideo] = useState(false)
-  const [video, setVideo] = useState<ReactNode | null>(null)
+  const [videoEvent, setVideo] = useState<null | YouTubeEvent>(null)
   const [videoID, setVideoID] = useState<string | null>(null)
   const [videoTitle, setVideoTitle] = useState('videoTitle')
   const [videoDate, setVideoDate] = useState('videoDate')
@@ -22,18 +22,18 @@ export default function Home(): ReactElement {
     }
   }, [goVideo])
 
-  function useThisVideo(event: { target: ReactNode }): void {
-    setVideo(event.target)
+  const useThisVideo = useRef((event: YouTubeEvent) => {
+    setVideo(event)
     setIsPlaying(true)
-  }
+  })
 
   function playPause(): void {
-    if (video) {
+    if (videoEvent !== null) {
       if (isPlaying) {
-        video?.pauseVideo()
+        videoEvent.target.pauseVideo()
         setIsPlaying(false)
       } else {
-        video?.playVideo()
+        videoEvent.target.playVideo()
         setIsPlaying(true)
       }
     }
@@ -56,9 +56,7 @@ export default function Home(): ReactElement {
                     fs: 1,
                   },
                 }}
-                onReady={(event) => {
-                  useThisVideo(event)
-                }}
+                onReady={useThisVideo.current}
               />
             )}
           </div>
