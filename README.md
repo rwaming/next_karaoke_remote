@@ -74,6 +74,7 @@ Issues are listed by completion date.
 
 #### #13 - Show YouTube player to use API from 12
 
+- in progress...
 - Accomplish access to YoutubeAPI and get value.
 - But the qouta is exceeded... It must be pended by 4pm
 

@@ -12,8 +12,7 @@ export default function Home() {
     playerVars: {
       autoplay: 1, //자동 재생 여부
       modestbranding: 1, //컨트롤 바에 유튜브 로고 표시 여부
-      loop: 0,
-      controls: 0,
+      fs: 1,
     },
   }
 
@@ -34,9 +33,9 @@ export default function Home() {
     <>
       <Script src="https://apis.google.com/js/api.js" defer />
 
-      <div className="app w-screen h-screen flex md:flex-row border">
-        <div className="video border border-red-500">
-          <div id="player">
+      <div className="app w-screen h-screen flex flex-col md:flex-row border">
+        <div className="video border border-red-500 flex-grow w-screen md:w-auto">
+          <div id="player" className="md:flex">
             {videoID && (
               <>
                 <YouTube videoId={videoID} opts={videoOpts} />
@@ -46,18 +45,17 @@ export default function Home() {
               </>
             )}
           </div>
+        </div>
 
+        <div className="control border border-blue-500 flex-grow md:flex-none">
           <button
             type="button"
-            className="bg-red-300 p-1"
+            className="bg-red-300 p-1 block"
             onClick={() => setGoNext(true)}
           >
             Look for Latest Song button
           </button>
-        </div>
-
-        <div className="control border border-blue-500">
-          <button type="button" className="pause bg-blue-300">
+          <button type="button" className="pause bg-blue-300 block">
             ⏯️
           </button>
         </div>
