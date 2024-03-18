@@ -20,14 +20,14 @@ export default async function youtubeApiFirst(
         scope: 'profile',
       })
       .then(() => {
-        //@ts-ignore
+        // @ts-expect-error
         return gapi.client.youtube.search
           .list({
             part: 'snippet',
             channelId: 'UCDqaUIUSJP5EVMEI178Zfag',
             order: 'date',
           })
-          .then((response: any) => {
+          .then((response: unknown) => {
             const latestVideoInfo = response.result.items[0]
             const latestVideoID = latestVideoInfo.id.videoId
             const latestVideoTitle = latestVideoInfo.snippet.title
