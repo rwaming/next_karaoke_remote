@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ReactElement, useRef } from 'react'
 import Script from 'next/script'
 import youtubeApiFirst from '@/youtubeApiFirst'
-import YouTube from 'react-youtube'
+import YouTube, { type YouTubeEvent } from 'react-youtube'
 
-export default function Home() {
+export default function Home(): ReactElement {
   const [goVideo, setGoVideo] = useState(false)
-  const [video, setVideo] = useState<any>(null)
+  const [videoEvent, setVideo] = useState<null | YouTubeEvent>(null)
   const [videoID, setVideoID] = useState<string | null>(null)
   const [videoTitle, setVideoTitle] = useState('videoTitle')
   const [videoDate, setVideoDate] = useState('videoDate')
@@ -16,24 +16,24 @@ export default function Home() {
   // Load latest video
   useEffect(() => {
     if (goVideo) {
-      youtubeApiFirst(setVideoID, setVideoTitle, setVideoDate)
+      void youtubeApiFirst(setVideoID, setVideoTitle, setVideoDate)
       setGoVideo(false)
       setIsPlaying(false)
     }
   }, [goVideo])
 
-  function useThisVideo(event: { target: any }) {
-    setVideo(event.target)
+  const useThisVideo = useRef((event: YouTubeEvent) => {
+    setVideo(event)
     setIsPlaying(true)
-  }
+  })
 
-  function playPause() {
-    if (video) {
+  function playPause(): void {
+    if (videoEvent !== null) {
       if (isPlaying) {
-        video.pauseVideo()
+        videoEvent.target.pauseVideo()
         setIsPlaying(false)
       } else {
-        video.playVideo()
+        videoEvent.target.playVideo()
         setIsPlaying(true)
       }
     }
@@ -46,7 +46,7 @@ export default function Home() {
       <div id="app" className="w-screen h-screen border">
         <div id="video" className=" border border-red-500">
           <div id="video-player" className="bg-slate-800">
-            {videoID && (
+            {videoID !== null && (
               <YouTube
                 videoId={videoID}
                 opts={{
@@ -56,14 +56,14 @@ export default function Home() {
                     fs: 1,
                   },
                 }}
-                onReady={useThisVideo}
+                onReady={useThisVideo.current}
               />
             )}
           </div>
           <div id="video-info" className="border border-orange-500">
-            <p className="bg-yellow-300">{videoID && videoID}</p>
-            <p className="bg-slate-300">{videoID && videoTitle}</p>
-            <p className="bg-orange-300">{videoID && videoDate}</p>
+            <p className="bg-yellow-300">{videoID !== null && videoID}</p>
+            <p className="bg-slate-300">{videoID !== null && videoTitle}</p>
+            <p className="bg-orange-300">{videoID !== null && videoDate}</p>
           </div>
         </div>
 
@@ -71,7 +71,9 @@ export default function Home() {
           <button
             type="button"
             className="bg-red-300 p-1 block"
-            onClick={() => setGoVideo(true)}
+            onClick={() => {
+              setGoVideo(true)
+            }}
           >
             Look for Latest Song button
           </button>
