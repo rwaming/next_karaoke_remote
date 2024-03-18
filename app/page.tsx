@@ -6,54 +6,80 @@ import youtubeApiFirst from '@/youtubeApiFirst'
 import YouTube from 'react-youtube'
 
 export default function Home() {
-  const videoOpts = {
-    width: '100%',
-    height: '100%',
-    playerVars: {
-      autoplay: 1, //자동 재생 여부
-      modestbranding: 1, //컨트롤 바에 유튜브 로고 표시 여부
-      fs: 1,
-    },
-  }
-
-  const [goNext, setGoNext] = useState(false)
+  const [goVideo, setGoVideo] = useState(false)
+  const [video, setVideo] = useState<any>(null)
   const [videoID, setVideoID] = useState<string | null>(null)
   const [videoTitle, setVideoTitle] = useState('videoTitle')
   const [videoDate, setVideoDate] = useState('videoDate')
+  const [isPlaying, setIsPlaying] = useState(false)
 
   // Load latest video
   useEffect(() => {
-    if (goNext) {
+    if (goVideo) {
       youtubeApiFirst(setVideoID, setVideoTitle, setVideoDate)
-      setGoNext(false)
+      setGoVideo(false)
+      setIsPlaying(false)
     }
-  }, [goNext, videoID])
+  }, [goVideo])
+
+  function useThisVideo(event: { target: any }) {
+    setVideo(event.target)
+    setIsPlaying(true)
+  }
+
+  function playPause() {
+    if (video) {
+      if (isPlaying) {
+        video.pauseVideo()
+        setIsPlaying(false)
+      } else {
+        video.playVideo()
+        setIsPlaying(true)
+      }
+    }
+  }
 
   return (
     <>
       <Script src="https://apis.google.com/js/api.js" defer />
 
-      <div className="app w-screen h-screen flex flex-col md:flex-row border">
-        <div className="video border border-red-500 flex flex-col flex-grow w-screen md:w-auto">
-          <div id="video-player" className="flex-grow bg-slate-800">
-            {videoID && <YouTube videoId={videoID} opts={videoOpts} />}
+      <div id="app" className="w-screen h-screen border">
+        <div id="video" className=" border border-red-500">
+          <div id="video-player" className="bg-slate-800">
+            {videoID && (
+              <YouTube
+                videoId={videoID}
+                opts={{
+                  playerVars: {
+                    autoplay: 1,
+                    modestbranding: 1,
+                    fs: 1,
+                  },
+                }}
+                onReady={useThisVideo}
+              />
+            )}
           </div>
-          <div id="video-info">
-            <p className="bg-yellow-300">{videoID}</p>
-            <p className="bg-slate-300">{videoTitle}</p>
-            <p>{videoDate}</p>
+          <div id="video-info" className="border border-orange-500">
+            <p className="bg-yellow-300">{videoID && videoID}</p>
+            <p className="bg-slate-300">{videoID && videoTitle}</p>
+            <p className="bg-orange-300">{videoID && videoDate}</p>
           </div>
         </div>
 
-        <div className="control border border-blue-500 flex-grow md:flex-none">
+        <div id="controller" className="border border-blue-500">
           <button
             type="button"
             className="bg-red-300 p-1 block"
-            onClick={() => setGoNext(true)}
+            onClick={() => setGoVideo(true)}
           >
             Look for Latest Song button
           </button>
-          <button type="button" className="pause bg-blue-300 block">
+          <button
+            type="button"
+            className="pause bg-blue-300 block"
+            onClick={playPause}
+          >
             ⏯️
           </button>
         </div>

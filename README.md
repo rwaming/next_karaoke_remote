@@ -72,10 +72,11 @@ Issues are listed by completion date.
 
 > _2024.03.18.mon_
 
-#### #12 - Pause, Play
+#### ~~#12 - Pause, Play~~
 
 - Oh, TJ prevents to use their video... But KY allows those of them.
 - I thought to show YouTube player is considered to do at first. Make #13
+- Complete to make function Pause and Play!
 
 #### ~~#13 - Show YouTube player to use API from 12~~
 
