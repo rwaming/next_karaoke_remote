@@ -24,12 +24,18 @@ export default function Home() {
 
   function useThisVideo(event: { target: any }) {
     setVideo(event.target)
+    setIsPlaying(true)
   }
 
-  function pause() {
+  function playPause() {
     if (video) {
-      isPlaying && video.pauseVideo()
-      !isPlaying && video.pausePlay()
+      if (isPlaying) {
+        video.pauseVideo()
+        setIsPlaying(false)
+      } else {
+        video.playVideo()
+        setIsPlaying(true)
+      }
     }
   }
 
@@ -72,7 +78,7 @@ export default function Home() {
           <button
             type="button"
             className="pause bg-blue-300 block"
-            onClick={pause}
+            onClick={playPause}
           >
             ⏯️
           </button>
