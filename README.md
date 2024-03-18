@@ -72,6 +72,10 @@ Issues are listed by completion date.
 
 > _2024.03.18.mon_
 
+#### #20 - Check ESLint that doesn't work
+
+- I knew TypeScript would replace ESLint. But I think something wrong must be there... So I'll check it.
+
 #### ~~#12 - Pause, Play~~
 
 - Oh, TJ prevents to use their video... But KY allows those of them.
