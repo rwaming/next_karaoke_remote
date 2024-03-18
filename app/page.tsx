@@ -12,8 +12,7 @@ export default function Home() {
     playerVars: {
       autoplay: 1, //자동 재생 여부
       modestbranding: 1, //컨트롤 바에 유튜브 로고 표시 여부
-      loop: 0,
-      controls: 0,
+      fs: 1,
     },
   }
 
@@ -34,30 +33,27 @@ export default function Home() {
     <>
       <Script src="https://apis.google.com/js/api.js" defer />
 
-      <div className="app w-screen h-screen flex md:flex-row border">
-        <div className="video border border-red-500">
-          <div id="player">
-            {videoID && (
-              <>
-                <YouTube videoId={videoID} opts={videoOpts} />
-                <p className="bg-yellow-300">{videoID}</p>
-                <p className="bg-slate-300">{videoTitle}</p>
-                <p>{videoDate}</p>
-              </>
-            )}
+      <div className="app w-screen h-screen flex flex-col md:flex-row border">
+        <div className="video border border-red-500 flex flex-col flex-grow w-screen md:w-auto">
+          <div id="video-player" className="flex-grow bg-slate-800">
+            {videoID && <YouTube videoId={videoID} opts={videoOpts} />}
           </div>
+          <div id="video-info">
+            <p className="bg-yellow-300">{videoID}</p>
+            <p className="bg-slate-300">{videoTitle}</p>
+            <p>{videoDate}</p>
+          </div>
+        </div>
 
+        <div className="control border border-blue-500 flex-grow md:flex-none">
           <button
             type="button"
-            className="bg-red-300 p-1"
+            className="bg-red-300 p-1 block"
             onClick={() => setGoNext(true)}
           >
             Look for Latest Song button
           </button>
-        </div>
-
-        <div className="control border border-blue-500">
-          <button type="button" className="pause bg-blue-300">
+          <button type="button" className="pause bg-blue-300 block">
             ⏯️
           </button>
         </div>
