@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.video-player iframe {
+  width: 100vw;
+  height: 56.25vw;
+}

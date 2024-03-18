@@ -21,10 +21,9 @@ export default function Home() {
   }, [goNext, videoID])
 
   const videoOpts = {
-    width: '100%',
     playerVars: {
-      autoplay: 1, //자동 재생 여부
-      modestbranding: 1, //컨트롤 바에 유튜브 로고 표시 여부
+      autoplay: 1,
+      modestbranding: 1,
       fs: 1,
     },
   }
