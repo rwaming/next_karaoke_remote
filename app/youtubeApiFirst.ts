@@ -30,7 +30,7 @@ export default async function youtubeApiFirst(
   //         .then((response: any) => {
   //           const latestVideoInfo = response.result.items[0]
   //           const latestVideoID = latestVideoInfo.id.videoId
-  //           const latestVideoTitle = latestVideoInfo.snippet.description
+  //           const latestVideoTitle = latestVideoInfo.snippet.title
   //           const latestVideoDate = latestVideoInfo.snippet.publishedAt
   //           setVideoID(latestVideoID)
   //           setVideoTitle(latestVideoTitle)
@@ -61,7 +61,7 @@ export default async function youtubeApiFirst(
           .then((response: any) => {
             const latestVideoInfo = response.result.items[0]
             const latestVideoID = latestVideoInfo.id.videoId
-            const latestVideoTitle = latestVideoInfo.snippet.description
+            const latestVideoTitle = latestVideoInfo.snippet.title
             const latestVideoDate = latestVideoInfo.snippet.publishedAt
             setVideoID(latestVideoID)
             setVideoTitle(latestVideoTitle)

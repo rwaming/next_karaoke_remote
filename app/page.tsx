@@ -1,16 +1,26 @@
 'use client'
 
-import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Script from 'next/script'
 import youtubeApiFirst from '@/youtubeApiFirst'
+import YouTube from 'react-youtube'
 
 export default function Home() {
+  const videoOpts = {
+    width: '100%',
+    height: '100%',
+    playerVars: {
+      autoplay: 1, //자동 재생 여부
+      modestbranding: 1, //컨트롤 바에 유튜브 로고 표시 여부
+      loop: 0,
+      controls: 0,
+    },
+  }
+
   const [goNext, setGoNext] = useState(false)
   const [videoID, setVideoID] = useState<string | null>(null)
   const [videoTitle, setVideoTitle] = useState('videoTitle')
   const [videoDate, setVideoDate] = useState('videoDate')
-
-  const videoRef = useRef(null)
 
   // Load latest video
   useEffect(() => {
@@ -25,35 +35,29 @@ export default function Home() {
       <Script src="https://apis.google.com/js/api.js" defer />
 
       <div className="app w-screen h-screen flex md:flex-row border">
-        <div className="vedio border border-red-500">
-          {videoID && (
-            <video
-              ref={videoRef}
-              className="bg-emerald-300"
-              width="1024px"
-              controls
-              autoPlay
-            >
-              <source
-                src={`https://www.youtube.com/watch?v=${videoID}`}
-                type="video/mp4"
-              ></source>
-            </video>
-          )}
+        <div className="video border border-red-500">
+          <div id="player">
+            {videoID && (
+              <>
+                <YouTube videoId={videoID} opts={videoOpts} />
+                <p className="bg-yellow-300">{videoID}</p>
+                <p className="bg-slate-300">{videoTitle}</p>
+                <p>{videoDate}</p>
+              </>
+            )}
+          </div>
 
-          <p className="bg-slate-300">{videoTitle}</p>
-          <p>{videoDate}</p>
           <button
             type="button"
             className="bg-red-300 p-1"
             onClick={() => setGoNext(true)}
           >
-            Latest Song
+            Look for Latest Song button
           </button>
         </div>
 
         <div className="control border border-blue-500">
-          <button type="button" className="pause bg-blue-300">
+          <button type="button" className="pause bg-blue-300" onClick={pause}>
             ⏯️
           </button>
         </div>
