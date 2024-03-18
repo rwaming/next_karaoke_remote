@@ -6,17 +6,8 @@ import youtubeApiFirst from '@/youtubeApiFirst'
 import YouTube from 'react-youtube'
 
 export default function Home() {
-  const videoOpts = {
-    width: '100%',
-    height: '100%',
-    playerVars: {
-      autoplay: 1, //자동 재생 여부
-      modestbranding: 1, //컨트롤 바에 유튜브 로고 표시 여부
-      fs: 1,
-    },
-  }
-
   const [goNext, setGoNext] = useState(false)
+  const [video, setVideo] = useState<any>(null)
   const [videoID, setVideoID] = useState<string | null>(null)
   const [videoTitle, setVideoTitle] = useState('videoTitle')
   const [videoDate, setVideoDate] = useState('videoDate')
@@ -29,6 +20,23 @@ export default function Home() {
     }
   }, [goNext, videoID])
 
+  const videoOpts = {
+    width: '100%',
+    playerVars: {
+      autoplay: 1, //자동 재생 여부
+      modestbranding: 1, //컨트롤 바에 유튜브 로고 표시 여부
+      fs: 1,
+    },
+  }
+
+  function useThisVideo(event: { target: any }) {
+    setVideo(event.target)
+  }
+
+  function pause() {
+    video && video.pauseVideo()
+  }
+
   return (
     <>
       <Script src="https://apis.google.com/js/api.js" defer />
@@ -36,7 +44,13 @@ export default function Home() {
       <div className="app w-screen h-screen flex flex-col md:flex-row border">
         <div className="video border border-red-500 flex flex-col flex-grow w-screen md:w-auto">
           <div id="video-player" className="flex-grow bg-slate-800">
-            {videoID && <YouTube videoId={videoID} opts={videoOpts} />}
+            {videoID && (
+              <YouTube
+                videoId={videoID}
+                opts={videoOpts}
+                onReady={useThisVideo}
+              />
+            )}
           </div>
           <div id="video-info">
             <p className="bg-yellow-300">{videoID}</p>
@@ -53,7 +67,11 @@ export default function Home() {
           >
             Look for Latest Song button
           </button>
-          <button type="button" className="pause bg-blue-300 block">
+          <button
+            type="button"
+            className="pause bg-blue-300 block"
+            onClick={pause}
+          >
             ⏯️
           </button>
         </div>
