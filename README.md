@@ -72,12 +72,7 @@ Issues are listed by completion date.
 
 > _2024.03.18.mon_
 
-#### #14 - Make layout in Mobile, Tablet, Desktop to use @media from 13
-
-- _in progress..._
-- I decided to make the main layout before the quota reset.
-
-#### ⚠️ <span style="font-weight: 200">#13 - Show YouTube player to use API from 12</span>
+#### #13 - Show YouTube player to use API from 12
 
 - Accomplish access to YoutubeAPI and get value.
 - But the qouta is exceeded... It must be pended by 4pm
@@ -86,6 +81,12 @@ Issues are listed by completion date.
 
 - Oh, TJ prevents to use their video... But KY allows those of them.
 - I thought to show YouTube player is considered to do at first. Make #13
+
+#### ~~#14 - Make layout in Mobile, Tablet, Desktop to use @media from 13~~
+
+- I decided to make the main layout before the quota reset.
+- Make simple layout use @media, only div.app scope.
+- And It is now possible to use Youtube API to create one more project in Google Cloude.
 
 <br>
 
