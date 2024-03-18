@@ -50,10 +50,10 @@ Foremore
 
 - HTML
 - CSS
-- SCSS
+- ~~SASS~~ conflicts with TailwindCSS: uninstalled
 - JavaScript
 - TypeScript
-- Tailwind
+- TailwindCSS
 - React
 - Next.js
 - React Transition Group
@@ -70,11 +70,28 @@ Issues are listed by completion date.
 
 <br>
 
-> _2024.03.17.sun_
+> _2024.03.18.mon_
 
-#### #12 - Pause, Play
+#### #13 - Show YouTube player to use API from 12
+
+- in progress...
+- Accomplish access to YoutubeAPI and get value.
+- But the qouta is exceeded... It must be pended by 4pm
+
+#### ⚠️ <span style="font-weight: 200">#12 - Pause, Play</span>
 
 - Oh, TJ prevents to use their video... But KY allows those of them.
+- I thought to show YouTube player is considered to do at first. Make #13
+
+#### ~~#14 - Make layout in Mobile, Tablet, Desktop to use @media from 13~~
+
+- I decided to make the main layout before the quota reset.
+- Make simple layout use @media, only div.app scope.
+- And It is now possible to use Youtube API to create one more project in Google Cloude.
+
+<br>
+
+> _2024.03.17.sun_
 
 #### ~~#10 - Install React transition group~~
 

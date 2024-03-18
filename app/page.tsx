@@ -1,54 +1,62 @@
 'use client'
 
-import { Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Script from 'next/script'
+import youtubeApiFirst from '@/youtubeApiFirst'
+import YouTube from 'react-youtube'
 
 export default function Home() {
-  const [videoID, setVidoeID] = useState('')
-  const [video, setVidoe] = useState('')
-  const [videoDate, setVidoeDate] = useState('')
+  const videoOpts = {
+    width: '100%',
+    height: '100%',
+    playerVars: {
+      autoplay: 1, //자동 재생 여부
+      modestbranding: 1, //컨트롤 바에 유튜브 로고 표시 여부
+      fs: 1,
+    },
+  }
+
+  const [goNext, setGoNext] = useState(false)
+  const [videoID, setVideoID] = useState<string | null>(null)
+  const [videoTitle, setVideoTitle] = useState('videoTitle')
+  const [videoDate, setVideoDate] = useState('videoDate')
 
   // Load latest video
   useEffect(() => {
-    gapi.client
-      .init({
-        apiKey: 'AIzaSyB1IOFOJ0D_e2-16KS4Tlol7mAiN2x9Fl4',
-        discoveryDocs: [
-          'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest',
-        ],
-        clientId: 'art.rwam.apps.googleusercontent.com',
-        scope: 'profile',
-      })
-      .then(() => {
-        //@ts-ignore
-        return gapi.client.youtube.search
-          .list({
-            part: 'snippet',
-            channelId: 'UCDqaUIUSJP5EVMEI178Zfag',
-            order: 'date',
-          })
-          .then((response: any) => {
-            const latestVideo = response.result.items[0]
-            const latestDate = latestVideo.publishTime
-            setVidoe(latestVideo)
-            setVidoeDate(latestDate)
-          })
-      })
-  }, [])
+    if (goNext) {
+      youtubeApiFirst(setVideoID, setVideoTitle, setVideoDate)
+      setGoNext(false)
+    }
+  }, [goNext, videoID])
 
   return (
     <>
-      <Script src="https://apis.google.com/js/api.js" />
+      <Script src="https://apis.google.com/js/api.js" defer />
 
-      <div className="wrap">
-        <Suspense fallback={<div>Loading...</div>}>
-          <div className="vedio"></div>
-          <div className="control">
-            <button type="button" className="pause bg-orange-300">
-              ⏯️
-            </button>
+      <div className="app w-screen h-screen flex flex-col md:flex-row border">
+        <div className="video border border-red-500 flex flex-col flex-grow w-screen md:w-auto">
+          <div id="video-player" className="flex-grow bg-slate-800">
+            {videoID && <YouTube videoId={videoID} opts={videoOpts} />}
           </div>
-        </Suspense>
+          <div id="video-info">
+            <p className="bg-yellow-300">{videoID}</p>
+            <p className="bg-slate-300">{videoTitle}</p>
+            <p>{videoDate}</p>
+          </div>
+        </div>
+
+        <div className="control border border-blue-500 flex-grow md:flex-none">
+          <button
+            type="button"
+            className="bg-red-300 p-1 block"
+            onClick={() => setGoNext(true)}
+          >
+            Look for Latest Song button
+          </button>
+          <button type="button" className="pause bg-blue-300 block">
+            ⏯️
+          </button>
+        </div>
       </div>
     </>
   )
