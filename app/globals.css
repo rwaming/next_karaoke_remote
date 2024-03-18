@@ -1,8 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+#app {
+  display: flex;
+  flex-direction: column;
+  > #video {
+    display: flex;
+    flex-direction: column;
+    > #video-player {
+      display: flex;
+      flex-direction: column;
+      > div {
+        > iframe {
+          width: 100vw;
+          height: 56.25vw;
+        }
+      }
+    }
+  }
+}
+#controller {
+  flex-grow: 1;
+}
 
-.video-player iframe {
-  width: 100vw;
-  height: 56.25vw;
+@media screen and (min-width: 768px) {
+  #app {
+    flex-direction: row;
+
+    > #video {
+      width: 100vw;
+      height: 56.25vw;
+
+      > #video-player > div {
+        flex-direction: column;
+
+        > iframe {
+          width: 100%;
+          flex-grow: 1;
+        }
+      }
+    }
+    #controller {
+      flex-grow: 0;
+    }
+  }
 }
