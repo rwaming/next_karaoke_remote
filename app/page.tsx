@@ -34,16 +34,14 @@ export default function Home() {
       <Script src="https://apis.google.com/js/api.js" defer />
 
       <div className="app w-screen h-screen flex flex-col md:flex-row border">
-        <div className="video border border-red-500 flex-grow w-screen md:w-auto">
-          <div id="player" className="md:flex">
-            {videoID && (
-              <>
-                <YouTube videoId={videoID} opts={videoOpts} />
-                <p className="bg-yellow-300">{videoID}</p>
-                <p className="bg-slate-300">{videoTitle}</p>
-                <p>{videoDate}</p>
-              </>
-            )}
+        <div className="video border border-red-500 flex flex-col flex-grow w-screen md:w-auto">
+          <div id="video-player" className="flex-grow bg-slate-800">
+            {videoID && <YouTube videoId={videoID} opts={videoOpts} />}
+          </div>
+          <div id="video-info">
+            <p className="bg-yellow-300">{videoID}</p>
+            <p className="bg-slate-300">{videoTitle}</p>
+            <p>{videoDate}</p>
           </div>
         </div>
 
