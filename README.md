@@ -99,13 +99,16 @@ Issues are listed by completion date.
 
 > _2024.03.19.tue_
 
-#### #31 - Volume buttons
+#### _#32 - Speed buttons_
 
 - in progress
 
-#### _#32 - Speed buttons_
+#### ~~#31 - Volume buttons~~
 
-- in wait for #31
+- Complete to make buttons
+  - Volume Up
+  - Volume Down
+  - Mute
 
 #### ⚠️ _#22 - Try using Web Audio_
 
