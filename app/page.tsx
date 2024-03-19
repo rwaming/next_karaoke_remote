@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo } from 'react'
 import Script from 'next/script'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
-import ControllerButton from './button'
+import ControllerButton from './controllerButton'
 import AppContext from './appContext'
 
 export default function Home({
