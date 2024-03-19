@@ -1,3 +1,4 @@
+import { type MouseEvent } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
 export function playPause(
@@ -16,7 +17,10 @@ export function playPause(
   }
 }
 
-export function moveTime(videoEvent: null | YouTubeEvent): void {
+export function moveTime(
+  event: MouseEvent<HTMLButtonElement>,
+  videoEvent: null | YouTubeEvent,
+): void {
   if (videoEvent !== null) {
     /*
     기본은 15초로 하자
@@ -29,7 +33,8 @@ player.seekTo(seconds:Number, allowSeekAhead:Boolean):Void
 allowSeekAhead 매개변수는 seconds 매개변수가 현재 버퍼링된 동영상 데이터를 벗어난 시간을 지정한 경우 플레이어가 서버에 새 스트림 요청을 할지 결정.
 ㄴ 때문에, 드래그 중에는 false로 설정하는 것이 좋음
 
-1. 10초 만들기
+1. 10초 전, 후 만들기
+2. 드래그 중 false 전환, 마우스업시 true로
 
     */
     console.log('controll moveTime')

@@ -1,6 +1,11 @@
 'use client'
 
-import { useState, type ReactElement, useCallback } from 'react'
+import {
+  useState,
+  type ReactElement,
+  useCallback,
+  type MouseEvent,
+} from 'react'
 import Script from 'next/script'
 import youtubeApiFirst from '@/youtubeApiFirst'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
@@ -74,8 +79,8 @@ export default function Home(): ReactElement {
             type="button"
             id="controller-backward"
             className=" bg-blue-300 block"
-            onClick={() => {
-              moveTime(videoEvent)
+            onClick={(event: MouseEvent<HTMLButtonElement>) => {
+              moveTime(event, videoEvent)
             }}
           >
             ◀️
@@ -84,8 +89,8 @@ export default function Home(): ReactElement {
             type="button"
             id="controller-forward"
             className=" bg-blue-300 block"
-            onClick={() => {
-              moveTime(videoEvent)
+            onClick={(event: MouseEvent<HTMLButtonElement>) => {
+              moveTime(event, videoEvent)
             }}
           >
             ▶️
