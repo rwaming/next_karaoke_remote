@@ -25,18 +25,18 @@ export default function ControllerButton({
 
   const buttonOnclick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
-      if (id.match('latest') != null) {
+      if (id.includes('latest')) {
         void showLatestVideo(
           setVideoID,
           setVideoTitle,
           setVideoDate,
           setIsPlaying,
         )
-      } else if (id.match('playpause') != null) {
+      } else if (id.includes('playpause')) {
         playPause(videoEvent, isPlaying, setIsPlaying)
-      } else if (id.match('time') != null) {
+      } else if (id.includes('time')) {
         moveTime(event, videoEvent)
-      } else if (id.match('volume') != null) {
+      } else if (id.includes('volume')) {
         setVolume(event, videoEvent)
       }
     },

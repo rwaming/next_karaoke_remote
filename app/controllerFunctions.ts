@@ -9,6 +9,22 @@ export async function showLatestVideo(
   setVideoDate: React.Dispatch<React.SetStateAction<string>>,
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>,
 ): Promise<void> {
+  await new Promise<void>((resolve, reject) => {
+    gapi.load('client', () => {
+      gapi.client
+        .init({
+          apiKey: 'AIzaSyB1IOFOJ0D_e2-16KS4Tlol7mAiN2x9Fl4',
+          discoveryDocs: [
+            'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest',
+          ],
+          clientId:
+            '73717891696-055at71c0fqi44m975h68s1ktgiqrqob.apps.googleusercontent.com',
+          scope: 'profile',
+        })
+        .then(resolve)
+        .catch(reject)
+    })
+  })
   const latestVideoList = await gapi.client.youtube.search.list({
     part: 'snippet',
     channelId: 'UCDqaUIUSJP5EVMEI178Zfag',
@@ -29,7 +45,7 @@ export function playPause(
   isPlaying: boolean,
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>,
 ): void {
-  if (videoEvent !== null) {
+  if (videoEvent != null) {
     if (isPlaying) {
       videoEvent.target.pauseVideo()
       setIsPlaying(false)
@@ -44,15 +60,14 @@ export function moveTime(
   event: MouseEvent<HTMLButtonElement>,
   videoEvent: null | YouTubeEvent,
 ): void {
-  if (videoEvent !== null) {
+  if (videoEvent != null) {
     const video = videoEvent.target
     const button = event.currentTarget.id
     const time = video.getCurrentTime()
-
-    if (button === 'controller-backward') {
+    if (button.includes('backward')) {
       const backwardTime = time - 5
       video.seekTo(backwardTime, true)
-    } else {
+    } else if (button.includes('forward')) {
       const forwardTime = time + 5
       video.seekTo(forwardTime, true)
     }
@@ -63,17 +78,22 @@ export function setVolume(
   event: MouseEvent<HTMLButtonElement>,
   videoEvent: null | YouTubeEvent,
 ): void {
-  if (videoEvent !== null) {
+  if (videoEvent != null) {
     const video = videoEvent.target
     const button = event.currentTarget.id
-    const volume = video.getVoulme()
-
-    if (button === 'controller-backward') {
-      const backwardTime = volume - 5
-      video.seekTo(backwardTime, true)
-    } else {
-      const forwardTime = volume + 5
-      video.seekTo(forwardTime, true)
+    const volume = video.getVolume()
+    if (button.includes('down')) {
+      const volumeDown = volume - 5
+      video.setVolume(volumeDown)
+    } else if (button.includes('up')) {
+      const volumeUp = volume + 5
+      video.setVolume(volumeUp)
+    } else if (button.includes('mute')) {
+      if (video.isMuted() === false) {
+        video.mute()
+      } else {
+        video.unMute()
+      }
     }
   }
 }
