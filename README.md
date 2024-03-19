@@ -64,9 +64,48 @@ Foremore
 
 <br>
 
+## Log
+
+> _2024.03.19.tue_
+
+### Can't manipulate pitch or others <a id="log1"></a>
+
+#### Detail issues
+
+- Never access to elements in iframe in just my web app
+- Youtube API gives simple functions, no function to set ptich.
+  = I can't manipulate to **use just only web**.
+
+#### Consideration
+
+- Make **Chrome Extention** to have access to iframe in browser.
+
+  But, I must prepare when I fail to make Chrome extention.
+
+#### Conclusion
+
+1. At first, Make Web APP have buttons which work in it.
+1. Try making Chrome Extention for Web APP and connecting Web APP to Chrome Extention as make buttons one by one.
+
+- If it is thought impossible now, close this project with no functions about 2
+
+<br>
+
 ## ✨ Issues <a id="issues"></a>
 
 Issues are listed by completion date.
+
+<br>
+
+> _2024.03.18.mon_
+
+#### #23 - Backward, Forward
+
+- It must be preceded that functions, able to be used in Web APP, are listed.
+
+#### ⚠️ _#22 - Try using Web Audio_
+
+[pending](#log1)
 
 <br>
 

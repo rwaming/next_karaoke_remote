@@ -7,7 +7,7 @@ import YouTube, { type YouTubeEvent } from 'react-youtube'
 
 export default function Home(): ReactElement {
   const [goVideo, setGoVideo] = useState(false)
-  const [videoEvent, setVideo] = useState<null | YouTubeEvent>(null)
+  const [videoEvent, setVideoEvent] = useState<null | YouTubeEvent>(null)
   const [videoID, setVideoID] = useState<string | null>(null)
   const [videoTitle, setVideoTitle] = useState('videoTitle')
   const [videoDate, setVideoDate] = useState('videoDate')
@@ -23,7 +23,7 @@ export default function Home(): ReactElement {
   }, [goVideo])
 
   const useThisVideo = useRef((event: YouTubeEvent) => {
-    setVideo(event)
+    setVideoEvent(event)
     setIsPlaying(true)
   })
 
