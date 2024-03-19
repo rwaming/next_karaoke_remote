@@ -1,27 +1,39 @@
 'use client'
 
-import {
-  useState,
-  type ReactElement,
-  useCallback,
-  type MouseEvent,
-} from 'react'
+import { useState, useCallback, useMemo } from 'react'
 import Script from 'next/script'
-import youtubeApiFirst from '@/youtubeApiFirst'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
-import { playPause, moveTime } from './controller'
+import ControllerButton from './button'
+import AppContext from './appContext'
 
-export default function Home(): ReactElement {
+export default function Home({
+  params,
+  searchParams,
+}: {
+  params: { slug: string }
+  searchParams: Record<string, string | string[] | undefined>
+}): JSX.Element {
   const [videoEvent, setVideoEvent] = useState<null | YouTubeEvent>(null)
   const [videoID, setVideoID] = useState<string | null>(null)
   const [videoTitle, setVideoTitle] = useState('videoTitle')
   const [videoDate, setVideoDate] = useState('videoDate')
   const [isPlaying, setIsPlaying] = useState(false)
 
-  const goVideo = useCallback(() => {
-    void youtubeApiFirst(setVideoID, setVideoTitle, setVideoDate)
-    setIsPlaying(false)
-  }, [])
+  const appValue = useMemo(
+    () => ({
+      videoEvent,
+      setVideoEvent,
+      videoID,
+      setVideoID,
+      videoTitle,
+      setVideoTitle,
+      videoDate,
+      setVideoDate,
+      isPlaying,
+      setIsPlaying,
+    }),
+    [isPlaying, videoDate, videoEvent, videoID, videoTitle],
+  )
 
   const useThisVideo = useCallback((event: YouTubeEvent) => {
     setVideoEvent(event)
@@ -29,7 +41,7 @@ export default function Home(): ReactElement {
   }, [])
 
   return (
-    <>
+    <AppContext.Provider value={appValue}>
       <Script src="https://apis.google.com/js/api.js" defer />
 
       <div id="app" className="w-screen h-screen border">
@@ -57,46 +69,15 @@ export default function Home(): ReactElement {
         </div>
 
         <div id="controller" className="border border-blue-500">
-          <button
-            type="button"
-            id="controller-newvideo"
-            className="bg-red-300 p-1 block"
-            onClick={goVideo}
-          >
-            Look for Latest Song button
-          </button>
-          <button
-            type="button"
-            id="controller-pause"
-            className=" bg-blue-300 block"
-            onClick={() => {
-              playPause(videoEvent, isPlaying, setIsPlaying)
-            }}
-          >
-            ⏯
-          </button>
-          <button
-            type="button"
-            id="controller-backward"
-            className=" bg-blue-300 block"
-            onClick={(event: MouseEvent<HTMLButtonElement>) => {
-              moveTime(event, videoEvent)
-            }}
-          >
-            ◀️
-          </button>
-          <button
-            type="button"
-            id="controller-forward"
-            className=" bg-blue-300 block"
-            onClick={(event: MouseEvent<HTMLButtonElement>) => {
-              moveTime(event, videoEvent)
-            }}
-          >
-            ▶️
-          </button>
+          <ControllerButton
+            id="controller-latest"
+            text="Look for Latest Song button"
+          />
+          <ControllerButton id="controller-playpause" text="⏯" />
+          <ControllerButton id="controller-backward" text="◀️" />
+          <ControllerButton id="controller-forward" text="▶️" />
         </div>
       </div>
-    </>
+    </AppContext.Provider>
   )
 }
