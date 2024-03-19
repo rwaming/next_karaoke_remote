@@ -103,6 +103,10 @@ Issues are listed by completion date.
 
 - [pending](#log1)
 
+#### ~~#26 - Make buttons to Component, considering how to maximize reusability~~
+
+- Split controller button into new component file(tsx)
+
 #### ~~#23 - Backward, Forward~~
 
 - It must be preceded that functions, able to be used in Web APP, are listed.
