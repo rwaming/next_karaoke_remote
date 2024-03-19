@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, type ReactElement, useRef } from 'react'
+import { useState, type ReactElement, useCallback } from 'react'
 import Script from 'next/script'
 import youtubeApiFirst from '@/youtubeApiFirst'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
+import playPause from './controller'
 
 export default function Home(): ReactElement {
   const [videoEvent, setVideoEvent] = useState<null | YouTubeEvent>(null)
@@ -12,27 +13,15 @@ export default function Home(): ReactElement {
   const [videoDate, setVideoDate] = useState('videoDate')
   const [isPlaying, setIsPlaying] = useState(false)
 
-  const goVideo = useRef(() => {
+  const goVideo = useCallback(() => {
     void youtubeApiFirst(setVideoID, setVideoTitle, setVideoDate)
     setIsPlaying(false)
-  })
+  }, [])
 
-  const useThisVideo = useRef((event: YouTubeEvent) => {
+  const useThisVideo = useCallback((event: YouTubeEvent) => {
     setVideoEvent(event)
     setIsPlaying(true)
-  })
-
-  function playPause(): void {
-    if (videoEvent !== null) {
-      if (isPlaying) {
-        videoEvent.target.pauseVideo()
-        setIsPlaying(false)
-      } else {
-        videoEvent.target.playVideo()
-        setIsPlaying(true)
-      }
-    }
-  }
+  }, [])
 
   return (
     <>
@@ -51,7 +40,7 @@ export default function Home(): ReactElement {
                     fs: 1,
                   },
                 }}
-                onReady={useThisVideo.current}
+                onReady={useThisVideo}
               />
             )}
           </div>
@@ -67,7 +56,7 @@ export default function Home(): ReactElement {
             type="button"
             id="controller-newvideo"
             className="bg-red-300 p-1 block"
-            onClick={goVideo.current}
+            onClick={goVideo}
           >
             Look for Latest Song button
           </button>
@@ -75,7 +64,9 @@ export default function Home(): ReactElement {
             type="button"
             id="controller-pause"
             className=" bg-blue-300 block"
-            onClick={playPause}
+            onClick={() => {
+              playPause(videoEvent, isPlaying, setIsPlaying)
+            }}
           >
             ⏯️
           </button>
