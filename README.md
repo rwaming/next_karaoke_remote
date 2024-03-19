@@ -102,6 +102,7 @@ Issues are listed by completion date.
 #### #23 - Backward, Forward
 
 - It must be preceded that functions, able to be used in Web APP, are listed.
+- Make both buttons, backward and forward
 
 #### ⚠️ _#22 - Try using Web Audio_
 
