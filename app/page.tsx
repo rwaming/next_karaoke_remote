@@ -68,27 +68,27 @@ export default function Home(): ReactElement {
               playPause(videoEvent, isPlaying, setIsPlaying)
             }}
           >
-            ⏯️
+            ⏯
           </button>
           <button
             type="button"
-            id="controller-volumeup"
+            id="controller-backward"
             className=" bg-blue-300 block"
             onClick={() => {
               moveTime(videoEvent)
             }}
           >
-            🔼
+            ◀️
           </button>
           <button
             type="button"
-            id="controller-volumedown"
+            id="controller-forward"
             className=" bg-blue-300 block"
             onClick={() => {
               moveTime(videoEvent)
             }}
           >
-            🔽
+            ▶️
           </button>
         </div>
       </div>
