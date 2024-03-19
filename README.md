@@ -99,14 +99,14 @@ Issues are listed by completion date.
 
 > _2024.03.19.tue_
 
-#### #23 - Backward, Forward
-
-- It must be preceded that functions, able to be used in Web APP, are listed.
-- Make both buttons, backward and forward
-
 #### ⚠️ _#22 - Try using Web Audio_
 
 - [pending](#log1)
+
+#### ~~#23 - Backward, Forward~~
+
+- It must be preceded that functions, able to be used in Web APP, are listed.
+- Make both buttons, backward and forward
 
 #### ~~#24 - Fix error next/font (no module "plugins")~~
 
