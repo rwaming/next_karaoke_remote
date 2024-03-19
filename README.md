@@ -68,7 +68,7 @@ Foremore
 
 > _2024.03.19.tue_
 
-### Can't manipulate pitch or others <a id="log1"></a>
+### [Can't manipulate pitch or others](#log1_) <a id="log1"></a>
 
 #### Detail issues
 
@@ -101,7 +101,7 @@ Issues are listed by completion date.
 
 #### ⚠️ _#22 - Try using Web Audio_
 
-- [pending](#log1)
+- [pending](#log1)<a id="log1_"></a>
 
 #### ~~#29 - Move button's function code to new file controller~~
 
