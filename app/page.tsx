@@ -70,6 +70,7 @@ export default function Home(): ReactElement {
         <div id="controller" className="border border-blue-500">
           <button
             type="button"
+            id="controller-newvideo"
             className="bg-red-300 p-1 block"
             onClick={() => {
               setGoVideo(true)
@@ -79,10 +80,25 @@ export default function Home(): ReactElement {
           </button>
           <button
             type="button"
-            className="pause bg-blue-300 block"
+            id="controller-pause"
+            className=" bg-blue-300 block"
             onClick={playPause}
           >
             ⏯️
+          </button>
+          <button
+            type="button"
+            id="controller-volumeup"
+            className=" bg-blue-300 block"
+          >
+            🔼
+          </button>
+          <button
+            type="button"
+            id="controller-volumedown"
+            className=" bg-blue-300 block"
+          >
+            🔽
           </button>
         </div>
       </div>
