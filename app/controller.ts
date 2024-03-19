@@ -15,8 +15,9 @@ export function playPause(
     }
   }
 }
-export function volume(videoEvent: null | YouTubeEvent): void {
+
+export function moveTime(videoEvent: null | YouTubeEvent): void {
   if (videoEvent !== null) {
-    console.log('controll volume')
+    console.log('controll moveTime')
   }
 }
