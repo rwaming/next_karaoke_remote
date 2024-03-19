@@ -1,7 +1,7 @@
 import { type Dispatch, createContext, type SetStateAction } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
-const AppContext = createContext<{
+const HomeContext = createContext<{
   videoEvent: YouTubeEvent | null
   setVideoEvent: Dispatch<SetStateAction<YouTubeEvent | null>>
   videoID: string | null
@@ -25,4 +25,4 @@ const AppContext = createContext<{
   setIsPlaying: () => {},
 })
 
-export default AppContext
+export default HomeContext

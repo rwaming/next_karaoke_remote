@@ -1,12 +1,13 @@
 'use client'
 
-import { useState, useCallback, useMemo } from 'react'
+import { useState, useCallback, useMemo, useEffect } from 'react'
 import Script from 'next/script'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
+import HomeContext from './HomeContext'
 import ControllerButton from './controllerButton'
-import AppContext from './appContext'
+import youtubeAPI from './youtubeAPI'
 
-export default function Home({
+export default function App({
   params,
   searchParams,
 }: {
@@ -40,8 +41,12 @@ export default function Home({
     setIsPlaying(true)
   }, [])
 
+  useEffect(() => {
+    void youtubeAPI()
+  }, [])
+
   return (
-    <AppContext.Provider value={appValue}>
+    <HomeContext.Provider value={appValue}>
       <Script src="https://apis.google.com/js/api.js" defer />
 
       <div id="app" className="w-screen h-screen border">
@@ -74,10 +79,13 @@ export default function Home({
             text="Look for Latest Song button"
           />
           <ControllerButton id="controller-playpause" text="⏯" />
-          <ControllerButton id="controller-backward" text="◀️" />
-          <ControllerButton id="controller-forward" text="▶️" />
+          <ControllerButton id="controller-timebackward" text="◀️" />
+          <ControllerButton id="controller-timeforward" text="▶️" />
+          <ControllerButton id="controller-volumeup" text="▲" />
+          <ControllerButton id="controller-volumedown" text="▼" />
+          <ControllerButton id="controller-volumemute" text="🔇" />
         </div>
       </div>
-    </AppContext.Provider>
+    </HomeContext.Provider>
   )
 }
