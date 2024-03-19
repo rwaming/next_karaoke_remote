@@ -1,6 +1,6 @@
 import { type YouTubeEvent } from 'react-youtube'
 
-export default function playPause(
+export function playPause(
   videoEvent: null | YouTubeEvent,
   isPlaying: boolean,
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>,
@@ -13,5 +13,10 @@ export default function playPause(
       videoEvent.target.playVideo()
       setIsPlaying(true)
     }
+  }
+}
+export function volume(videoEvent: null | YouTubeEvent): void {
+  if (videoEvent !== null) {
+    console.log('controll volume')
   }
 }

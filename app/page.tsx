@@ -4,7 +4,7 @@ import { useState, type ReactElement, useCallback } from 'react'
 import Script from 'next/script'
 import youtubeApiFirst from '@/youtubeApiFirst'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
-import playPause from './controller'
+import { playPause, volume } from './controller'
 
 export default function Home(): ReactElement {
   const [videoEvent, setVideoEvent] = useState<null | YouTubeEvent>(null)
@@ -74,6 +74,9 @@ export default function Home(): ReactElement {
             type="button"
             id="controller-volumeup"
             className=" bg-blue-300 block"
+            onClick={() => {
+              volume(videoEvent)
+            }}
           >
             🔼
           </button>
@@ -81,6 +84,9 @@ export default function Home(): ReactElement {
             type="button"
             id="controller-volumedown"
             className=" bg-blue-300 block"
+            onClick={() => {
+              volume(videoEvent)
+            }}
           >
             🔽
           </button>
