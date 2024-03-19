@@ -1,26 +1,21 @@
 'use client'
 
-import { useEffect, useState, type ReactElement, useRef } from 'react'
+import { useState, type ReactElement, useRef } from 'react'
 import Script from 'next/script'
 import youtubeApiFirst from '@/youtubeApiFirst'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
 
 export default function Home(): ReactElement {
-  const [goVideo, setGoVideo] = useState(false)
   const [videoEvent, setVideoEvent] = useState<null | YouTubeEvent>(null)
   const [videoID, setVideoID] = useState<string | null>(null)
   const [videoTitle, setVideoTitle] = useState('videoTitle')
   const [videoDate, setVideoDate] = useState('videoDate')
   const [isPlaying, setIsPlaying] = useState(false)
 
-  // Load latest video
-  useEffect(() => {
-    if (goVideo) {
-      void youtubeApiFirst(setVideoID, setVideoTitle, setVideoDate)
-      setGoVideo(false)
-      setIsPlaying(false)
-    }
-  }, [goVideo])
+  const goVideo = useRef(() => {
+    void youtubeApiFirst(setVideoID, setVideoTitle, setVideoDate)
+    setIsPlaying(false)
+  })
 
   const useThisVideo = useRef((event: YouTubeEvent) => {
     setVideoEvent(event)
@@ -72,9 +67,7 @@ export default function Home(): ReactElement {
             type="button"
             id="controller-newvideo"
             className="bg-red-300 p-1 block"
-            onClick={() => {
-              setGoVideo(true)
-            }}
+            onClick={goVideo.current}
           >
             Look for Latest Song button
           </button>
