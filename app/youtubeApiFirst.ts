@@ -5,9 +5,6 @@ export default async function youtubeApiFirst(
   setVideoTitle: React.Dispatch<React.SetStateAction<string>>,
   setVideoDate: React.Dispatch<React.SetStateAction<string>>,
 ): Promise<void> {
-  console.log('start to load')
-  // It should be used in really needed!!
-  // It resets when 4pm in Korea.
   await new Promise<void>((resolve, reject) => {
     gapi.load('client', () => {
       gapi.client

@@ -103,6 +103,10 @@ Issues are listed by completion date.
 
 - [pending](#log1)
 
+#### ~~#29 - Move button's function code to new file controller~~
+
+- It wasn't difficult to complete!
+
 #### ~~#26 - Make buttons to Component, considering how to maximize reusability~~
 
 - Split controller button into new component file(tsx)
