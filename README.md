@@ -97,7 +97,34 @@ Issues are listed by completion date.
 
 <br>
 
-> _2024.03.18.mon_
+> _2024.03.19.tue_
+
+#### #24 - Fix error next/font (no module "plugins")
+
+_Render do never work_ with error of title.
+
+**Way**
+
+1. Search
+
+   Fail. Is it unique a issue?
+
+1. Reinstall Next.js, and Try file copy and replace.
+
+   1. Origin to New(so replace): Error
+
+      = node_modules is OK
+
+   1. New to Origin(replace): Error
+
+      = some tsx file, config or pagckage.json..?
+
+      After repeated..
+
+**Find**
+
+I got the cause, **postcss.config.js**.
+Setting option 'plugins' is nested.... I did it...!
 
 #### #23 - Backward, Forward
 
