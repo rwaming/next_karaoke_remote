@@ -9,22 +9,6 @@ export async function showLatestVideo(
   setVideoDate: React.Dispatch<React.SetStateAction<string>>,
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>,
 ): Promise<void> {
-  await new Promise<void>((resolve, reject) => {
-    gapi.load('client', () => {
-      gapi.client
-        .init({
-          apiKey: 'AIzaSyB1IOFOJ0D_e2-16KS4Tlol7mAiN2x9Fl4',
-          discoveryDocs: [
-            'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest',
-          ],
-          clientId:
-            '73717891696-055at71c0fqi44m975h68s1ktgiqrqob.apps.googleusercontent.com',
-          scope: 'profile',
-        })
-        .then(resolve)
-        .catch(reject)
-    })
-  })
   const latestVideoList = await gapi.client.youtube.search.list({
     part: 'snippet',
     channelId: 'UCDqaUIUSJP5EVMEI178Zfag',

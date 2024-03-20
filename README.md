@@ -99,6 +99,10 @@ Issues are listed by completion date.
 
 > _2024.03.20.wed_
 
+#### ~~#35 - Test if it is possible to split gapi.client.init code into a new file~~
+
+- It's possible! Moved it.
+
 #### ~~#34 - Stop~~
 
 - Complete to make button, Stop
