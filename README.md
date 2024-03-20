@@ -99,9 +99,14 @@ Issues are listed by completion date.
 
 > _2024.03.20.wed_
 
+#### ~~#42 - Fix clap button code (null issue)~~
+
+- It was the cause of the error that I put in useRef in 'ref' attributes, using 'if'.
+
 #### #39 - Clap button
 
 - I found a applause mp3 file has no copyright!
+- _in progress_
 
 #### ~~#35 - Test if it is possible to split gapi.client.init code into a new file~~
 
