@@ -51,37 +51,6 @@ export default function ControllerButton({
     ],
   )
 
-  // const applauseAudioes = useMemo(() => {
-  //   if (id.includes('applause')) {
-  //     return (
-  //       <div id={`${id}__audio-list`}>
-  //         {new Array(4).map((audio, index) => {
-  //           const order = index + 1
-  //           return (
-  //             <audio key={order} id={`${id}__audio-${order}`} preload="auto">
-  //               <source src="applause.mp3" type="audio/mpeg" />
-  //               <track
-  //                 src="applause_en.vtt"
-  //                 kind="captions"
-  //                 srcLang="en"
-  //                 label="English"
-  //               />
-  //               <track
-  //                 src="applause_ko.vtt"
-  //                 kind="captions"
-  //                 srcLang="ko"
-  //                 label="Korean"
-  //               />
-  //             </audio>
-  //           )
-  //         })}
-  //       </div>
-  //     )
-  //   }
-  //   return null
-  // }, [id])
-  // console.log(applauseAudioes)
-
   return (
     <>
       <button
@@ -94,22 +63,25 @@ export default function ControllerButton({
       >
         {text}
       </button>
-
-      <audio id={`${id}__audio`} preload="auto">
-        <source src="/applause.mp3" type="audio/mpeg" />
-        <track
-          src="/applause_en.vtt"
-          kind="captions"
-          srcLang="en"
-          label="English"
-        />
-        <track
-          src="/applause_ko.vtt"
-          kind="captions"
-          srcLang="ko"
-          label="Korean"
-        />
-      </audio>
+      {id.includes('applause') && (
+        <div id={`${id}__audio-list`}>
+          <audio id={`${id}__audio-${1}`} preload="auto">
+            <source src="/applause.mp3" type="audio/mpeg" />
+            <track
+              src="/applause_en.vtt"
+              kind="captions"
+              srcLang="en"
+              label="English"
+            />
+            <track
+              src="/applause_ko.vtt"
+              kind="captions"
+              srcLang="ko"
+              label="Korean"
+            />
+          </audio>
+        </div>
+      )}
     </>
   )
 }
