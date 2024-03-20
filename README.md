@@ -99,6 +99,10 @@ Issues are listed by completion date.
 
 > _2024.03.20.wed_
 
+#### ~~#40 - Check if It is possible to remove controller on YouTube player~~
+
+- YouTube API serves a method to select controller visibility.
+
 #### ~~#43 - Split code of controllerButton.tsx is too complicated~~
 
 - It's better to read codes than whole codes stay together.
