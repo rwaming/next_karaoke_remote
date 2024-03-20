@@ -84,6 +84,8 @@ export default function App({
           <ControllerButton id="controller-volumeup" text="▲" />
           <ControllerButton id="controller-volumedown" text="▼" />
           <ControllerButton id="controller-volumemute" text="🔇" />
+          <ControllerButton id="controller-speedup" text="⏩" />
+          <ControllerButton id="controller-speeddown" text="⏪" />
         </div>
       </div>
     </AppContext.Provider>

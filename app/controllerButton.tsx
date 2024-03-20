@@ -23,6 +23,7 @@ export default function ControllerButton({
     setIsPlaying,
   } = useContext(AppContext)
 
+  /** Select a function of a button clicked */
   const buttonOnclick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
       if (id.includes('latest')) {
