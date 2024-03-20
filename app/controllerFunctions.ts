@@ -113,27 +113,45 @@ export function setSpeed(
 export function applause(
   audioRefs: Array<MutableRefObject<HTMLAudioElement | null>>,
 ): void {
-  // 1. Find idle audio => play
-  for (let i = 0; i < audioRefs.length; i++) {
+  const refLength = audioRefs.length
+
+  // 1. Find a idle audio => play
+  for (let i = 0; i < refLength; i++) {
     const audio = audioRefs[i].current
-    if (audio.paused) {
-      audio.play()
+    if (audio !== null && audio.paused) {
+      console.log('1. Find a idle audio => play')
+      void audio.play()
       return
     }
   }
-  // 2. Find oldest played audio => play
-  let prevPlayTime: null | number = null
-  for (let i = 0; i < audioRefs.length - 1; i++) {
+  // All audioes are playing
+
+  // 2. Find a oldest audio => play
+  let prevPlayedTime = 8 // max 7sec
+  for (let i = 0; i < refLength; i++) {
     const audio = audioRefs[i].current
-    // 2-1. this audio played more recently than prev audio => play prev audio
-    const thisPlayTime = audio.currentTime
-    if (!isNaN(prevPlayTime) && prevPlayTime > thisPlayTime) {
-      audioRefs[i - 1].play()
+    if (audio !== null) {
+      const playedTime = audio.currentTime
+
+      // audio 1: just save playTime
+      // Find a oldest audio in 2~4 => replay
+      if (i > 0) {
+        console.log('2. Find a oldest audio => play')
+
+        if (playedTime > prevPlayedTime) {
+          void audio.play()
+          return
+        }
+        // 2~4 is newer => replay 1
+      } else if (i === refLength - 1) {
+        console.log('3. 2~4 is newer => replay 1')
+
+        void audioRefs[0].current?.play()
+        return
+      }
+
+      // Save played time of 1~3
+      prevPlayedTime = playedTime
     }
-    // 2-1. audio 1~3 are not oldest =>  play audio 4
-    if (i === audioRefs.length - 1) {
-      audioRefs[i].play()
-    }
-    prevPlayTime = thisPlayTime
   }
 }

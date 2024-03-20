@@ -37,8 +37,12 @@ export default function ControllerButton({
   const applauseRef2: MutableRefObject<HTMLAudioElement | null> = useRef(null)
   const applauseRef3: MutableRefObject<HTMLAudioElement | null> = useRef(null)
   const applauseRef4: MutableRefObject<HTMLAudioElement | null> = useRef(null)
+  const applauseRefs = useMemo(
+    () => [applauseRef1, applauseRef2, applauseRef3, applauseRef4],
+    [],
+  )
 
-  const buttonOnclick = useCallback(
+  const findButtonFunction = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
       void (
         id.includes('latest') &&
@@ -49,10 +53,10 @@ export default function ControllerButton({
       id.includes('time') && moveTime(event, videoEvent)
       id.includes('volume') && setVolume(event, videoEvent)
       id.includes('speed') && setSpeed(event, videoEvent)
-      id.includes('applause') &&
-        applause([applauseRef1, applauseRef2, applauseRef3, applauseRef4])
+      id.includes('applause') && applause(applauseRefs)
     },
     [
+      applauseRefs,
       id,
       isPlaying,
       setIsPlaying,
@@ -63,7 +67,7 @@ export default function ControllerButton({
     ],
   )
 
-  const applauseAudioes = useMemo(
+  const applauseAudios = useMemo(
     () =>
       [...Array(4)].map((_, index) => (
         <audio
@@ -108,13 +112,13 @@ export default function ControllerButton({
         id={id}
         className="border border-blue-300 block"
         onClick={(event: MouseEvent<HTMLButtonElement>) => {
-          buttonOnclick(event)
+          findButtonFunction(event)
         }}
       >
         {text}
       </button>
       {id.includes('applause') && (
-        <div id={`${id}__audio-list`}>{applauseAudioes}</div>
+        <div id={`${id}__audio-list`}>{applauseAudios}</div>
       )}
     </>
   )
