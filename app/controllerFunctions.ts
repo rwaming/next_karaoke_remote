@@ -1,4 +1,4 @@
-import { type MouseEvent } from 'react'
+import { type MutableRefObject, type MouseEvent } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
 import { gapi } from 'gapi-script'
@@ -106,6 +106,52 @@ export function setSpeed(
     } else if (button.includes('up') && speed < 2) {
       const speedUp = speed + 0.1
       video.setPlaybackRate(speedUp)
+    }
+  }
+}
+
+export function applause(
+  audioRefs: Array<MutableRefObject<HTMLAudioElement | null>>,
+): void {
+  const refLength = audioRefs.length
+
+  // 1. Find a idle audio => play
+  for (let i = 0; i < refLength; i++) {
+    const audio = audioRefs[i].current
+    if (audio !== null && audio.paused) {
+      console.log('1. Find a idle audio => play')
+      void audio.play()
+      return
+    }
+  }
+  // All audioes are playing
+
+  // 2. Find a oldest audio => play
+  let prevPlayedTime = 8 // max 7sec
+  for (let i = 0; i < refLength; i++) {
+    const audio = audioRefs[i].current
+    if (audio !== null) {
+      const playedTime = audio.currentTime
+
+      // audio 1: just save playTime
+      // Find a oldest audio in 2~4 => replay
+      if (i > 0) {
+        console.log('2. Find a oldest audio => play')
+
+        if (playedTime > prevPlayedTime) {
+          void audio.play()
+          return
+        }
+        // 2~4 is newer => replay 1
+      } else if (i === refLength - 1) {
+        console.log('3. 2~4 is newer => replay 1')
+
+        void audioRefs[0].current?.play()
+        return
+      }
+
+      // Save played time of 1~3
+      prevPlayedTime = playedTime
     }
   }
 }
