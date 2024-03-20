@@ -56,6 +56,16 @@ export function playPause(
   }
 }
 
+export function stop(
+  videoEvent: null | YouTubeEvent,
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>,
+): void {
+  if (videoEvent != null) {
+    videoEvent.target.stopVideo()
+    setIsPlaying(false)
+  }
+}
+
 export function moveTime(
   event: MouseEvent<HTMLButtonElement>,
   videoEvent: null | YouTubeEvent,

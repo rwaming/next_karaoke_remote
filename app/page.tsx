@@ -79,6 +79,7 @@ export default function App({
             text="Look for Latest Song button"
           />
           <ControllerButton id="controller-playpause" text="⏯" />
+          <ControllerButton id="controller-stop" text="⏹" />
           <ControllerButton id="controller-timebackward" text="◀️" />
           <ControllerButton id="controller-timeforward" text="▶️" />
           <ControllerButton id="controller-volumeup" text="▲" />
