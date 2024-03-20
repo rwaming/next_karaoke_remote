@@ -109,3 +109,5 @@ export function setSpeed(
     }
   }
 }
+
+export function applause(): void {}

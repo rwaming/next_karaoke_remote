@@ -1,6 +1,7 @@
 import { useCallback, useContext, type MouseEvent } from 'react'
 import AppContext from './AppContext'
 import {
+  applause,
   moveTime,
   playPause,
   setSpeed,
@@ -37,6 +38,7 @@ export default function ControllerButton({
       id.includes('time') && moveTime(event, videoEvent)
       id.includes('volume') && setVolume(event, videoEvent)
       id.includes('speed') && setSpeed(event, videoEvent)
+      id.includes('applause') && applause()
     },
     [
       id,
