@@ -1,12 +1,19 @@
 import { useCallback, useContext, type MouseEvent } from 'react'
-import { moveTime, playPause, showLatestVideo } from './controller'
-import AppContext from './appContext'
+import AppContext from './AppContext'
+import {
+  moveTime,
+  playPause,
+  setVolume,
+  showLatestVideo,
+} from './controllerFunctions'
 
-export default function ControllerButton(props: {
+export default function ControllerButton({
+  id,
+  text,
+}: {
   id: string
   text: string
 }): JSX.Element {
-  const { id, text } = props
   const {
     videoEvent,
     setVideoID,
@@ -18,17 +25,19 @@ export default function ControllerButton(props: {
 
   const buttonOnclick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
-      if (id.match('latest') != null) {
+      if (id.includes('latest')) {
         void showLatestVideo(
           setVideoID,
           setVideoTitle,
           setVideoDate,
           setIsPlaying,
         )
-      } else if (id.match('playpause') != null) {
+      } else if (id.includes('playpause')) {
         playPause(videoEvent, isPlaying, setIsPlaying)
-      } else if (id.match('backward') != null || id.match('forward') != null) {
+      } else if (id.includes('time')) {
         moveTime(event, videoEvent)
+      } else if (id.includes('volume')) {
+        setVolume(event, videoEvent)
       }
     },
     [
@@ -46,7 +55,7 @@ export default function ControllerButton(props: {
     <button
       type="button"
       id={id}
-      className=" bg-blue-300 block"
+      className="border border-blue-300 block"
       onClick={(event: MouseEvent<HTMLButtonElement>) => {
         buttonOnclick(event)
       }}
