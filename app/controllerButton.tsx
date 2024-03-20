@@ -1,5 +1,5 @@
 import { useCallback, useContext, type MouseEvent } from 'react'
-import HomeContext from './HomeContext'
+import HomeContext from './AppContext'
 import {
   moveTime,
   playPause,

@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo, useEffect } from 'react'
 import Script from 'next/script'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
-import HomeContext from './HomeContext'
+import AppContext from './AppContext'
 import ControllerButton from './controllerButton'
 import youtubeAPI from './youtubeAPI'
 
@@ -46,7 +46,7 @@ export default function App({
   }, [])
 
   return (
-    <HomeContext.Provider value={appValue}>
+    <AppContext.Provider value={appValue}>
       <Script src="https://apis.google.com/js/api.js" defer />
 
       <div id="app" className="w-screen h-screen border">
@@ -86,6 +86,6 @@ export default function App({
           <ControllerButton id="controller-volumemute" text="🔇" />
         </div>
       </div>
-    </HomeContext.Provider>
+    </AppContext.Provider>
   )
 }
