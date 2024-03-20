@@ -1,4 +1,4 @@
-import { useCallback, useContext, useRef, type MouseEvent } from 'react'
+import { useCallback, useContext, type MouseEvent } from 'react'
 import AppContext from './AppContext'
 import {
   applause,
@@ -26,8 +26,6 @@ export default function ControllerButton({
     setIsPlaying,
   } = useContext(AppContext)
 
-  const applauseRef = useRef(null)
-
   /** Select a function of a button clicked */
   const buttonOnclick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
@@ -53,17 +51,65 @@ export default function ControllerButton({
     ],
   )
 
+  // const applauseAudioes = useMemo(() => {
+  //   if (id.includes('applause')) {
+  //     return (
+  //       <div id={`${id}__audio-list`}>
+  //         {new Array(4).map((audio, index) => {
+  //           const order = index + 1
+  //           return (
+  //             <audio key={order} id={`${id}__audio-${order}`} preload="auto">
+  //               <source src="applause.mp3" type="audio/mpeg" />
+  //               <track
+  //                 src="applause_en.vtt"
+  //                 kind="captions"
+  //                 srcLang="en"
+  //                 label="English"
+  //               />
+  //               <track
+  //                 src="applause_ko.vtt"
+  //                 kind="captions"
+  //                 srcLang="ko"
+  //                 label="Korean"
+  //               />
+  //             </audio>
+  //           )
+  //         })}
+  //       </div>
+  //     )
+  //   }
+  //   return null
+  // }, [id])
+  // console.log(applauseAudioes)
+
   return (
-    <button
-      ref={id.includes('applause') ? applauseRef : null}
-      type="button"
-      id={id}
-      className="border border-blue-300 block"
-      onClick={(event: MouseEvent<HTMLButtonElement>) => {
-        buttonOnclick(event)
-      }}
-    >
-      {text}
-    </button>
+    <>
+      <button
+        type="button"
+        id={id}
+        className="border border-blue-300 block"
+        onClick={(event: MouseEvent<HTMLButtonElement>) => {
+          buttonOnclick(event)
+        }}
+      >
+        {text}
+      </button>
+
+      <audio id={`${id}__audio`} preload="auto">
+        <source src="./applause.mp3" type="audio/mpeg" />
+        <track
+          src="./applause_en.vtt"
+          kind="captions"
+          srcLang="en"
+          label="English"
+        />
+        <track
+          src="./applause_ko.vtt"
+          kind="captions"
+          srcLang="ko"
+          label="Korean"
+        />
+      </audio>
+    </>
   )
 }

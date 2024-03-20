@@ -110,4 +110,10 @@ export function setSpeed(
   }
 }
 
-export function applause(): void {}
+export function applause(): void {
+  /* 
+  - 최대 4개 실행 가능
+    - 버튼 눌렀을 때, 이미 박수가 4개 있다면
+      => 가장 아래에 있는 audio 삭제
+  */
+}
