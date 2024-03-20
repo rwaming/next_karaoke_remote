@@ -111,14 +111,29 @@ export function setSpeed(
 }
 
 export function applause(
-  audio1: MutableRefObject<null>,
-  audio2: MutableRefObject<null>,
-  audio3: MutableRefObject<null>,
-  audio4: MutableRefObject<null>,
+  audioRefs: Array<MutableRefObject<HTMLAudioElement | null>>,
 ): void {
-  /* 
-  - 순서대로 초기화 및 재생된다.
-  - Ref가 필요하다.
-
-  */
+  // 1. Find idle audio => play
+  for (let i = 0; i < audioRefs.length; i++) {
+    const audio = audioRefs[i].current
+    if (audio.paused) {
+      audio.play()
+      return
+    }
+  }
+  // 2. Find oldest played audio => play
+  let prevPlayTime: null | number = null
+  for (let i = 0; i < audioRefs.length - 1; i++) {
+    const audio = audioRefs[i].current
+    // 2-1. this audio played more recently than prev audio => play prev audio
+    const thisPlayTime = audio.currentTime
+    if (!isNaN(prevPlayTime) && prevPlayTime > thisPlayTime) {
+      audioRefs[i - 1].play()
+    }
+    // 2-1. audio 1~3 are not oldest =>  play audio 4
+    if (i === audioRefs.length - 1) {
+      audioRefs[i].play()
+    }
+    prevPlayTime = thisPlayTime
+  }
 }

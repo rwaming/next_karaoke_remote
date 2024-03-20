@@ -1,4 +1,5 @@
 import {
+  type MutableRefObject,
   useCallback,
   useContext,
   useMemo,
@@ -32,10 +33,10 @@ export default function ControllerButton({
     setIsPlaying,
   } = useContext(AppContext)
 
-  const applauseAudioeRef1 = useRef(null)
-  const applauseAudioeRef2 = useRef(null)
-  const applauseAudioeRef3 = useRef(null)
-  const applauseAudioeRef4 = useRef(null)
+  const applauseRef1: MutableRefObject<HTMLAudioElement | null> = useRef(null)
+  const applauseRef2: MutableRefObject<HTMLAudioElement | null> = useRef(null)
+  const applauseRef3: MutableRefObject<HTMLAudioElement | null> = useRef(null)
+  const applauseRef4: MutableRefObject<HTMLAudioElement | null> = useRef(null)
 
   const buttonOnclick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
@@ -49,12 +50,7 @@ export default function ControllerButton({
       id.includes('volume') && setVolume(event, videoEvent)
       id.includes('speed') && setSpeed(event, videoEvent)
       id.includes('applause') &&
-        applause(
-          applauseAudioeRef1,
-          applauseAudioeRef2,
-          applauseAudioeRef3,
-          applauseAudioeRef4,
-        )
+        applause([applauseRef1, applauseRef2, applauseRef3, applauseRef4])
     },
     [
       id,
@@ -73,15 +69,15 @@ export default function ControllerButton({
         <audio
           ref={() => {
             if (index === 0) {
-              return applauseAudioeRef1
+              return applauseRef1
             }
             if (index === 1) {
-              return applauseAudioeRef2
+              return applauseRef2
             }
             if (index === 2) {
-              return applauseAudioeRef3
+              return applauseRef3
             }
-            return applauseAudioeRef4
+            return applauseRef4
           }}
           key={`${id}__audio-${index + 1}`}
           id={`${id}__audio-${index + 1}`}
