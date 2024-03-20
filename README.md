@@ -99,6 +99,10 @@ Issues are listed by completion date.
 
 > _2024.03.20.wed_
 
+#### ~~#43 - Split code of controllerButton.tsx is too complicated~~
+
+- It's better to read codes than whole codes stay together.
+
 #### ~~#39 - Clap button~~
 
 - I found a applause mp3 file has no copyright!
