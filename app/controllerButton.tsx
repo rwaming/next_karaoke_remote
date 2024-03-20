@@ -1,4 +1,10 @@
-import { useCallback, useContext, useMemo, type MouseEvent } from 'react'
+import {
+  useCallback,
+  useContext,
+  useMemo,
+  useRef,
+  type MouseEvent,
+} from 'react'
 import AppContext from './AppContext'
 import {
   applause,
@@ -26,7 +32,11 @@ export default function ControllerButton({
     setIsPlaying,
   } = useContext(AppContext)
 
-  /** Select a function of a button clicked */
+  const applauseAudioeRef1 = useRef(null)
+  const applauseAudioeRef2 = useRef(null)
+  const applauseAudioeRef3 = useRef(null)
+  const applauseAudioeRef4 = useRef(null)
+
   const buttonOnclick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
       void (
@@ -38,7 +48,13 @@ export default function ControllerButton({
       id.includes('time') && moveTime(event, videoEvent)
       id.includes('volume') && setVolume(event, videoEvent)
       id.includes('speed') && setSpeed(event, videoEvent)
-      id.includes('applause') && applause()
+      id.includes('applause') &&
+        applause(
+          applauseAudioeRef1,
+          applauseAudioeRef2,
+          applauseAudioeRef3,
+          applauseAudioeRef4,
+        )
     },
     [
       id,
@@ -55,6 +71,18 @@ export default function ControllerButton({
     () =>
       [...Array(4)].map((_, index) => (
         <audio
+          ref={() => {
+            if (index === 0) {
+              return applauseAudioeRef1
+            }
+            if (index === 1) {
+              return applauseAudioeRef2
+            }
+            if (index === 2) {
+              return applauseAudioeRef3
+            }
+            return applauseAudioeRef4
+          }}
           key={`${id}__audio-${index + 1}`}
           id={`${id}__audio-${index + 1}`}
           preload="auto"

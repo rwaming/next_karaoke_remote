@@ -1,4 +1,4 @@
-import { type MouseEvent } from 'react'
+import { type MutableRefObject, type MouseEvent } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
 import { gapi } from 'gapi-script'
@@ -110,10 +110,15 @@ export function setSpeed(
   }
 }
 
-export function applause(): void {
+export function applause(
+  audio1: MutableRefObject<null>,
+  audio2: MutableRefObject<null>,
+  audio3: MutableRefObject<null>,
+  audio4: MutableRefObject<null>,
+): void {
   /* 
-  - 최대 4개 실행 가능
-    - 버튼 눌렀을 때, 이미 박수가 4개 있다면
-      => 가장 아래에 있는 audio 삭제
+  - 순서대로 초기화 및 재생된다.
+  - Ref가 필요하다.
+
   */
 }
