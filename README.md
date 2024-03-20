@@ -46,7 +46,7 @@ Foremore
 
 ## 📖 Information
 
-### Skills & Extentions
+### Stack
 
 - HTML
 - CSS
