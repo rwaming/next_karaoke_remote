@@ -99,6 +99,10 @@ Issues are listed by completion date.
 
 > _2024.03.20.wed_
 
+#### ~~#34 - Stop~~
+
+- Complete to make button, Stop
+
 #### ~~#32 - Speed buttons~~
 
 - Complete to make buttons
