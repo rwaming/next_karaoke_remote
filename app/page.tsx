@@ -59,6 +59,7 @@ export default function App({
                   playerVars: {
                     autoplay: 1,
                     modestbranding: 1,
+                    controls: 0,
                     fs: 1,
                   },
                 }}
