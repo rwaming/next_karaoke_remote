@@ -96,15 +96,15 @@ export default function ControllerButton({
       </button>
 
       <audio id={`${id}__audio`} preload="auto">
-        <source src="./applause.mp3" type="audio/mpeg" />
+        <source src="/applause.mp3" type="audio/mpeg" />
         <track
-          src="./applause_en.vtt"
+          src="/applause_en.vtt"
           kind="captions"
           srcLang="en"
           label="English"
         />
         <track
-          src="./applause_ko.vtt"
+          src="/applause_ko.vtt"
           kind="captions"
           srcLang="ko"
           label="Korean"
