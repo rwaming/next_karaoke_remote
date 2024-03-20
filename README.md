@@ -99,6 +99,10 @@ Issues are listed by completion date.
 
 > _2024.03.20.wed_
 
+#### #39 - Clap button
+
+- I found a applause mp3 file has no copyright!
+
 #### ~~#35 - Test if it is possible to split gapi.client.init code into a new file~~
 
 - It's possible! Moved it.

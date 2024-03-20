@@ -1,4 +1,4 @@
-import { useCallback, useContext, type MouseEvent } from 'react'
+import { useCallback, useContext, useRef, type MouseEvent } from 'react'
 import AppContext from './AppContext'
 import {
   applause,
@@ -25,6 +25,8 @@ export default function ControllerButton({
     isPlaying,
     setIsPlaying,
   } = useContext(AppContext)
+
+  const applauseRef = useRef(null)
 
   /** Select a function of a button clicked */
   const buttonOnclick = useCallback(
@@ -53,6 +55,7 @@ export default function ControllerButton({
 
   return (
     <button
+      ref={id.includes('applause') ? applauseRef : null}
       type="button"
       id={id}
       className="border border-blue-300 block"
