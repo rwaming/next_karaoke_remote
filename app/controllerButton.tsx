@@ -1,5 +1,5 @@
 import { useCallback, useContext, type MouseEvent } from 'react'
-import HomeContext from './AppContext'
+import AppContext from './AppContext'
 import {
   moveTime,
   playPause,
@@ -21,7 +21,7 @@ export default function ControllerButton({
     setVideoDate,
     isPlaying,
     setIsPlaying,
-  } = useContext(HomeContext)
+  } = useContext(AppContext)
 
   const buttonOnclick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
