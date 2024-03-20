@@ -40,6 +40,16 @@ export function playPause(
   }
 }
 
+export function stop(
+  videoEvent: null | YouTubeEvent,
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>,
+): void {
+  if (videoEvent != null) {
+    videoEvent.target.stopVideo()
+    setIsPlaying(false)
+  }
+}
+
 export function moveTime(
   event: MouseEvent<HTMLButtonElement>,
   videoEvent: null | YouTubeEvent,
@@ -78,6 +88,24 @@ export function setVolume(
       } else {
         video.unMute()
       }
+    }
+  }
+}
+
+export function setSpeed(
+  event: MouseEvent<HTMLButtonElement>,
+  videoEvent: null | YouTubeEvent,
+): void {
+  if (videoEvent != null) {
+    const video = videoEvent.target
+    const button = event.currentTarget.id
+    const speed = video.getPlaybackRate()
+    if (button.includes('down') && speed > 0.5) {
+      const speedDown = speed - 0.1
+      video.setPlaybackRate(speedDown)
+    } else if (button.includes('up') && speed < 2) {
+      const speedUp = speed + 0.1
+      video.setPlaybackRate(speedUp)
     }
   }
 }
