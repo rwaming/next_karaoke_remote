@@ -1,4 +1,4 @@
-import { useCallback, useContext, type MouseEvent } from 'react'
+import { useCallback, useContext, useMemo, type MouseEvent } from 'react'
 import AppContext from './AppContext'
 import {
   applause,
@@ -51,6 +51,32 @@ export default function ControllerButton({
     ],
   )
 
+  const applauseAudioes = useMemo(
+    () =>
+      [...Array(4)].map((_, index) => (
+        <audio
+          key={`${id}__audio-${index + 1}`}
+          id={`${id}__audio-${index + 1}`}
+          preload="auto"
+        >
+          <source src="/applause.mp3" type="audio/mpeg" />
+          <track
+            src="/applause_en.vtt"
+            kind="captions"
+            srcLang="en"
+            label="English"
+          />
+          <track
+            src="/applause_ko.vtt"
+            kind="captions"
+            srcLang="ko"
+            label="Korean"
+          />
+        </audio>
+      )),
+    [id],
+  )
+
   return (
     <>
       <button
@@ -64,29 +90,7 @@ export default function ControllerButton({
         {text}
       </button>
       {id.includes('applause') && (
-        <div id={`${id}__audio-list`}>
-          {[...Array(4)].map((_, index) => (
-            <audio
-              key={`${id}__audio-${index + 1}`}
-              id={`${id}__audio-${index + 1}`}
-              preload="auto"
-            >
-              <source src="/applause.mp3" type="audio/mpeg" />
-              <track
-                src="/applause_en.vtt"
-                kind="captions"
-                srcLang="en"
-                label="English"
-              />
-              <track
-                src="/applause_ko.vtt"
-                kind="captions"
-                srcLang="ko"
-                label="Korean"
-              />
-            </audio>
-          ))}
-        </div>
+        <div id={`${id}__audio-list`}>{applauseAudioes}</div>
       )}
     </>
   )
