@@ -97,6 +97,14 @@ Issues are listed by completion date.
 
 <br>
 
+> _2024.03.20.wed_
+
+#### ~~#35 - Test if it is possible to split gapi.client.init code into a new file~~
+
+- It's possible! Moved it.
+
+<br>
+
 > _2024.03.19.tue_
 
 #### _#32 - Speed buttons_
