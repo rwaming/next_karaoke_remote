@@ -99,7 +99,7 @@ Issues are listed by completion date.
 
 > _2024.03.20.wed_
 
-#### #39 - Clap button
+#### ~~#39 - Clap button~~
 
 - I found a applause mp3 file has no copyright!
 - _in progress_
