@@ -3,6 +3,7 @@ import AppContext from './AppContext'
 import {
   moveTime,
   playPause,
+  setSpeed,
   setVolume,
   showLatestVideo,
 } from './controllerFunctions'
@@ -39,6 +40,8 @@ export default function ControllerButton({
         moveTime(event, videoEvent)
       } else if (id.includes('volume')) {
         setVolume(event, videoEvent)
+      } else if (id.includes('speed')) {
+        setSpeed(event, videoEvent)
       }
     },
     [
