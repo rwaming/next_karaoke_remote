@@ -99,14 +99,19 @@ Issues are listed by completion date.
 
 > _2024.03.20.wed_
 
-#### ~~#42 - Fix clap button code (null issue)~~
-
-- It was the cause of the error that I put in useRef in 'ref' attributes, using 'if'.
-
-#### #39 - Clap button
+#### ~~#39 - Clap button~~
 
 - I found a applause mp3 file has no copyright!
 - _in progress_
+- It has functions that
+  1. Find a idle audio => play
+  1. Find a oldest audio => play
+  1. Find a oldest audio in 2~4 => replay
+  1. 2~4 are newer => replay 1
+
+#### ~~#42 - Fix clap button code (null issue)~~
+
+- It was the cause of the error that I put in useRef in 'ref' attributes, using 'if'.
 
 #### ~~#35 - Test if it is possible to split gapi.client.init code into a new file~~
 
@@ -135,7 +140,7 @@ Issues are listed by completion date.
   - Volume Down
   - Mute
 
-#### ⚠️ _#22 - Try using Web Audio_
+#### ~~#22 - Try using Web Audio~~ canceled
 
 - [pending](#log1)<a id="log1_"></a>
 

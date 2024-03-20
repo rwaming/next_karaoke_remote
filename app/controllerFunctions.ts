@@ -119,7 +119,6 @@ export function applause(
   for (let i = 0; i < refLength; i++) {
     const audio = audioRefs[i].current
     if (audio !== null && audio.paused) {
-      console.log('1. Find a idle audio => play')
       void audio.play()
       return
     }
@@ -136,18 +135,20 @@ export function applause(
       // audio 1: just save playTime
       // Find a oldest audio in 2~4 => replay
       if (i > 0) {
-        console.log('2. Find a oldest audio => play')
-
         if (playedTime > prevPlayedTime) {
+          audio.currentTime = 0
           void audio.play()
           return
         }
-        // 2~4 is newer => replay 1
-      } else if (i === refLength - 1) {
-        console.log('3. 2~4 is newer => replay 1')
-
-        void audioRefs[0].current?.play()
-        return
+      }
+      // 2~4 are newer => replay 1
+      if (i === refLength - 1) {
+        const firstAudio = audioRefs[0].current
+        if (firstAudio !== null) {
+          firstAudio.currentTime = 0
+          void firstAudio.play()
+          return
+        }
       }
 
       // Save played time of 1~3
