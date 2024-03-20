@@ -50,7 +50,6 @@ Foremore
 
 - HTML
 - CSS
-- ~~SASS~~ conflicts with TailwindCSS: uninstalled
 - JavaScript
 - TypeScript
 - TailwindCSS
@@ -61,6 +60,7 @@ Foremore
 - Prettier
 - Stylelint
 - Node.js Express (expected)
+- ~~SASS~~ conflicts with TailwindCSS: uninstalled
 
 <br>
 
@@ -97,15 +97,23 @@ Issues are listed by completion date.
 
 <br>
 
+> _2024.03.20.wed_
+
+#### ~~#32 - Speed buttons~~
+
+- Complete to make buttons
+
+  - Speed Down
+  - Speed Up
+
+<br>
+
 > _2024.03.19.tue_
-
-#### _#32 - Speed buttons_
-
-- in progress
 
 #### ~~#31 - Volume buttons~~
 
 - Complete to make buttons
+
   - Volume Up
   - Volume Down
   - Mute
