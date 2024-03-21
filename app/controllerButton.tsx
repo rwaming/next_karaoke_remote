@@ -7,7 +7,7 @@ import {
   setSpeed,
   setVolume,
   showLatestVideo,
-  showSearchBox,
+  openSearchBox,
   stop,
 } from './controllerFunctions'
 import ApplauseAudios from './applauseAudios'
@@ -39,7 +39,7 @@ export default function ControllerButton({
         id.includes('latest') &&
         showLatestVideo(setVideoID, setVideoTitle, setVideoDate, setIsPlaying)
       )
-      id.includes('search') && showSearchBox()
+      id.includes('search') && openSearchBox()
       id.includes('playpause') && playPause(videoEvent, isPlaying, setIsPlaying)
       id.includes('stop') && stop(videoEvent, setIsPlaying)
       id.includes('time') && moveTime(event, videoEvent)
@@ -64,7 +64,6 @@ export default function ControllerButton({
       <button
         type="button"
         id={id}
-        className="text-2xl p-2"
         onClick={(event: MouseEvent<HTMLButtonElement>) => {
           findButtonFunction(event)
         }}

@@ -72,6 +72,41 @@ export default function App({
           <p className="bg-orange-300">{videoID !== null && videoDate}</p>
         </div>
 
+        <div
+          id="search"
+          className="w-screen flex flex-col fixed top-1/4 left-0 h-3/4 md:top-0 md:h-50vh bg-lime-400"
+        >
+          <div id="search-box" className="w-full flex">
+            <form
+              id="search-form"
+              name="search"
+              action="#"
+              className="flex flex-grow relative"
+            >
+              <input
+                id="search-input"
+                name="search-keyword"
+                type="text"
+                placeholder="ex) 윤하"
+                className="flex-grow bg-gray-200"
+              />
+              <fieldset className="absolute top-0 right-0">
+                <input
+                  id="search-clear"
+                  type="reset"
+                  value="✕"
+                  className="text-gray-400"
+                />
+                <input id="search-submit" type="submit" value="🔍" />
+              </fieldset>
+            </form>
+            <button id="search-close" type="button" className="text-green-700">
+              ✕
+            </button>
+          </div>
+          <div id="search-list" className="flex-grow bg-green-500 h-5" />
+        </div>
+
         <div id="controller" className="flex-grow bg-sky-300">
           <ControllerButton
             id="controller-latest"

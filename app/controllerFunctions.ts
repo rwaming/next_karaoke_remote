@@ -24,7 +24,13 @@ export async function showLatestVideo(
   setIsPlaying(false)
 }
 
-export function showSearchBox() {}
+export function openSearchBox(): void {
+  /* 
+  mobile
+    #player : bottom-3/4
+    #search : hidden => flex
+  */
+}
 
 export function playPause(
   videoEvent: null | YouTubeEvent,
