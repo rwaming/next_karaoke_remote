@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  :root {
+    --screen-ratio-vw: 56.25vw;
+  }
+  .flex-basis-16-9 {
+    flex-basis: var(--screen-ratio-vw);
+  }
+}
+
 @layer components {
   #app > #player > div {
     @apply w-full h-full;

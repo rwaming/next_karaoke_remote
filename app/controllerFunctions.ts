@@ -24,6 +24,8 @@ export async function showLatestVideo(
   setIsPlaying(false)
 }
 
+export function showSearchBox() {}
+
 export function playPause(
   videoEvent: null | YouTubeEvent,
   isPlaying: boolean,

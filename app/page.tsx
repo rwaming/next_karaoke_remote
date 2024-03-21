@@ -50,7 +50,7 @@ export default function App({
       <Script src="https://apis.google.com/js/api.js" defer />
 
       <div id="app" className="w-screen h-screen flex flex-col md:grid">
-        <div id="player" className="flex-shrink flex-basis-ratio bg-slate-800">
+        <div id="player" className="flex-shrink flex-basis-16-9 bg-slate-800">
           {videoID !== null && (
             <YouTube
               videoId={videoID}
@@ -77,6 +77,7 @@ export default function App({
             id="controller-latest"
             text="Look for Latest Song button"
           />
+          <ControllerButton id="controller-search" text="🔍" />
           <ControllerButton id="controller-playpause" text="⏯" />
           <ControllerButton id="controller-stop" text="⏹" />
           <ControllerButton id="controller-timebackward" text="◀️" />
