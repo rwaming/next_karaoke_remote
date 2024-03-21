@@ -49,8 +49,8 @@ export default function App({
     <AppContext.Provider value={appValue}>
       <Script src="https://apis.google.com/js/api.js" defer />
 
-      <div id="app" className="w-screen h-screen">
-        <div id="player" className="bg-slate-800">
+      <div id="app" className="w-screen h-screen flex flex-col md:grid">
+        <div id="player" className="flex-shrink flex-basis-ratio bg-slate-800">
           {videoID !== null && (
             <YouTube
               videoId={videoID}
@@ -66,13 +66,13 @@ export default function App({
             />
           )}
         </div>
-        <div id="information" className="bg-pink-300">
+        <div id="information" className="flex-shrink bg-pink-300 text-xs">
           <p className="bg-yellow-300">{videoID !== null && videoID}</p>
           <p className="bg-slate-300">{videoID !== null && videoTitle}</p>
           <p className="bg-orange-300">{videoID !== null && videoDate}</p>
         </div>
 
-        <div id="controller" className="border border-blue-500">
+        <div id="controller" className="flex-grow bg-sky-300">
           <ControllerButton
             id="controller-latest"
             text="Look for Latest Song button"

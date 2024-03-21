@@ -11,46 +11,33 @@
     --flex-fluid: 1 1;
     --flex-shrink: 0 1;
   }
+  .flex-basis-ratio {
+    flex-basis: var(--screen-ratio-vw);
+  }
 }
 
-#app {
-  display: flex;
-  flex-direction: column;
-  > #player {
-    flex: var(--flex-shrink) var(--screen-ratio-vw);
-    > div {
-      width: 100%;
-      height: 100%;
-      > iframe {
-        width: 100%;
-        height: 100%;
-      }
+@layer components {
+  #app > #player > div {
+    @apply w-full h-full;
+    > iframe {
+      @apply w-full h-full;
     }
   }
-  > #information {
-    flex: var(--flex-shrink);
-  }
-  > #controller {
-    flex: var(--flex-grow);
-  }
-}
-
-@media screen and (min-width: 768px) {
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 200px;
-    grid-template-rows: auto 1fr;
-    > #player {
+  @media screen and (max-height: 500px) {
+    #app > #information {
+      display: none;
+    }
+    #controller {
       grid-row: span 2;
-      > div {
-        > iframe {
-        }
+    }
+  }
+  @media screen and (min-width: 768px) {
+    #app {
+      grid-template-columns: 1fr 200px;
+      grid-template-rows: auto 1fr;
+      > #player {
+        grid-row: span 2;
       }
-    }
-    > #information {
-    }
-
-    > #controller {
     }
   }
 }
