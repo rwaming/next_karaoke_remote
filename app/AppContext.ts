@@ -17,9 +17,9 @@ const AppContext = createContext<{
   setVideoDate: Dispatch<SetStateAction<string>>
   isPlaying: boolean
   setIsPlaying: Dispatch<SetStateAction<boolean>>
-  playerRef: MutableRefObject<JSX.Element | null> | null
-  searchRef: MutableRefObject<JSX.Element | null> | null
-  controllerRef: MutableRefObject<JSX.Element | null> | null
+  playerRef: MutableRefObject<HTMLDivElement | null> | null
+  searchRef: MutableRefObject<HTMLDivElement | null> | null
+  controllerRef: MutableRefObject<HTMLDivElement | null> | null
 }>({
   videoEvent: null,
   setVideoEvent: () => {},

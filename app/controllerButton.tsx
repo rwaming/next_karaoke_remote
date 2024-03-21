@@ -7,7 +7,7 @@ import {
   setSpeed,
   setVolume,
   showLatestVideo,
-  openSearchBox,
+  closeSearchBox,
   stop,
 } from './controllerFunctions'
 import ApplauseAudios from './applauseAudios'
@@ -36,6 +36,8 @@ export default function ControllerButton({
   const applauseRef3 = useRef(null)
   const applauseRef4 = useRef(null)
 
+  const lastestClass = id.includes('latest') ? 'text-xs' : 'text-2xl'
+
   const findButtonFunction = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
       void (
@@ -43,7 +45,7 @@ export default function ControllerButton({
         showLatestVideo(setVideoID, setVideoTitle, setVideoDate, setIsPlaying)
       )
       id.includes('search') &&
-        openSearchBox(playerRef, searchRef, controllerRef)
+        closeSearchBox(playerRef, searchRef, controllerRef)
       id.includes('playpause') && playPause(videoEvent, isPlaying, setIsPlaying)
       id.includes('stop') && stop(videoEvent, setIsPlaying)
       id.includes('time') && moveTime(event, videoEvent)
@@ -71,6 +73,7 @@ export default function ControllerButton({
       <button
         type="button"
         id={id}
+        className={lastestClass}
         onClick={(event: MouseEvent<HTMLButtonElement>) => {
           findButtonFunction(event)
         }}

@@ -60,7 +60,7 @@ export default function App({
         <div
           ref={playerRef}
           id="player"
-          className="flex-shrink flex-basis-16-9 bg-slate-800"
+          className="flex-shrink flex-basis-16/9vw bg-slate-800"
         >
           {videoID !== null && (
             <YouTube
@@ -86,7 +86,7 @@ export default function App({
         <div
           ref={searchRef}
           id="search"
-          className="w-screen flex flex-col fixed top-1/4 left-0 h-3/4 md:top-0 md:h-50vh bg-lime-400"
+          className="hidden w-screen flex-col fixed top-1/4 left-0 h-3/4 md:top-0 md:h-1/2 bg-lime-400"
         >
           <div id="search-box" className="w-full flex">
             <form
@@ -122,12 +122,9 @@ export default function App({
         <div
           ref={controllerRef}
           id="controller"
-          className="flex-grow bg-sky-300"
+          className="flex-grow bg-sky-300 md:block"
         >
-          <ControllerButton
-            id="controller-latest"
-            text="Look for Latest Song button"
-          />
+          <ControllerButton id="controller-latest" text="Latest Song" />
           <ControllerButton id="controller-search" text="🔍" />
           <ControllerButton id="controller-playpause" text="⏯" />
           <ControllerButton id="controller-stop" text="⏹" />
