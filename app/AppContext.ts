@@ -1,4 +1,9 @@
-import { type Dispatch, createContext, type SetStateAction } from 'react'
+import {
+  type Dispatch,
+  createContext,
+  type SetStateAction,
+  type MutableRefObject,
+} from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
 const AppContext = createContext<{
@@ -12,6 +17,9 @@ const AppContext = createContext<{
   setVideoDate: Dispatch<SetStateAction<string>>
   isPlaying: boolean
   setIsPlaying: Dispatch<SetStateAction<boolean>>
+  playerRef: MutableRefObject<JSX.Element | null> | null
+  searchRef: MutableRefObject<JSX.Element | null> | null
+  controllerRef: MutableRefObject<JSX.Element | null> | null
 }>({
   videoEvent: null,
   setVideoEvent: () => {},
@@ -23,6 +31,9 @@ const AppContext = createContext<{
   setVideoDate: () => {},
   isPlaying: false,
   setIsPlaying: () => {},
+  playerRef: null,
+  searchRef: null,
+  controllerRef: null,
 })
 
 export default AppContext

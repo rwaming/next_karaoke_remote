@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useMemo, useEffect } from 'react'
+import { useState, useCallback, useMemo, useEffect, useRef } from 'react'
 import Script from 'next/script'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
 import AppContext from './AppContext'
@@ -20,6 +20,10 @@ export default function App({
   const [videoDate, setVideoDate] = useState('videoDate')
   const [isPlaying, setIsPlaying] = useState(false)
 
+  const playerRef = useRef(null)
+  const searchRef = useRef(null)
+  const controllerRef = useRef(null)
+
   const appValue = useMemo(
     () => ({
       videoEvent,
@@ -32,6 +36,9 @@ export default function App({
       setVideoDate,
       isPlaying,
       setIsPlaying,
+      playerRef,
+      searchRef,
+      controllerRef,
     }),
     [isPlaying, videoDate, videoEvent, videoID, videoTitle],
   )
@@ -50,7 +57,11 @@ export default function App({
       <Script src="https://apis.google.com/js/api.js" defer />
 
       <div id="app" className="w-screen h-screen flex flex-col md:grid">
-        <div id="player" className="flex-shrink flex-basis-16-9 bg-slate-800">
+        <div
+          ref={playerRef}
+          id="player"
+          className="flex-shrink flex-basis-16-9 bg-slate-800"
+        >
           {videoID !== null && (
             <YouTube
               videoId={videoID}
@@ -73,6 +84,7 @@ export default function App({
         </div>
 
         <div
+          ref={searchRef}
           id="search"
           className="w-screen flex flex-col fixed top-1/4 left-0 h-3/4 md:top-0 md:h-50vh bg-lime-400"
         >
@@ -107,7 +119,11 @@ export default function App({
           <div id="search-list" className="flex-grow bg-green-500 h-5" />
         </div>
 
-        <div id="controller" className="flex-grow bg-sky-300">
+        <div
+          ref={controllerRef}
+          id="controller"
+          className="flex-grow bg-sky-300"
+        >
           <ControllerButton
             id="controller-latest"
             text="Look for Latest Song button"

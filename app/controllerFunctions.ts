@@ -24,11 +24,18 @@ export async function showLatestVideo(
   setIsPlaying(false)
 }
 
-export function openSearchBox(): void {
+export function openSearchBox(
+  playerRef: MutableRefObject<JSX.Element | null> | null,
+  searchRef: MutableRefObject<JSX.Element | null> | null,
+  controllerRef: MutableRefObject<JSX.Element | null> | null,
+): void {
   /* 
   mobile
-    #player : bottom-3/4
+    #player : relative bottom-1/4
     #search : hidden => flex
+
+  Others
+    #controller : relative h-50vh
   */
 }
 

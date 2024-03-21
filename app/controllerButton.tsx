@@ -26,6 +26,9 @@ export default function ControllerButton({
     setVideoDate,
     isPlaying,
     setIsPlaying,
+    playerRef,
+    searchRef,
+    controllerRef,
   } = useContext(AppContext)
 
   const applauseRef1 = useRef(null)
@@ -39,7 +42,8 @@ export default function ControllerButton({
         id.includes('latest') &&
         showLatestVideo(setVideoID, setVideoTitle, setVideoDate, setIsPlaying)
       )
-      id.includes('search') && openSearchBox()
+      id.includes('search') &&
+        openSearchBox(playerRef, searchRef, controllerRef)
       id.includes('playpause') && playPause(videoEvent, isPlaying, setIsPlaying)
       id.includes('stop') && stop(videoEvent, setIsPlaying)
       id.includes('time') && moveTime(event, videoEvent)
@@ -49,8 +53,11 @@ export default function ControllerButton({
         applause([applauseRef1, applauseRef2, applauseRef3, applauseRef4])
     },
     [
+      controllerRef,
       id,
       isPlaying,
+      playerRef,
+      searchRef,
       setIsPlaying,
       setVideoDate,
       setVideoID,
