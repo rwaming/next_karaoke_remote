@@ -97,6 +97,18 @@ Issues are listed by completion date.
 
 <br>
 
+> _2024.03.21.thu_
+
+#### #41 - Show list after users search videos
+
+- in progress
+
+#### #49 - Styling with Tailwind, @media and React Transition Group
+
+#### #50 - Store and show the videos a user sang
+
+<br>
+
 > _2024.03.20.wed_
 
 #### ~~#40 - Check if It is possible to remove controller on YouTube player~~
