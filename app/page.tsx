@@ -49,29 +49,27 @@ export default function App({
     <AppContext.Provider value={appValue}>
       <Script src="https://apis.google.com/js/api.js" defer />
 
-      <div id="app" className="w-screen h-screen border">
-        <div id="video" className=" border border-red-500">
-          <div id="video-player" className="bg-slate-800">
-            {videoID !== null && (
-              <YouTube
-                videoId={videoID}
-                opts={{
-                  playerVars: {
-                    autoplay: 1,
-                    modestbranding: 1,
-                    controls: 0,
-                    fs: 1,
-                  },
-                }}
-                onReady={useThisVideo}
-              />
-            )}
-          </div>
-          <div id="video-info" className="border border-orange-500">
-            <p className="bg-yellow-300">{videoID !== null && videoID}</p>
-            <p className="bg-slate-300">{videoID !== null && videoTitle}</p>
-            <p className="bg-orange-300">{videoID !== null && videoDate}</p>
-          </div>
+      <div id="app" className="w-screen h-screen">
+        <div id="player" className="bg-slate-800">
+          {videoID !== null && (
+            <YouTube
+              videoId={videoID}
+              opts={{
+                playerVars: {
+                  autoplay: 1,
+                  modestbranding: 1,
+                  controls: 0,
+                  fs: 1,
+                },
+              }}
+              onReady={useThisVideo}
+            />
+          )}
+        </div>
+        <div id="information" className="bg-pink-300">
+          <p className="bg-yellow-300">{videoID !== null && videoID}</p>
+          <p className="bg-slate-300">{videoID !== null && videoTitle}</p>
+          <p className="bg-orange-300">{videoID !== null && videoDate}</p>
         </div>
 
         <div id="controller" className="border border-blue-500">

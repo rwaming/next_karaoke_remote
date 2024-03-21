@@ -1,47 +1,56 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  :root {
+    --screen-ratio: 0.5625;
+    --screen-ratio-vw: 56.25vw;
+    --flex-solid: 0 0;
+    --flex-grow: 1 0;
+    --flex-fluid: 1 1;
+    --flex-shrink: 0 1;
+  }
+}
+
 #app {
   display: flex;
   flex-direction: column;
-  > #video {
-    display: flex;
-    flex-direction: column;
-    > #video-player {
-      display: flex;
-      flex-direction: column;
-      > div {
-        > iframe {
-          width: 100vw;
-          height: 56.25vw;
-        }
+  > #player {
+    flex: var(--flex-shrink) var(--screen-ratio-vw);
+    > div {
+      width: 100%;
+      height: 100%;
+      > iframe {
+        width: 100%;
+        height: 100%;
       }
     }
   }
-}
-#controller {
-  flex-grow: 1;
+  > #information {
+    flex: var(--flex-shrink);
+  }
+  > #controller {
+    flex: var(--flex-grow);
+  }
 }
 
 @media screen and (min-width: 768px) {
   #app {
-    flex-direction: row;
-
-    > #video {
-      width: 100vw;
-      height: 56.25vw;
-
-      > #video-player > div {
-        flex-direction: column;
-
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-rows: auto 1fr;
+    > #player {
+      grid-row: span 2;
+      > div {
         > iframe {
-          width: 100%;
-          flex-grow: 1;
         }
       }
     }
-    #controller {
-      flex-grow: 0;
+    > #information {
+    }
+
+    > #controller {
     }
   }
 }
