@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useMemo, useEffect } from 'react'
+import { useState, useCallback, useMemo, useEffect, useRef } from 'react'
 import Script from 'next/script'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
 import AppContext from './AppContext'
@@ -20,6 +20,10 @@ export default function App({
   const [videoDate, setVideoDate] = useState('videoDate')
   const [isPlaying, setIsPlaying] = useState(false)
 
+  const playerRef = useRef(null)
+  const searchRef = useRef(null)
+  const controllerRef = useRef(null)
+
   const appValue = useMemo(
     () => ({
       videoEvent,
@@ -32,6 +36,9 @@ export default function App({
       setVideoDate,
       isPlaying,
       setIsPlaying,
+      playerRef,
+      searchRef,
+      controllerRef,
     }),
     [isPlaying, videoDate, videoEvent, videoID, videoTitle],
   )
@@ -49,11 +56,66 @@ export default function App({
     <AppContext.Provider value={appValue}>
       <Script src="https://apis.google.com/js/api.js" defer />
 
-      <div id="app" className="w-screen h-screen border">
-        <div id="video" className=" border border-red-500">
-          <div id="video-player" className="bg-slate-800">
+      <div
+        id="app"
+        className="w-screen h-screen flex flex-col md:flex-row bg-slate-900"
+      >
+        <div
+          ref={searchRef}
+          id="search"
+          className="hidden w-screen flex-col fixed top-1/4 left-0 h-3/4 md:top-0 md:h-1/2 bg-lime-400"
+        >
+          <div id="search-box" className="w-full flex">
+            <form
+              id="search-form"
+              name="search"
+              action="#"
+              className="flex flex-grow relative"
+            >
+              <input
+                id="search-input"
+                name="search-keyword"
+                type="search"
+                minLength={1}
+                placeholder="ex) 윤하"
+                className="flex-grow bg-gray-200"
+                required
+              />
+              <fieldset className="absolute top-0 right-0">
+                <input
+                  id="search-clear"
+                  type="reset"
+                  value="✕"
+                  className="text-gray-400"
+                />
+                <input id="search-submit" type="submit" value="🔍" />
+              </fieldset>
+            </form>
+            <button id="search-close" type="button" className="text-green-700">
+              ✕
+            </button>
+          </div>
+          <div id="search-list" className="flex-grow bg-green-500 h-5" />
+        </div>
+
+        <div
+          ref={playerRef}
+          id="player"
+          className="flex-shrink basis-16-9vh flex flex-col md:flex-1 md:justify-center"
+        >
+          <figure id="player-box" className="h-16-9vh relative">
+            <figcaption
+              id="information"
+              className="absolute top-0 left-0 w-full h-1/6 bg-pink-300 text-xs"
+            >
+              <p className="bg-yellow-300">{videoID !== null && videoID}</p>
+              <p className="bg-slate-300">{videoID !== null && videoTitle}</p>
+              <p className="bg-orange-300">{videoID !== null && videoDate}</p>
+            </figcaption>
+
             {videoID !== null && (
               <YouTube
+                className="player-yt"
                 videoId={videoID}
                 opts={{
                   playerVars: {
@@ -66,19 +128,15 @@ export default function App({
                 onReady={useThisVideo}
               />
             )}
-          </div>
-          <div id="video-info" className="border border-orange-500">
-            <p className="bg-yellow-300">{videoID !== null && videoID}</p>
-            <p className="bg-slate-300">{videoID !== null && videoTitle}</p>
-            <p className="bg-orange-300">{videoID !== null && videoDate}</p>
-          </div>
+          </figure>
         </div>
-
-        <div id="controller" className="border border-blue-500">
-          <ControllerButton
-            id="controller-latest"
-            text="Look for Latest Song button"
-          />
+        <div
+          ref={controllerRef}
+          id="controller"
+          className="flex-grow md:flex-grow-0 md:flex-basis-controlelr-w"
+        >
+          <ControllerButton id="controller-latest" text="Latest Song" />
+          <ControllerButton id="controller-search" text="🔍" />
           <ControllerButton id="controller-playpause" text="⏯" />
           <ControllerButton id="controller-stop" text="⏹" />
           <ControllerButton id="controller-timebackward" text="◀️" />

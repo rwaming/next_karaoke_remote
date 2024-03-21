@@ -97,15 +97,59 @@ Issues are listed by completion date.
 
 <br>
 
+> _2024.03.22.fri_
+
+<br>
+
 > _2024.03.21.thu_
 
 #### #41 - Show list after users search videos
 
 - in progress
+- How to Make
+
+  - ✔️ ~~Example layout~~ : Designed in [Figma](https://www.figma.com/file/bWBc481GrR9erjuLyfiLUf/Untitled?type=design&node-id=0%3A1&mode=design&t=oP5zdSk853glap8W-1)
+
+    1.  Button and Input elements
+
+        1. Pop-up: Only button + Show pop-up to type
+        1. On the top of controller
+
+           - Button and type box
+           - Only button + Show input box when focused
+
+    2.  List
+
+        1. Layout
+
+           - Pop-up
+           - Appear from back of controller
+           - Appear below the input element
+           - To prepare the space for list
+
+        1. List Style
+
+           - YouTube thumbnail
+           - Text
+           - or Able to select one of both
+
+        1. Way to Slide
+           - Horizonal
+           - Vertical
+
+    - I may need to use **Figma** to select this properly.
+
+#### ~~#51 - Move information on the top of video (title / artist / KY number), using fixed~~
+
+- Complete, using absolute
 
 #### #49 - Styling with Tailwind, @media and React Transition Group
 
+- in wait
+
 #### #50 - Store and show the videos a user sang
+
+- in wait
 
 <br>
 
