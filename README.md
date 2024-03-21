@@ -102,10 +102,46 @@ Issues are listed by completion date.
 #### #41 - Show list after users search videos
 
 - in progress
+- How to Make
+
+  - Decide layout
+
+    1.  Button and Input elements
+
+        1. Pop-up: Only button + Show pop-up to type
+        1. On the top of controller
+
+           - Button and type box
+           - Only button + Show input box when focused
+
+    2.  List
+
+        1. Layout
+
+           - Pop-up
+           - Appear from back of controller
+           - Appear below the input element
+           - To prepare the space for list
+
+        1. List Style
+
+           - YouTube thumbnail
+           - Text
+           - or Able to select one of both
+
+        1. Way to Slide
+           - Horizonal
+           - Vertical
+
+    - I may need to use **Figma** to select this properly.
 
 #### #49 - Styling with Tailwind, @media and React Transition Group
 
+- in wait
+
 #### #50 - Store and show the videos a user sang
+
+- in wait
 
 <br>
 
