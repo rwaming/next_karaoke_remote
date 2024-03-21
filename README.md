@@ -104,7 +104,7 @@ Issues are listed by completion date.
 - in progress
 - How to Make
 
-  - Decide layout
+  - ~~Example layout~~ : checked
 
     1.  Button and Input elements
 

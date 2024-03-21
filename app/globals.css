@@ -2,20 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  :root {
-    --screen-ratio: 0.5625;
-    --screen-ratio-vw: 56.25vw;
-    --flex-solid: 0 0;
-    --flex-grow: 1 0;
-    --flex-fluid: 1 1;
-    --flex-shrink: 0 1;
-  }
-  .flex-basis-ratio {
-    flex-basis: var(--screen-ratio-vw);
-  }
-}
-
 @layer components {
   #app > #player > div {
     @apply w-full h-full;
@@ -25,7 +11,7 @@
   }
   @media screen and (max-height: 500px) {
     #app > #information {
-      display: none;
+      @apply hidden;
     }
     #controller {
       grid-row: span 2;
