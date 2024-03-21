@@ -56,33 +56,10 @@ export default function App({
     <AppContext.Provider value={appValue}>
       <Script src="https://apis.google.com/js/api.js" defer />
 
-      <div id="app" className="w-screen h-screen flex flex-col md:grid">
-        <div
-          ref={playerRef}
-          id="player"
-          className="flex-shrink flex-basis-16/9vw bg-slate-800"
-        >
-          {videoID !== null && (
-            <YouTube
-              videoId={videoID}
-              opts={{
-                playerVars: {
-                  autoplay: 1,
-                  modestbranding: 1,
-                  controls: 0,
-                  fs: 1,
-                },
-              }}
-              onReady={useThisVideo}
-            />
-          )}
-        </div>
-        <div id="information" className="flex-shrink bg-pink-300 text-xs">
-          <p className="bg-yellow-300">{videoID !== null && videoID}</p>
-          <p className="bg-slate-300">{videoID !== null && videoTitle}</p>
-          <p className="bg-orange-300">{videoID !== null && videoDate}</p>
-        </div>
-
+      <div
+        id="app"
+        className="w-screen h-screen flex flex-col md:flex-row bg-slate-900"
+      >
         <div
           ref={searchRef}
           id="search"
@@ -98,9 +75,11 @@ export default function App({
               <input
                 id="search-input"
                 name="search-keyword"
-                type="text"
+                type="search"
+                minLength={1}
                 placeholder="ex) 윤하"
                 className="flex-grow bg-gray-200"
+                required
               />
               <fieldset className="absolute top-0 right-0">
                 <input
@@ -120,9 +99,41 @@ export default function App({
         </div>
 
         <div
+          ref={playerRef}
+          id="player"
+          className="flex-shrink basis-16-9vh flex flex-col md:flex-1 md:justify-center"
+        >
+          <figure id="player-box" className="h-16-9vh relative">
+            <figcaption
+              id="information"
+              className="absolute top-0 left-0 w-full h-1/6 bg-pink-300 text-xs"
+            >
+              <p className="bg-yellow-300">{videoID !== null && videoID}</p>
+              <p className="bg-slate-300">{videoID !== null && videoTitle}</p>
+              <p className="bg-orange-300">{videoID !== null && videoDate}</p>
+            </figcaption>
+
+            {videoID !== null && (
+              <YouTube
+                className="player-yt"
+                videoId={videoID}
+                opts={{
+                  playerVars: {
+                    autoplay: 1,
+                    modestbranding: 1,
+                    controls: 0,
+                    fs: 1,
+                  },
+                }}
+                onReady={useThisVideo}
+              />
+            )}
+          </figure>
+        </div>
+        <div
           ref={controllerRef}
           id="controller"
-          className="flex-grow bg-sky-300 md:block"
+          className="flex-grow md:flex-grow-0 md:flex-basis-controlelr-w"
         >
           <ControllerButton id="controller-latest" text="Latest Song" />
           <ControllerButton id="controller-search" text="🔍" />

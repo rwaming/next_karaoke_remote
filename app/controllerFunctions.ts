@@ -32,35 +32,12 @@ export function closeSearchBox(
   const player: HTMLDivElement | null = playerRef?.current ?? null
   const search: HTMLDivElement | null = searchRef?.current ?? null
   const controller: HTMLDivElement | null = controllerRef?.current ?? null
-  /* 
-  mobile
-    #player : relative bottom-1/4
-    #search : hidden => flex
-
-  Others
-    #controller : relative h-50vh
-  */
-  console.log(player)
-  console.log(search)
-  console.log(controller)
 
   if (search !== null && player !== null && controller !== null) {
     search.classList.remove('hidden')
     search.classList.add('flex')
-
-    player.classList.add('absolute')
-    player.classList.add('bottom-3/4')
-    player.classList.add('w-full')
-    player.classList.add('h-16/9vw')
-
-    player.classList.add('md:static')
-    player.classList.add('md:bottom-auto')
-    player.classList.add('md:w-auto')
-    player.classList.add('md:h-auto')
-    player.classList.add('md:-pt-16/9-md')
-
-    controller.classList.add('hidden')
-    controller.classList.add('md:pt-1/2vh')
+    player.classList.add('player-search')
+    controller.classList.add('controller-search')
   }
 }
 

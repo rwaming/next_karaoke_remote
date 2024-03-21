@@ -97,6 +97,10 @@ Issues are listed by completion date.
 
 <br>
 
+> _2024.03.22.fri_
+
+<br>
+
 > _2024.03.21.thu_
 
 #### #41 - Show list after users search videos
@@ -134,6 +138,10 @@ Issues are listed by completion date.
            - Vertical
 
     - I may need to use **Figma** to select this properly.
+
+#### ~~#51 - Move information on the top of video (title / artist / KY number), using fixed~~
+
+- Complete, using absolute
 
 #### #49 - Styling with Tailwind, @media and React Transition Group
 

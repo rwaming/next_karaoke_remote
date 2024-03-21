@@ -73,7 +73,7 @@ export default function ControllerButton({
       <button
         type="button"
         id={id}
-        className={lastestClass}
+        className={`${lastestClass} text-white`}
         onClick={(event: MouseEvent<HTMLButtonElement>) => {
           findButtonFunction(event)
         }}
