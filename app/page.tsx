@@ -6,6 +6,7 @@ import YouTube, { type YouTubeEvent } from 'react-youtube'
 import AppContext from './AppContext'
 import ControllerButton from './controllerButton'
 import youtubeAPI from './youtubeAPI'
+import Search from './search'
 
 export default function App({
   params,
@@ -21,8 +22,10 @@ export default function App({
   const [isPlaying, setIsPlaying] = useState(false)
 
   const playerRef = useRef(null)
-  const searchRef = useRef(null)
   const controllerRef = useRef(null)
+  const searchRef = useRef(null)
+  const searchValueRef = useRef(null)
+  const searchModalRef = useRef(null)
 
   const appValue = useMemo(
     () => ({
@@ -37,8 +40,10 @@ export default function App({
       isPlaying,
       setIsPlaying,
       playerRef,
-      searchRef,
       controllerRef,
+      searchRef,
+      searchValueRef,
+      searchModalRef,
     }),
     [isPlaying, videoDate, videoEvent, videoID, videoTitle],
   )
@@ -60,44 +65,6 @@ export default function App({
         id="app"
         className="w-screen h-screen flex flex-col md:flex-row justify-center bg-dark text-light"
       >
-        <div
-          ref={searchRef}
-          id="search"
-          className="hidden w-screen flex-col fixed top-1/4 left-0 h-3/4 md:top-0 md:z-10 md:h-1/2 bg-light"
-        >
-          <div id="search-box" className="w-full flex">
-            <form
-              id="search-form"
-              name="search"
-              action="#"
-              className="flex flex-grow relative"
-            >
-              <input
-                id="search-input"
-                name="search-keyword"
-                type="search"
-                minLength={1}
-                placeholder="ex) 윤하"
-                className="flex-grow bg-dark bg-opacity-10"
-                required
-              />
-              <fieldset className="absolute top-0 right-0">
-                <input
-                  id="search-clear"
-                  type="reset"
-                  value="✕"
-                  className="text-dark text-opacity-30"
-                />
-                <input id="search-submit" type="submit" value="🔍" />
-              </fieldset>
-            </form>
-            <button id="search-close" type="button" className="text-dark">
-              ✕
-            </button>
-          </div>
-          <div id="search-list" className="flex-grow" />
-        </div>
-
         <div
           ref={playerRef}
           id="player"
@@ -130,7 +97,11 @@ export default function App({
             )}
           </figure>
         </div>
-        <div ref={controllerRef} id="controller" className="flex-grow">
+        <div
+          ref={controllerRef}
+          id="controller"
+          className="flex-grow md:relative md:z-20"
+        >
           <ControllerButton id="controller-latest" text="Latest Song" />
           <ControllerButton id="controller-search" text="🔍" />
           <ControllerButton id="controller-playpause" text="⏯" />
@@ -144,6 +115,8 @@ export default function App({
           <ControllerButton id="controller-speedup" text="⏩" />
           <ControllerButton id="controller-applause" text="👏" />
         </div>
+
+        <Search />
       </div>
     </AppContext.Provider>
   )

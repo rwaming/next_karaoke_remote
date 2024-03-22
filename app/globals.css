@@ -2,23 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --screen-ratio-w: 1.7777;
+  --screen-ratio-h: 0.5625;
+  --screen-ratio-h-p: 56.25;
+  --screen-ratio-h-vh: 56.25vw;
+  --controller-w: 200;
+  --controller-w-px: 200px;
+  --search-h-px: 58px;
+}
+
 /* global */
 @layer base {
-  input,
-  button {
-    @apply p-1;
+  body {
+    @apply overflow-hidden;
   }
 }
 
 /* reusable */
 @layer utilities {
-  :root {
-    --screen-ratio-w: 1.7777;
-    --screen-ratio-h: 0.5625;
-    --screen-ratio-h-p: 56.25;
-    --screen-ratio-h-vh: 56.25vw;
-    --controller-w: 200;
-    --controller-w-px: 200px;
+  /* searchbox
+    fieldset.x-cover {
+      @apply relative items-center;
+      
+      buttonbox
+      > fieldset.x-cover-buttonbox {
+        @apply flex items-center absolute;
+        
+        cover sticker
+        > span.x-cover-sticker {
+          @apply flex absolute right-0 w-4 h-4;
+        }
+        
+        button on x
+        > input.x-cover-instead {
+          @apply relative;
+        }
+      }
+    }
+  */
+  .x-cover-box {
+    @apply relative items-center;
+  }
+  .x-cover-target {
+    @apply flex-grow;
+  }
+  .x-cover-buttonbox {
+    @apply flex items-center absolute right-0;
+  }
+  .x-cover-sticker {
+    @apply flex absolute right-0 w-4 h-4;
+  }
+  .x-cover-instead {
+    @apply relative;
   }
 }
 
@@ -34,9 +70,21 @@
     flex-basis: var(--controller-w-px);
   }
 
+  #search {
+    top: calc(100vh - (100vh - var(--screen-ratio-h-vh)));
+    height: calc((100vh - var(--screen-ratio-h-vh)));
+  }
+  .player-search {
+    @apply absolute w-full -top-1/5vw md:static md:bottom-auto md:w-auto;
+  }
+  .controller-search {
+    @apply hidden md:block pt-1/2vh;
+  }
+
   @media screen and (min-width: 768px) {
     #player {
       width: calc(100vw - var(--controller-w-px));
+      /* Prevent for iframe to have blank because height is too small but width is too long. */
       max-width: calc(100vh * var(--screen-ratio-w));
       > #player-content {
         height: calc((100vw - var(--controller-w-px)) * var(--screen-ratio-h));
@@ -45,12 +93,26 @@
     #controller {
       flex: 0 0 var(--controller-w-px);
     }
+    #search {
+      top: 0;
+      left: 0;
+      height: 50vh;
+    }
+    #search-form__value {
+      @apply p-4;
+    }
+    #search-form__clear {
+      @apply p-2;
+    }
   }
-}
-
-.player-search {
-  @apply absolute bottom-3/4 w-full h-16-9vh md:static md:bottom-auto md:w-auto;
-}
-.controller-search {
-  @apply hidden md:block pt-1/2vh;
+  @media screen and (max-width: 300px) {
+    #search-form__clear {
+      @apply hidden;
+    }
+  }
+  @media screen and (max-width: 200px) {
+    #search-form__search {
+      @apply hidden;
+    }
+  }
 }

@@ -3,7 +3,7 @@ import AppContext from './AppContext'
 import ApplauseAudios from './applauseAudios'
 
 import showLatestVideo from './controller/showLatestVideo'
-import openSearchBox from './controller/openSearchBox'
+import searchBoxOpen from './controller/searchBoxOpen'
 import playPause from './controller/playPause'
 import stop from './controller/stop'
 import moveTime from './controller/moveTime'
@@ -26,8 +26,9 @@ export default function ControllerButton({
     isPlaying,
     setIsPlaying,
     playerRef,
-    searchRef,
     controllerRef,
+    searchRef,
+    searchModalRef,
   } = useContext(AppContext)
 
   const applauseRef1 = useRef(null)
@@ -44,7 +45,7 @@ export default function ControllerButton({
         showLatestVideo(setVideoID, setVideoTitle, setVideoDate, setIsPlaying)
       )
       id.includes('search') &&
-        openSearchBox(playerRef, searchRef, controllerRef)
+        searchBoxOpen(playerRef, controllerRef, searchRef, searchModalRef)
       id.includes('playpause') && playPause(videoEvent, isPlaying, setIsPlaying)
       id.includes('stop') && stop(videoEvent, setIsPlaying)
       id.includes('time') && moveTime(event, videoEvent)
@@ -58,6 +59,7 @@ export default function ControllerButton({
       id,
       isPlaying,
       playerRef,
+      searchModalRef,
       searchRef,
       setIsPlaying,
       setVideoDate,
