@@ -36,7 +36,10 @@ const config: Config = {
       },
       colors: {
         dark: '#222244',
+        'dark-input': '#333355',
+
         light: '#ffffee',
+        'light-input': '#eeeedd',
       },
     },
   },

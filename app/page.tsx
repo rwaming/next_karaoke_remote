@@ -64,32 +64,46 @@ export default function App({
         <div
           ref={searchRef}
           id="search"
-          className="hidden w-screen flex-col fixed top-3/8vh left-0 h-3/4 md:top-0 md:z-10 md:h-1/2 bg-light"
+          className="flex w-screen flex-col fixed top-3/8vh left-0 h-3/4 md:top-0 md:z-10 md:h-1/2 bg-light text-dark"
         >
-          <div id="search-box" className="w-full flex">
+          <div id="search-header" className="w-full flex">
             <form
               id="search-form"
               name="search"
               action="#"
-              className="flex flex-grow relative"
+              className="flex flex-grow"
             >
-              <input
-                id="search-input"
-                name="search-keyword"
-                type="search"
-                minLength={1}
-                placeholder="ex) 윤하"
-                className="flex-grow bg-dark bg-opacity-10"
-                required
-              />
-              <fieldset className="absolute top-0 right-0">
+              <fieldset
+                id="search-form__searchbox"
+                className="flex flex-grow relative"
+              >
                 <input
-                  id="search-clear"
-                  type="reset"
-                  value="✕"
-                  className="text-dark text-opacity-30"
+                  id="search-form__value"
+                  name="search-form__value"
+                  type="search"
+                  minLength={1}
+                  placeholder="ex) 윤하"
+                  className="flex-grow bg-light-input p-2"
+                  required
                 />
-                <input id="search-submit" type="submit" value="🔍" />
+                <fieldset
+                  id="search-form__buttonbox"
+                  className="absolute top-0 right-0"
+                >
+                  <input
+                    id="search-form__clear"
+                    type="reset"
+                    value="✕"
+                    className="text-dark text-opacity-30"
+                  />
+                  <input
+                    id="search-form__submit"
+                    type="submit"
+                    value="🔍"
+                    className="top-0 right-0"
+                  />
+                  <span className="bg-dark-input input-x-cover" />
+                </fieldset>
               </fieldset>
             </form>
             <button

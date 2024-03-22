@@ -4,10 +4,6 @@
 
 /* global */
 @layer base {
-  input,
-  button {
-    @apply p-1;
-  }
 }
 
 /* reusable */
@@ -19,6 +15,9 @@
     --screen-ratio-h-vh: 56.25vw;
     --controller-w: 200;
     --controller-w-px: 200px;
+  }
+  .input-x-cover {
+    @apply inline-block absolute top-1/2 left-0 -translate-x-1/2;
   }
 }
 
