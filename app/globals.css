@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* global */
 @layer base {
   input,
   button {
@@ -9,6 +10,7 @@
   }
 }
 
+/* reusable */
 @layer utilities {
   :root {
     --screen-ratio-w: 1.7777;
@@ -20,13 +22,12 @@
   }
 }
 
+/* id */
 @layer components {
-  #player-content {
-    .player-yt {
+  .player-yt {
+    @apply w-full h-full;
+    > iframe {
       @apply w-full h-full;
-      > iframe {
-        @apply w-full h-full;
-      }
     }
   }
   #controller {
@@ -39,8 +40,6 @@
       max-width: calc(100vh * var(--screen-ratio-w));
       > #player-content {
         height: calc((100vw - var(--controller-w-px)) * var(--screen-ratio-h));
-        > #information {
-        }
       }
     }
     #controller {
@@ -52,7 +51,6 @@
 .player-search {
   @apply absolute bottom-3/4 w-full h-16-9vh md:static md:bottom-auto md:w-auto;
 }
-
 .controller-search {
   @apply hidden md:block pt-1/2vh;
 }

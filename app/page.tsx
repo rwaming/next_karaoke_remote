@@ -63,7 +63,7 @@ export default function App({
         <div
           ref={searchRef}
           id="search"
-          className="hidden w-screen flex-col fixed top-1/4 left-0 h-3/4 md:top-0 md:h-1/2 bg-lime-400"
+          className="hidden w-screen flex-col fixed top-1/4 left-0 h-3/4 md:top-0 md:z-10 md:h-1/2 bg-light"
         >
           <div id="search-box" className="w-full flex">
             <form
@@ -78,7 +78,7 @@ export default function App({
                 type="search"
                 minLength={1}
                 placeholder="ex) 윤하"
-                className="flex-grow bg-gray-200"
+                className="flex-grow bg-dark bg-opacity-10"
                 required
               />
               <fieldset className="absolute top-0 right-0">
@@ -86,16 +86,16 @@ export default function App({
                   id="search-clear"
                   type="reset"
                   value="✕"
-                  className="text-gray-400"
+                  className="text-dark text-opacity-30"
                 />
                 <input id="search-submit" type="submit" value="🔍" />
               </fieldset>
             </form>
-            <button id="search-close" type="button" className="text-green-700">
+            <button id="search-close" type="button" className="text-dark">
               ✕
             </button>
           </div>
-          <div id="search-list" className="flex-grow bg-green-500 h-5" />
+          <div id="search-list" className="flex-grow" />
         </div>
 
         <div
