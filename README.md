@@ -99,14 +99,6 @@ Issues are listed by completion date.
 
 > _2024.03.22.fri_
 
-#### ~~#53 - Split functions of controllerFunctions.ts into new file.ts~~
-
-- Make a new folder and put them in.
-
-<br>
-
-> _2024.03.21.thu_
-
 #### #41 - Show list after users search videos
 
 - in progress
@@ -142,6 +134,14 @@ Issues are listed by completion date.
            - Vertical
 
     - I may need to use **Figma** to select this properly.
+
+#### ~~#53 - Split functions of controllerFunctions.ts into new file.ts~~
+
+- Make a new folder and put them in.
+
+<br>
+
+> _2024.03.21.thu_
 
 #### ~~#51 - Move information on the top of video (title / artist / KY number), using fixed~~
 
