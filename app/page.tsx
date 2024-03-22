@@ -151,6 +151,9 @@ export default function App({
                     type="submit"
                     value="🔍"
                     className="x-cover-instead mr-2 text-2xl"
+                    onClick={(event) => {
+                      event.preventDefault()
+                    }}
                   />
                 </fieldset>
               </fieldset>
