@@ -23,6 +23,7 @@ export default function Search(): JSX.Element {
     | number
   > | null>(null)
   const [videoAllLength, setVideoAllLength] = useState<number | null>(null)
+  const [isFirst, setIsFirst] = useState<boolean>(true)
 
   const getSearchList = async (event: MouseEvent): Promise<void> => {
     searchInfos !== null && setSearchInfo(null)
@@ -34,28 +35,44 @@ export default function Search(): JSX.Element {
         setVideoAllLength(getAllLegnth)
       }
     }
+    setIsFirst(false)
   }
 
+  // id, title, artist, number, date
   const searchList = useMemo(() => {
-    if (searchInfos !== null) {
+    console.log(isFirst)
+    if (searchInfos !== null && searchInfos.length > 1) {
       const videoInfos = searchInfos.slice(0, searchInfos.length - 2)
+      console.log(videoInfos)
       return videoInfos.map((v, i) => {
         if (typeof v === 'object') {
           return (
-            <div key={`${v.title}`} id={`search-list-${i + 1}`}>
-              {v.id}
-              {v.title}
-              {v.artist}
-              {v.number}
-              {v.date}
-            </div>
+            <li key={`${v.title}`} className="search-list__li flex">
+              <p className="search-list__li-text flex-grow flex">
+                <a
+                  href={`https://www.youtube.com/watch?v=${v.id}`}
+                  className="flex-grow flex"
+                >
+                  <span className="search-list__li-title flex-grow text-sm overflow-hidden">
+                    {v.title}
+                  </span>
+                  <span className="search-list__li-artist float-right max-w-3/8vw flex-shrink-0 text-xs overflow-hidden">
+                    {v.artist}
+                  </span>
+                </a>
+              </p>
+            </li>
           )
         }
-        return <p key="error">no info or no object</p>
+        return <li key="error">no info or no object</li>
       })
     }
-    return <p className="text-center">키워드를 입력 후 검색하세요.</p>
-  }, [searchInfos])
+    return (
+      <p id="search-list__note" className="text-center">
+        {isFirst ? `검색어를 입력해주세요.` : '검색된 결과가 없습니다.'}
+      </p>
+    )
+  }, [isFirst, searchInfos])
 
   return (
     <>
@@ -110,8 +127,12 @@ export default function Search(): JSX.Element {
           </form>
         </div>
         <div id="search-list" className="flex-grow relative overflow-x-scroll">
-          <p>{videoAllLength}</p>
-          {searchList}
+          <p>
+            {!isFirst &&
+              videoAllLength !== null &&
+              `${videoAllLength}건이 검색되었습니다.`}
+          </p>
+          <ol id="search-list__ol">{searchList}</ol>
         </div>
         <button
           id="search-close"
