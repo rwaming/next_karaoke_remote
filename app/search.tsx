@@ -42,7 +42,7 @@ export default function Search(): JSX.Element {
       return videoInfos.map((v, i) => {
         if (typeof v === 'object') {
           return (
-            <div key={`${v.title}`} id={`search-list-${i}`}>
+            <div key={`${v.title}`} id={`search-list-${i + 1}`}>
               {v.id}
               {v.title}
               {v.artist}
@@ -54,7 +54,7 @@ export default function Search(): JSX.Element {
         return <p key="error">no info or no object</p>
       })
     }
-    return <p>searchInfo is null</p>
+    return <p className="text-center">키워드를 입력 후 검색하세요.</p>
   }, [searchInfos])
 
   return (
@@ -109,8 +109,8 @@ export default function Search(): JSX.Element {
             </fieldset>
           </form>
         </div>
-        <div id="search-list" className="flex-grow relative">
-          {videoAllLength}
+        <div id="search-list" className="flex-grow relative overflow-x-scroll">
+          <p>{videoAllLength}</p>
           {searchList}
         </div>
         <button

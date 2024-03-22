@@ -25,7 +25,7 @@ export default async function searchVideo(
       maxResults: 10,
       type: 'video',
       videoEmbeddable: 'true',
-      q: searchKeyword,
+      q: `${searchKeyword} KY Karaoke -노래방챌린지`,
     })
     console.log(searchResult)
     const listLegnth = searchResult.result.pageInfo.resultsPerPage
