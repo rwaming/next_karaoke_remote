@@ -19,8 +19,8 @@ export default async function searchVideo(
       videoEmbeddable: 'true',
       q: searchKeyword,
     })
-    // const listLegnthAll = searchResult.result.items.pageInfo.totalResults
-    const listLegnth = searchResult.result.items.pageInfo.resultsPerPage
+    console.log(searchResult)
+    const listLegnth = searchResult.result.pageInfo.resultsPerPage
 
     const list = [...Array(listLegnth)].map((v, i) => {
       const video = searchResult.result.items[i]
@@ -32,8 +32,8 @@ export default async function searchVideo(
       const divided = videoTitle.split(' (KY.')
       const titleArtist = divided[0].split(' - ')
       const title = titleArtist[0]
-      const artist = titleArtist.slice(1, -1).join('')
-      const number = divided[1].search(/\b\d{5}\b || \b\d{4}\b /)
+      const artist = titleArtist.slice(1).join('')
+      const number = divided[1].split(')')[0]
 
       const item = {
         id: videoID,
@@ -45,6 +45,8 @@ export default async function searchVideo(
 
       return item
     })
+
+    // const listLegnthAll = searchResult.result.items.pageInfo.totalResults
 
     console.log(list)
   }
