@@ -1,4 +1,4 @@
-import { type MouseEvent, useContext, useState } from 'react'
+import { type MouseEvent, useContext, useState, useMemo } from 'react'
 import AppContext from './AppContext'
 import searchBoxClose from './controller/searchBoxClose'
 import searchVideo from './controller/searchVideo'
@@ -12,12 +12,50 @@ export default function Search(): JSX.Element {
     searchModalRef,
   } = useContext(AppContext)
 
-  const [newList, setNewList] = useState({})
+  const [searchInfos, setSearchInfo] = useState<Array<
+    | {
+        id: string
+        title: string
+        artist: string
+        number: string
+        date: string
+      }
+    | number
+  > | null>(null)
+  const [videoAllLength, setVideoAllLength] = useState<number | null>(null)
 
-  const showSearchList = (event: MouseEvent): void => {
-    const getList = searchVideo(event, searchValueRef)
-    setNewList(getList)
+  const getSearchList = async (event: MouseEvent): Promise<void> => {
+    searchInfos !== null && setSearchInfo(null)
+    const getList = await searchVideo(event, searchValueRef)
+    if (getList !== null) {
+      setSearchInfo(getList)
+      const getAllLegnth = getList[-1]
+      if (typeof getAllLegnth === 'number') {
+        setVideoAllLength(getAllLegnth)
+      }
+    }
   }
+
+  const searchList = useMemo(() => {
+    if (searchInfos !== null) {
+      const videoInfos = searchInfos.slice(0, searchInfos.length - 2)
+      return videoInfos.map((v, i) => {
+        if (typeof v === 'object') {
+          return (
+            <div key={`${v.title}`} id={`search-list-${i}`}>
+              {v.id}
+              {v.title}
+              {v.artist}
+              {v.number}
+              {v.date}
+            </div>
+          )
+        }
+        return <p key="error">no info or no object</p>
+      })
+    }
+    return <p>searchInfo is null</p>
+  }, [searchInfos])
 
   return (
     <>
@@ -64,14 +102,17 @@ export default function Search(): JSX.Element {
                   value="🔍"
                   className="x-cover-instead mr-2 text-2xl"
                   onClick={(event: MouseEvent) => {
-                    showSearchList(event)
+                    void getSearchList(event)
                   }}
                 />
               </fieldset>
             </fieldset>
           </form>
         </div>
-        <div id="search-list" className="flex-grow relative" />
+        <div id="search-list" className="flex-grow relative">
+          {videoAllLength}
+          {searchList}
+        </div>
         <button
           id="search-close"
           type="button"

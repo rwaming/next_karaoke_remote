@@ -4,7 +4,16 @@ import { type MutableRefObject, type MouseEvent } from 'react'
 export default async function searchVideo(
   event: MouseEvent,
   searchValueRef: MutableRefObject<HTMLInputElement | null> | null,
-): Promise<object | null> {
+): Promise<Array<
+  | {
+      id: string
+      title: string
+      artist: string
+      number: string
+      date: string
+    }
+  | number
+> | null> {
   const searchKeyword = searchValueRef?.current?.value ?? null
 
   if (searchKeyword != null) {
@@ -21,7 +30,16 @@ export default async function searchVideo(
     console.log(searchResult)
     const listLegnth = searchResult.result.pageInfo.resultsPerPage
 
-    const list = [...Array(listLegnth)].map((v, i) => {
+    const list: Array<
+      | {
+          id: string
+          title: string
+          artist: string
+          number: string
+          date: string
+        }
+      | number
+    > = [...Array(listLegnth)].map((v, i) => {
       const video = searchResult.result.items[i]
       const videoID: string = video.id.videoId
       const videoDate: string = video.snippet.publishedAt
@@ -45,8 +63,8 @@ export default async function searchVideo(
       return item
     })
 
-    // const listLegnthAll = searchResult.result.items.pageInfo.totalResults
-
+    const listLegnthAll: number = searchResult.result.pageInfo.totalResults
+    list.push(listLegnthAll)
     return list
   }
   return searchKeyword
