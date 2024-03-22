@@ -100,7 +100,7 @@ export default function App({
         <div
           ref={controllerRef}
           id="controller"
-          className="flex-grow md:relative md:z-20"
+          className="flex-grow md:relative md:z-10"
         >
           <ControllerButton id="controller-latest" text="Latest Song" />
           <ControllerButton id="controller-search" text="🔍" />
