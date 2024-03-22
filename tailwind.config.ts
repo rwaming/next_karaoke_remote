@@ -20,6 +20,10 @@ const config: Config = {
         '1/8vh': '12.5vh',
         '1/10vh': '10vh',
       },
+      colors: {
+        dark: '#222244',
+        light: '#ffffee',
+      },
     },
   },
   plugins: [],

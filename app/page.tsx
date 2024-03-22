@@ -58,12 +58,12 @@ export default function App({
 
       <div
         id="app"
-        className="w-screen h-screen flex flex-col md:flex-row bg-slate-900"
+        className="w-screen h-screen flex flex-col md:flex-row justify-center bg-dark text-light"
       >
         <div
           ref={searchRef}
           id="search"
-          className="hidden w-screen flex-col fixed top-1/4 left-0 h-3/4 md:top-0 md:h-1/2 bg-lime-400"
+          className="hidden w-screen flex-col fixed top-1/4 left-0 h-3/4 md:top-0 md:z-10 md:h-1/2 bg-light"
         >
           <div id="search-box" className="w-full flex">
             <form
@@ -78,7 +78,7 @@ export default function App({
                 type="search"
                 minLength={1}
                 placeholder="ex) 윤하"
-                className="flex-grow bg-gray-200"
+                className="flex-grow bg-dark bg-opacity-10"
                 required
               />
               <fieldset className="absolute top-0 right-0">
@@ -86,31 +86,31 @@ export default function App({
                   id="search-clear"
                   type="reset"
                   value="✕"
-                  className="text-gray-400"
+                  className="text-dark text-opacity-30"
                 />
                 <input id="search-submit" type="submit" value="🔍" />
               </fieldset>
             </form>
-            <button id="search-close" type="button" className="text-green-700">
+            <button id="search-close" type="button" className="text-dark">
               ✕
             </button>
           </div>
-          <div id="search-list" className="flex-grow bg-green-500 h-5" />
+          <div id="search-list" className="flex-grow" />
         </div>
 
         <div
           ref={playerRef}
           id="player"
-          className="flex-shrink basis-16-9vh flex flex-col md:flex-1 md:justify-center"
+          className="flex-shrink basis-16-9vh flex flex-col md:flex-1 md:justify-center md:items-end"
         >
-          <figure id="player-box" className="h-16-9vh relative">
+          <figure id="player-content" className="h-16-9vh relative w-full">
             <figcaption
               id="information"
-              className="absolute top-0 left-0 w-full h-1/6 bg-pink-300 text-xs"
+              className="absolute top-0 right-0 w-full h-1/5 bg-dark text-xs"
             >
-              <p className="bg-yellow-300">{videoID !== null && videoID}</p>
-              <p className="bg-slate-300">{videoID !== null && videoTitle}</p>
-              <p className="bg-orange-300">{videoID !== null && videoDate}</p>
+              <p>{videoID !== null && videoID}</p>
+              <p>{videoID !== null && videoTitle}</p>
+              <p>{videoID !== null && videoDate}</p>
             </figcaption>
 
             {videoID !== null && (
@@ -130,11 +130,7 @@ export default function App({
             )}
           </figure>
         </div>
-        <div
-          ref={controllerRef}
-          id="controller"
-          className="flex-grow md:flex-grow-0 md:flex-basis-controlelr-w"
-        >
+        <div ref={controllerRef} id="controller" className="flex-grow">
           <ControllerButton id="controller-latest" text="Latest Song" />
           <ControllerButton id="controller-search" text="🔍" />
           <ControllerButton id="controller-playpause" text="⏯" />

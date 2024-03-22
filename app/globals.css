@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* global */
 @layer base {
   input,
   button {
@@ -9,23 +10,24 @@
   }
 }
 
+/* reusable */
 @layer utilities {
   :root {
-    --screen-ratio: 0.5625;
-    --screen-ratio-p: 56.25;
-    --screen-ratio-vw: 56.25vw;
+    --screen-ratio-w: 1.7777;
+    --screen-ratio-h: 0.5625;
+    --screen-ratio-h-p: 56.25;
+    --screen-ratio-h-vh: 56.25vw;
     --controller-w: 200;
     --controller-w-px: 200px;
   }
 }
 
+/* id */
 @layer components {
-  #player-box {
-    .player-yt {
+  .player-yt {
+    @apply w-full h-full;
+    > iframe {
       @apply w-full h-full;
-      > iframe {
-        @apply w-full h-full;
-      }
     }
   }
   #controller {
@@ -33,14 +35,15 @@
   }
 
   @media screen and (min-width: 768px) {
-    #player-box {
-      height: calc((100vw - var(--controller-w-px)) * var(--screen-ratio));
+    #player {
+      width: calc(100vw - var(--controller-w-px));
+      max-width: calc(100vh * var(--screen-ratio-w));
+      > #player-content {
+        height: calc((100vw - var(--controller-w-px)) * var(--screen-ratio-h));
+      }
     }
-  }
-
-  @media screen and (max-height: 500px) {
-    #information {
-      @apply hidden;
+    #controller {
+      flex: 0 0 var(--controller-w-px);
     }
   }
 }
@@ -48,7 +51,6 @@
 .player-search {
   @apply absolute bottom-3/4 w-full h-16-9vh md:static md:bottom-auto md:w-auto;
 }
-
 .controller-search {
   @apply hidden md:block pt-1/2vh;
 }

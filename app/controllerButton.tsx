@@ -1,16 +1,15 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
 import AppContext from './AppContext'
-import {
-  applause,
-  moveTime,
-  playPause,
-  setSpeed,
-  setVolume,
-  showLatestVideo,
-  closeSearchBox,
-  stop,
-} from './controllerFunctions'
 import ApplauseAudios from './applauseAudios'
+
+import showLatestVideo from './controller/showLatestVideo'
+import openSearchBox from './controller/openSearchBox'
+import playPause from './controller/playPause'
+import stop from './controller/stop'
+import moveTime from './controller/moveTime'
+import setVolume from './controller/setVolume'
+import setSpeed from './controller/setSpeed'
+import applause from './controller/applause'
 
 export default function ControllerButton({
   id,
@@ -45,7 +44,7 @@ export default function ControllerButton({
         showLatestVideo(setVideoID, setVideoTitle, setVideoDate, setIsPlaying)
       )
       id.includes('search') &&
-        closeSearchBox(playerRef, searchRef, controllerRef)
+        openSearchBox(playerRef, searchRef, controllerRef)
       id.includes('playpause') && playPause(videoEvent, isPlaying, setIsPlaying)
       id.includes('stop') && stop(videoEvent, setIsPlaying)
       id.includes('time') && moveTime(event, videoEvent)
@@ -73,7 +72,7 @@ export default function ControllerButton({
       <button
         type="button"
         id={id}
-        className={`${lastestClass} text-white`}
+        className={`${lastestClass}`}
         onClick={(event: MouseEvent<HTMLButtonElement>) => {
           findButtonFunction(event)
         }}
