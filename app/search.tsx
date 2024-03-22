@@ -1,4 +1,10 @@
-import { type MouseEvent, useContext, useState, useMemo } from 'react'
+import {
+  type MouseEvent,
+  useContext,
+  useState,
+  useMemo,
+  useCallback,
+} from 'react'
 import AppContext from './AppContext'
 import searchBoxClose from './controller/searchBoxClose'
 import searchVideo from './controller/searchVideo'
@@ -29,7 +35,6 @@ export default function Search(): JSX.Element {
       setSearchInfos(null)
     }
     const getList = await searchVideo(event, searchValueRef)
-    console.log(getList)
     if (getList !== null && getList.length > 1) {
       const getAllLegnth = getList.pop()
       setSearchInfos(getList)
@@ -43,23 +48,40 @@ export default function Search(): JSX.Element {
     }
   }
 
+  const changeVideo = useCallback(
+    (event: MouseEvent) => {
+      event.preventDefault()
+      searchBoxClose(playerRef, controllerRef, searchRef, searchModalRef)
+    },
+    [controllerRef, playerRef, searchModalRef, searchRef],
+  )
+
   // id, title, artist, number, date
   const searchList = useMemo(() => {
     if (searchInfos !== null) {
       return searchInfos.map((v, i) => {
         if (typeof v === 'object') {
           return (
-            <li key={`${v.title}`} className="search-list__li flex h-8">
-              <p className="search-list__li-text flex-grow flex">
+            <li
+              key={`${v.title}`}
+              className="search-list__li flex h-4 m-4 border-b border-b-gray-800 border-opacity-50 py-2 box-content"
+            >
+              <p className="search-list__li-text flex-grow flex max-w-full">
                 <a
                   href={`https://www.youtube.com/watch?v=${v.id}`}
-                  className="flex-grow flex items-center"
+                  className="flex-grow flex items-center max-w-full"
+                  onClick={(event) => {
+                    changeVideo(event)
+                  }}
                 >
-                  <span className="block search-list__li-title flex-grow text-sm">
+                  <span className="block search-list__li-title flex-grow text-xs text-ellipsis overflow-hidden whitespace-nowrap">
                     {v.title}
                   </span>
-                  <span className="block search-list__li-artist w-1/4vw flex-shrink-0 text-sm text-ellipsis opacity-70">
+                  <span className="block search-list__li-artist basis-1/5vw flex-shrink-0 text-xs text-ellipsis overflow-hidden whitespace-nowrap opacity-70">
                     {v.artist}
+                  </span>
+                  <span className="hidden search-list__li-artist basis-1/10vw flex-shrink-0 text-xs text-ellipsis overflow-hidden whitespace-nowrap opacity-70 md:block">
+                    {v.number}
                   </span>
                 </a>
               </p>
@@ -74,7 +96,7 @@ export default function Search(): JSX.Element {
       })
     }
     return null
-  }, [searchInfos])
+  }, [changeVideo, searchInfos])
 
   return (
     <>
@@ -130,13 +152,26 @@ export default function Search(): JSX.Element {
           </form>
         </div>
         <div id="search-list" className="flex-grow relative overflow-x-scroll">
-          <p id="search-list__note" className="text-center">
+          <p id="search-list__note" className="text-center text-xs p-2">
             {videoAllLength === null && '검색어를 입력해주세요.'}
             {videoAllLength === 0 && '검색된 결과가 없습니다.'}
             {videoAllLength !== null &&
               videoAllLength > 0 &&
               `${videoAllLength}건이 검색되었습니다.`}{' '}
           </p>
+          {videoAllLength !== null && videoAllLength > 0 && (
+            <p className="search-list__note-label flex-grow flex max-w-full h-4 m-4 p-2 font-bold box-content pl-3">
+              <span className="block search-list__li-title flex-grow text-sm text-ellipsis overflow-hidden whitespace-nowrap">
+                제목
+              </span>
+              <span className="block search-list__li-artist basis-1/5vw md:basis-1/5vw flex-shrink-0 text-sm pl-4">
+                가수
+              </span>
+              <span className="hidden search-list__li-artist basis-1/10vw flex-shrink-0 text-sm md:block">
+                금영 번호
+              </span>
+            </p>
+          )}
           <ol id="search-list__ol">{searchList}</ol>
         </div>
         <button

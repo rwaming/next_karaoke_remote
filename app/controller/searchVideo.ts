@@ -15,16 +15,14 @@ export default async function searchVideo(
   | number
 > | null> {
   const searchKeyword = searchValueRef?.current?.value.trim() ?? null
-  console.log(searchKeyword)
 
   if (searchKeyword !== null && searchKeyword !== '') {
     event.preventDefault()
-    console.log('search')
 
     const searchResult = await gapi.client.youtube.search.list({
       part: 'snippet',
       channelId: 'UCDqaUIUSJP5EVMEI178Zfag',
-      maxResults: 10,
+      maxResults: 20,
       type: 'video',
       videoEmbeddable: 'true',
       q: `${searchKeyword} KY Karaoke -노래방챌린지`,
@@ -48,8 +46,8 @@ export default async function searchVideo(
       // 사건의 지평선 - 윤하(Event horizon - YOUNHA) (KY.28707) / KY Karaoke
 
       const divided = videoTitle.split(' (KY.')
-      const titleArtist = divided[0].split(' - ')
-      const title = titleArtist[0]
+      const titleArtist = divided[0].split('-')
+      const title = titleArtist[0].trim()
       const artist = titleArtist.slice(1).join('')
       const number = divided[1].split(')')[0]
 
