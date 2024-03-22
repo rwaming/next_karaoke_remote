@@ -51,7 +51,7 @@ export default function Search(): JSX.Element {
                   value="🔍"
                   className="x-cover-instead mr-2 text-2xl"
                   onClick={(event: MouseEvent) => {
-                    searchVideo(event, searchRef)
+                    void searchVideo(event, searchRef)
                   }}
                 />
               </fieldset>

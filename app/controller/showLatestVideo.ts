@@ -10,6 +10,7 @@ export default async function showLatestVideo(
     part: 'snippet',
     channelId: 'UCDqaUIUSJP5EVMEI178Zfag',
     order: 'date',
+    maxResults: 1,
   })
   const latestVideoInfo = latestVideoList.result.items[0]
   const latestVideoID: string = latestVideoInfo.id.videoId
