@@ -6,6 +6,7 @@ import YouTube, { type YouTubeEvent } from 'react-youtube'
 import AppContext from './AppContext'
 import ControllerButton from './controllerButton'
 import youtubeAPI from './youtubeAPI'
+import closeSearchBox from './controller/closeSearchBox'
 
 export default function App({
   params,
@@ -91,7 +92,14 @@ export default function App({
                 <input id="search-submit" type="submit" value="🔍" />
               </fieldset>
             </form>
-            <button id="search-close" type="button" className="text-dark">
+            <button
+              id="search-close"
+              type="button"
+              className="text-dark"
+              onClick={() => {
+                closeSearchBox(playerRef, searchRef, controllerRef)
+              }}
+            >
               ✕
             </button>
           </div>
