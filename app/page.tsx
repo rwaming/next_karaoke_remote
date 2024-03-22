@@ -58,7 +58,7 @@ export default function App({
 
       <div
         id="app"
-        className="w-screen h-screen flex flex-col md:flex-row bg-slate-900"
+        className="w-screen h-screen flex flex-col md:flex-row justify-center bg-dark text-light"
       >
         <div
           ref={searchRef}
@@ -101,16 +101,16 @@ export default function App({
         <div
           ref={playerRef}
           id="player"
-          className="flex-shrink basis-16-9vh flex flex-col md:flex-1 md:justify-center"
+          className="flex-shrink basis-16-9vh flex flex-col md:flex-1 md:justify-center md:items-end"
         >
-          <figure id="player-box" className="h-16-9vh relative">
+          <figure id="player-content" className="h-16-9vh relative w-full">
             <figcaption
               id="information"
-              className="absolute top-0 left-0 w-full h-1/6 bg-pink-300 text-xs"
+              className="absolute top-0 right-0 w-full h-1/5 bg-dark text-xs"
             >
-              <p className="bg-yellow-300">{videoID !== null && videoID}</p>
-              <p className="bg-slate-300">{videoID !== null && videoTitle}</p>
-              <p className="bg-orange-300">{videoID !== null && videoDate}</p>
+              <p>{videoID !== null && videoID}</p>
+              <p>{videoID !== null && videoTitle}</p>
+              <p>{videoID !== null && videoDate}</p>
             </figcaption>
 
             {videoID !== null && (
@@ -130,11 +130,7 @@ export default function App({
             )}
           </figure>
         </div>
-        <div
-          ref={controllerRef}
-          id="controller"
-          className="flex-grow md:flex-grow-0 md:flex-basis-controlelr-w"
-        >
+        <div ref={controllerRef} id="controller" className="flex-grow">
           <ControllerButton id="controller-latest" text="Latest Song" />
           <ControllerButton id="controller-search" text="🔍" />
           <ControllerButton id="controller-playpause" text="⏯" />
