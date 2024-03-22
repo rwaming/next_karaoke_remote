@@ -20,6 +20,7 @@ export default function searchBoxClose(
     search.classList.add('hidden')
     search.classList.remove('flex')
     player.classList.remove('player-search')
+    player.classList.add('md:justify-center')
     controller.classList.remove('controller-search')
     searchModal.classList.add('hidden')
     searchModal.classList.remove('block')

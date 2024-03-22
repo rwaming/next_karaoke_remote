@@ -21,6 +21,7 @@ export default function searchBoxOpen(
     search.classList.remove('hidden')
     search.classList.add('flex')
     player.classList.add('player-search')
+    player.classList.remove('md:justify-center')
     controller.classList.add('controller-search')
     searchModal.classList.remove('hidden')
     searchModal.classList.add('block')

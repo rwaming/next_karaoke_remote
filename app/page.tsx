@@ -71,9 +71,13 @@ export default function App({
           className="flex-shrink basis-16-9vh flex flex-col md:flex-1 md:justify-center md:items-end"
         >
           <figure id="player-content" className="h-16-9vh relative w-full">
+            <div
+              id="player-modal"
+              className="w-full h-full absolute top-0 right-0"
+            />
             <figcaption
               id="information"
-              className="absolute top-0 right-0 w-full h-1/5 bg-dark text-xs"
+              className="hidden absolute top-0 right-0 w-full h-1/5 bg-dark text-xs"
             >
               <p>{videoID !== null && videoID}</p>
               <p>{videoID !== null && videoTitle}</p>
