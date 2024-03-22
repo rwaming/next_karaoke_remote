@@ -12,7 +12,7 @@ export default function Search(): JSX.Element {
     searchModalRef,
   } = useContext(AppContext)
 
-  const [searchInfos, setSearchInfo] = useState<Array<
+  const [searchInfos, setSearchInfos] = useState<Array<
     | {
         id: string
         title: string
@@ -23,40 +23,42 @@ export default function Search(): JSX.Element {
     | number
   > | null>(null)
   const [videoAllLength, setVideoAllLength] = useState<number | null>(null)
-  const [isFirst, setIsFirst] = useState<boolean>(true)
 
   const getSearchList = async (event: MouseEvent): Promise<void> => {
-    searchInfos !== null && setSearchInfo(null)
+    if (searchInfos !== null) {
+      setSearchInfos(null)
+    }
     const getList = await searchVideo(event, searchValueRef)
-    if (getList !== null) {
-      setSearchInfo(getList)
-      const getAllLegnth = getList[-1]
+    console.log(getList)
+    if (getList !== null && getList.length > 1) {
+      const getAllLegnth = getList.pop()
+      setSearchInfos(getList)
       if (typeof getAllLegnth === 'number') {
         setVideoAllLength(getAllLegnth)
       }
+    } else if (getList === null) {
+      setVideoAllLength(null)
+    } else {
+      setVideoAllLength(0)
     }
-    setIsFirst(false)
   }
 
   // id, title, artist, number, date
   const searchList = useMemo(() => {
-    console.log(isFirst)
-    if (searchInfos !== null && searchInfos.length > 1) {
-      const videoInfos = searchInfos.slice(0, searchInfos.length - 2)
-      console.log(videoInfos)
-      return videoInfos.map((v, i) => {
+    if (searchInfos !== null) {
+      return searchInfos.map((v, i) => {
         if (typeof v === 'object') {
           return (
-            <li key={`${v.title}`} className="search-list__li flex">
+            <li key={`${v.title}`} className="search-list__li flex h-8">
               <p className="search-list__li-text flex-grow flex">
                 <a
                   href={`https://www.youtube.com/watch?v=${v.id}`}
-                  className="flex-grow flex"
+                  className="flex-grow flex items-center"
                 >
-                  <span className="search-list__li-title flex-grow text-sm overflow-hidden">
+                  <span className="block search-list__li-title flex-grow text-sm">
                     {v.title}
                   </span>
-                  <span className="search-list__li-artist float-right max-w-3/8vw flex-shrink-0 text-xs overflow-hidden">
+                  <span className="block search-list__li-artist w-1/4vw flex-shrink-0 text-sm text-ellipsis opacity-70">
                     {v.artist}
                   </span>
                 </a>
@@ -64,15 +66,15 @@ export default function Search(): JSX.Element {
             </li>
           )
         }
-        return <li key="error">no info or no object</li>
+        return (
+          <li key="error" className="search-list__li flex h-8">
+            no info or no object
+          </li>
+        )
       })
     }
-    return (
-      <p id="search-list__note" className="text-center">
-        {isFirst ? `검색어를 입력해주세요.` : '검색된 결과가 없습니다.'}
-      </p>
-    )
-  }, [isFirst, searchInfos])
+    return null
+  }, [searchInfos])
 
   return (
     <>
@@ -98,6 +100,7 @@ export default function Search(): JSX.Element {
                 name="search-form__value"
                 type="search"
                 minLength={1}
+                pattern="/S*"
                 placeholder="ex) 윤하 먹구름"
                 className="x-cover-target bg-light-input border p-2 text-center"
                 required
@@ -127,10 +130,12 @@ export default function Search(): JSX.Element {
           </form>
         </div>
         <div id="search-list" className="flex-grow relative overflow-x-scroll">
-          <p>
-            {!isFirst &&
-              videoAllLength !== null &&
-              `${videoAllLength}건이 검색되었습니다.`}
+          <p id="search-list__note" className="text-center">
+            {videoAllLength === null && '검색어를 입력해주세요.'}
+            {videoAllLength === 0 && '검색된 결과가 없습니다.'}
+            {videoAllLength !== null &&
+              videoAllLength > 0 &&
+              `${videoAllLength}건이 검색되었습니다.`}{' '}
           </p>
           <ol id="search-list__ol">{searchList}</ol>
         </div>

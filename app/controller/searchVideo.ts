@@ -14,10 +14,12 @@ export default async function searchVideo(
     }
   | number
 > | null> {
-  const searchKeyword = searchValueRef?.current?.value ?? null
+  const searchKeyword = searchValueRef?.current?.value.trim() ?? null
+  console.log(searchKeyword)
 
-  if (searchKeyword != null) {
+  if (searchKeyword !== null && searchKeyword !== '') {
     event.preventDefault()
+    console.log('search')
 
     const searchResult = await gapi.client.youtube.search.list({
       part: 'snippet',
@@ -27,8 +29,7 @@ export default async function searchVideo(
       videoEmbeddable: 'true',
       q: `${searchKeyword} KY Karaoke -노래방챌린지`,
     })
-    console.log(searchResult)
-    const listLegnth = searchResult.result.pageInfo.resultsPerPage
+    const listLength = searchResult.result.pageInfo.resultsPerPage
 
     const list: Array<
       | {
@@ -39,7 +40,7 @@ export default async function searchVideo(
           date: string
         }
       | number
-    > = [...Array(listLegnth)].map((v, i) => {
+    > = [...Array(listLength)].map((v, i) => {
       const video = searchResult.result.items[i]
       const videoID: string = video.id.videoId
       const videoDate: string = video.snippet.publishedAt
@@ -67,5 +68,5 @@ export default async function searchVideo(
     list.push(listLegnthAll)
     return list
   }
-  return searchKeyword
+  return null
 }
