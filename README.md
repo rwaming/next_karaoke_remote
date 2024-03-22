@@ -99,12 +99,13 @@ Issues are listed by completion date.
 
 > _2024.03.22.fri_
 
-#### #41 - Show list after users search videos
+#### ~~#41 - Show list after users search videos~~
 
-- in progress
+- I didn't know making search function is difficult than some I thought it. haha~~~
+
 - How to Make
 
-  - List functions
+  - ✔️ ~~List functions~~
 
     1.  Put the search keyword user typed in variable to search.
 
