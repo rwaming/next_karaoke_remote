@@ -1,4 +1,4 @@
-import { type MouseEvent, useContext } from 'react'
+import { type MouseEvent, useContext, useState } from 'react'
 import AppContext from './AppContext'
 import searchBoxClose from './controller/searchBoxClose'
 import searchVideo from './controller/searchVideo'
@@ -11,6 +11,13 @@ export default function Search(): JSX.Element {
     searchValueRef,
     searchModalRef,
   } = useContext(AppContext)
+
+  const [newList, setNewList] = useState({})
+
+  const showSearchList = (event: MouseEvent): void => {
+    const getList = searchVideo(event, searchValueRef)
+    setNewList(getList)
+  }
 
   return (
     <>
@@ -57,7 +64,7 @@ export default function Search(): JSX.Element {
                   value="🔍"
                   className="x-cover-instead mr-2 text-2xl"
                   onClick={(event: MouseEvent) => {
-                    void searchVideo(event, searchRef, searchValueRef)
+                    showSearchList(event)
                   }}
                 />
               </fieldset>

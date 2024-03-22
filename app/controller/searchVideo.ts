@@ -3,9 +3,8 @@ import { type MutableRefObject, type MouseEvent } from 'react'
 
 export default async function searchVideo(
   event: MouseEvent,
-  searchRef: MutableRefObject<HTMLDivElement | null> | null,
   searchValueRef: MutableRefObject<HTMLInputElement | null> | null,
-): Promise<void> {
+): Promise<object | null> {
   const searchKeyword = searchValueRef?.current?.value ?? null
 
   if (searchKeyword != null) {
@@ -48,6 +47,7 @@ export default async function searchVideo(
 
     // const listLegnthAll = searchResult.result.items.pageInfo.totalResults
 
-    console.log(list)
+    return list
   }
+  return searchKeyword
 }
