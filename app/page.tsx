@@ -6,7 +6,7 @@ import YouTube, { type YouTubeEvent } from 'react-youtube'
 import AppContext from './AppContext'
 import ControllerButton from './controllerButton'
 import youtubeAPI from './youtubeAPI'
-import closeSearchBox from './controller/closeSearchBox'
+import searchBoxClose from './controller/searchBoxClose'
 
 export default function App({
   params,
@@ -22,8 +22,9 @@ export default function App({
   const [isPlaying, setIsPlaying] = useState(false)
 
   const playerRef = useRef(null)
-  const searchRef = useRef(null)
   const controllerRef = useRef(null)
+  const searchRef = useRef(null)
+  const searchModalRef = useRef(null)
 
   const appValue = useMemo(
     () => ({
@@ -38,8 +39,9 @@ export default function App({
       isPlaying,
       setIsPlaying,
       playerRef,
-      searchRef,
       controllerRef,
+      searchRef,
+      searchModalRef,
     }),
     [isPlaying, videoDate, videoEvent, videoID, videoTitle],
   )
@@ -111,7 +113,7 @@ export default function App({
         <div
           ref={searchRef}
           id="search"
-          className="hidden w-screen flex-col fixed bg-light text-dark"
+          className="hidden w-screen flex-col fixed z-10 bg-light text-dark"
         >
           <div id="search-header" className="w-full flex">
             <form
@@ -160,13 +162,19 @@ export default function App({
             type="button"
             className="hidden text-dark absolute right-0 bottom-0 p-4 md:block"
             onClick={() => {
-              closeSearchBox(playerRef, searchRef, controllerRef)
+              searchBoxClose(
+                playerRef,
+                controllerRef,
+                searchRef,
+                searchModalRef,
+              )
             }}
           >
             ✕
           </button>
         </div>
         <div
+          ref={searchModalRef}
           id="search-modal"
           className="hidden bg-gray-800 bg-opacity-50 w-screen h-screen absolute top-0 left-0"
         />

@@ -18,8 +18,9 @@ const AppContext = createContext<{
   isPlaying: boolean
   setIsPlaying: Dispatch<SetStateAction<boolean>>
   playerRef: MutableRefObject<HTMLDivElement | null> | null
-  searchRef: MutableRefObject<HTMLDivElement | null> | null
   controllerRef: MutableRefObject<HTMLDivElement | null> | null
+  searchRef: MutableRefObject<HTMLDivElement | null> | null
+  searchModalRef: MutableRefObject<HTMLDivElement | null> | null
 }>({
   videoEvent: null,
   setVideoEvent: () => {},
@@ -32,8 +33,9 @@ const AppContext = createContext<{
   isPlaying: false,
   setIsPlaying: () => {},
   playerRef: null,
-  searchRef: null,
   controllerRef: null,
+  searchRef: null,
+  searchModalRef: null,
 })
 
 export default AppContext
