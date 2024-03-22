@@ -84,6 +84,7 @@
   @media screen and (min-width: 768px) {
     #player {
       width: calc(100vw - var(--controller-w-px));
+      /* Prevent for iframe to have blank because height is too small but width is too long. */
       max-width: calc(100vh * var(--screen-ratio-w));
       > #player-content {
         height: calc((100vw - var(--controller-w-px)) * var(--screen-ratio-h));
