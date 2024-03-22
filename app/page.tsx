@@ -64,7 +64,7 @@ export default function App({
         <div
           ref={searchRef}
           id="search"
-          className="hidden w-screen flex-col fixed top-1/4 left-0 h-3/4 md:top-0 md:z-10 md:h-1/2 bg-light"
+          className="hidden w-screen flex-col fixed top-3/8vh left-0 h-3/4 md:top-0 md:z-10 md:h-1/2 bg-light"
         >
           <div id="search-box" className="w-full flex">
             <form

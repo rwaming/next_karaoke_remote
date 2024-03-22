@@ -49,7 +49,7 @@
 }
 
 .player-search {
-  @apply absolute bottom-3/4 w-full h-16-9vh md:static md:bottom-auto md:w-auto;
+  @apply absolute w-full -top-1/5vw md:static md:bottom-auto md:w-auto;
 }
 .controller-search {
   @apply hidden md:block pt-1/2vh;
