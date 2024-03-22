@@ -104,6 +104,20 @@ Issues are listed by completion date.
 - in progress
 - How to Make
 
+  - List functions
+
+    1.  Put the search keyword user typed in variable to search.
+
+    1.  Using that, get video information of KY channel in about 20 maximum.
+
+    1.  Get the title, artist, KY number from each information.
+
+    1.  Put them in objects.
+
+    1.  Using 'for', 'map' and \[...listed, newInfo] syntactics, make list.
+
+    1.  Insert list into #search-list.
+
   - ✔️ ~~Example layout~~ : Designed in [Figma](https://www.figma.com/file/bWBc481GrR9erjuLyfiLUf/Untitled?type=design&node-id=0%3A1&mode=design&t=oP5zdSk853glap8W-1)
 
     1.  Button and Input elements
