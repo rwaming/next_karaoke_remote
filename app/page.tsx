@@ -62,65 +62,6 @@ export default function App({
         className="w-screen h-screen flex flex-col md:flex-row justify-center bg-dark text-light"
       >
         <div
-          ref={searchRef}
-          id="search"
-          className="flex w-screen flex-col fixed top-3/8vh left-0 h-3/4 md:top-0 md:z-10 md:h-1/2 bg-light text-dark"
-        >
-          <div id="search-header" className="w-full flex">
-            <form
-              id="search-form"
-              name="search"
-              action="#"
-              className="flex flex-grow"
-            >
-              <fieldset
-                id="search-form__searchbox"
-                className="flex flex-grow relative"
-              >
-                <input
-                  id="search-form__value"
-                  name="search-form__value"
-                  type="search"
-                  minLength={1}
-                  placeholder="ex) 윤하"
-                  className="flex-grow bg-light-input p-2"
-                  required
-                />
-                <fieldset
-                  id="search-form__buttonbox"
-                  className="absolute top-0 right-0"
-                >
-                  <input
-                    id="search-form__clear"
-                    type="reset"
-                    value="✕"
-                    className="text-dark text-opacity-30"
-                  />
-                  <input
-                    id="search-form__submit"
-                    type="submit"
-                    value="🔍"
-                    className="top-0 right-0"
-                  />
-                  <span className="bg-dark-input input-x-cover" />
-                </fieldset>
-              </fieldset>
-            </form>
-            <button
-              id="search-close"
-              type="button"
-              className="text-dark"
-              onClick={() => {
-                closeSearchBox(playerRef, searchRef, controllerRef)
-              }}
-            >
-              ✕
-            </button>
-          </div>
-          <div id="search-list" className="flex-grow" />
-        </div>
-
-        <div
           ref={playerRef}
           id="player"
           className="flex-shrink basis-16-9vh flex flex-col md:flex-1 md:justify-center md:items-end"
@@ -166,6 +107,69 @@ export default function App({
           <ControllerButton id="controller-speedup" text="⏩" />
           <ControllerButton id="controller-applause" text="👏" />
         </div>
+
+        <div
+          ref={searchRef}
+          id="search"
+          className="hidden w-screen flex-col fixed bg-light text-dark"
+        >
+          <div id="search-header" className="w-full flex">
+            <form
+              id="search-form"
+              name="search"
+              action="#"
+              className="flex flex-grow"
+            >
+              <fieldset
+                id="search-form__inputbox"
+                className="flex flex-grow x-cover-box"
+              >
+                <input
+                  id="search-form__value"
+                  name="search-form__value"
+                  type="search"
+                  minLength={1}
+                  placeholder="ex) 윤하 먹구름"
+                  className="x-cover-target bg-light-input border p-2 text-center"
+                  required
+                />
+                <fieldset
+                  id="search-form__buttonbox"
+                  className="x-cover-buttonbox"
+                >
+                  <input
+                    id="search-form__clear"
+                    type="reset"
+                    value="✕"
+                    className="text-dark text-opacity-30 pr-2"
+                  />
+                  <span className="bg-light-input x-cover-sticker mr-4" />
+                  <input
+                    id="search-form__search"
+                    type="submit"
+                    value="🔍"
+                    className="x-cover-instead mr-2 text-2xl"
+                  />
+                </fieldset>
+              </fieldset>
+            </form>
+          </div>
+          <div id="search-list" className="flex-grow relative" />
+          <button
+            id="search-close"
+            type="button"
+            className="hidden text-dark absolute right-0 bottom-0 p-4 md:block"
+            onClick={() => {
+              closeSearchBox(playerRef, searchRef, controllerRef)
+            }}
+          >
+            ✕
+          </button>
+        </div>
+        <div
+          id="search-modal"
+          className="hidden bg-gray-800 bg-opacity-50 w-screen h-screen absolute top-0 left-0"
+        />
       </div>
     </AppContext.Provider>
   )
