@@ -1,6 +1,7 @@
-import { useContext } from 'react'
+import { type MouseEvent, useContext } from 'react'
 import AppContext from './AppContext'
 import searchBoxClose from './controller/searchBoxClose'
+import searchVideo from './controller/searchVideo'
 
 export default function Search(): JSX.Element {
   const { playerRef, controllerRef, searchRef, searchModalRef } =
@@ -49,8 +50,8 @@ export default function Search(): JSX.Element {
                   type="submit"
                   value="🔍"
                   className="x-cover-instead mr-2 text-2xl"
-                  onClick={(event) => {
-                    event.preventDefault()
+                  onClick={(event: MouseEvent) => {
+                    searchVideo(event, searchRef)
                   }}
                 />
               </fieldset>
