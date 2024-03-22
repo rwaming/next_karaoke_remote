@@ -4,8 +4,13 @@ import searchBoxClose from './controller/searchBoxClose'
 import searchVideo from './controller/searchVideo'
 
 export default function Search(): JSX.Element {
-  const { playerRef, controllerRef, searchRef, searchModalRef } =
-    useContext(AppContext)
+  const {
+    playerRef,
+    controllerRef,
+    searchRef,
+    searchValueRef,
+    searchModalRef,
+  } = useContext(AppContext)
 
   return (
     <>
@@ -26,6 +31,7 @@ export default function Search(): JSX.Element {
               className="flex flex-grow x-cover-box"
             >
               <input
+                ref={searchValueRef}
                 id="search-form__value"
                 name="search-form__value"
                 type="search"
@@ -44,14 +50,14 @@ export default function Search(): JSX.Element {
                   value="✕"
                   className="text-dark text-opacity-30 pr-2"
                 />
-                <span className="bg-light-input x-cover-sticker mr-4" />
+                <span className="bg-light-input x-cover-sticker mr-2 md:mr-4" />
                 <input
                   id="search-form__search"
                   type="submit"
                   value="🔍"
                   className="x-cover-instead mr-2 text-2xl"
                   onClick={(event: MouseEvent) => {
-                    void searchVideo(event, searchRef)
+                    void searchVideo(event, searchRef, searchValueRef)
                   }}
                 />
               </fieldset>

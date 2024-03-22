@@ -20,6 +20,7 @@ const AppContext = createContext<{
   playerRef: MutableRefObject<HTMLDivElement | null> | null
   controllerRef: MutableRefObject<HTMLDivElement | null> | null
   searchRef: MutableRefObject<HTMLDivElement | null> | null
+  searchValueRef: MutableRefObject<HTMLInputElement | null> | null
   searchModalRef: MutableRefObject<HTMLDivElement | null> | null
 }>({
   videoEvent: null,
@@ -35,6 +36,7 @@ const AppContext = createContext<{
   playerRef: null,
   controllerRef: null,
   searchRef: null,
+  searchValueRef: null,
   searchModalRef: null,
 })
 

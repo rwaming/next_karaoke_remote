@@ -24,6 +24,7 @@ export default function App({
   const playerRef = useRef(null)
   const controllerRef = useRef(null)
   const searchRef = useRef(null)
+  const searchValueRef = useRef(null)
   const searchModalRef = useRef(null)
 
   const appValue = useMemo(
@@ -41,6 +42,7 @@ export default function App({
       playerRef,
       controllerRef,
       searchRef,
+      searchValueRef,
       searchModalRef,
     }),
     [isPlaying, videoDate, videoEvent, videoID, videoTitle],
