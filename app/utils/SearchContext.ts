@@ -2,12 +2,12 @@ import { createContext } from 'react'
 import { type VideoInfos, type SetState } from './Types'
 
 const SearchContext = createContext<{
-  videoInfos: VideoInfos | null
-  setVideoInfos: SetState<VideoInfos | null>
+  videoInfos: VideoInfos
+  setVideoInfos: SetState<VideoInfos>
   allVideoLength: number
   setAllVideoLength: SetState<number>
 }>({
-  videoInfos: null,
+  videoInfos: [],
   setVideoInfos: () => {},
   allVideoLength: -1,
   setAllVideoLength: () => {},
