@@ -37,10 +37,21 @@ export default function Search(): JSX.Element {
   )
   return (
     <SearchContext.Provider value={searchValue}>
+      <button
+        ref={searchModalRef}
+        type="button"
+        id="search-modal"
+        className="hidden bg-gray-800 bg-opacity-50 w-screen h-screen absolute top-0 left-0 text-transparent cursor-default"
+        onClick={() => {
+          searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
+        }}
+      >
+        Close
+      </button>
       <div
         ref={searchRef}
         id="search"
-        className="hidden w-screen flex-col fixed z-20 bg-light text-dark"
+        className="hidden w-screen flex-col fixed bg-light text-dark"
       >
         <SearchArea />
         <div
@@ -64,17 +75,6 @@ export default function Search(): JSX.Element {
           ✕
         </button>
       </div>
-      <button
-        ref={searchModalRef}
-        type="button"
-        id="search-modal"
-        className="hidden bg-gray-800 bg-opacity-50 w-screen h-screen absolute top-0 left-0 text-transparent"
-        onClick={() => {
-          searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
-        }}
-      >
-        Close
-      </button>
     </SearchContext.Provider>
   )
 }

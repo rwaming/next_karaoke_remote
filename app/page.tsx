@@ -55,8 +55,8 @@ export default function App(): JSX.Element {
         className="w-screen h-screen flex flex-col md:flex-row justify-center bg-dark text-light"
       >
         <Player />
-        <Controller />
         <Search />
+        <Controller />
       </div>
     </AppContext.Provider>
   )

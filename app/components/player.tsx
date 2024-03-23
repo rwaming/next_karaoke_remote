@@ -1,16 +1,13 @@
 import { useCallback, useContext } from 'react'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
-import playPause from '@/controller/playPause'
 import AppContext from '../utils/AppContext'
 
 export default function Player(): JSX.Element {
   const {
-    videoEvent,
     setVideoEvent,
     videoID,
     videoTitle,
     videoDate,
-    isPlaying,
     setIsPlaying,
     playerRef,
   } = useContext(AppContext)
@@ -29,16 +26,6 @@ export default function Player(): JSX.Element {
       className="flex-shrink basis-16-9vh flex flex-col md:flex-1 md:justify-center md:items-end"
     >
       <figure id="player-content" className="h-16-9vh relative w-full">
-        <button
-          type="button"
-          id="player-modal"
-          className="w-full h-full absolute top-0 right-0 text-transparent"
-          onClick={() => {
-            playPause(videoEvent, isPlaying, setIsPlaying)
-          }}
-        >
-          Pause
-        </button>
         <figcaption
           id="information"
           className="hidden absolute top-0 right-0 w-full h-1/5 bg-dark text-xs"
@@ -63,6 +50,13 @@ export default function Player(): JSX.Element {
             onReady={useThisVideo}
           />
         )}
+        <button
+          type="button"
+          id="player-modal"
+          className="w-full h-full absolute top-0 right-0 text-transparent cursor-default"
+        >
+          Pause
+        </button>
       </figure>
     </div>
   )

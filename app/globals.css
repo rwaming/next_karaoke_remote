@@ -47,9 +47,6 @@
 
 /* id */
 @layer components {
-  #player-modal {
-    z-index: 1;
-  }
   .player-yt {
     @apply w-full h-full;
     > iframe {
@@ -62,9 +59,6 @@
   #search {
     top: calc(100vh - (100vh - var(--screen-ratio-h-vh)));
     height: calc((100vh - var(--screen-ratio-h-vh)));
-  }
-  #search-modal {
-    z-index: 2;
   }
   #search-list__label {
     @apply border-0 font-bold text-base;
