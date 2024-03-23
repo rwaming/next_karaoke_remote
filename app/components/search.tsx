@@ -3,14 +3,14 @@ import { type VideoInfos } from '@/utils/Types'
 import SearchContext from '@/utils/SearchContext'
 import SearchArea from '@/components/searchArea'
 import AppContext from '@/utils/AppContext'
-import searchOpenClose from '@/controller/searchOpenClose'
+import searchOpenClose from '@/search/searchOpenClose'
 import SearchList from '@/components/searchList'
 
 export default function Search(): JSX.Element {
   const { playerRef, controllerRef, searchRef, searchModalRef } =
     useContext(AppContext)
 
-  const [videoInfos, setVideoInfos] = useState<VideoInfos | null>(null)
+  const [videoInfos, setVideoInfos] = useState<VideoInfos>([])
   const [allVideoLength, setAllVideoLength] = useState(-1)
 
   const listNote = useMemo(() => {

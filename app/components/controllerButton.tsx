@@ -9,7 +9,7 @@ import setSpeed from '@/controller/setSpeed'
 import applause from '@/controller/applause'
 import AppContext from '@/utils/AppContext'
 import ApplauseAudios from '@/components/controllerApplauseAudios'
-import searchOpenClose from '@/controller/searchOpenClose'
+import searchOpenClose from '@/search/searchOpenClose'
 
 export default function ControllerButton({
   id,

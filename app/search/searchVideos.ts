@@ -80,7 +80,7 @@ export default async function searchVideos(
     searchValueRef,
     setAllVideoLength,
   }: {
-    setVideoInfos: SetState<VideoInfos | null>
+    setVideoInfos: SetState<VideoInfos>
     searchValueRef: UseRef<Input>
     setAllVideoLength: SetState<number>
   },

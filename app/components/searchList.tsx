@@ -1,23 +1,44 @@
-import searchOpenClose from '@/controller/searchOpenClose'
+import { useContext, useMemo } from 'react'
 import AppContext from '@/utils/AppContext'
 import SearchContext from '@/utils/SearchContext'
-import { type MouseEvent, useCallback, useContext } from 'react'
+import changeVideo from '@/search/changeVideo'
 
 export default function SearchList(): JSX.Element {
-  const { playerRef, controllerRef, searchRef, searchModalRef } =
-    useContext(AppContext)
+  const {
+    playerRef,
+    controllerRef,
+    searchRef,
+    searchModalRef,
+    setVideoID,
+    setVideoTitle,
+    setVideoDate,
+  } = useContext(AppContext)
   const { videoInfos } = useContext(SearchContext)
 
   console.log(videoInfos)
 
-  const changeVideo = useCallback(
-    (event: MouseEvent) => {
-      event.preventDefault()
-      searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
-    },
-    [controllerRef, playerRef, searchModalRef, searchRef],
+  const changeVideoArgs = useMemo(
+    () => ({
+      playerRef,
+      controllerRef,
+      searchRef,
+      searchModalRef,
+      videoInfos,
+      setVideoID,
+      setVideoTitle,
+      setVideoDate,
+    }),
+    [
+      controllerRef,
+      playerRef,
+      searchModalRef,
+      searchRef,
+      setVideoDate,
+      setVideoID,
+      setVideoTitle,
+      videoInfos,
+    ],
   )
-
   return (
     <ul id="search-list__ul">
       <li id="search-list__label" className="search-list__li">
@@ -38,7 +59,7 @@ export default function SearchList(): JSX.Element {
                 type="button"
                 className="search-list__li-click"
                 onClick={(event) => {
-                  changeVideo(event)
+                  changeVideo(event, changeVideoArgs)
                 }}
               >
                 <p className="search-list__li-title">{v.title}</p>
