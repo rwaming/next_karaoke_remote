@@ -59,7 +59,7 @@ Foremore
 - ESLint
 - Prettier
 - Stylelint
-- Node.js Express (expected)
+- _Node.js Express_ (expected)
 - ~~SASS~~ conflicts with TailwindCSS: uninstalled
 
 <br>
@@ -87,13 +87,21 @@ Foremore
 1. At first, Make Web APP have buttons which work in it.
 1. Try making Chrome Extention for Web APP and connecting Web APP to Chrome Extention as make buttons one by one.
 
-- If it is thought impossible now, close this project with no functions about 2
+- If it is thought impossible now, close this project with no functions about 2.
 
 <br>
 
 ## ✨ Issues <a id="issues"></a>
 
-Issues are listed by completion date.
+Issues are listed by completion date, written since _2024.03.15.fri_.
+
+<br>
+
+> _2024.03.23.sat_
+
+#### ~~#58 Search how to use api folder in Next.js (to use Youtube API in it)~~
+
+- I get to know request in client(like fetch, or using gapi) don't use '/api' is for sever-side.
 
 <br>
 
