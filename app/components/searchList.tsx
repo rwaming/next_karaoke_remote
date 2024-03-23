@@ -1,4 +1,4 @@
-import searchBoxClose from '@/controller/searchBoxClose'
+import searchOpenClose from '@/controller/searchOpenClose'
 import AppContext from '@/utils/AppContext'
 import SearchContext from '@/utils/SearchContext'
 import { type MouseEvent, useCallback, useContext } from 'react'
@@ -11,7 +11,7 @@ export default function SearchList(): JSX.Element {
   const changeVideo = useCallback(
     (event: MouseEvent) => {
       event.preventDefault()
-      searchBoxClose(playerRef, controllerRef, searchRef, searchModalRef)
+      searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
     },
     [controllerRef, playerRef, searchModalRef, searchRef],
   )

@@ -5,6 +5,7 @@ import {
   type DivType,
   type InputType,
   type SetStateType,
+  type ButtonType,
 } from './Types'
 
 const AppContext = createContext<{
@@ -22,7 +23,7 @@ const AppContext = createContext<{
   controllerRef: RefType<DivType>
   searchRef: RefType<DivType>
   searchValueRef: RefType<InputType>
-  searchModalRef: RefType<DivType>
+  searchModalRef: RefType<ButtonType>
 }>({
   videoEvent: null,
   setVideoEvent: () => {},

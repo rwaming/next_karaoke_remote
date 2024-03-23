@@ -1,11 +1,11 @@
 import { gapi } from 'gapi-script'
 import { type MouseEvent } from 'react'
-import { type InputType, type RefType, type VideoInfo } from '@/utils/Types'
+import { type InputType, type RefType, type VideoInfoType } from '@/utils/Types'
 
 export default async function searchVideo(
   event: MouseEvent,
   searchValueRef: RefType<InputType>,
-): Promise<VideoInfo[] | null> {
+): Promise<VideoInfoType[] | null> {
   const searchKeyword = searchValueRef?.current?.value.trim() ?? null
 
   if (searchKeyword !== null && searchKeyword !== '') {

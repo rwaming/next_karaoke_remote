@@ -1,8 +1,8 @@
 import { useContext, useMemo, useState } from 'react'
 import SearchContext from '@/utils/SearchContext'
-import { type VideoInfo } from '../utils/Types'
+import { type VideoInfoType } from '../utils/Types'
 import AppContext from '../utils/AppContext'
-import searchBoxClose from '../controller/searchBoxClose'
+import searchOpenClose from '../controller/searchOpenClose'
 import SearchArea from './searchArea'
 import SearchList from './searchList'
 
@@ -10,7 +10,7 @@ export default function Search(): JSX.Element {
   const { playerRef, controllerRef, searchRef, searchModalRef } =
     useContext(AppContext)
 
-  const [searchInfos, setSearchInfos] = useState<VideoInfo[] | null>(null)
+  const [searchInfos, setSearchInfos] = useState<VideoInfoType[] | null>(null)
   const [videoAllLength, setVideoAllLength] = useState<number | null>(null)
 
   const searchValue = useMemo(
@@ -49,17 +49,23 @@ export default function Search(): JSX.Element {
           type="button"
           className="hidden text-dark absolute right-0 bottom-0 p-4 md:block"
           onClick={() => {
-            searchBoxClose(playerRef, controllerRef, searchRef, searchModalRef)
+            searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
           }}
         >
           ✕
         </button>
       </div>
-      <div
+      <button
         ref={searchModalRef}
+        type="button"
         id="search-modal"
-        className="hidden bg-gray-800 bg-opacity-50 w-screen h-screen absolute top-0 left-0"
-      />
+        className="hidden bg-gray-800 bg-opacity-50 w-screen h-screen absolute top-0 left-0 text-opacity-0"
+        onClick={() => {
+          searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
+        }}
+      >
+        Close
+      </button>
     </SearchContext.Provider>
   )
 }

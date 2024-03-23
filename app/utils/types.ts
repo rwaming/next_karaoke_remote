@@ -14,7 +14,7 @@ export type RefType<T> = MutableRefObject<T | null> | null
 export type RefArrayType<T> = Array<MutableRefObject<T | null>>
 
 /* Exclusive */
-export type VideoInfo =
+export type VideoInfoType =
   | {
       id: string
       title: string
