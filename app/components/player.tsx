@@ -32,7 +32,7 @@ export default function Player(): JSX.Element {
         <button
           type="button"
           id="player-modal"
-          className="w-full h-full absolute top-0 right-0 text-opacity-0"
+          className="w-full h-full absolute top-0 right-0 text-transparent"
           onClick={() => {
             playPause(videoEvent, isPlaying, setIsPlaying)
           }}

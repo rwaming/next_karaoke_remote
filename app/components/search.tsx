@@ -59,7 +59,7 @@ export default function Search(): JSX.Element {
         ref={searchModalRef}
         type="button"
         id="search-modal"
-        className="hidden bg-gray-800 bg-opacity-50 w-screen h-screen absolute top-0 left-0 text-opacity-0"
+        className="hidden bg-gray-800 bg-opacity-50 w-screen h-screen absolute top-0 left-0 text-transparent"
         onClick={() => {
           searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
         }}
