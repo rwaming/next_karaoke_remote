@@ -3,11 +3,13 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
 import Script from 'next/script'
 import { type YouTubeEvent } from 'react-youtube'
-import youtubeAPI from './youtubeAPI'
-import AppContext from './utils/AppContext'
+
 import Search from './components/search'
 import Video from './components/video'
 import Controller from './components/controller'
+
+import AppContext from './utils/AppContext'
+import youtubeAPI from './youtubeAPI'
 
 export default function App(): JSX.Element {
   const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)
@@ -46,7 +48,6 @@ export default function App(): JSX.Element {
   useEffect(() => {
     void youtubeAPI()
   }, [])
-
   return (
     <AppContext.Provider value={appValue}>
       <Script src="https://apis.google.com/js/api.js" defer />
