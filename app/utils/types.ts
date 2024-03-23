@@ -39,3 +39,18 @@ export type VideoInfo =
   | number
 
 export type RefAudios = Array<MutableRefObject<HTMLAudioElement | null>>
+
+export type SetControllParams = Pick<ControllerProps, 'id'> &
+  Pick<
+    AppContextValue,
+    | 'videoEvent'
+    | 'setVideoID'
+    | 'setVideoTitle'
+    | 'setVideoDate'
+    | 'isPlaying'
+    | 'setIsPlaying'
+    | 'playerRef'
+    | 'controllerRef'
+    | 'searchRef'
+    | 'searchModalRef'
+  > & { applauseRefs: RefAudios }

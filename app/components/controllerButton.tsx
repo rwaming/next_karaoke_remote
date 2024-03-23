@@ -26,9 +26,8 @@ export default function ControllerButton({
   const applauseRef3 = useRef(null)
   const applauseRef4 = useRef(null)
 
-  const controllValue = {
+  const setControllArgs = {
     id,
-    text,
     videoEvent,
     setVideoID,
     setVideoTitle,
@@ -41,6 +40,7 @@ export default function ControllerButton({
     searchModalRef,
     applauseRefs: [applauseRef1, applauseRef2, applauseRef3, applauseRef4],
   }
+
   return (
     <>
       <button
@@ -48,7 +48,7 @@ export default function ControllerButton({
         id={id}
         className={`${id.includes('latest') ? 'text-xs' : 'text-2xl'}`}
         onClick={(event: MouseEvent<HTMLButtonElement>) => {
-          setControll(event, controllValue)
+          setControll(event, setControllArgs)
         }}
       >
         {text}

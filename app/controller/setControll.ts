@@ -1,8 +1,4 @@
-import {
-  type RefAudios,
-  type AppContextValue,
-  type ControllerProps,
-} from '@/utils/types'
+import { type SetControllParams } from '@/utils/types'
 import { type MouseEvent } from 'react'
 import playPause from './playPause'
 import searchBoxOpen from './searchBoxOpen'
@@ -12,21 +8,6 @@ import moveTime from './moveTime'
 import setVolume from './setVolume'
 import setSpeed from './setSpeed'
 import applause from './applause'
-
-type SetControllProps = ControllerProps &
-  Pick<
-    AppContextValue,
-    | 'videoEvent'
-    | 'setVideoID'
-    | 'setVideoTitle'
-    | 'setVideoDate'
-    | 'isPlaying'
-    | 'setIsPlaying'
-    | 'playerRef'
-    | 'controllerRef'
-    | 'searchRef'
-    | 'searchModalRef'
-  > & { applauseRefs: RefAudios }
 
 export default function setControll(
   event: MouseEvent<HTMLButtonElement>,
@@ -43,7 +24,7 @@ export default function setControll(
     searchRef,
     searchModalRef,
     applauseRefs,
-  }: SetControllProps,
+  }: SetControllParams,
 ): void {
   void (
     id.includes('latest') &&
