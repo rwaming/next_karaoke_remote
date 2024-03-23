@@ -40,7 +40,7 @@ export default function SearchArea({
       >
         <fieldset
           id="search-form__inputbox"
-          className="flex flex-grow x-cover-box"
+          className="flex flex-grow relative items-center"
         >
           <input
             ref={searchValueRef}
@@ -50,22 +50,24 @@ export default function SearchArea({
             minLength={1}
             pattern="/S*"
             placeholder="ex) 윤하 먹구름"
-            className="x-cover-target bg-light-input border p-2 text-center"
+            className="flex-grow bg-light-input box-border border h-12 p-2 text-center focus:bg-light-input focus:outline-none focus:border-2 focus:border-lime-200"
             required
           />
-          <fieldset id="search-form__buttonbox" className="x-cover-buttonbox">
+          <fieldset
+            id="search-form__buttonbox"
+            className="flex items-center absolute right-0"
+          >
             <input
               id="search-form__clear"
               type="reset"
               value="✕"
               className="text-dark text-opacity-30 pr-2"
             />
-            <span className="bg-light-input x-cover-sticker mr-2 md:mr-4" />
             <input
               id="search-form__search"
               type="submit"
               value="🔍"
-              className="x-cover-instead mr-2 text-2xl"
+              className="x-cover-instead mr-2 text-2xl bg-light-input"
               onClick={(event) => {
                 void getSearchList(event)
               }}

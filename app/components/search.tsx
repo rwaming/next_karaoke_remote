@@ -31,13 +31,10 @@ export default function Search(): JSX.Element {
       return searchInfos.map((v, i) => {
         if (typeof v === 'object') {
           return (
-            <li
-              key={`${v.title}`}
-              className="search-list__li flex h-4 m-4 border-b border-b-gray-800 border-opacity-50 py-2 box-content"
-            >
-              <a
-                href={`https://www.youtube.com/watch?v=${v.id}`}
-                className="search-list__li-text flex-grow flex items-center max-w-full"
+            <li key={`${v.title}`} className="search-list__li">
+              <button
+                type="button"
+                className="search-list__li-click"
                 onClick={(event) => {
                   changeVideo(event)
                 }}
@@ -45,7 +42,7 @@ export default function Search(): JSX.Element {
                 <p className="search-list__li-title">{v.title}</p>
                 <p className="search-list__li-artist">{v.artist}</p>
                 <p className=" search-list__li-number">{v.number}</p>
-              </a>
+              </button>
             </li>
           )
         }
@@ -75,17 +72,17 @@ export default function Search(): JSX.Element {
         />
         <div
           id="search-list"
-          className="flex-grow relative overflow-x-scroll md:px-20"
+          className="flex-grow relative overflow-x-scroll py-3 md:px-1/10vw"
         >
           <p id="search-list__note" className="text-center text-xs p-2">
             {videoAllLength === null && '검색어를 입력해주세요.'}
             {videoAllLength === 0 && '검색된 결과가 없습니다.'}
             {videoAllLength !== null &&
               videoAllLength > 0 &&
-              `${videoAllLength}건이 검색되었습니다.`}{' '}
+              `${videoAllLength}건이 검색되었습니다.`}
           </p>
 
-          <ul id="search-list__ol">
+          <ul id="search-list__ul">
             {videoAllLength !== null && videoAllLength > 0 && (
               <li id="search-list__label" className="search-list__li">
                 <h6 className="search-list__li-title">제목</h6>
