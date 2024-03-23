@@ -1,6 +1,6 @@
 # ⌨️ react_karaoke_remote
 
-This file be update mostly in [Issues](#issues).
+This file be update mostly in **[Issues](#issues)**.
 
 ## 🙌 Intro
 
@@ -8,7 +8,7 @@ This file be update mostly in [Issues](#issues).
 
 It is the reason why to start this project that I had wanted to sing with **karaoke remote control**, whenever enjoyed singing home.
 
-### Goal
+### Goal <a id="goal"></a>
 
 This app should have functions for users to enjoy singing at home when they want it.
 
@@ -59,7 +59,7 @@ Foremore
 - ESLint
 - Prettier
 - Stylelint
-- Node.js Express (expected)
+- _Node.js Express_ (expected)
 - ~~SASS~~ conflicts with TailwindCSS: uninstalled
 
 <br>
@@ -87,13 +87,21 @@ Foremore
 1. At first, Make Web APP have buttons which work in it.
 1. Try making Chrome Extention for Web APP and connecting Web APP to Chrome Extention as make buttons one by one.
 
-- If it is thought impossible now, close this project with no functions about 2
+- If it is thought impossible now, close this project with no functions about 2.
 
 <br>
 
 ## ✨ Issues <a id="issues"></a>
 
-Issues are listed by completion date.
+Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1).
+
+<br>
+
+> _2024.03.23.sat_
+
+#### ~~#58 Search how to use api folder in Next.js (to use Youtube API in it)~~
+
+- I get to know request in client(like fetch, or using gapi) don't use '/api' is for sever-side.
 
 <br>
 
@@ -348,6 +356,7 @@ Issues are listed by completion date.
 - I realized that PostCSS sorting and CSS declaration sorter is definetely different.
 
 <br>
+<a id="issues_1"></a>
 
 > _2024.03.15.fri_
 
@@ -366,21 +375,23 @@ It will be made with React, but I heard offical React document say "Don"t use cr
 
 #### ~~#1 - Set up basis of project~~
 
-- Update plan especially at [Goal v.1.0](#v1_0)
+- Update plan especially at [Goal](#goal)
 
 <br>
 
 # Memo
 
-## [TypeScript's Main Syntactics](#ts_)<a id="ts"></a>
+## [TypeScript](#ts_)<a id="ts"></a>
 
-### Most Usages
+### Type
 
-1. Interface
+0. [**Basic type**](#ts_types)
+
+1. **Interface**
 
    Defines the structure of Object.
 
-2. type
+2. **type**
 
    Defines new custumized type.
 
@@ -414,13 +425,17 @@ It will be made with React, but I heard offical React document say "Don"t use cr
 1. **[Types](#ts_types_)** <a id="ts_types"></a>
 
    - number, string, bllean, null, undefined...
+
    - `any`, `void`, `never`, `unknown`...
+
      - `void` : no return
      - `never` : never return
        1. Throw only error
        2. Infinite loop function
      - `unknown` : For use, It is needed what type of this value is.
+
    - `typeName[]`, `Array<typeName>`
+
    - { key: _typeName_ }, interface Name { _keyName_: _typeName_,...}
 
 2. **[Variable declaration](#ts_variable_)** <a id="ts_variable"></a>

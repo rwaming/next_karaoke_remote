@@ -1,12 +1,11 @@
 import {
   type Dispatch,
-  createContext,
   type SetStateAction,
   type MutableRefObject,
 } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
-const AppContext = createContext<{
+export interface AppContextValue {
   videoEvent: YouTubeEvent | null
   setVideoEvent: Dispatch<SetStateAction<YouTubeEvent | null>>
   videoID: string | null
@@ -22,22 +21,21 @@ const AppContext = createContext<{
   searchRef: MutableRefObject<HTMLDivElement | null> | null
   searchValueRef: MutableRefObject<HTMLInputElement | null> | null
   searchModalRef: MutableRefObject<HTMLDivElement | null> | null
-}>({
-  videoEvent: null,
-  setVideoEvent: () => {},
-  videoID: null,
-  setVideoID: () => {},
-  videoTitle: '',
-  setVideoTitle: () => {},
-  videoDate: '',
-  setVideoDate: () => {},
-  isPlaying: false,
-  setIsPlaying: () => {},
-  playerRef: null,
-  controllerRef: null,
-  searchRef: null,
-  searchValueRef: null,
-  searchModalRef: null,
-})
+}
 
-export default AppContext
+export interface ControllerProps {
+  id: string
+  text: string
+}
+
+export type VideoInfo =
+  | {
+      id: string
+      title: string
+      artist: string
+      number: string
+      date: string
+    }
+  | number
+
+export type RefAudios = Array<MutableRefObject<HTMLAudioElement | null>>
