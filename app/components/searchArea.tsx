@@ -1,26 +1,12 @@
-import { type MouseEvent, useContext } from 'react'
+import { useContext } from 'react'
 import AppContext from '@/utils/AppContext'
+import searchVideos from '@/controller/searchVideos'
 import SearchContext from '@/utils/SearchContext'
-import searchVideo from '../controller/searchVideo'
 
 export default function SearchArea(): JSX.Element {
   const { searchValueRef } = useContext(AppContext)
-  const { searchInfos, setSearchInfos, setVideoAllLength } =
-    useContext(SearchContext)
+  const { setVideoInfos, setAllVideoLength } = useContext(SearchContext)
 
-  const getSearchList = async (event: MouseEvent): Promise<void> => {
-    if (searchInfos !== null) {
-      setSearchInfos(null)
-    }
-    const getList = await searchVideo(event, searchValueRef)
-    if (getList !== null && getList.length > 1) {
-      const getAllLegnth = getList.pop()
-      setSearchInfos(getList)
-      if (typeof getAllLegnth === 'number') {
-        setVideoAllLength(getAllLegnth)
-      }
-    }
-  }
   return (
     <div id="search-area" className="w-full flex">
       <form
@@ -60,7 +46,11 @@ export default function SearchArea(): JSX.Element {
               value="🔍"
               className="x-cover-instead mr-2 text-2xl bg-light-input"
               onClick={(event) => {
-                void getSearchList(event)
+                void searchVideos(event, {
+                  setVideoInfos,
+                  searchValueRef,
+                  setAllVideoLength,
+                })
               }}
             />
           </fieldset>

@@ -1,5 +1,5 @@
 import { useContext, useMemo, useState } from 'react'
-import { type SearchInfo } from '@/utils/Types'
+import { type VideoInfos } from '@/utils/Types'
 import SearchContext from '@/utils/SearchContext'
 import SearchArea from '@/components/searchArea'
 import AppContext from '@/utils/AppContext'
@@ -10,17 +10,30 @@ export default function Search(): JSX.Element {
   const { playerRef, controllerRef, searchRef, searchModalRef } =
     useContext(AppContext)
 
-  const [searchInfos, setSearchInfos] = useState<SearchInfo | null>(null)
-  const [videoAllLength, setVideoAllLength] = useState(0)
+  const [videoInfos, setVideoInfos] = useState<VideoInfos | null>(null)
+  const [allVideoLength, setAllVideoLength] = useState(-1)
+
+  const listNote = useMemo(() => {
+    if (allVideoLength > 0) {
+      return `${allVideoLength}건이 검색되었습니다.`
+    }
+    if (allVideoLength === 0) {
+      return '검색된 결과가 없습니다.'
+    }
+    if (allVideoLength === -1) {
+      return '검색어를 입력해주세요.'
+    }
+    return '에러: 현재 검색이 불가합니다.'
+  }, [allVideoLength])
 
   const searchValue = useMemo(
     () => ({
-      searchInfos,
-      setSearchInfos,
-      videoAllLength,
-      setVideoAllLength,
+      videoInfos,
+      setVideoInfos,
+      allVideoLength,
+      setAllVideoLength,
     }),
-    [searchInfos, videoAllLength],
+    [videoInfos, allVideoLength],
   )
   return (
     <SearchContext.Provider value={searchValue}>
@@ -35,14 +48,10 @@ export default function Search(): JSX.Element {
           className="flex-grow relative overflow-x-scroll py-3 md:px-1/10vw"
         >
           <p id="search-list__note" className="text-center text-xs p-2">
-            {videoAllLength === null && '검색어를 입력해주세요.'}
-            {videoAllLength === 0 && '검색된 결과가 없습니다.'}
-            {videoAllLength !== null &&
-              videoAllLength > 0 &&
-              `${videoAllLength}건이 검색되었습니다.`}
+            {listNote}
           </p>
 
-          {searchInfos !== null && <SearchList />}
+          {allVideoLength > 0 && <SearchList />}
         </div>
         <button
           id="search-close"

@@ -14,13 +14,13 @@ export type UseRef<T> = MutableRefObject<T | null>
 export type UseRefArray<T> = Array<MutableRefObject<T | null>>
 
 /* Exclusive */
-export type SearchInfo = Array<
-  | {
-      id: string
-      title: string
-      artist: string
-      number: string
-      date: string
-    }
-  | number
->
+
+export interface VideoInfo {
+  id: string
+  title: string
+  artist: string
+  number: string
+  date: string
+}
+export type VideoInfos = VideoInfo[]
+export type SearchInfo = Array<VideoInfo | number>

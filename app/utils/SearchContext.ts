@@ -1,16 +1,16 @@
 import { createContext } from 'react'
-import { type SearchInfo, type SetState } from './Types'
+import { type VideoInfos, type SetState } from './Types'
 
 const SearchContext = createContext<{
-  searchInfos: SearchInfo | null
-  setSearchInfos: SetState<SearchInfo | null>
-  videoAllLength: number
-  setVideoAllLength: SetState<number>
+  videoInfos: VideoInfos | null
+  setVideoInfos: SetState<VideoInfos | null>
+  allVideoLength: number
+  setAllVideoLength: SetState<number>
 }>({
-  searchInfos: null,
-  setSearchInfos: () => {},
-  videoAllLength: 0,
-  setVideoAllLength: () => {},
+  videoInfos: null,
+  setVideoInfos: () => {},
+  allVideoLength: -1,
+  setAllVideoLength: () => {},
 })
 
 export default SearchContext
