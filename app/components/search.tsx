@@ -35,25 +35,17 @@ export default function Search(): JSX.Element {
               key={`${v.title}`}
               className="search-list__li flex h-4 m-4 border-b border-b-gray-800 border-opacity-50 py-2 box-content"
             >
-              <p className="search-list__li-text flex-grow flex max-w-full">
-                <a
-                  href={`https://www.youtube.com/watch?v=${v.id}`}
-                  className="flex-grow flex items-center max-w-full"
-                  onClick={(event) => {
-                    changeVideo(event)
-                  }}
-                >
-                  <span className="block search-list__li-title flex-grow text-xs text-ellipsis overflow-hidden whitespace-nowrap">
-                    {v.title}
-                  </span>
-                  <span className="block search-list__li-artist basis-1/5vw flex-shrink-0 text-xs text-ellipsis overflow-hidden whitespace-nowrap opacity-70">
-                    {v.artist}
-                  </span>
-                  <span className="hidden search-list__li-artist basis-1/10vw flex-shrink-0 text-xs text-ellipsis overflow-hidden whitespace-nowrap opacity-70 md:block">
-                    {v.number}
-                  </span>
-                </a>
-              </p>
+              <a
+                href={`https://www.youtube.com/watch?v=${v.id}`}
+                className="search-list__li-text flex-grow flex items-center max-w-full"
+                onClick={(event) => {
+                  changeVideo(event)
+                }}
+              >
+                <p className="search-list__li-title">{v.title}</p>
+                <p className="search-list__li-artist">{v.artist}</p>
+                <p className=" search-list__li-number">{v.number}</p>
+              </a>
             </li>
           )
         }
@@ -92,20 +84,17 @@ export default function Search(): JSX.Element {
               videoAllLength > 0 &&
               `${videoAllLength}건이 검색되었습니다.`}{' '}
           </p>
-          {videoAllLength !== null && videoAllLength > 0 && (
-            <p className="search-list__note-label flex-grow flex max-w-full h-4 m-4 p-2 font-bold box-content pl-3">
-              <span className="block search-list__li-title flex-grow text-sm text-ellipsis overflow-hidden whitespace-nowrap">
-                제목
-              </span>
-              <span className="block search-list__li-artist basis-1/5vw md:basis-1/5vw flex-shrink-0 text-sm pl-4">
-                가수
-              </span>
-              <span className="hidden search-list__li-artist basis-1/10vw flex-shrink-0 text-sm md:block">
-                금영 번호
-              </span>
-            </p>
-          )}
-          <ol id="search-list__ol">{searchList}</ol>
+
+          <ul id="search-list__ol">
+            {videoAllLength !== null && videoAllLength > 0 && (
+              <li id="search-list__label" className="search-list__li">
+                <h6 className="search-list__li-title">제목</h6>
+                <h6 className="search-list__li-artist">가수</h6>
+                <h6 className="search-list__li-number">금영 번호</h6>
+              </li>
+            )}
+            {searchList}
+          </ul>
         </div>
         <button
           id="search-close"

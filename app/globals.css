@@ -56,6 +56,19 @@
   .x-cover-instead {
     @apply relative;
   }
+
+  .search-list__li {
+    @apply flex h-4 m-4 border-b border-b-gray-800 border-opacity-50 py-2 box-content;
+  }
+  .search-list__li-title {
+    @apply flex-grow text-xs text-ellipsis overflow-hidden whitespace-nowrap;
+  }
+  .search-list__li-artist {
+    @apply basis-1/5vw flex-shrink-0 text-xs text-ellipsis overflow-hidden whitespace-nowrap opacity-70;
+  }
+  .search-list__li-number {
+    @apply hidden basis-1/10vw flex-shrink-0 text-xs text-ellipsis overflow-hidden whitespace-nowrap opacity-70 md:block;
+  }
 }
 
 /* id */
@@ -72,7 +85,6 @@
   #controller {
     flex-basis: var(--controller-w-px);
   }
-
   #search {
     top: calc(100vh - (100vh - var(--screen-ratio-h-vh)));
     height: calc((100vh - var(--screen-ratio-h-vh)));
@@ -80,6 +92,10 @@
   #search-modal {
     z-index: 2;
   }
+  #search-list__label {
+    @apply border-0;
+  }
+
   .player-search {
     @apply absolute w-full top-0 md:relative md:justify-end;
   }
