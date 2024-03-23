@@ -99,6 +99,10 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.03.23.sat_
 
+#### ~~#57 Arrange file structure from 56~~
+
+- in progress
+
 #### ~~#58 Search how to use api folder in Next.js (to use Youtube API in it)~~
 
 - I get to know request in client(like fetch, or using gapi) don't use '/api' is for sever-side.
