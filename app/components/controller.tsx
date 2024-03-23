@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import ControllerButton from './controllerButton'
-import AppContext from './AppContext'
+import AppContext from '../utils/AppContext'
 
 export default function Controller(): JSX.Element {
   const { controllerRef } = useContext(AppContext)

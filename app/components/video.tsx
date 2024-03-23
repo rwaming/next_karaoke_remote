@@ -1,6 +1,6 @@
 import { useCallback, useContext } from 'react'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
-import AppContext from './AppContext'
+import AppContext from '../utils/AppContext'
 
 export default function Video(): JSX.Element {
   const {

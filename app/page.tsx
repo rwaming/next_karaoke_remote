@@ -4,10 +4,10 @@ import { useState, useMemo, useEffect, useRef } from 'react'
 import Script from 'next/script'
 import { type YouTubeEvent } from 'react-youtube'
 import youtubeAPI from './youtubeAPI'
-import AppContext from './AppContext'
-import Search from './search'
-import Video from './video'
-import Controller from './controller'
+import AppContext from './utils/AppContext'
+import Search from './components/search'
+import Video from './components/video'
+import Controller from './components/controller'
 
 export default function App(): JSX.Element {
   const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)

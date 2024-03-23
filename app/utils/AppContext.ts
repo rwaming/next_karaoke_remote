@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { type AppContextInterface } from './utils'
+import { type AppContextInterface } from './types'
 
 const AppContext = createContext<AppContextInterface>({
   videoEvent: null,

@@ -1,15 +1,15 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
-import AppContext from './AppContext'
-import ApplauseAudios from './applauseAudios'
+import AppContext from '../utils/AppContext'
+import ApplauseAudios from '../applauseAudios'
 
-import showLatestVideo from './controller/showLatestVideo'
-import searchBoxOpen from './controller/searchBoxOpen'
-import playPause from './controller/playPause'
-import stop from './controller/stop'
-import moveTime from './controller/moveTime'
-import setVolume from './controller/setVolume'
-import setSpeed from './controller/setSpeed'
-import applause from './controller/applause'
+import showLatestVideo from '../controller/showLatestVideo'
+import searchBoxOpen from '../controller/searchBoxOpen'
+import playPause from '../controller/playPause'
+import stop from '../controller/stop'
+import moveTime from '../controller/moveTime'
+import setVolume from '../controller/setVolume'
+import setSpeed from '../controller/setSpeed'
+import applause from '../controller/applause'
 
 export default function ControllerButton({
   id,
