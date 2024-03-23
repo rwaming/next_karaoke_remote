@@ -21,40 +21,27 @@
 
 /* reusable */
 @layer utilities {
-  /* searchbox
-    fieldset.x-cover {
-      @apply relative items-center;
-      
-      buttonbox
-      > fieldset.x-cover-buttonbox {
-        @apply flex items-center absolute;
-        
-        cover sticker
-        > span.x-cover-sticker {
-          @apply flex absolute right-0 w-4 h-4;
-        }
-        
-        button on x
-        > input.x-cover-instead {
-          @apply relative;
-        }
-      }
-    }
-  */
-  .x-cover-box {
-    @apply relative items-center;
+  .search-list__li {
+    @apply flex h-4 mt-4 border-b border-b-gray-800 border-opacity-50 box-content text-center py-2;
   }
-  .x-cover-target {
-    @apply flex-grow;
+  .search-list__li-click {
+    @apply flex-grow flex items-center max-w-full;
   }
-  .x-cover-buttonbox {
-    @apply flex items-center absolute right-0;
+  .search-list__li-title {
+    @apply flex-grow text-xs text-ellipsis overflow-hidden whitespace-nowrap;
   }
-  .x-cover-sticker {
-    @apply flex absolute right-0 w-4 h-4;
+  .search-list__li-artist {
+    @apply basis-1/5vw flex-shrink-0 text-xs text-ellipsis overflow-hidden whitespace-nowrap opacity-70;
   }
-  .x-cover-instead {
-    @apply relative;
+  .search-list__li-number {
+    @apply hidden basis-1/8vw flex-shrink-0 text-xs text-ellipsis overflow-hidden whitespace-nowrap opacity-70 md:block;
+  }
+
+  .player-search {
+    @apply absolute w-full top-0 md:relative md:justify-end;
+  }
+  .controller-search {
+    @apply hidden md:block pt-1/2vh;
   }
 }
 
@@ -69,18 +56,15 @@
   #controller {
     flex-basis: var(--controller-w-px);
   }
-
   #search {
     top: calc(100vh - (100vh - var(--screen-ratio-h-vh)));
     height: calc((100vh - var(--screen-ratio-h-vh)));
   }
-  .player-search {
-    @apply absolute w-full -top-1/5vw md:static md:bottom-auto md:w-auto;
-  }
-  .controller-search {
-    @apply hidden md:block pt-1/2vh;
+  #search-list__label {
+    @apply border-0 font-bold text-base;
   }
 
+  /* md */
   @media screen and (min-width: 768px) {
     #player {
       width: calc(100vw - var(--controller-w-px));
@@ -105,12 +89,11 @@
       @apply p-2;
     }
   }
+  /* xs */
   @media screen and (max-width: 300px) {
     #search-form__clear {
       @apply hidden;
     }
-  }
-  @media screen and (max-width: 200px) {
     #search-form__search {
       @apply hidden;
     }

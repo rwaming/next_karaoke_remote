@@ -1,17 +1,11 @@
 import { type YouTubeEvent } from 'react-youtube'
 
-export default function playPause(
-  videoEvent: null | YouTubeEvent,
-  isPlaying: boolean,
-  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>,
-): void {
+export default function playPause(videoEvent: null | YouTubeEvent): void {
   if (videoEvent != null) {
-    if (isPlaying) {
+    if (videoEvent.target.getPlayerState() === 1) {
       videoEvent.target.pauseVideo()
-      setIsPlaying(false)
     } else {
       videoEvent.target.playVideo()
-      setIsPlaying(true)
     }
   }
 }
