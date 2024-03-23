@@ -34,12 +34,12 @@ export default function Player(): JSX.Element {
           id="information"
           className="hidden absolute top-0 right-0 w-full h-1/5 bg-dark text-xs"
         >
-          <p>{videoID !== null && videoID}</p>
-          <p>{videoID !== null && videoTitle}</p>
-          <p>{videoID !== null && videoDate}</p>
+          <p>{videoID !== '' && videoID}</p>
+          <p>{videoID !== '' && videoTitle}</p>
+          <p>{videoID !== '' && videoDate}</p>
         </figcaption>
 
-        {videoID !== null && (
+        {videoID !== '' && (
           <YouTube
             className="player-yt"
             videoId={videoID}
