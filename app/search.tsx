@@ -5,9 +5,19 @@ import {
   useMemo,
   useCallback,
 } from 'react'
-import AppContext from './AppContext'
+import { AppContext } from './AppContext'
 import searchBoxClose from './controller/searchBoxClose'
 import searchVideo from './controller/searchVideo'
+
+type VideoInfo =
+  | {
+      id: string
+      title: string
+      artist: string
+      number: string
+      date: string
+    }
+  | number
 
 export default function Search(): JSX.Element {
   const {
@@ -18,16 +28,7 @@ export default function Search(): JSX.Element {
     searchModalRef,
   } = useContext(AppContext)
 
-  const [searchInfos, setSearchInfos] = useState<Array<
-    | {
-        id: string
-        title: string
-        artist: string
-        number: string
-        date: string
-      }
-    | number
-  > | null>(null)
+  const [searchInfos, setSearchInfos] = useState<VideoInfo[] | null>(null)
   const [videoAllLength, setVideoAllLength] = useState<number | null>(null)
 
   const getSearchList = async (event: MouseEvent): Promise<void> => {

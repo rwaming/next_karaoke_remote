@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo, useEffect, useRef } from 'react'
 import Script from 'next/script'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
-import AppContext from './AppContext'
+import { AppContext } from './AppContext'
 import ControllerButton from './controllerButton'
 import youtubeAPI from './youtubeAPI'
 import Search from './search'

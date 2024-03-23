@@ -1,5 +1,5 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
-import AppContext from './AppContext'
+import { AppContext } from './AppContext'
 import ApplauseAudios from './applauseAudios'
 
 import showLatestVideo from './controller/showLatestVideo'

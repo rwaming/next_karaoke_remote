@@ -6,7 +6,7 @@ import {
 } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
-const AppContext = createContext<{
+export interface AppContextInterface {
   videoEvent: YouTubeEvent | null
   setVideoEvent: Dispatch<SetStateAction<YouTubeEvent | null>>
   videoID: string | null
@@ -22,7 +22,9 @@ const AppContext = createContext<{
   searchRef: MutableRefObject<HTMLDivElement | null> | null
   searchValueRef: MutableRefObject<HTMLInputElement | null> | null
   searchModalRef: MutableRefObject<HTMLDivElement | null> | null
-}>({
+}
+
+export const AppContext = createContext<AppContextInterface>({
   videoEvent: null,
   setVideoEvent: () => {},
   videoID: null,
@@ -39,5 +41,3 @@ const AppContext = createContext<{
   searchValueRef: null,
   searchModalRef: null,
 })
-
-export default AppContext
