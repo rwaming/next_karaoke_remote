@@ -1,5 +1,5 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
-import { AppContext } from './AppContext'
+import AppContext from './AppContext'
 import ApplauseAudios from './applauseAudios'
 
 import showLatestVideo from './controller/showLatestVideo'
@@ -30,13 +30,10 @@ export default function ControllerButton({
     searchRef,
     searchModalRef,
   } = useContext(AppContext)
-
   const applauseRef1 = useRef(null)
   const applauseRef2 = useRef(null)
   const applauseRef3 = useRef(null)
   const applauseRef4 = useRef(null)
-
-  const lastestClass = id.includes('latest') ? 'text-xs' : 'text-2xl'
 
   const findButtonFunction = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
@@ -74,7 +71,7 @@ export default function ControllerButton({
       <button
         type="button"
         id={id}
-        className={`${lastestClass}`}
+        className={`${id.includes('latest') ? 'text-xs' : 'text-2xl'}`}
         onClick={(event: MouseEvent<HTMLButtonElement>) => {
           findButtonFunction(event)
         }}

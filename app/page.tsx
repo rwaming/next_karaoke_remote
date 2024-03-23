@@ -1,12 +1,13 @@
 'use client'
 
-import { useState, useCallback, useMemo, useEffect, useRef } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import Script from 'next/script'
-import YouTube, { type YouTubeEvent } from 'react-youtube'
-import { AppContext } from './AppContext'
-import ControllerButton from './controllerButton'
+import { type YouTubeEvent } from 'react-youtube'
 import youtubeAPI from './youtubeAPI'
+import AppContext from './AppContext'
+import ControllerButton from './controllerButton'
 import Search from './search'
+import Video from './video'
 
 export default function App({
   params,
@@ -48,11 +49,6 @@ export default function App({
     [isPlaying, videoDate, videoEvent, videoID, videoTitle],
   )
 
-  const useThisVideo = useCallback((event: YouTubeEvent) => {
-    setVideoEvent(event)
-    setIsPlaying(true)
-  }, [])
-
   useEffect(() => {
     void youtubeAPI()
   }, [])
@@ -65,38 +61,7 @@ export default function App({
         id="app"
         className="w-screen h-screen flex flex-col md:flex-row justify-center bg-dark text-light"
       >
-        <div
-          ref={playerRef}
-          id="player"
-          className="flex-shrink basis-16-9vh flex flex-col md:flex-1 md:justify-center md:items-end"
-        >
-          <figure id="player-content" className="h-16-9vh relative w-full">
-            <figcaption
-              id="information"
-              className="absolute top-0 right-0 w-full h-1/5 bg-dark text-xs"
-            >
-              <p>{videoID !== null && videoID}</p>
-              <p>{videoID !== null && videoTitle}</p>
-              <p>{videoID !== null && videoDate}</p>
-            </figcaption>
-
-            {videoID !== null && (
-              <YouTube
-                className="player-yt"
-                videoId={videoID}
-                opts={{
-                  playerVars: {
-                    autoplay: 1,
-                    modestbranding: 1,
-                    controls: 0,
-                    fs: 1,
-                  },
-                }}
-                onReady={useThisVideo}
-              />
-            )}
-          </figure>
-        </div>
+        <Video />
         <div
           ref={controllerRef}
           id="controller"

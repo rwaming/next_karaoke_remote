@@ -1,30 +1,7 @@
-import {
-  type Dispatch,
-  createContext,
-  type SetStateAction,
-  type MutableRefObject,
-} from 'react'
-import { type YouTubeEvent } from 'react-youtube'
+import { createContext } from 'react'
+import { type AppContextInterface } from './utils'
 
-export interface AppContextInterface {
-  videoEvent: YouTubeEvent | null
-  setVideoEvent: Dispatch<SetStateAction<YouTubeEvent | null>>
-  videoID: string | null
-  setVideoID: Dispatch<SetStateAction<string | null>>
-  videoTitle: string
-  setVideoTitle: Dispatch<SetStateAction<string>>
-  videoDate: string
-  setVideoDate: Dispatch<SetStateAction<string>>
-  isPlaying: boolean
-  setIsPlaying: Dispatch<SetStateAction<boolean>>
-  playerRef: MutableRefObject<HTMLDivElement | null> | null
-  controllerRef: MutableRefObject<HTMLDivElement | null> | null
-  searchRef: MutableRefObject<HTMLDivElement | null> | null
-  searchValueRef: MutableRefObject<HTMLInputElement | null> | null
-  searchModalRef: MutableRefObject<HTMLDivElement | null> | null
-}
-
-export const AppContext = createContext<AppContextInterface>({
+const AppContext = createContext<AppContextInterface>({
   videoEvent: null,
   setVideoEvent: () => {},
   videoID: null,
@@ -41,3 +18,5 @@ export const AppContext = createContext<AppContextInterface>({
   searchValueRef: null,
   searchModalRef: null,
 })
+
+export default AppContext

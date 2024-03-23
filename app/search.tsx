@@ -5,19 +5,10 @@ import {
   useMemo,
   useCallback,
 } from 'react'
-import { AppContext } from './AppContext'
+import AppContext from './AppContext'
 import searchBoxClose from './controller/searchBoxClose'
 import searchVideo from './controller/searchVideo'
-
-type VideoInfo =
-  | {
-      id: string
-      title: string
-      artist: string
-      number: string
-      date: string
-    }
-  | number
+import { type VideoInfo } from './utils'
 
 export default function Search(): JSX.Element {
   const {
