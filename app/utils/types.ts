@@ -3,39 +3,24 @@ import {
   type SetStateAction,
   type MutableRefObject,
 } from 'react'
-import { type YouTubeEvent } from 'react-youtube'
 
-export interface AppContextValue {
-  videoEvent: YouTubeEvent | null
-  setVideoEvent: Dispatch<SetStateAction<YouTubeEvent | null>>
-  videoID: string | null
-  setVideoID: Dispatch<SetStateAction<string | null>>
-  videoTitle: string
-  setVideoTitle: Dispatch<SetStateAction<string>>
-  videoDate: string
-  setVideoDate: Dispatch<SetStateAction<string>>
-  isPlaying: boolean
-  setIsPlaying: Dispatch<SetStateAction<boolean>>
-  playerRef: MutableRefObject<HTMLDivElement | null> | null
-  controllerRef: MutableRefObject<HTMLDivElement | null> | null
-  searchRef: MutableRefObject<HTMLDivElement | null> | null
-  searchValueRef: MutableRefObject<HTMLInputElement | null> | null
-  searchModalRef: MutableRefObject<HTMLDivElement | null> | null
-}
+/* Utilities */
+export type Div = HTMLDivElement
+export type Input = HTMLInputElement
+export type Button = HTMLButtonElement
+export type Audio = HTMLAudioElement
+export type SetState<T> = Dispatch<SetStateAction<T>>
+export type UseRef<T> = MutableRefObject<T | null>
+export type UseRefArray<T> = Array<MutableRefObject<T | null>>
 
-export interface ControllerProps {
+/* Exclusive */
+
+export interface VideoInfo {
   id: string
-  text: string
+  title: string
+  artist: string
+  number: string
+  date: string
 }
-
-export type VideoInfo =
-  | {
-      id: string
-      title: string
-      artist: string
-      number: string
-      date: string
-    }
-  | number
-
-export type RefAudios = Array<MutableRefObject<HTMLAudioElement | null>>
+export type VideoInfos = VideoInfo[]
+export type SearchInfo = Array<VideoInfo | number>

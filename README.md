@@ -101,7 +101,8 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 #### ~~#57 Arrange file structure from 56~~
 
-- in progress
+- Use folders, /conponents, /controller and /utils, in /app
+- I divided folders and files, checking readablity myself!
 
 #### ~~#58 Search how to use api folder in Next.js (to use Youtube API in it)~~
 

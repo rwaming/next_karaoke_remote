@@ -1,8 +1,9 @@
+import { type Button } from '@/utils/Types'
 import { type MouseEvent } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
 export default function moveTime(
-  event: MouseEvent<HTMLButtonElement>,
+  event: MouseEvent<Button>,
   videoEvent: null | YouTubeEvent,
 ): void {
   if (videoEvent != null) {

@@ -1,8 +1,6 @@
-import { type MutableRefObject } from 'react'
+import { type UseRefArray, type Audio } from '@/utils/Types'
 
-export default function applause(
-  audioRefs: Array<MutableRefObject<HTMLAudioElement | null>>,
-): void {
+export default function applause(audioRefs: UseRefArray<Audio>): void {
   const refLength = audioRefs.length
 
   // 1. Find a idle audio => play
