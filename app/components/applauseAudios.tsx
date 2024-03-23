@@ -13,6 +13,7 @@ export default function ApplauseAudios({
         ref={audioRefs[i]}
         key={`${id}__audio-${i + 1}`}
         id={`${id}__audio-${i + 1}`}
+        className={`${id}__audio`}
         preload="auto"
       >
         <source src="/applause.mp3" type="audio/mpeg" />

@@ -53,6 +53,7 @@ export default function ControllerButton({
       >
         {text}
       </button>
+
       {id.includes('applause') && (
         <div id={`${id}__audio-list`}>
           <ApplauseAudios
