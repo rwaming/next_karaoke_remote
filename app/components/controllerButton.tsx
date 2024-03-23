@@ -1,11 +1,11 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
 import { type Button } from '@/utils/Types'
 import playPause from '@/controller/playPause'
-import showLatestVideo from '@/controller/showLatestVideo'
+import latestVideo from '@/controller/latestVideo'
 import stopVideo from '@/controller/stopVideo'
-import moveTime from '@/controller/moveTime'
-import setVolume from '@/controller/setVolume'
-import setSpeed from '@/controller/setSpeed'
+import timeMove from '@/controller/timeMove'
+import volumeUpDown from '@/controller/volumeUpDown'
+import speedUpDown from '@/controller/speedUpDown'
 import applause from '@/controller/applause'
 import AppContext from '@/utils/AppContext'
 import ApplauseAudios from '@/components/controllerApplauseAudios'
@@ -38,15 +38,15 @@ export default function ControllerButton({
     (event: MouseEvent<Button>) => {
       void (
         id.includes('latest') &&
-        showLatestVideo(setVideoID, setVideoTitle, setVideoDate)
+        latestVideo(setVideoID, setVideoTitle, setVideoDate)
       )
       id.includes('search') &&
         searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
       id.includes('playpause') && playPause(videoEvent)
       id.includes('stop') && stopVideo(videoEvent)
-      id.includes('time') && moveTime(event, videoEvent)
-      id.includes('volume') && setVolume(event, videoEvent)
-      id.includes('speed') && setSpeed(event, videoEvent)
+      id.includes('time') && timeMove(event, videoEvent)
+      id.includes('volume') && volumeUpDown(event, videoEvent)
+      id.includes('speed') && speedUpDown(event, videoEvent)
       id.includes('applause') &&
         applause([applauseRef1, applauseRef2, applauseRef3, applauseRef4])
     },

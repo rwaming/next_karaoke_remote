@@ -99,6 +99,10 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.03.23.sat_
 
+#### ~~#56 Change video when a song of list clicked~~
+
+- I've made all functions I think is essential!!
+
 #### ~~#57 Arrange file structure from 56~~
 
 - Use folders, /conponents, /controller and /utils, in /app
