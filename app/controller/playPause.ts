@@ -1,10 +1,10 @@
-import { type SetStateType } from '@/utils/Types'
+import { type SetState } from '@/utils/Types'
 import { type YouTubeEvent } from 'react-youtube'
 
 export default function playPause(
   videoEvent: null | YouTubeEvent,
   isPlaying: boolean,
-  setIsPlaying: SetStateType<boolean>,
+  setIsPlaying: SetState<boolean>,
 ): void {
   if (videoEvent != null) {
     if (isPlaying) {

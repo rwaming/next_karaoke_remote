@@ -1,15 +1,15 @@
-import { type RefType, type DivType, type ButtonType } from '@/utils/Types'
+import { type UseRef, type Div, type Button } from '@/utils/Types'
 
 export default function searchOpenClose(
-  playerRef: RefType<DivType>,
-  controllerRef: RefType<DivType>,
-  searchRef: RefType<DivType>,
-  searchModalRef: RefType<ButtonType>,
+  playerRef: UseRef<Div>,
+  controllerRef: UseRef<Div>,
+  searchRef: UseRef<Div>,
+  searchModalRef: UseRef<Button>,
 ): void {
-  const player: DivType | null = playerRef?.current ?? null
-  const controller: DivType | null = controllerRef?.current ?? null
-  const search: DivType | null = searchRef?.current ?? null
-  const searchModal: ButtonType | null = searchModalRef?.current ?? null
+  const player: Div | null = playerRef?.current ?? null
+  const controller: Div | null = controllerRef?.current ?? null
+  const search: Div | null = searchRef?.current ?? null
+  const searchModal: Button | null = searchModalRef?.current ?? null
 
   if (
     search !== null &&

@@ -1,10 +1,10 @@
-import { type AudioType, type RefArrayType } from '@/utils/Types'
+import { type Audio, type UseRefArray } from '@/utils/Types'
 
 export default function ApplauseAudios({
   audioRefs,
   id,
 }: {
-  audioRefs: RefArrayType<AudioType>
+  audioRefs: UseRefArray<Audio>
   id: string
 }): JSX.Element {
   return (

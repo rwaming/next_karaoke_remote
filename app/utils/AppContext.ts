@@ -1,29 +1,29 @@
 import { createContext } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 import {
-  type RefType,
-  type DivType,
-  type InputType,
-  type SetStateType,
-  type ButtonType,
+  type UseRef,
+  type Div,
+  type Input,
+  type SetState as SetStateT,
+  type Button,
 } from './Types'
 
 const AppContext = createContext<{
   videoEvent: YouTubeEvent | null
-  setVideoEvent: SetStateType<YouTubeEvent | null>
+  setVideoEvent: SetStateT<YouTubeEvent | null>
   videoID: string
-  setVideoID: SetStateType<string>
+  setVideoID: SetStateT<string>
   videoTitle: string
-  setVideoTitle: SetStateType<string>
+  setVideoTitle: SetStateT<string>
   videoDate: string
-  setVideoDate: SetStateType<string>
+  setVideoDate: SetStateT<string>
   isPlaying: boolean
-  setIsPlaying: SetStateType<boolean>
-  playerRef: RefType<DivType>
-  controllerRef: RefType<DivType>
-  searchRef: RefType<DivType>
-  searchValueRef: RefType<InputType>
-  searchModalRef: RefType<ButtonType>
+  setIsPlaying: SetStateT<boolean>
+  playerRef: UseRef<Div>
+  controllerRef: UseRef<Div>
+  searchRef: UseRef<Div>
+  searchValueRef: UseRef<Input>
+  searchModalRef: UseRef<Button>
 }>({
   videoEvent: null,
   setVideoEvent: () => {},
@@ -35,11 +35,11 @@ const AppContext = createContext<{
   setVideoDate: () => {},
   isPlaying: false,
   setIsPlaying: () => {},
-  playerRef: null,
-  controllerRef: null,
-  searchRef: null,
-  searchValueRef: null,
-  searchModalRef: null,
+  playerRef: { current: null },
+  controllerRef: { current: null },
+  searchRef: { current: null },
+  searchValueRef: { current: null },
+  searchModalRef: { current: null },
 })
 
 export default AppContext

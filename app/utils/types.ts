@@ -5,16 +5,16 @@ import {
 } from 'react'
 
 /* Utilities */
-export type DivType = HTMLDivElement
-export type InputType = HTMLInputElement
-export type ButtonType = HTMLButtonElement
-export type AudioType = HTMLAudioElement
-export type SetStateType<T> = Dispatch<SetStateAction<T>>
-export type RefType<T> = MutableRefObject<T | null> | null
-export type RefArrayType<T> = Array<MutableRefObject<T | null>>
+export type Div = HTMLDivElement
+export type Input = HTMLInputElement
+export type Button = HTMLButtonElement
+export type Audio = HTMLAudioElement
+export type SetState<T> = Dispatch<SetStateAction<T>>
+export type UseRef<T> = MutableRefObject<T | null>
+export type UseRefArray<T> = Array<MutableRefObject<T | null>>
 
 /* Exclusive */
-export type VideoInfoType =
+export type SearchInfo = Array<
   | {
       id: string
       title: string
@@ -23,3 +23,4 @@ export type VideoInfoType =
       date: string
     }
   | number
+>

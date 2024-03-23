@@ -19,10 +19,6 @@ export default function SearchArea(): JSX.Element {
       if (typeof getAllLegnth === 'number') {
         setVideoAllLength(getAllLegnth)
       }
-    } else if (getList === null) {
-      setVideoAllLength(null)
-    } else {
-      setVideoAllLength(0)
     }
   }
   return (

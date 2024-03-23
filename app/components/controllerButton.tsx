@@ -1,5 +1,5 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
-import { type ButtonType } from '@/utils/Types'
+import { type Button } from '@/utils/Types'
 import playPause from '@/controller/playPause'
 import showLatestVideo from '@/controller/showLatestVideo'
 import stopVideo from '@/controller/stopVideo'
@@ -37,7 +37,7 @@ export default function ControllerButton({
   const applauseRef4 = useRef(null)
 
   const setControll = useCallback(
-    (event: MouseEvent<ButtonType>) => {
+    (event: MouseEvent<Button>) => {
       void (
         id.includes('latest') &&
         showLatestVideo(setVideoID, setVideoTitle, setVideoDate, setIsPlaying)
@@ -72,7 +72,7 @@ export default function ControllerButton({
         type="button"
         id={id}
         className={`${id.includes('latest') ? 'text-xs' : 'text-2xl'}`}
-        onClick={(event: MouseEvent<ButtonType>) => {
+        onClick={(event: MouseEvent<Button>) => {
           setControll(event)
         }}
       >

@@ -1,9 +1,9 @@
-import { type ButtonType } from '@/utils/Types'
+import { type Button } from '@/utils/Types'
 import { type MouseEvent } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
 export default function setVolume(
-  event: MouseEvent<ButtonType>,
+  event: MouseEvent<Button>,
   videoEvent: null | YouTubeEvent,
 ): void {
   if (videoEvent != null) {

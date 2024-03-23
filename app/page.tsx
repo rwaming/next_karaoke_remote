@@ -46,6 +46,7 @@ export default function App(): JSX.Element {
   useEffect(() => {
     void youtubeAPI()
   }, [])
+
   return (
     <AppContext.Provider value={appValue}>
       <Script src="https://apis.google.com/js/api.js" defer />
