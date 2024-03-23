@@ -15,7 +15,7 @@ export type Ref<T> = MutableRefObject<T | null> | null
 export type RefArray<T> = Array<MutableRefObject<T | null>>
 
 /* Exclusive */
-export interface AppContextValue {
+export interface AppContextType {
   videoEvent: YouTubeEvent | null
   setVideoEvent: SetState<YouTubeEvent | null>
   videoID: string | null
@@ -47,7 +47,7 @@ export interface ControllerProps {
 }
 export type SetControllParams = Pick<ControllerProps, 'id'> &
   Pick<
-    AppContextValue,
+    AppContextType,
     | 'videoEvent'
     | 'setVideoID'
     | 'setVideoTitle'
@@ -59,3 +59,10 @@ export type SetControllParams = Pick<ControllerProps, 'id'> &
     | 'searchRef'
     | 'searchModalRef'
   > & { applauseRefs: RefArray<Audio> }
+
+export interface SearchContextType {
+  searchInfos: VideoInfo[] | null
+  setSearchInfos: SetState<VideoInfo[] | null>
+  videoAllLength: number | null
+  setVideoAllLength: SetState<number | null>
+}

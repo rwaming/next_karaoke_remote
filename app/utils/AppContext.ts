@@ -1,7 +1,7 @@
 import { createContext } from 'react'
-import { type AppContextValue } from './Types'
+import { type AppContextType } from './Types'
 
-const AppContext = createContext<AppContextValue>({
+const AppContext = createContext<AppContextType>({
   videoEvent: null,
   setVideoEvent: () => {},
   videoID: null,

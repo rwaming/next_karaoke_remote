@@ -1,14 +1,10 @@
-import {
-  type MouseEvent,
-  useContext,
-  useState,
-  useMemo,
-  useCallback,
-} from 'react'
+import { useContext, useMemo, useState } from 'react'
+import SearchContext from '@/utils/SearchContext'
+import { type VideoInfo } from '../utils/Types'
 import AppContext from '../utils/AppContext'
 import searchBoxClose from '../controller/searchBoxClose'
-import { type VideoInfo } from '../utils/Types'
 import SearchArea from './searchArea'
+import SearchList from './searchList'
 
 export default function Search(): JSX.Element {
   const { playerRef, controllerRef, searchRef, searchModalRef } =
@@ -17,47 +13,18 @@ export default function Search(): JSX.Element {
   const [searchInfos, setSearchInfos] = useState<VideoInfo[] | null>(null)
   const [videoAllLength, setVideoAllLength] = useState<number | null>(null)
 
-  const changeVideo = useCallback(
-    (event: MouseEvent) => {
-      event.preventDefault()
-      searchBoxClose(playerRef, controllerRef, searchRef, searchModalRef)
-    },
-    [controllerRef, playerRef, searchModalRef, searchRef],
+  const searchValue = useMemo(
+    () => ({
+      searchInfos,
+      setSearchInfos,
+      videoAllLength,
+      setVideoAllLength,
+    }),
+    [searchInfos, videoAllLength],
   )
 
-  // id, title, artist, number, date
-  const searchList = useMemo(() => {
-    if (searchInfos !== null) {
-      return searchInfos.map((v, i) => {
-        if (typeof v === 'object') {
-          return (
-            <li key={`${v.title}`} className="search-list__li">
-              <button
-                type="button"
-                className="search-list__li-click"
-                onClick={(event) => {
-                  changeVideo(event)
-                }}
-              >
-                <p className="search-list__li-title">{v.title}</p>
-                <p className="search-list__li-artist">{v.artist}</p>
-                <p className=" search-list__li-number">{v.number}</p>
-              </button>
-            </li>
-          )
-        }
-        return (
-          <li key="error" className="search-list__li flex h-8">
-            no info or no object
-          </li>
-        )
-      })
-    }
-    return null
-  }, [changeVideo, searchInfos])
-
   return (
-    <>
+    <SearchContext.Provider value={searchValue}>
       <div
         ref={searchRef}
         id="search"
@@ -90,7 +57,7 @@ export default function Search(): JSX.Element {
                 <h6 className="search-list__li-number">금영 번호</h6>
               </li>
             )}
-            {searchList}
+            {searchInfos !== null && <SearchList searchInfos={searchInfos} />}
           </ul>
         </div>
         <button
@@ -109,6 +76,6 @@ export default function Search(): JSX.Element {
         id="search-modal"
         className="hidden bg-gray-800 bg-opacity-50 w-screen h-screen absolute top-0 left-0"
       />
-    </>
+    </SearchContext.Provider>
   )
 }
