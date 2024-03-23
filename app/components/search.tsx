@@ -30,13 +30,7 @@ export default function Search(): JSX.Element {
         id="search"
         className="hidden w-screen flex-col fixed z-20 bg-light text-dark"
       >
-        <SearchArea
-          states={{
-            searchInfos,
-            setSearchInfos,
-            setVideoAllLength,
-          }}
-        />
+        <SearchArea />
         <div
           id="search-list"
           className="flex-grow relative overflow-x-scroll py-3 md:px-1/10vw"
@@ -49,16 +43,7 @@ export default function Search(): JSX.Element {
               `${videoAllLength}건이 검색되었습니다.`}
           </p>
 
-          <ul id="search-list__ul">
-            {videoAllLength !== null && videoAllLength > 0 && (
-              <li id="search-list__label" className="search-list__li">
-                <h6 className="search-list__li-title">제목</h6>
-                <h6 className="search-list__li-artist">가수</h6>
-                <h6 className="search-list__li-number">금영 번호</h6>
-              </li>
-            )}
-            {searchInfos !== null && <SearchList searchInfos={searchInfos} />}
-          </ul>
+          {searchInfos !== null && <SearchList />}
         </div>
         <button
           id="search-close"

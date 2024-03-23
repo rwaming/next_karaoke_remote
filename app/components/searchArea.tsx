@@ -1,18 +1,13 @@
 import { type MouseEvent, useContext } from 'react'
 import AppContext from '@/utils/AppContext'
-import { type SetState, type VideoInfo } from '@/utils/Types'
+import SearchContext from '@/utils/SearchContext'
 import searchVideo from '../controller/searchVideo'
 
-export default function SearchArea({
-  states: { searchInfos, setSearchInfos, setVideoAllLength },
-}: {
-  states: {
-    searchInfos: VideoInfo[] | null
-    setSearchInfos: SetState<VideoInfo[] | null>
-    setVideoAllLength: SetState<number | null>
-  }
-}): JSX.Element {
+export default function SearchArea(): JSX.Element {
   const { searchValueRef } = useContext(AppContext)
+  const { searchInfos, setSearchInfos, setVideoAllLength } =
+    useContext(SearchContext)
+
   const getSearchList = async (event: MouseEvent): Promise<void> => {
     if (searchInfos !== null) {
       setSearchInfos(null)
