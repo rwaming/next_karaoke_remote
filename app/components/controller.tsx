@@ -4,6 +4,7 @@ import AppContext from '../utils/AppContext'
 
 export default function Controller(): JSX.Element {
   const { controllerRef } = useContext(AppContext)
+
   return (
     <div
       ref={controllerRef}

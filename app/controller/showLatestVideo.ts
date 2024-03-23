@@ -1,11 +1,11 @@
-import { type SetState } from '@/utils/Types'
+import { type SetStateType } from '@/utils/Types'
 import { gapi } from 'gapi-script'
 
 export default async function showLatestVideo(
-  setVideoID: SetState<string | null>,
-  setVideoTitle: SetState<string>,
-  setVideoDate: SetState<string>,
-  setIsPlaying: SetState<boolean>,
+  setVideoID: SetStateType<string>,
+  setVideoTitle: SetStateType<string>,
+  setVideoDate: SetStateType<string>,
+  setIsPlaying: SetStateType<boolean>,
 ): Promise<void> {
   const latestVideoList = await gapi.client.youtube.search.list({
     part: 'snippet',

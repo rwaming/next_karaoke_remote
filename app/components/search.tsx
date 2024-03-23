@@ -22,7 +22,6 @@ export default function Search(): JSX.Element {
     }),
     [searchInfos, videoAllLength],
   )
-
   return (
     <SearchContext.Provider value={searchValue}>
       <div

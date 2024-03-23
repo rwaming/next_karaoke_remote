@@ -2,7 +2,7 @@ import { useCallback, useContext } from 'react'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
 import AppContext from '../utils/AppContext'
 
-export default function Video(): JSX.Element {
+export default function Player(): JSX.Element {
   const {
     setVideoEvent,
     videoID,
@@ -19,7 +19,6 @@ export default function Video(): JSX.Element {
     },
     [setIsPlaying, setVideoEvent],
   )
-
   return (
     <div
       ref={playerRef}

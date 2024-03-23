@@ -1,6 +1,6 @@
-import { type RefArray, type Audio } from '@/utils/Types'
+import { type RefArrayType, type AudioType } from '@/utils/Types'
 
-export default function applause(audioRefs: RefArray<Audio>): void {
+export default function applause(audioRefs: RefArrayType<AudioType>): void {
   const refLength = audioRefs.length
 
   // 1. Find a idle audio => play

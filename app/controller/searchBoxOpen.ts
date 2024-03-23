@@ -1,16 +1,16 @@
-import { type Div, type Ref } from '@/utils/Types'
+import { type DivType, type RefType } from '@/utils/Types'
 import searchBoxClose from './searchBoxClose'
 
 export default function searchBoxOpen(
-  playerRef: Ref<Div>,
-  controllerRef: Ref<Div>,
-  searchRef: Ref<Div>,
-  searchModalRef: Ref<Div>,
+  playerRef: RefType<DivType>,
+  controllerRef: RefType<DivType>,
+  searchRef: RefType<DivType>,
+  searchModalRef: RefType<DivType>,
 ): void {
-  const player: Div | null = playerRef?.current ?? null
-  const controller: Div | null = controllerRef?.current ?? null
-  const search: Div | null = searchRef?.current ?? null
-  const searchModal: Div | null = searchModalRef?.current ?? null
+  const player: DivType | null = playerRef?.current ?? null
+  const controller: DivType | null = controllerRef?.current ?? null
+  const search: DivType | null = searchRef?.current ?? null
+  const searchModal: DivType | null = searchModalRef?.current ?? null
 
   if (
     search !== null &&

@@ -15,7 +15,6 @@ export default function SearchList(): JSX.Element {
     },
     [controllerRef, playerRef, searchModalRef, searchRef],
   )
-
   return (
     <ul id="search-list__ul">
       <li id="search-list__label" className="search-list__li">

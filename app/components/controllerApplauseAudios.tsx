@@ -1,10 +1,10 @@
-import { type MutableRefObject } from 'react'
+import { type AudioType, type RefArrayType } from '@/utils/Types'
 
 export default function ApplauseAudios({
   audioRefs,
   id,
 }: {
-  audioRefs: Array<MutableRefObject<HTMLAudioElement | null>>
+  audioRefs: RefArrayType<AudioType>
   id: string
 }): JSX.Element {
   return (
