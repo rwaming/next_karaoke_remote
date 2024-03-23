@@ -1,4 +1,4 @@
-import { type SetControllParams } from '@/utils/Types'
+import { type Button, type SetControllParams } from '@/utils/Types'
 import { type MouseEvent } from 'react'
 import playPause from './playPause'
 import searchBoxOpen from './searchBoxOpen'
@@ -10,7 +10,7 @@ import setSpeed from './setSpeed'
 import applause from './applause'
 
 export default function setControll(
-  event: MouseEvent<HTMLButtonElement>,
+  event: MouseEvent<Button>,
   {
     id,
     videoEvent,

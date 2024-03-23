@@ -1,10 +1,10 @@
 import { gapi } from 'gapi-script'
-import { type MutableRefObject, type MouseEvent } from 'react'
-import { type VideoInfo } from '@/utils/Types'
+import { type MouseEvent } from 'react'
+import { type Input, type Ref, type VideoInfo } from '@/utils/Types'
 
 export default async function searchVideo(
   event: MouseEvent,
-  searchValueRef: MutableRefObject<HTMLInputElement | null> | null,
+  searchValueRef: Ref<Input>,
 ): Promise<VideoInfo[] | null> {
   const searchKeyword = searchValueRef?.current?.value.trim() ?? null
 

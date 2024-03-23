@@ -1,9 +1,10 @@
+import { type SetState } from '@/utils/Types'
 import { type YouTubeEvent } from 'react-youtube'
 
 export default function playPause(
   videoEvent: null | YouTubeEvent,
   isPlaying: boolean,
-  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsPlaying: SetState<boolean>,
 ): void {
   if (videoEvent != null) {
     if (isPlaying) {

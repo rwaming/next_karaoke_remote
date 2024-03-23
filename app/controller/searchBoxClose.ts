@@ -1,15 +1,15 @@
-import { type MutableRefObject } from 'react'
+import { type Ref, type Div } from '@/utils/Types'
 
 export default function searchBoxClose(
-  playerRef: MutableRefObject<HTMLDivElement | null> | null,
-  controllerRef: MutableRefObject<HTMLDivElement | null> | null,
-  searchRef: MutableRefObject<HTMLDivElement | null> | null,
-  searchModalRef: MutableRefObject<HTMLDivElement | null> | null,
+  playerRef: Ref<Div>,
+  controllerRef: Ref<Div>,
+  searchRef: Ref<Div>,
+  searchModalRef: Ref<Div>,
 ): void {
-  const player: HTMLDivElement | null = playerRef?.current ?? null
-  const controller: HTMLDivElement | null = controllerRef?.current ?? null
-  const search: HTMLDivElement | null = searchRef?.current ?? null
-  const searchModal: HTMLDivElement | null = searchModalRef?.current ?? null
+  const player: Div | null = playerRef?.current ?? null
+  const controller: Div | null = controllerRef?.current ?? null
+  const search: Div | null = searchRef?.current ?? null
+  const searchModal: Div | null = searchModalRef?.current ?? null
 
   if (
     search !== null &&
