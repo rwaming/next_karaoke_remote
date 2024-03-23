@@ -13,9 +13,7 @@ import setVolume from './setVolume'
 import setSpeed from './setSpeed'
 import applause from './applause'
 
-type SetControllProps = {
-  event: MouseEvent<HTMLButtonElement>
-} & ControllerProps &
+type SetControllProps = ControllerProps &
   Pick<
     AppContextValue,
     | 'videoEvent'
@@ -30,21 +28,23 @@ type SetControllProps = {
     | 'searchModalRef'
   > & { applauseRefs: RefAudios }
 
-export default function setControll({
-  event,
-  id,
-  videoEvent,
-  setVideoID,
-  setVideoTitle,
-  setVideoDate,
-  isPlaying,
-  setIsPlaying,
-  playerRef,
-  controllerRef,
-  searchRef,
-  searchModalRef,
-  applauseRefs,
-}: SetControllProps): void {
+export default function setControll(
+  event: MouseEvent<HTMLButtonElement>,
+  {
+    id,
+    videoEvent,
+    setVideoID,
+    setVideoTitle,
+    setVideoDate,
+    isPlaying,
+    setIsPlaying,
+    playerRef,
+    controllerRef,
+    searchRef,
+    searchModalRef,
+    applauseRefs,
+  }: SetControllProps,
+): void {
   void (
     id.includes('latest') &&
     showLatestVideo(setVideoID, setVideoTitle, setVideoDate, setIsPlaying)
