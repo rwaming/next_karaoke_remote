@@ -95,7 +95,7 @@ export default function Search(): JSX.Element {
       <div
         ref={searchRef}
         id="search"
-        className="hidden w-screen flex-col fixed z-10 bg-light text-dark"
+        className="hidden w-screen flex-col fixed z-20 bg-light text-dark"
       >
         <div id="search-header" className="w-full flex">
           <form
@@ -143,7 +143,10 @@ export default function Search(): JSX.Element {
             </fieldset>
           </form>
         </div>
-        <div id="search-list" className="flex-grow relative overflow-x-scroll">
+        <div
+          id="search-list"
+          className="flex-grow relative overflow-x-scroll md:px-20"
+        >
           <p id="search-list__note" className="text-center text-xs p-2">
             {videoAllLength === null && '검색어를 입력해주세요.'}
             {videoAllLength === 0 && '검색된 결과가 없습니다.'}

@@ -37,11 +37,24 @@ export default async function searchVideo(
       const videoTitle: string = video.snippet.title
       // 사건의 지평선 - 윤하(Event horizon - YOUNHA) (KY.28707) / KY Karaoke
 
-      const divided = videoTitle.split(' (KY.')
-      const titleArtist = divided[0].split('-')
+      console.log(videoTitle)
+
+      let divided
+
+      if (videoTitle.includes('(KY.')) {
+        divided = videoTitle.split('(KY.')
+      } else if (videoTitle.includes('[KY')) {
+        divided = videoTitle.split('[KY')
+      } else {
+        divided = videoTitle.split(')')
+      }
+      const titleArtist = divided[0].trim().split('-')
       const title = titleArtist[0].trim()
       const artist = titleArtist.slice(1).join('')
-      const number = divided[1].split(')')[0]
+      let number = divided[1].trim().split(')')[0]
+      if (typeof parseInt(number, 10) !== 'number') {
+        number = '0'
+      }
 
       const item = {
         id: videoID,
