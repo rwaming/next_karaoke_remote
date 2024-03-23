@@ -5,29 +5,33 @@ import {
 } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
+/* Utilities */
+export type Div = HTMLDivElement
+export type Input = HTMLInputElement
+export type Button = HTMLButtonElement
+export type Audio = HTMLAudioElement
+export type SetState<T> = Dispatch<SetStateAction<T>>
+export type Ref<T> = MutableRefObject<T | null> | null
+export type RefArray<T> = Array<MutableRefObject<T | null>>
+
+/* Exclusive */
 export interface AppContextValue {
   videoEvent: YouTubeEvent | null
-  setVideoEvent: Dispatch<SetStateAction<YouTubeEvent | null>>
+  setVideoEvent: SetState<YouTubeEvent | null>
   videoID: string | null
-  setVideoID: Dispatch<SetStateAction<string | null>>
+  setVideoID: SetState<string | null>
   videoTitle: string
-  setVideoTitle: Dispatch<SetStateAction<string>>
+  setVideoTitle: SetState<string>
   videoDate: string
-  setVideoDate: Dispatch<SetStateAction<string>>
+  setVideoDate: SetState<string>
   isPlaying: boolean
-  setIsPlaying: Dispatch<SetStateAction<boolean>>
-  playerRef: MutableRefObject<HTMLDivElement | null> | null
-  controllerRef: MutableRefObject<HTMLDivElement | null> | null
-  searchRef: MutableRefObject<HTMLDivElement | null> | null
-  searchValueRef: MutableRefObject<HTMLInputElement | null> | null
-  searchModalRef: MutableRefObject<HTMLDivElement | null> | null
+  setIsPlaying: SetState<boolean>
+  playerRef: Ref<Div>
+  controllerRef: Ref<Div>
+  searchRef: Ref<Div>
+  searchValueRef: Ref<Input>
+  searchModalRef: Ref<Div>
 }
-
-export interface ControllerProps {
-  id: string
-  text: string
-}
-
 export type VideoInfo =
   | {
       id: string
@@ -37,9 +41,10 @@ export type VideoInfo =
       date: string
     }
   | number
-
-export type RefAudios = Array<MutableRefObject<HTMLAudioElement | null>>
-
+export interface ControllerProps {
+  id: string
+  text: string
+}
 export type SetControllParams = Pick<ControllerProps, 'id'> &
   Pick<
     AppContextValue,
@@ -53,4 +58,4 @@ export type SetControllParams = Pick<ControllerProps, 'id'> &
     | 'controllerRef'
     | 'searchRef'
     | 'searchModalRef'
-  > & { applauseRefs: RefAudios }
+  > & { applauseRefs: RefArray<Audio> }

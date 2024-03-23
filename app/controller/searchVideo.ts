@@ -1,6 +1,6 @@
 import { gapi } from 'gapi-script'
 import { type MutableRefObject, type MouseEvent } from 'react'
-import { type VideoInfo } from '@/utils/types'
+import { type VideoInfo } from '@/utils/Types'
 
 export default async function searchVideo(
   event: MouseEvent,

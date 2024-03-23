@@ -1,4 +1,4 @@
-import { type SetControllParams } from '@/utils/types'
+import { type SetControllParams } from '@/utils/Types'
 import { type MouseEvent } from 'react'
 import playPause from './playPause'
 import searchBoxOpen from './searchBoxOpen'

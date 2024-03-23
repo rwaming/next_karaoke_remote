@@ -8,7 +8,7 @@ import {
 import AppContext from '../utils/AppContext'
 import searchBoxClose from '../controller/searchBoxClose'
 import searchVideo from '../controller/searchVideo'
-import { type VideoInfo } from '../utils/types'
+import { type VideoInfo } from '../utils/Types'
 
 export default function Search(): JSX.Element {
   const {

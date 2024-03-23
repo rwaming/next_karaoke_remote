@@ -1,5 +1,5 @@
 import { useContext, useRef, type MouseEvent } from 'react'
-import { type ControllerProps } from '@/utils/types'
+import { type Button, type ControllerProps } from '@/utils/Types'
 import setControll from '@/controller/setControll'
 import AppContext from '../utils/AppContext'
 import ApplauseAudios from './applauseAudios'
@@ -47,7 +47,7 @@ export default function ControllerButton({
         type="button"
         id={id}
         className={`${id.includes('latest') ? 'text-xs' : 'text-2xl'}`}
-        onClick={(event: MouseEvent<HTMLButtonElement>) => {
+        onClick={(event: MouseEvent<Button>) => {
           setControll(event, setControllArgs)
         }}
       >
