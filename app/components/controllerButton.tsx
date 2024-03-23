@@ -23,8 +23,6 @@ export default function ControllerButton({
     setVideoID,
     setVideoTitle,
     setVideoDate,
-    isPlaying,
-    setIsPlaying,
     playerRef,
     controllerRef,
     searchRef,
@@ -40,12 +38,12 @@ export default function ControllerButton({
     (event: MouseEvent<Button>) => {
       void (
         id.includes('latest') &&
-        showLatestVideo(setVideoID, setVideoTitle, setVideoDate, setIsPlaying)
+        showLatestVideo(setVideoID, setVideoTitle, setVideoDate)
       )
       id.includes('search') &&
         searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
-      id.includes('playpause') && playPause(videoEvent, isPlaying, setIsPlaying)
-      id.includes('stop') && stopVideo(videoEvent, setIsPlaying)
+      id.includes('playpause') && playPause(videoEvent)
+      id.includes('stop') && stopVideo(videoEvent)
       id.includes('time') && moveTime(event, videoEvent)
       id.includes('volume') && setVolume(event, videoEvent)
       id.includes('speed') && setSpeed(event, videoEvent)
@@ -55,11 +53,9 @@ export default function ControllerButton({
     [
       controllerRef,
       id,
-      isPlaying,
       playerRef,
       searchModalRef,
       searchRef,
-      setIsPlaying,
       setVideoDate,
       setVideoID,
       setVideoTitle,

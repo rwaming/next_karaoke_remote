@@ -5,7 +5,6 @@ export default async function showLatestVideo(
   setVideoID: SetState<string>,
   setVideoTitle: SetState<string>,
   setVideoDate: SetState<string>,
-  setIsPlaying: SetState<boolean>,
 ): Promise<void> {
   const latestVideoList = await gapi.client.youtube.search.list({
     part: 'snippet',
@@ -20,5 +19,4 @@ export default async function showLatestVideo(
   setVideoID(latestVideoID)
   setVideoTitle(latestVideoTitle)
   setVideoDate(latestVideoDate)
-  setIsPlaying(false)
 }

@@ -17,8 +17,6 @@ const AppContext = createContext<{
   setVideoTitle: SetStateT<string>
   videoDate: string
   setVideoDate: SetStateT<string>
-  isPlaying: boolean
-  setIsPlaying: SetStateT<boolean>
   playerRef: UseRef<Div>
   controllerRef: UseRef<Div>
   searchRef: UseRef<Div>
@@ -33,8 +31,6 @@ const AppContext = createContext<{
   setVideoTitle: () => {},
   videoDate: '',
   setVideoDate: () => {},
-  isPlaying: false,
-  setIsPlaying: () => {},
   playerRef: { current: null },
   controllerRef: { current: null },
   searchRef: { current: null },

@@ -3,21 +3,14 @@ import YouTube, { type YouTubeEvent } from 'react-youtube'
 import AppContext from '../utils/AppContext'
 
 export default function Player(): JSX.Element {
-  const {
-    setVideoEvent,
-    videoID,
-    videoTitle,
-    videoDate,
-    setIsPlaying,
-    playerRef,
-  } = useContext(AppContext)
+  const { setVideoEvent, videoID, videoTitle, videoDate, playerRef } =
+    useContext(AppContext)
 
   const useThisVideo = useCallback(
     (event: YouTubeEvent) => {
       setVideoEvent(event)
-      setIsPlaying(true)
     },
-    [setIsPlaying, setVideoEvent],
+    [setVideoEvent],
   )
   return (
     <div
