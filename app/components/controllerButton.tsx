@@ -1,23 +1,13 @@
-import { useCallback, useContext, useRef, type MouseEvent } from 'react'
+import { useContext, useRef, type MouseEvent } from 'react'
+import { type ControllerProps } from '@/utils/types'
+import setControll from '@/controller/setControll'
 import AppContext from '../utils/AppContext'
-import ApplauseAudios from '../applauseAudios'
-
-import showLatestVideo from '../controller/showLatestVideo'
-import searchBoxOpen from '../controller/searchBoxOpen'
-import playPause from '../controller/playPause'
-import stop from '../controller/stop'
-import moveTime from '../controller/moveTime'
-import setVolume from '../controller/setVolume'
-import setSpeed from '../controller/setSpeed'
-import applause from '../controller/applause'
+import ApplauseAudios from './applauseAudios'
 
 export default function ControllerButton({
   id,
   text,
-}: {
-  id: string
-  text: string
-}): JSX.Element {
+}: ControllerProps): JSX.Element {
   const {
     videoEvent,
     setVideoID,
@@ -30,41 +20,11 @@ export default function ControllerButton({
     searchRef,
     searchModalRef,
   } = useContext(AppContext)
+
   const applauseRef1 = useRef(null)
   const applauseRef2 = useRef(null)
   const applauseRef3 = useRef(null)
   const applauseRef4 = useRef(null)
-
-  const findButtonFunction = useCallback(
-    (event: MouseEvent<HTMLButtonElement>) => {
-      void (
-        id.includes('latest') &&
-        showLatestVideo(setVideoID, setVideoTitle, setVideoDate, setIsPlaying)
-      )
-      id.includes('search') &&
-        searchBoxOpen(playerRef, controllerRef, searchRef, searchModalRef)
-      id.includes('playpause') && playPause(videoEvent, isPlaying, setIsPlaying)
-      id.includes('stop') && stop(videoEvent, setIsPlaying)
-      id.includes('time') && moveTime(event, videoEvent)
-      id.includes('volume') && setVolume(event, videoEvent)
-      id.includes('speed') && setSpeed(event, videoEvent)
-      id.includes('applause') &&
-        applause([applauseRef1, applauseRef2, applauseRef3, applauseRef4])
-    },
-    [
-      controllerRef,
-      id,
-      isPlaying,
-      playerRef,
-      searchModalRef,
-      searchRef,
-      setIsPlaying,
-      setVideoDate,
-      setVideoID,
-      setVideoTitle,
-      videoEvent,
-    ],
-  )
 
   return (
     <>
@@ -73,7 +33,27 @@ export default function ControllerButton({
         id={id}
         className={`${id.includes('latest') ? 'text-xs' : 'text-2xl'}`}
         onClick={(event: MouseEvent<HTMLButtonElement>) => {
-          findButtonFunction(event)
+          setControll({
+            event,
+            id,
+            text,
+            videoEvent,
+            setVideoID,
+            setVideoTitle,
+            setVideoDate,
+            isPlaying,
+            setIsPlaying,
+            playerRef,
+            controllerRef,
+            searchRef,
+            searchModalRef,
+            applauseRefs: [
+              applauseRef1,
+              applauseRef2,
+              applauseRef3,
+              applauseRef4,
+            ],
+          })
         }}
       >
         {text}

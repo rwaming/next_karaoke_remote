@@ -5,7 +5,7 @@ import {
 } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
-export interface AppContextInterface {
+export interface AppContextValue {
   videoEvent: YouTubeEvent | null
   setVideoEvent: Dispatch<SetStateAction<YouTubeEvent | null>>
   videoID: string | null
@@ -23,6 +23,11 @@ export interface AppContextInterface {
   searchModalRef: MutableRefObject<HTMLDivElement | null> | null
 }
 
+export interface ControllerProps {
+  id: string
+  text: string
+}
+
 export type VideoInfo =
   | {
       id: string
@@ -32,3 +37,5 @@ export type VideoInfo =
       date: string
     }
   | number
+
+export type RefAudios = Array<MutableRefObject<HTMLAudioElement | null>>
