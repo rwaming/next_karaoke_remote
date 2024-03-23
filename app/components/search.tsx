@@ -41,7 +41,7 @@ export default function Search(): JSX.Element {
         ref={searchModalRef}
         type="button"
         id="search-modal"
-        className="hidden bg-gray-800 bg-opacity-50 w-screen h-screen absolute top-0 left-0 text-transparent cursor-default"
+        className="absolute left-0 top-0 hidden h-screen w-screen cursor-default bg-gray-800 bg-opacity-50 text-transparent"
         onClick={() => {
           searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
         }}
@@ -51,14 +51,14 @@ export default function Search(): JSX.Element {
       <div
         ref={searchRef}
         id="search"
-        className="hidden w-screen flex-col fixed bg-light text-dark"
+        className="fixed hidden w-screen flex-col bg-light text-dark"
       >
         <SearchArea />
         <div
           id="search-list"
-          className="flex-grow relative overflow-x-scroll py-3 md:px-1/10vw"
+          className="relative flex-grow overflow-x-scroll py-3 md:px-1/10vw"
         >
-          <p id="search-list__note" className="text-center text-xs p-2">
+          <p id="search-list__note" className="p-2 text-center text-xs">
             {listNote}
           </p>
 
@@ -67,7 +67,7 @@ export default function Search(): JSX.Element {
         <button
           id="search-close"
           type="button"
-          className="hidden text-dark absolute right-0 bottom-0 p-4 md:block"
+          className="absolute bottom-0 right-0 hidden p-4 text-dark md:block"
           onClick={() => {
             searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
           }}

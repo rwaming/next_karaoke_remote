@@ -22,35 +22,35 @@
 /* reusable */
 @layer utilities {
   .search-list__li {
-    @apply flex h-4 mt-4 border-b border-b-gray-800 border-opacity-50 box-content text-center py-2;
+    @apply mt-4 box-content flex h-4 border-b border-b-gray-800 border-opacity-50 py-2 text-center;
   }
   .search-list__li-click {
-    @apply flex-grow flex items-center max-w-full;
+    @apply flex max-w-full flex-grow items-center;
   }
   .search-list__li-title {
-    @apply flex-grow text-xs text-ellipsis overflow-hidden whitespace-nowrap;
+    @apply flex-grow overflow-hidden text-ellipsis whitespace-nowrap text-xs;
   }
   .search-list__li-artist {
-    @apply basis-1/5vw flex-shrink-0 text-xs text-ellipsis overflow-hidden whitespace-nowrap opacity-70;
+    @apply flex-shrink-0 basis-1/5vw overflow-hidden text-ellipsis whitespace-nowrap text-xs opacity-70;
   }
   .search-list__li-number {
-    @apply hidden basis-1/8vw flex-shrink-0 text-xs text-ellipsis overflow-hidden whitespace-nowrap opacity-70 md:block;
+    @apply hidden flex-shrink-0 basis-1/8vw overflow-hidden text-ellipsis whitespace-nowrap text-xs opacity-70 md:block;
   }
 
   .player-search {
-    @apply absolute w-full top-0 md:relative md:justify-end;
+    @apply absolute top-0 w-full md:relative md:justify-end;
   }
   .controller-search {
-    @apply hidden md:block pt-1/2vh;
+    @apply hidden pt-1/2vh md:block;
   }
 }
 
 /* id */
 @layer components {
   .player-yt {
-    @apply w-full h-full;
+    @apply h-full w-full;
     > iframe {
-      @apply w-full h-full;
+      @apply h-full w-full;
     }
   }
   #controller {
@@ -61,7 +61,7 @@
     height: calc((100vh - var(--screen-ratio-h-vh)));
   }
   #search-list__label {
-    @apply border-0 font-bold text-base;
+    @apply border-0 text-base font-bold;
   }
 
   /* md */

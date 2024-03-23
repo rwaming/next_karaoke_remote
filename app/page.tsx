@@ -49,7 +49,7 @@ export default function App(): JSX.Element {
       <Script src="https://apis.google.com/js/api.js" defer />
       <div
         id="app"
-        className="w-screen h-screen flex flex-col md:flex-row justify-center bg-dark text-light"
+        className="flex h-screen w-screen flex-col justify-center bg-dark text-light md:flex-row"
       >
         <Player />
         <Search />

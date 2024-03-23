@@ -97,6 +97,14 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 <br>
 
+> _2024.03.24.sun_
+
+#### #49 Styling with Tailwind, @media and React Transition Group
+
+- Install 'prettier-plugin-tailwindcss'.
+
+<br>
+
 > _2024.03.23.sat_
 
 #### ~~#56 Change video when a song of list clicked~~
