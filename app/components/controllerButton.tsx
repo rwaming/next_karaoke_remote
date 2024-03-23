@@ -2,7 +2,7 @@ import { useContext, useRef, type MouseEvent } from 'react'
 import { type Button, type ControllerProps } from '@/utils/Types'
 import setControll from '@/controller/setControll'
 import AppContext from '../utils/AppContext'
-import ApplauseAudios from './applauseAudios'
+import ApplauseAudios from './controllerApplauseAudios'
 
 export default function ControllerButton({
   id,
@@ -55,12 +55,10 @@ export default function ControllerButton({
       </button>
 
       {id.includes('applause') && (
-        <div id={`${id}__audio-list`}>
-          <ApplauseAudios
-            audioRefs={[applauseRef1, applauseRef2, applauseRef3, applauseRef4]}
-            id={id}
-          />
-        </div>
+        <ApplauseAudios
+          audioRefs={[applauseRef1, applauseRef2, applauseRef3, applauseRef4]}
+          id={id}
+        />
       )}
     </>
   )
