@@ -1,10 +1,18 @@
 import { useCallback, useContext } from 'react'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
+import Link from 'next/link'
 import AppContext from '../utils/AppContext'
 
 export default function Player(): JSX.Element {
-  const { setVideoEvent, videoID, videoTitle, videoDate, playerRef } =
-    useContext(AppContext)
+  const {
+    setVideoEvent,
+    videoID,
+    videoTitle,
+    videoArtist,
+    videoNumber,
+    videoDate,
+    playerRef,
+  } = useContext(AppContext)
 
   const useThisVideo = useCallback(
     (event: YouTubeEvent) => {
@@ -45,11 +53,16 @@ export default function Player(): JSX.Element {
         {videoID !== '' && (
           <figure
             id="information"
-            className="absolute right-0 top-0 hidden h-1/5 w-full bg-dark text-xs">
+            className="absolute bottom-0 left-0 z-20 w-full bg-dark bg-opacity-50 text-xs">
             <figcaption>영상 정보</figcaption>
-            <p>{`https://www.youtube.com/watch?v=${videoID}`}</p>
-            <p>{videoTitle}</p>
-            <p>{videoDate}</p>
+            <p>
+              <Link
+                href={`https://www.youtube.com/watch?v=${videoID}`}
+                target="_blank">{`https://www.youtube.com/watch?v=${videoID}`}</Link>
+            </p>
+            <p className="inline">{videoTitle} / </p>
+            <p className="inline">{videoArtist} / </p>
+            <p className="inline">{videoNumber}</p>
             <p>{videoDate}</p>
           </figure>
         )}
