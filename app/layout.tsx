@@ -22,12 +22,10 @@ export default function RootLayout({
           fallback={
             <div
               id="loading"
-              className="flex h-screen w-screen items-center justify-center bg-dark text-light"
-            >
+              className="flex h-screen w-screen items-center justify-center bg-dark text-light">
               <p>Loading...</p>
             </div>
-          }
-        >
+          }>
           {children}
         </Suspense>
       </body>

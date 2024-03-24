@@ -16,13 +16,11 @@ export default function Player(): JSX.Element {
     <section
       ref={playerRef}
       id="player"
-      className="flex flex-shrink basis-16-9vh flex-col md:flex-1 md:items-end md:justify-center"
-    >
+      className="flex flex-shrink basis-16-9vh flex-col md:flex-1 md:items-end md:justify-center">
       <figure id="player-content" className="relative h-16-9vh w-full">
         <figcaption
           id="information"
-          className="absolute right-0 top-0 hidden h-1/5 w-full bg-dark text-xs"
-        >
+          className="absolute right-0 top-0 hidden h-1/5 w-full bg-dark text-xs">
           <p>{videoID !== '' && videoID}</p>
           <p>{videoID !== '' && videoTitle}</p>
           <p>{videoID !== '' && videoDate}</p>
@@ -46,8 +44,7 @@ export default function Player(): JSX.Element {
         <button
           type="button"
           id="player-modal"
-          className="absolute right-0 top-0 h-full w-full cursor-default text-transparent"
-        >
+          className="absolute right-0 top-0 h-full w-full cursor-default text-transparent">
           Pause
         </button>
       </figure>

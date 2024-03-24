@@ -70,8 +70,7 @@ export default function ControllerButton({
         className={`${id.includes('latest') ? 'text-xs' : 'text-2xl'}`}
         onClick={(event: MouseEvent<Button>) => {
           setControll(event)
-        }}
-      >
+        }}>
         {text}
       </button>
 

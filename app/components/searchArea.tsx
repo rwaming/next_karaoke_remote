@@ -13,12 +13,10 @@ export default function SearchArea(): JSX.Element {
         id="search-form"
         name="search"
         action="#"
-        className="flex flex-grow"
-      >
+        className="flex flex-grow">
         <fieldset
           id="search-form__inputbox"
-          className="relative flex flex-grow items-center"
-        >
+          className="relative flex flex-grow items-center">
           <input
             ref={searchValueRef}
             id="search-form__value"
@@ -32,8 +30,7 @@ export default function SearchArea(): JSX.Element {
           />
           <fieldset
             id="search-form__buttonbox"
-            className="absolute right-0 flex items-center"
-          >
+            className="absolute right-0 flex items-center">
             <input
               id="search-form__clear"
               type="reset"

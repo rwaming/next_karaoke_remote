@@ -44,20 +44,17 @@ export default function Search(): JSX.Element {
         className="absolute left-0 top-0 hidden h-screen w-screen cursor-default bg-gray-800 bg-opacity-50 text-transparent"
         onClick={() => {
           searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
-        }}
-      >
+        }}>
         Close
       </button>
       <section
         ref={searchRef}
         id="search"
-        className="fixed hidden w-screen flex-col bg-light text-dark"
-      >
+        className="fixed hidden w-screen flex-col bg-light text-dark">
         <SearchArea />
         <div
           id="search-list"
-          className="relative flex-grow overflow-x-scroll py-3 md:px-1/10vw"
-        >
+          className="relative flex-grow overflow-x-scroll py-3 md:px-1/10vw">
           <p id="search-list__note" className="p-2 text-center text-xs">
             {listNote}
           </p>
@@ -70,8 +67,7 @@ export default function Search(): JSX.Element {
           className="absolute bottom-0 right-0 hidden p-4 text-dark md:block"
           onClick={() => {
             searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
-          }}
-        >
+          }}>
           ✕
         </button>
       </section>

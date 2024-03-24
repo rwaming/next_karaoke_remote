@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.css\" \"**/*.ts\" \"**/*.tsx\""
+    "format": "prettier --write \"**/*.{css,ts,tsx}\""
   },
   "dependencies": {
     "gapi-script": "^1.2.0",

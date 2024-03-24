@@ -52,8 +52,7 @@ export default function App(): JSX.Element {
       <div id="app" className="h-screen w-screen bg-dark text-light">
         <hgroup
           id="title"
-          className="absolute left-0 top-0 z-10 bg-dark bg-opacity-75 bg-blend-darken"
-        >
+          className="absolute left-0 top-0 z-10 bg-dark bg-opacity-75 bg-blend-darken">
           <h1 className="m-2 inline-block text-2xl">홈코노</h1>
           <p className="inline-block text-xs">
             마지막 업데이트: 2024. 03. 24. 일요일
@@ -62,8 +61,7 @@ export default function App(): JSX.Element {
 
         <main
           id="main"
-          className="flex h-full w-full flex-col justify-center md:flex-row"
-        >
+          className="flex h-full w-full flex-col justify-center md:flex-row">
           <Player />
           <Search />
           <Controller />
@@ -71,20 +69,17 @@ export default function App(): JSX.Element {
 
         <footer
           id="footer"
-          className="absolute bottom-0 right-0 m-3 flex w-full justify-center gap-4 opacity-75 md:justify-end"
-        >
+          className="absolute bottom-0 right-0 m-3 flex w-full justify-center gap-4 opacity-75 md:justify-end">
           <div id="contact" className="flex gap-4 text-sm not-italic">
             <div
               id="contact-name"
-              className="flex h-full items-center gap-2 text-center font-semibold"
-            >
+              className="flex h-full items-center gap-2 text-center font-semibold">
               <p id="contact-name__en">RWAM</p>
               <p id="contact-name__ko">김성주</p>
             </div>
             <div
               id="contact-info"
-              className="flex h-full flex-col justify-around gap-1 font-light"
-            >
+              className="flex h-full flex-col justify-around gap-1 font-light">
               <p id="contact-info__email" className="text-xs">
                 art.rwam@gmail.com
               </p>

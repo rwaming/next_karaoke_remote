@@ -9,8 +9,7 @@ export default function Controller(): JSX.Element {
     <section
       ref={controllerRef}
       id="controller"
-      className="flex-grow md:relative"
-    >
+      className="flex-grow md:relative">
       <ControllerButton id="controller-latest" text="Latest Song" />
       <ControllerButton id="controller-search" text="🔍" />
       <ControllerButton id="controller-playpause" text="⏯" />

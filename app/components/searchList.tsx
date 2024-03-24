@@ -53,15 +53,13 @@ export default function SearchList(): JSX.Element {
             <li
               key={`${v.title}`}
               id={`search-list__li-${i}`}
-              className="search-list__li"
-            >
+              className="search-list__li">
               <button
                 type="button"
                 className="search-list__li-click"
                 onClick={(event) => {
                   changeVideo(event, changeVideoArgs)
-                }}
-              >
+                }}>
                 <p className="search-list__li-title">{v.title}</p>
                 <p className="search-list__li-artist">{v.artist}</p>
                 <p className="search-list__li-number">{v.number}</p>
