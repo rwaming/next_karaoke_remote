@@ -21,6 +21,12 @@ export default function Player(): JSX.Element {
         노래 영상
       </h2>
 
+      <div
+        id="player-modal"
+        className="absolute right-0 top-0 h-full w-full cursor-default text-transparent"
+        aria-roledescription="prevent_manipulate_player"
+      />
+
       <div id="player-content" className="relative h-16-9vh w-full">
         {videoID !== '' && (
           <YouTube
@@ -47,13 +53,6 @@ export default function Player(): JSX.Element {
             <p>{videoDate}</p>
           </figure>
         )}
-
-        <button
-          type="button"
-          id="player-modal"
-          className="absolute right-0 top-0 h-full w-full cursor-default text-transparent">
-          영상 일시정지
-        </button>
       </div>
     </section>
   )

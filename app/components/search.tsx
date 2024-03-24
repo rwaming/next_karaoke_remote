@@ -37,22 +37,13 @@ export default function Search(): JSX.Element {
   )
   return (
     <SearchContext.Provider value={searchValue}>
-      <button
-        ref={searchModalRef}
-        type="button"
-        id="search-modal"
-        className="absolute left-0 top-0 hidden h-screen w-screen cursor-default bg-gray-800 bg-opacity-50 text-transparent"
-        onClick={() => {
-          searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
-        }}>
-        Close
-      </button>
       <section
         ref={searchRef}
         id="search"
         className="fixed hidden w-screen flex-col bg-light text-dark">
         <h3>노래 검색</h3>
         <SearchArea />
+
         <div
           id="search-list"
           className="relative flex-grow overflow-x-scroll py-3 md:px-1/10vw">
@@ -63,6 +54,7 @@ export default function Search(): JSX.Element {
 
           {allVideoLength > 0 && <SearchList />}
         </div>
+
         <button
           id="search-close"
           type="button"
@@ -71,6 +63,17 @@ export default function Search(): JSX.Element {
             searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
           }}>
           ✕
+        </button>
+
+        <button
+          ref={searchModalRef}
+          type="button"
+          id="search-modal"
+          className="absolute left-0 top-0 z-20 hidden h-screen w-screen cursor-default bg-gray-800 bg-opacity-50 text-transparent"
+          onClick={() => {
+            searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
+          }}>
+          Close
         </button>
       </section>
     </SearchContext.Provider>
