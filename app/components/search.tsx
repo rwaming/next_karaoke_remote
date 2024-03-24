@@ -52,6 +52,7 @@ export default function Search(): JSX.Element {
         id="search"
         className="fixed hidden w-screen flex-col bg-light text-dark">
         <SearchArea />
+        <h2>Search Videos for Song</h2>
         <div
           id="search-list"
           className="relative flex-grow overflow-x-scroll py-3 md:px-1/10vw">

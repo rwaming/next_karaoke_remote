@@ -10,6 +10,7 @@ export default function Controller(): JSX.Element {
       ref={controllerRef}
       id="controller"
       className="flex-grow md:relative">
+      <h3>Youtube Player Controller</h3>
       <ControllerButton id="controller-latest" text="Latest Song" />
       <ControllerButton id="controller-search" text="🔍" />
       <ControllerButton id="controller-playpause" text="⏯" />
