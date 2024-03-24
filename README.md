@@ -99,6 +99,11 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.03.24.sun_
 
+#### #49 - Styling with Tailwind, @media and React Transition Group
+
+- Install 'prettier-plugin-tailwindcss'.
+- Wait for #61.
+
 #### ~~#61 - Use Semantic tag like H1~6, main~~
 
 - Check elements in chapter 4.3 of [HTML Standard](https://html.spec.whatwg.org/multipage/#toc-semantics)
@@ -106,11 +111,6 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
   - [codingEverybody](https://codingeverybody.kr/)
   - [MDN](https://developer.mozilla.org/en-US/)
 - I think it is done as basic structure??
-
-#### #49 - Styling with Tailwind, @media and React Transition Group
-
-- Install 'prettier-plugin-tailwindcss'.
-- Wait for #61.
 
 #### ~~#66 - Fix case that title can be shown on 'number' in search list from 61~~
 

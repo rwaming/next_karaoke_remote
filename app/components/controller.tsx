@@ -11,18 +11,18 @@ export default function Controller(): JSX.Element {
       id="controller"
       className="flex-grow md:shrink-0 md:grow-0">
       <h3 className="invisible absolute">리모콘</h3>
-      <ControllerButton id="controller-latest" text="Latest Song" />
-      <ControllerButton id="controller-search" text="🔍" />
-      <ControllerButton id="controller-playpause" text="⏯" />
-      <ControllerButton id="controller-stop" text="⏹" />
-      <ControllerButton id="controller-timebackward" text="◀️" />
-      <ControllerButton id="controller-timeforward" text="▶️" />
-      <ControllerButton id="controller-volumeup" text="▲" />
-      <ControllerButton id="controller-volumedown" text="▼" />
-      <ControllerButton id="controller-volumemute" text="🔇" />
-      <ControllerButton id="controller-speeddown" text="⏪" />
-      <ControllerButton id="controller-speedup" text="⏩" />
-      <ControllerButton id="controller-applause" text="👏" />
+      <ControllerButton id="controller-latest" text="신곡연습" />
+      <ControllerButton id="controller-search" text="검 색" />
+      <ControllerButton id="controller-playpause" text="⏸일시정지" />
+      <ControllerButton id="controller-stop" text="취소" />
+      <ControllerButton id="controller-timebackward" text="◀️◀️마디점프" />
+      <ControllerButton id="controller-timeforward" text="마디점프▶️▶️" />
+      <ControllerButton id="controller-volumeup" text="▲뮤 직" />
+      <ControllerButton id="controller-volumedown" text="▼뮤 직" />
+      <ControllerButton id="controller-volumemute" text="🔇음소거" />
+      <ControllerButton id="controller-speeddown" text="▲템 포" />
+      <ControllerButton id="controller-speedup" text="▼템 포" />
+      <ControllerButton id="controller-applause" text="박 수" />
     </section>
   )
 }
