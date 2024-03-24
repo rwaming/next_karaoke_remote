@@ -36,13 +36,6 @@
   .search-list__li-number {
     @apply hidden flex-shrink-0 basis-1/8vw overflow-hidden text-ellipsis whitespace-nowrap text-xs opacity-70 md:block;
   }
-
-  .player-search {
-    @apply absolute top-0 w-full md:relative md:justify-end;
-  }
-  .controller-search {
-    @apply hidden pt-1/2vh md:block;
-  }
 }
 
 /* id */
@@ -75,27 +68,33 @@
       }
     }
     #controller {
-      flex: 0 0 var(--controller-w-px);
+      flex-basis: var(--controller-w-px);
     }
+    /* This is needed because of specific css styling of #search (above) */
     #search {
       top: 0;
       left: 0;
       height: 50vh;
     }
-    #search-form__value {
-      @apply p-4;
-    }
-    #search-form__clear {
-      @apply p-2;
-    }
   }
   /* xs */
-  @media screen and (max-width: 300px) {
+  @media screen and (max-width: 350px) {
     #search-form__clear {
       @apply hidden;
     }
     #search-form__search {
       @apply hidden;
     }
+    #contact-sns {
+      @apply hidden;
+    }
+  }
+
+  /* Optional */
+  .player-search {
+    @apply absolute top-0 w-full md:relative md:justify-end;
+  }
+  .controller-search {
+    @apply hidden md:relative md:top-1/2vh md:z-40 md:block;
   }
 }
