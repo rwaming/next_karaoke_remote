@@ -9,7 +9,7 @@ export default function Controller(): JSX.Element {
     <section
       ref={controllerRef}
       id="controller"
-      className="button-col xs:text-xl gap-2 p-4 text-base font-bold text-dark md:shrink-0 md:grow-0 md:basis-80">
+      className="button-col gap-2 p-4 text-base font-bold text-dark xs:text-xl sm:shrink-0 sm:grow-0 sm:basis-80 sm:pb-10">
       <h3 className="invisible absolute">리모콘</h3>
       <div className="button-row basis-1/5vh">
         <div className="button-col">

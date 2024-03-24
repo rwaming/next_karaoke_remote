@@ -38,9 +38,9 @@ const config: Config = {
         '1/10vh': '10vh',
       },
       colors: {
-        dark: '#000e1f',
+        dark: '#111122',
         light: '#efefdf',
-        button1: '#f5eff3',
+        button1: '#f4f2fa',
         button2: '#eaec88',
         button3: '#8890ef',
       },

@@ -36,7 +36,7 @@ export default function Player(): JSX.Element {
     <section
       ref={playerRef}
       id="player"
-      className="relative flex flex-shrink basis-16-9vh flex-col md:flex-1 md:items-end md:justify-center">
+      className="relative flex flex-shrink basis-16-9vh flex-col sm:flex-1 sm:items-end sm:justify-center">
       <h2 className="invisible absolute">노래 영상</h2>
 
       <div id="player-content" className="relative h-16-9vh w-full">

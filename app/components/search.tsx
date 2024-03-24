@@ -45,13 +45,13 @@ export default function Search(): JSX.Element {
 
         <section
           id="search-box"
-          className="relative z-40 w-full flex-col bg-light text-dark">
+          className="relative z-40 flex w-full flex-col text-light backdrop-blur">
           <SearchArea />
           <SearchList />
           <button
             id="search-close"
             type="button"
-            className="absolute bottom-0 right-0 hidden p-4 text-dark md:block"
+            className="absolute bottom-0 right-0 hidden p-4 sm:block"
             onClick={() => {
               searchOpenClose(
                 playerRef,
@@ -68,7 +68,7 @@ export default function Search(): JSX.Element {
           ref={searchModalRef}
           type="button"
           id="search-modal"
-          className="absolute left-0 top-0 z-30 hidden h-screen w-screen cursor-default bg-gray-800 bg-opacity-50 text-transparent"
+          className="absolute left-0 top-0 z-30 hidden h-screen w-screen cursor-default bg-slate-900 bg-opacity-50 text-transparent"
           onClick={() => {
             searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
           }}>
