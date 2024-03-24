@@ -54,7 +54,7 @@ export default function App(): JSX.Element {
           id="title"
           className="absolute left-0 top-0 z-10 bg-dark bg-opacity-75 bg-blend-darken"
         >
-          <h1 className="m-2 inline-block">홈코노</h1>
+          <h1 className="m-2 inline-block text-2xl">홈코노</h1>
           <p className="inline-block text-xs">
             마지막 업데이트: 2024. 03. 24. 일요일
           </p>
@@ -67,29 +67,55 @@ export default function App(): JSX.Element {
           <Search />
           <Controller />
         </main>
-        <address
-          id="contact"
-          className="absolute bottom-0 right-0 m-3 flex gap-3 opacity-75"
+        <footer
+          id="footer"
+          className="absolute bottom-0 right-0 m-3 flex items-center gap-4 opacity-75"
         >
-          <Link href="https://www.instagram.com/rwam__kn" target="_blank">
-            <Image
-              src="/icon_instagram.png"
-              width={40}
-              height={40}
-              alt="contact_instagram"
-              className="h-7 w-7"
-            />
-          </Link>
-          <Link href="https://blog.naver.com/rwaming" target="_blank">
-            <Image
-              src="/icon_naver.png"
-              width={40}
-              height={40}
-              alt="contact_naver"
-              className="h-7 w-7"
-            />
-          </Link>
-        </address>
+          <address
+            id="contact"
+            className="flex h-10 items-center gap-4 text-sm not-italic"
+          >
+            <div id="contact-text" className="flex h-full items-center">
+              <p className="flex gap-2 text-center font-semibold">
+                <span id="contact-name__en">RWAM</span>
+                <span id="contact-name__ko">김성주</span>
+              </p>
+            </div>
+            <div
+              id="contact-text"
+              className="flex h-full flex-col justify-center font-light"
+            >
+              <p id="contact-text__email" className="text-xs">
+                art.rwam@gmail.com
+              </p>
+              <p id="contact-text__phone" className="text-xs">
+                +82 010-9716-1132
+              </p>
+            </div>
+          </address>
+          <div id="contact-sns" className="flex gap-3">
+            <Link href="https://www.instagram.com/rwam__kn" target="_blank">
+              <Image
+                id="contact-instagram"
+                src="/icon_instagram.png"
+                width={40}
+                height={40}
+                alt="contact_instagram"
+                className="h-7 w-7"
+              />
+            </Link>
+            <Link href="https://blog.naver.com/rwaming" target="_blank">
+              <Image
+                id="contact-naver-blog"
+                src="/icon_naver.png"
+                width={40}
+                height={40}
+                alt="contact_naver_blog"
+                className="h-7 w-7"
+              />
+            </Link>
+          </div>
+        </footer>
       </div>
     </AppContext.Provider>
   )
