@@ -22,13 +22,13 @@
 /* reusable */
 @layer utilities {
   .button-col {
-    @apply flex grow flex-col gap-2;
+    @apply flex shrink grow flex-col gap-2;
   }
   .button-row {
-    @apply flex grow gap-2;
+    @apply flex shrink grow gap-2;
   }
   .button {
-    @apply grow rounded-lg p-2 pb-3;
+    @apply shrink grow rounded-lg p-2 pb-3;
     box-shadow: inset -0.25rem -0.25rem rgba(0, 0, 0, 0.15);
   }
   .button-bigger {
@@ -62,7 +62,8 @@
   .player-yt {
     @apply h-full w-full;
     > iframe {
-      @apply h-full w-full;
+      width: 514px;
+      height: 289px;
     }
   }
   #controller {
