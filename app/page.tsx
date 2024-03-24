@@ -50,10 +50,10 @@ export default function App(): JSX.Element {
     <AppContext.Provider value={appValue}>
       <Script src="https://apis.google.com/js/api.js" defer />
       <div id="app" className="h-screen w-screen bg-dark text-light">
-        <header>
-          <hgroup
-            id="title"
-            className="absolute left-0 top-0 z-10 bg-dark bg-opacity-75 bg-blend-darken">
+        <header
+          id="header"
+          className="absolute left-0 top-0 z-20 bg-dark bg-opacity-75 bg-blend-darken">
+          <hgroup id="title">
             <h1 className="m-2 inline-block text-2xl">홈코노</h1>
             <p className="inline-block text-xs">
               마지막 업데이트: 2024. 03. 24. 일요일

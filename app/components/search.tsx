@@ -40,7 +40,7 @@ export default function Search(): JSX.Element {
       <section
         ref={searchRef}
         id="search"
-        className="fixed hidden w-screen flex-col bg-light text-dark">
+        className="fixed z-50 hidden w-screen flex-col bg-light text-dark">
         <h3>노래 검색</h3>
         <SearchArea />
 
@@ -64,18 +64,17 @@ export default function Search(): JSX.Element {
           }}>
           ✕
         </button>
-
-        <button
-          ref={searchModalRef}
-          type="button"
-          id="search-modal"
-          className="absolute left-0 top-0 z-20 hidden h-screen w-screen cursor-default bg-gray-800 bg-opacity-50 text-transparent"
-          onClick={() => {
-            searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
-          }}>
-          Close
-        </button>
       </section>
+      <button
+        ref={searchModalRef}
+        type="button"
+        id="search-modal"
+        className="absolute left-0 top-0 z-30 hidden h-screen w-screen cursor-default bg-gray-800 bg-opacity-50 text-transparent"
+        onClick={() => {
+          searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
+        }}>
+        Close
+      </button>
     </SearchContext.Provider>
   )
 }
