@@ -35,11 +35,11 @@ const config: Config = {
         '1/10vh': '10vh',
       },
       colors: {
-        dark: '#222244',
-        'dark-input': '#333355',
-
-        light: '#ffffee',
-        'light-input': '#eeeedd',
+        dark: '#000e1f',
+        light: '#efefdf',
+        button1: '#f5eff3',
+        button2: '#eeff88',
+        button3: '#8890ef',
       },
     },
   },

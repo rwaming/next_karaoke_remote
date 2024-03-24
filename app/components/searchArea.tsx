@@ -26,7 +26,7 @@ export default function SearchArea(): JSX.Element {
             minLength={1}
             pattern="/S*"
             placeholder="ex) 윤하 먹구름"
-            className="box-border h-12 flex-grow border bg-light-input p-2 text-center focus:border-2 focus:border-lime-200 focus:bg-light-input focus:outline-none md:p-4"
+            className="box-border h-12 flex-grow border bg-light p-2 text-center focus:border-2 focus:border-lime-200 focus:bg-light-input focus:outline-none md:p-4"
             required
           />
           <fieldset

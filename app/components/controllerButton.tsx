@@ -14,9 +14,11 @@ import searchOpenClose from '@/search/searchOpenClose'
 export default function ControllerButton({
   id,
   text,
+  className,
 }: {
   id: string
   text: string
+  className: string
 }): JSX.Element {
   const {
     videoEvent,
@@ -77,7 +79,7 @@ export default function ControllerButton({
       <button
         type="button"
         id={id}
-        className={`${id.includes('latest') ? 'text-xs' : 'text-2xl'}`}
+        className={`${className} button`}
         onClick={(event: MouseEvent<Button>) => {
           controllerFunctions(event)
         }}>

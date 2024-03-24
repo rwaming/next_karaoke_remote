@@ -21,7 +21,11 @@
 
 /* reusable */
 @layer utilities {
-  .search-list__li {
+  .button {
+    @apply m-1 rounded-lg p-1 pb-2;
+    box-shadow: inset -0.25rem -0.25rem rgba(0, 0, 0, 0.15);
+  }
+  -list__li {
     @apply mt-4 box-content flex h-4 border-b border-b-gray-800 border-opacity-50 py-2 text-center;
   }
   .search-list__li-click {
