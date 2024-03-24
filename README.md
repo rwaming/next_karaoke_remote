@@ -97,18 +97,30 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 <br>
 
+> _2024.03.24.sun_
+
+#### #49 - Styling with Tailwind, @media and React Transition Group
+
+- Install 'prettier-plugin-tailwindcss'.
+
+#### ~~#66 - Fix case that title can be shown on 'number' in search list from 61~~
+
+- If title is on number, Make the text moves onto title, in a search list.
+
+<br>
+
 > _2024.03.23.sat_
 
-#### ~~#56 Change video when a song of list clicked~~
+#### ~~#56 - Change video when a song of list clicked~~
 
 - I've made all functions I think is essential!!
 
-#### ~~#57 Arrange file structure from 56~~
+#### ~~#57 - Arrange file structure from 56~~
 
 - Use folders, /components, /controller and /utils, in /app
 - I divided folders and files, checking readablity myself!
 
-#### ~~#58 Search how to use api folder in Next.js (to use YouTube API in it)~~
+#### ~~#58 - Search how to use api folder in Next.js (to use YouTube API in it)~~
 
 - I get to know request in client (like fetch, or using gapi) don't use '/api' is for sever-side.
 
@@ -179,13 +191,9 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 - Complete, using absolute
 
-#### #49 - Styling with Tailwind, @media and React Transition Group
+#### ~~#50 - Store and show the videos a user sang~~
 
-- in wait
-
-#### #50 - Store and show the videos a user sang
-
-- in wait
+- Canceled
 
 <br>
 

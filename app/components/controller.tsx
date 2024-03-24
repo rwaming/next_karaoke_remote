@@ -6,7 +6,11 @@ export default function Controller(): JSX.Element {
   const { controllerRef } = useContext(AppContext)
 
   return (
-    <div ref={controllerRef} id="controller" className="flex-grow md:relative">
+    <section
+      ref={controllerRef}
+      id="controller"
+      className="flex-grow md:relative"
+    >
       <ControllerButton id="controller-latest" text="Latest Song" />
       <ControllerButton id="controller-search" text="🔍" />
       <ControllerButton id="controller-playpause" text="⏯" />
@@ -19,6 +23,6 @@ export default function Controller(): JSX.Element {
       <ControllerButton id="controller-speeddown" text="⏪" />
       <ControllerButton id="controller-speedup" text="⏩" />
       <ControllerButton id="controller-applause" text="👏" />
-    </div>
+    </section>
   )
 }

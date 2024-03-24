@@ -13,15 +13,15 @@ export default function Player(): JSX.Element {
     [setVideoEvent],
   )
   return (
-    <div
+    <section
       ref={playerRef}
       id="player"
-      className="flex-shrink basis-16-9vh flex flex-col md:flex-1 md:justify-center md:items-end"
+      className="flex flex-shrink basis-16-9vh flex-col md:flex-1 md:items-end md:justify-center"
     >
-      <figure id="player-content" className="h-16-9vh relative w-full">
+      <figure id="player-content" className="relative h-16-9vh w-full">
         <figcaption
           id="information"
-          className="hidden absolute top-0 right-0 w-full h-1/5 bg-dark text-xs"
+          className="absolute right-0 top-0 hidden h-1/5 w-full bg-dark text-xs"
         >
           <p>{videoID !== '' && videoID}</p>
           <p>{videoID !== '' && videoTitle}</p>
@@ -46,11 +46,11 @@ export default function Player(): JSX.Element {
         <button
           type="button"
           id="player-modal"
-          className="w-full h-full absolute top-0 right-0 text-transparent cursor-default"
+          className="absolute right-0 top-0 h-full w-full cursor-default text-transparent"
         >
           Pause
         </button>
       </figure>
-    </div>
+    </section>
   )
 }

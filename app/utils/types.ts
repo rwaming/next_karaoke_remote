@@ -14,7 +14,6 @@ export type UseRef<T> = MutableRefObject<T | null>
 export type UseRefArray<T> = Array<MutableRefObject<T | null>>
 
 /* Exclusive */
-
 export interface VideoInfo {
   id: string
   title: string
