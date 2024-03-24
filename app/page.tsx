@@ -48,6 +48,10 @@ export default function App(): JSX.Element {
     <AppContext.Provider value={appValue}>
       <Script src="https://apis.google.com/js/api.js" defer />
       <div id="app" className="h-screen w-screen bg-dark text-light">
+        <hgroup className="absolute left-0 top-0">
+          <h1>홈코노</h1>
+          <p>마지막 업데이트: 2024. 03. 24. 일요일</p>
+        </hgroup>
         <main
           id="main"
           className="flex h-full w-full flex-col justify-center md:flex-row"
