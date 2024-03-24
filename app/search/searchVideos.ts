@@ -43,11 +43,20 @@ async function getSearchInfo(
         divided = videoTitle.split(')')
       }
       const titleArtist = divided[0].trim().split('-')
-      const title = titleArtist[0].trim()
-      const artist = titleArtist.slice(1).join('')
+      let title = titleArtist[0].trim()
+      let artist = titleArtist.slice(1).join('')
       let number = divided[1].trim().split(')')[0]
-      if (typeof parseInt(number, 10) !== 'number') {
+      if (title === '') {
+        title = 'x'
+      }
+      if (artist === '') {
+        artist = 'x'
+      }
+      if (Number.isNaN(Number(number))) {
         number = 'x'
+      }
+      if (title === 'x' && artist === 'x' && number === 'x') {
+        title = videoTitle
       }
 
       const videoInfo = {
