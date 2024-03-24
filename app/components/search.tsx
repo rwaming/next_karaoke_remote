@@ -51,11 +51,12 @@ export default function Search(): JSX.Element {
         ref={searchRef}
         id="search"
         className="fixed hidden w-screen flex-col bg-light text-dark">
+        <h3>노래 검색</h3>
         <SearchArea />
-        <h3>Search Videos for Song</h3>
         <div
           id="search-list"
           className="relative flex-grow overflow-x-scroll py-3 md:px-1/10vw">
+          <h4>노래 목록</h4>
           <p id="search-list__note" className="p-2 text-center text-xs">
             {listNote}
           </p>
