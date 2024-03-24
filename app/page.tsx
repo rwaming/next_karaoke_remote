@@ -53,12 +53,11 @@ export default function App(): JSX.Element {
         <header
           id="header"
           className="absolute left-0 top-0 z-20 bg-dark bg-opacity-75 bg-blend-darken">
-          <hgroup id="title">
-            <h1 className="m-2 inline-block text-2xl">홈코노</h1>
-            <p className="inline-block text-xs">
-              마지막 업데이트: 2024. 03. 24. 일요일
-            </p>
-          </hgroup>
+          <h1 className="m-2 inline-block text-2xl">홈코노</h1>
+          <dl className="inline-block text-xs">
+            <dt>마지막 업데이트</dt>
+            <dd>2024. 03. 24. 일요일</dd>
+          </dl>
         </header>
 
         <main
@@ -71,7 +70,7 @@ export default function App(): JSX.Element {
 
         <footer
           id="footer"
-          className="absolute bottom-0 right-0 m-3 flex w-full justify-center gap-4 opacity-75 md:justify-end">
+          className="absolute bottom-0 right-0 z-20 m-3 flex w-full justify-center gap-4 opacity-75 md:justify-end">
           <address id="contact" className="flex gap-4 text-sm not-italic">
             <div
               id="contact-name"

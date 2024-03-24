@@ -97,7 +97,7 @@
     #search-form__search {
       @apply hidden;
     }
-    #sns {
+    #contact-sns {
       @apply hidden;
     }
   }
