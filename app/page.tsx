@@ -54,10 +54,10 @@ export default function App(): JSX.Element {
           id="header"
           className="absolute left-0 top-0 z-20 bg-dark bg-opacity-75 bg-blend-darken">
           <h1 className="m-2 inline-block text-2xl">홈코노</h1>
-          <dl className="inline-block text-xs">
-            <dt>마지막 업데이트</dt>
-            <dd>2024. 03. 24. 일요일</dd>
-          </dl>
+          <p className="inline-block text-xs">
+            마지막 업데이트:{' '}
+            <time dateTime="2024-03-24">2024. 03. 24. 일요일</time>
+          </p>
         </header>
 
         <main

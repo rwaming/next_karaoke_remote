@@ -24,7 +24,7 @@ export default function Player(): JSX.Element {
       <div
         id="player-modal"
         className="absolute right-0 top-0 z-10 h-full w-full cursor-default text-transparent"
-        aria-roledescription="prevent_manipulate_player"
+        aria-roledescription="modal_to_prevent_manipulate_player"
       />
 
       <div id="player-content" className="relative h-16-9vh w-full">
