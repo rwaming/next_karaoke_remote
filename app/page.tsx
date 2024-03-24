@@ -50,7 +50,7 @@ export default function App(): JSX.Element {
       <div id="app" className="h-screen w-screen bg-dark text-light">
         <hgroup className="absolute left-0 top-0">
           <h1>홈코노</h1>
-          <p>마지막 업데이트: 2024. 03. 24. 일요일</p>
+          <p className="text-xs">마지막 업데이트: 2024. 03. 24. 일요일</p>
         </hgroup>
         <main
           id="main"
