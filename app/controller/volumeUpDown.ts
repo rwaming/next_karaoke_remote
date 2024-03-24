@@ -10,6 +10,7 @@ export default function speedUpDown(
     const video = videoEvent.target
     const button = event.currentTarget.id
     const volume = video.getVolume()
+
     if (button.includes('down')) {
       const volumeDown = volume - 5
       video.setVolume(volumeDown)

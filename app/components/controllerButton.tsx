@@ -1,7 +1,7 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
 import { type Button } from '@/utils/Types'
 import playPause from '@/controller/playPause'
-import latestVideo from '@/controller/latestVideo'
+import showLatestVideo from '@/controller/showLatestVideo'
 import stopVideo from '@/controller/stopVideo'
 import timeMove from '@/controller/timeMove'
 import volumeUpDown from '@/controller/volumeUpDown'
@@ -22,6 +22,8 @@ export default function ControllerButton({
     videoEvent,
     setVideoID,
     setVideoTitle,
+    setVideoArtist,
+    setVideoNumber,
     setVideoDate,
     playerRef,
     controllerRef,
@@ -34,11 +36,17 @@ export default function ControllerButton({
   const applauseRef3 = useRef(null)
   const applauseRef4 = useRef(null)
 
-  const setControll = useCallback(
+  const controllerFunctions = useCallback(
     (event: MouseEvent<Button>) => {
       void (
         id.includes('latest') &&
-        latestVideo(setVideoID, setVideoTitle, setVideoDate)
+        showLatestVideo(
+          setVideoID,
+          setVideoTitle,
+          setVideoArtist,
+          setVideoNumber,
+          setVideoDate,
+        )
       )
       id.includes('search') &&
         searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
@@ -56,8 +64,10 @@ export default function ControllerButton({
       playerRef,
       searchModalRef,
       searchRef,
+      setVideoArtist,
       setVideoDate,
       setVideoID,
+      setVideoNumber,
       setVideoTitle,
       videoEvent,
     ],
@@ -69,9 +79,8 @@ export default function ControllerButton({
         id={id}
         className={`${id.includes('latest') ? 'text-xs' : 'text-2xl'}`}
         onClick={(event: MouseEvent<Button>) => {
-          setControll(event)
-        }}
-      >
+          controllerFunctions(event)
+        }}>
         {text}
       </button>
 

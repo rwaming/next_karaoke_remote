@@ -14,13 +14,28 @@ export type UseRef<T> = MutableRefObject<T | null>
 export type UseRefArray<T> = Array<MutableRefObject<T | null>>
 
 /* Exclusive */
-
-export interface VideoInfo {
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export type VideoInfo = {
   id: string
   title: string
   artist: string
   number: string
   date: string
 }
-export type VideoInfos = VideoInfo[]
-export type SearchInfo = Array<VideoInfo | number>
+export type VideoInfos = Array<{
+  id: string
+  title: string
+  artist: string
+  number: string
+  date: string
+}>
+export type SearchInfo = Array<
+  | {
+      id: string
+      title: string
+      artist: string
+      number: string
+      date: string
+    }
+  | number
+>

@@ -8,6 +8,10 @@ import {
   type SearchInfo,
 } from '@/utils/Types'
 
+function isVideoInfos(value: SearchInfo): value is VideoInfos {
+  return value.every((info) => typeof info === 'object')
+}
+
 async function getSearchInfo(
   event: MouseEvent,
   searchValueRef: UseRef<Input>,
@@ -16,7 +20,6 @@ async function getSearchInfo(
 
   if (searchKeyword !== '') {
     event.preventDefault()
-
     const searchResult = await gapi.client.youtube.search.list({
       part: 'snippet',
       channelId: 'UCDqaUIUSJP5EVMEI178Zfag',
@@ -25,6 +28,8 @@ async function getSearchInfo(
       videoEmbeddable: 'true',
       q: `${searchKeyword} KY Karaoke -노래방챌린지`,
     })
+
+    const listLengthAll: number = searchResult.result.pageInfo.totalResults
     const listLength = searchResult.result.pageInfo.resultsPerPage
 
     const videoInfos: VideoInfos = [...Array(listLength)].map((v, i) => {
@@ -43,11 +48,20 @@ async function getSearchInfo(
         divided = videoTitle.split(')')
       }
       const titleArtist = divided[0].trim().split('-')
-      const title = titleArtist[0].trim()
-      const artist = titleArtist.slice(1).join('')
+      let title = titleArtist[0].trim()
+      let artist = titleArtist.slice(1).join('')
       let number = divided[1].trim().split(')')[0]
-      if (typeof parseInt(number, 10) !== 'number') {
+      if (title === '') {
+        title = 'x'
+      }
+      if (artist === '') {
+        artist = 'x'
+      }
+      if (Number.isNaN(Number(number))) {
         number = 'x'
+      }
+      if (title === 'x' && artist === 'x' && number === 'x') {
+        title = videoTitle
       }
 
       const videoInfo = {
@@ -57,20 +71,14 @@ async function getSearchInfo(
         number,
         date: videoDate,
       }
-
       return videoInfo
     })
-    const searchInfo: SearchInfo = [...videoInfos]
 
-    const listLengthAll: number = searchResult.result.pageInfo.totalResults
+    const searchInfo: SearchInfo = [...videoInfos]
     searchInfo.push(listLengthAll)
     return searchInfo
   }
   return [-1]
-}
-
-function isVideoInfos(value: SearchInfo): value is VideoInfos {
-  return value.every((info) => typeof info === 'object')
 }
 
 export default async function searchVideos(
@@ -86,12 +94,13 @@ export default async function searchVideos(
   },
 ): Promise<void> {
   const searchInfo = await getSearchInfo(event, searchValueRef)
-  const getListLength = searchInfo.pop()
+
+  const getAllVideoLength = searchInfo.pop()
   if (isVideoInfos(searchInfo)) {
     setVideoInfos(searchInfo)
   }
-  if (typeof getListLength === 'number') {
-    setAllVideoLength(getListLength)
+  if (typeof getAllVideoLength === 'number') {
+    setAllVideoLength(getAllVideoLength)
   } else {
     setAllVideoLength(-2)
   }
