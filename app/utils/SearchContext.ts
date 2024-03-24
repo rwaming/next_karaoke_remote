@@ -6,11 +6,13 @@ const SearchContext = createContext<{
   setVideoInfos: SetState<VideoInfos>
   allVideoLength: number
   setAllVideoLength: SetState<number>
+  listNote: string
 }>({
   videoInfos: [],
   setVideoInfos: () => {},
   allVideoLength: -1,
   setAllVideoLength: () => {},
+  listNote: '',
 })
 
 export default SearchContext

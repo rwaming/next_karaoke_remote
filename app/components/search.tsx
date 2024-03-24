@@ -4,7 +4,7 @@ import SearchContext from '@/utils/SearchContext'
 import SearchArea from '@/components/searchArea'
 import AppContext from '@/utils/AppContext'
 import searchOpenClose from '@/search/searchOpenClose'
-import SearchList from '@/components/searchList'
+import SearchList from './searchList'
 
 export default function Search(): JSX.Element {
   const { playerRef, controllerRef, searchRef, searchModalRef } =
@@ -32,49 +32,50 @@ export default function Search(): JSX.Element {
       setVideoInfos,
       allVideoLength,
       setAllVideoLength,
+      listNote,
     }),
-    [videoInfos, allVideoLength],
+    [videoInfos, allVideoLength, listNote],
   )
   return (
     <SearchContext.Provider value={searchValue}>
-      <section
+      <div
         ref={searchRef}
         id="search"
-        className="fixed z-50 hidden w-screen flex-col bg-light text-dark">
-        <h3>노래 검색</h3>
-        <SearchArea />
+        className="fixed left-0 top-0 z-30 hidden h-screen w-screen">
+        <h3 className="invisible absolute">노래 검색창</h3>
 
-        <div
-          id="search-list"
-          className="relative flex-grow overflow-x-scroll py-3 md:px-1/10vw">
-          <h4>노래 목록</h4>
-          <p id="search-list__note" className="p-2 text-center text-xs">
-            {listNote}
-          </p>
-
-          {allVideoLength > 0 && <SearchList />}
-        </div>
+        <section
+          id="search-box"
+          className="relative z-40 w-full flex-col bg-light text-dark">
+          <SearchArea />
+          <SearchList />
+          <button
+            id="search-close"
+            type="button"
+            className="absolute bottom-0 right-0 hidden p-4 text-dark md:block"
+            onClick={() => {
+              searchOpenClose(
+                playerRef,
+                controllerRef,
+                searchRef,
+                searchModalRef,
+              )
+            }}>
+            ✕
+          </button>
+        </section>
 
         <button
-          id="search-close"
+          ref={searchModalRef}
           type="button"
-          className="absolute bottom-0 right-0 hidden p-4 text-dark md:block"
+          id="search-modal"
+          className="absolute left-0 top-0 z-30 hidden h-screen w-screen cursor-default bg-gray-800 bg-opacity-50 text-transparent"
           onClick={() => {
             searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
           }}>
-          ✕
+          Close
         </button>
-      </section>
-      <button
-        ref={searchModalRef}
-        type="button"
-        id="search-modal"
-        className="absolute left-0 top-0 z-30 hidden h-screen w-screen cursor-default bg-gray-800 bg-opacity-50 text-transparent"
-        onClick={() => {
-          searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
-        }}>
-        Close
-      </button>
+      </div>
     </SearchContext.Provider>
   )
 }

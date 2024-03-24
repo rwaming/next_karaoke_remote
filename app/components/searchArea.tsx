@@ -9,7 +9,7 @@ export default function SearchArea(): JSX.Element {
 
   return (
     <search id="search-area" className="flex w-full">
-      <h4>노래 검색 키워드 입력란</h4>
+      <h4 className="invisible absolute">노래 검색 키워드 입력란</h4>
       <form
         id="search-form"
         name="search"
@@ -26,7 +26,7 @@ export default function SearchArea(): JSX.Element {
             minLength={1}
             pattern="/S*"
             placeholder="ex) 윤하 먹구름"
-            className="box-border h-12 flex-grow border bg-light-input p-2 text-center focus:border-2 focus:border-lime-200 focus:bg-light-input focus:outline-none"
+            className="box-border h-12 flex-grow border bg-light-input p-2 text-center focus:border-2 focus:border-lime-200 focus:bg-light-input focus:outline-none md:p-4"
             required
           />
           <fieldset
@@ -36,7 +36,7 @@ export default function SearchArea(): JSX.Element {
               id="search-form__clear"
               type="reset"
               value="✕"
-              className="pr-2 text-dark text-opacity-30"
+              className="pr-2 text-dark text-opacity-30 md:p-2"
             />
             <input
               id="search-form__search"
