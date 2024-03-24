@@ -11,14 +11,20 @@ import AppContext from '@/utils/AppContext'
 import ApplauseAudios from '@/components/controllerApplauseAudios'
 import searchOpenClose from '@/search/searchOpenClose'
 
+ControllerButton.defaultProps = {
+  emoji: '',
+  className: '',
+}
 export default function ControllerButton({
   id,
   text,
-  className,
+  emoji = '',
+  className = '',
 }: {
   id: string
   text: string
-  className: string
+  emoji?: string
+  className?: string
 }): JSX.Element {
   const {
     videoEvent,
@@ -79,11 +85,29 @@ export default function ControllerButton({
       <button
         type="button"
         id={id}
-        className={`${className} button`}
+        className={`button ${className}`}
         onClick={(event: MouseEvent<Button>) => {
           controllerFunctions(event)
         }}>
-        {text}
+        {!className.includes('emoji') && text}
+        {id.includes('pause') && (
+          <>
+            <span className="button-bigger">{emoji}</span>
+            <span className="button-tight">{text}</span>
+          </>
+        )}
+        {id.includes('backward') && (
+          <span className="">
+            <span className="button-tighter">{emoji}</span>
+            {text}
+          </span>
+        )}
+        {id.includes('forward') && (
+          <span className="button-tight">
+            {text}
+            <span className="button-tighter">{emoji}</span>
+          </span>
+        )}
       </button>
 
       {id.includes('applause') && (

@@ -38,7 +38,7 @@ const config: Config = {
         dark: '#000e1f',
         light: '#efefdf',
         button1: '#f5eff3',
-        button2: '#eeff88',
+        button2: '#eaec88',
         button3: '#8890ef',
       },
     },
