@@ -1,6 +1,6 @@
 # ⌨️ react_karaoke_remote
 
-This file be update mostly in **[Issues](#issues)**.
+This file is updated mostly in **[Issues](#issues)**.
 
 ## 🙌 Intro
 
@@ -27,10 +27,10 @@ At least
 
    - Those is like "backward", "forward", "applause"...
 
-2. It is essencial to use some media contents which show karaoke screen and play MR, like Youtube(TJ channel).
+2. It is essential to use some media contents which show karaoke screen and play MR, like YouTube(TJ channel).
 
-   - Youtube API have to be checked.
-   - I have to study how to use API, if it is possible to use Youtube API.
+   - YouTube API have to be checked.
+   - I have to study how to use API, if it is possible to use YouTube API.
 
 Foremore
 
@@ -73,19 +73,19 @@ Foremore
 #### Detail issues
 
 - Never access to elements in iframe in just my web app
-- Youtube API gives simple functions, no function to set ptich.
+- YouTube API gives simple functions, no function to set pitch.
   = I can't manipulate to **use just only web**.
 
 #### Consideration
 
-- Make **Chrome Extention** to have access to iframe in browser.
+- Make **Chrome Extension** to have access to iframe in browser.
 
-  But, I must prepare when I fail to make Chrome extention.
+  But, I must prepare when I fail to make Chrome Extension.
 
 #### Conclusion
 
 1. At first, Make Web APP have buttons which work in it.
-1. Try making Chrome Extention for Web APP and connecting Web APP to Chrome Extention as make buttons one by one.
+1. Try making Chrome Extension for Web APP and connecting Web APP to Chrome Extension as make buttons one by one.
 
 - If it is thought impossible now, close this project with no functions about 2.
 
@@ -113,12 +113,12 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 #### ~~#57 Arrange file structure from 56~~
 
-- Use folders, /conponents, /controller and /utils, in /app
+- Use folders, /components, /controller and /utils, in /app
 - I divided folders and files, checking readablity myself!
 
-#### ~~#58 Search how to use api folder in Next.js (to use Youtube API in it)~~
+#### ~~#58 Search how to use api folder in Next.js (to use YouTube API in it)~~
 
-- I get to know request in client(like fetch, or using gapi) don't use '/api' is for sever-side.
+- I get to know request in client (like fetch, or using gapi) don't use '/api' is for sever-side.
 
 <br>
 
@@ -170,7 +170,7 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
            - or Able to select one of both
 
         1. Way to Slide
-           - Horizonal
+           - Horizontal
            - Vertical
 
     - I may need to use **Figma** to select this properly.
@@ -273,7 +273,7 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
   1. Search
 
-  Fail. Is it unique a issue?
+  Fail. Is it unique an issue?
 
   1. Reinstall Next.js, and Try file copy and replace.
 
@@ -314,15 +314,15 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 #### ~~#13 - Show YouTube player to use API from 12~~
 
-- Accomplish access to YoutubeAPI and get value.
-- But the qouta is exceeded... It must be pended by 4pm
+- Accomplish access to YouTube API and get value.
+- But the quota is exceeded... It must be pended by 4pm
 - Some layout is changed, and complete goal to load YouTube video in a Component.
 
 #### ~~#14 - Make layout in Mobile, Tablet, Desktop to use @media from 13~~
 
 - I decided to make the main layout before the quota reset.
 - Make simple layout use @media, only div.app scope.
-- And It is now possible to use Youtube API to create one more project in Google Cloude.
+- And It is now possible to use YouTube API to create one more project in Google Cloud.
 
 <br>
 
@@ -337,7 +337,7 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 1.  ✔️ **HTML(Next.js)**
 
     - Use Semantic tag, looking for that in Docs.
-    - Mix elements and Compoenets properly.
+    - Mix elements and Components properly.
 
 2.  ✔️ **CSS(SCSS)**
 
@@ -345,14 +345,14 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
         - I caught how to use Tailwind especially about theme
 
-    2.  ✔️ MASCSS(Base, Module) : When Tailwind classes of a element too long, a class name in Base of Module unit is used for some elements which has similar style.
+    2.  ✔️ MASCSS(Base, Module) : When Tailwind classes of an element too long, a class name in Base of Module unit is used for some elements which has similar style.
     3.  ✔️ BEM(UI, Hierarchy) : When it is considered a specific element should have a kind of own UI name, name a class according to BEM.
 
-    - ~~OOCSS : When classes in a element is too long to read easily, name according to OOCSS. : It is the way I wanted~~
+    - ~~OOCSS : When classes in an element is too long to read easily, name according to OOCSS. : It is the way I wanted~~
 
 3.  ✔️ **TypeScript**
 
-    I am a user to use Typescript at first. so... The document of it and to study it is needed.
+    I am a user to use Typescript at first. So... The document of it and to study it is needed.
 
     - ✔️ [Write the concepts and sytactics](#ts)<a id="ts_"></a>
 
@@ -360,8 +360,8 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
     This is same to TypeScript.
 
-    - ✔️ [Write React hook I didn"t know](#react)<a id="react_"></a>
-    - ✔️ [Write Next.js" main function](#next)<a id="next_"></a>
+    - ✔️ [Write React hook I didn't know](#react)<a id="react_"></a>
+    - ✔️ [Write Next.js main function](#next)<a id="next_"></a>
 
 <br>
 
@@ -370,18 +370,18 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 #### ~~#4 - Set SASS, ESLint and Prettier, Stylelint, PostCSS sorting or CSS declaration sorter~~
 
 - ✔️ PostCSS Sorting in VScode
-- I realized that PostCSS sorting and CSS declaration sorter is definetely different.
+- I realized that PostCSS sorting and CSS declaration sorter is definitely different.
 
 <br>
 <a id="issues_1"></a>
 
 > _2024.03.15.fri_
 
-#### ~~#3 - Seclect React-Like framework and bundler~~
+#### ~~#3 - Select React-Like framework and bundler~~
 
 -
 
-It will be made with React, but I heard offical React document say "Don"t use create-react-app".
+It will be made with React, but I heard official React document say "Don't use create-react-app".
 
 - I must choose what type of React to apply this project
   - ✔️ Next.js : It is mostly used in a lot ofcompany.
@@ -441,7 +441,7 @@ It will be made with React, but I heard offical React document say "Don"t use cr
 
 1. **[Types](#ts_types_)** <a id="ts_types"></a>
 
-   - number, string, bllean, null, undefined...
+   - number, string, boolean, null, undefined...
 
    - `any`, `void`, `never`, `unknown`...
 
