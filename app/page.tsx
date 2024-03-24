@@ -17,6 +17,8 @@ export default function App(): JSX.Element {
   const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)
   const [videoID, setVideoID] = useState('')
   const [videoTitle, setVideoTitle] = useState('')
+  const [videoArtist, setVideoArtist] = useState('')
+  const [videoNumber, setVideoNumber] = useState('')
   const [videoDate, setVideoDate] = useState('')
   const playerRef = useRef(null)
   const controllerRef = useRef(null)
@@ -32,6 +34,10 @@ export default function App(): JSX.Element {
       setVideoID,
       videoTitle,
       setVideoTitle,
+      videoArtist,
+      setVideoArtist,
+      videoNumber,
+      setVideoNumber,
       videoDate,
       setVideoDate,
       playerRef,
@@ -40,7 +46,7 @@ export default function App(): JSX.Element {
       searchValueRef,
       searchModalRef,
     }),
-    [videoDate, videoEvent, videoID, videoTitle],
+    [videoArtist, videoDate, videoEvent, videoID, videoNumber, videoTitle],
   )
   useEffect(() => {
     void youtubeAPI()

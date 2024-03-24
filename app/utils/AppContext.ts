@@ -15,6 +15,10 @@ const AppContext = createContext<{
   setVideoID: SetStateT<string>
   videoTitle: string
   setVideoTitle: SetStateT<string>
+  videoArtist: string
+  setVideoArtist: SetStateT<string>
+  videoNumber: string
+  setVideoNumber: SetStateT<string>
   videoDate: string
   setVideoDate: SetStateT<string>
   playerRef: UseRef<Div>
@@ -29,6 +33,10 @@ const AppContext = createContext<{
   setVideoID: () => {},
   videoTitle: '',
   setVideoTitle: () => {},
+  videoArtist: '',
+  setVideoArtist: () => {},
+  videoNumber: '',
+  setVideoNumber: () => {},
   videoDate: '',
   setVideoDate: () => {},
   playerRef: { current: null },

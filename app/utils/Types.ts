@@ -22,5 +22,20 @@ export type VideoInfo = {
   number: string
   date: string
 }
-export type VideoInfos = VideoInfo[]
-export type SearchInfo = Array<VideoInfo | number>
+export type VideoInfos = Array<{
+  id: string
+  title: string
+  artist: string
+  number: string
+  date: string
+}>
+export type SearchInfo = Array<
+  | {
+      id: string
+      title: string
+      artist: string
+      number: string
+      date: string
+    }
+  | number
+>

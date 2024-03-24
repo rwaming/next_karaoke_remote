@@ -37,7 +37,6 @@ export default function applause(audioRefs: UseRefArray<Audio>): void {
           return
         }
       }
-
       // Save played time of 1~3
       prevPlayedTime = playedTime
     }

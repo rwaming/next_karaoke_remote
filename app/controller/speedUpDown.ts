@@ -10,6 +10,7 @@ export default function speedUpDown(
     const video = videoEvent.target
     const button = event.currentTarget.id
     const speed = video.getPlaybackRate()
+
     if (button.includes('down') && speed > 0.5) {
       const speedDown = speed - 0.1
       video.setPlaybackRate(speedDown)

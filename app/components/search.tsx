@@ -25,7 +25,6 @@ export default function Search(): JSX.Element {
     }
     return '에러: 현재 검색이 불가합니다.'
   }, [allVideoLength])
-
   const searchValue = useMemo(
     () => ({
       videoInfos,

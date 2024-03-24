@@ -47,7 +47,9 @@ export default function Player(): JSX.Element {
             id="information"
             className="absolute right-0 top-0 hidden h-1/5 w-full bg-dark text-xs">
             <figcaption>영상 정보</figcaption>
+            <p>{`https://www.youtube.com/watch?v=${videoID}`}</p>
             <p>{videoTitle}</p>
+            <p>{videoDate}</p>
             <p>{videoDate}</p>
           </figure>
         )}

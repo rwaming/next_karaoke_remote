@@ -8,7 +8,7 @@ import {
 import { type MouseEvent } from 'react'
 import searchOpenClose from './searchOpenClose'
 
-export default function changeVideo(
+export default function showSelectedVideo(
   event: MouseEvent,
   {
     playerRef,
@@ -18,6 +18,8 @@ export default function changeVideo(
     videoInfos,
     setVideoID,
     setVideoTitle,
+    setVideoArtist,
+    setVideoNumber,
     setVideoDate,
   }: {
     playerRef: UseRef<Div>
@@ -27,20 +29,26 @@ export default function changeVideo(
     videoInfos: VideoInfos
     setVideoID: SetState<string>
     setVideoTitle: SetState<string>
+    setVideoArtist: SetState<string>
+    setVideoNumber: SetState<string>
     setVideoDate: SetState<string>
   },
 ): void {
   event.preventDefault()
   searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
 
-  const getIndex = event.currentTarget.parentElement?.id.match(/\d*$/) ?? '-1'
-  if (Array.isArray(getIndex)) {
-    const index = parseInt(getIndex[0], 10)
-    const videoInfo = videoInfos[index]
+  const getIndexFromID =
+    event.currentTarget.parentElement?.id.match(/\d*$/) ?? '-1'
 
-    const { id, title, date } = videoInfo
+  if (Array.isArray(getIndexFromID)) {
+    const index = parseInt(getIndexFromID[0], 10)
+    const videoInfo = videoInfos[index]
+    const { id, title, artist, number, date } = videoInfo
+
     setVideoID(id)
     setVideoTitle(title)
+    setVideoArtist(artist)
+    setVideoNumber(number)
     setVideoDate(date)
   }
 }
