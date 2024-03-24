@@ -77,6 +77,7 @@ export default function App(): JSX.Element {
               <p id="contact-name__en">RWAM</p>
               <p id="contact-name__ko">김성주</p>
             </div>
+
             <div
               id="contact-info"
               className="flex h-full flex-col justify-around gap-1 font-light">
@@ -87,8 +88,12 @@ export default function App(): JSX.Element {
                 +82 010-9716-1132
               </p>
             </div>
+
             <div id="contact-sns" className="flex items-center gap-3">
-              <Link href="https://www.instagram.com/rwam__kn" target="_blank">
+              <Link
+                href="https://www.instagram.com/rwam__kn"
+                target="_blank"
+                aria-label="contact-sns__instagram">
                 <Image
                   id="contact-sns__instagram"
                   src="/icon_instagram.png"
@@ -98,7 +103,10 @@ export default function App(): JSX.Element {
                   className="h-7 w-7"
                 />
               </Link>
-              <Link href="https://blog.naver.com/rwaming" target="_blank">
+              <Link
+                href="https://blog.naver.com/rwaming"
+                target="_blank"
+                aria-label="contact-sns__naver-blog">
                 <Image
                   id="contact-sns__naver-blog"
                   src="/icon_naver.png"

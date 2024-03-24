@@ -17,15 +17,7 @@ export default function Player(): JSX.Element {
       ref={playerRef}
       id="player"
       className="flex flex-shrink basis-16-9vh flex-col md:flex-1 md:items-end md:justify-center">
-      <figure id="player-content" className="relative h-16-9vh w-full">
-        <figcaption
-          id="information"
-          className="absolute right-0 top-0 hidden h-1/5 w-full bg-dark text-xs">
-          <p>{videoID !== '' && videoID}</p>
-          <p>{videoID !== '' && videoTitle}</p>
-          <p>{videoID !== '' && videoDate}</p>
-        </figcaption>
-
+      <div id="player-content" className="relative h-16-9vh w-full">
         {videoID !== '' && (
           <YouTube
             className="player-yt"
@@ -47,7 +39,7 @@ export default function Player(): JSX.Element {
           className="absolute right-0 top-0 h-full w-full cursor-default text-transparent">
           Pause
         </button>
-      </figure>
+      </div>
     </section>
   )
 }
