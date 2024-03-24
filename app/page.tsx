@@ -72,7 +72,7 @@ export default function App(): JSX.Element {
         <footer
           id="footer"
           className="absolute bottom-0 right-0 m-3 flex w-full justify-center gap-4 opacity-75 md:justify-end">
-          <div id="contact" className="flex gap-4 text-sm not-italic">
+          <address id="contact" className="flex gap-4 text-sm not-italic">
             <div
               id="contact-name"
               className="flex h-full items-center gap-2 text-center font-semibold">
@@ -119,7 +119,7 @@ export default function App(): JSX.Element {
                 />
               </Link>
             </div>
-          </div>
+          </address>
         </footer>
       </div>
     </AppContext.Provider>
