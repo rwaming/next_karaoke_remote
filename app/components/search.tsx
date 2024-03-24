@@ -48,7 +48,7 @@ export default function Search(): JSX.Element {
       >
         Close
       </button>
-      <div
+      <section
         ref={searchRef}
         id="search"
         className="fixed hidden w-screen flex-col bg-light text-dark"
@@ -74,7 +74,7 @@ export default function Search(): JSX.Element {
         >
           ✕
         </button>
-      </div>
+      </section>
     </SearchContext.Provider>
   )
 }

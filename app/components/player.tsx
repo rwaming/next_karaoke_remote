@@ -13,7 +13,7 @@ export default function Player(): JSX.Element {
     [setVideoEvent],
   )
   return (
-    <div
+    <section
       ref={playerRef}
       id="player"
       className="flex flex-shrink basis-16-9vh flex-col md:flex-1 md:items-end md:justify-center"
@@ -51,6 +51,6 @@ export default function Player(): JSX.Element {
           Pause
         </button>
       </figure>
-    </div>
+    </section>
   )
 }
