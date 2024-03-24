@@ -7,6 +7,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '320px',
+      },
       spacing: {
         '1/2vw': '50vw',
         '1/4vw': '25vw',

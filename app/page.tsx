@@ -96,7 +96,7 @@ export default function App(): JSX.Element {
               </p>
             </div>
 
-            <div id="contact-sns" className="flex items-center gap-3">
+            <div id="contact-sns" className="xs:hidden flex items-center gap-3">
               <Link
                 href="https://www.instagram.com/rwam__kn"
                 target="_blank"

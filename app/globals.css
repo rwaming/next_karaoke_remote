@@ -68,7 +68,7 @@
   #controller {
     flex-basis: var(--controller-w-px);
   }
-  #search {
+  #search-box {
     top: calc(100vh - (100vh - var(--screen-ratio-h-vh)));
     height: calc((100vh - var(--screen-ratio-h-vh)));
   }
@@ -87,22 +87,10 @@
       }
     }
     /* This is needed because of specific css styling of #search (above) */
-    #search {
+    #search-box {
       top: 0;
       left: 0;
       height: 50vh;
-    }
-  }
-  /* xs */
-  @media screen and (max-width: 350px) {
-    #search-form__clear {
-      @apply hidden;
-    }
-    #search-form__search {
-      @apply hidden;
-    }
-    #contact-sns {
-      @apply hidden;
     }
   }
 
