@@ -6,7 +6,7 @@ import {
   type Input,
   type SetState as SetStateT,
   type Button,
-} from './TypeCustum'
+} from './Types'
 
 const AppContext = createContext<{
   videoEvent: YouTubeEvent | null

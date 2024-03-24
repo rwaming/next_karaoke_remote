@@ -4,7 +4,7 @@ import {
   type Button,
   type VideoInfos,
   type SetState,
-} from '@/utils/TypeCustum'
+} from '@/utils/Types'
 import { type MouseEvent } from 'react'
 import searchOpenClose from './searchOpenClose'
 

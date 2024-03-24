@@ -1,5 +1,5 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
-import { type Button } from '@/utils/TypeCustum'
+import { type Button } from '@/utils/Types'
 import playPause from '@/controller/playPause'
 import latestVideo from '@/controller/latestVideo'
 import stopVideo from '@/controller/stopVideo'

@@ -6,7 +6,7 @@ import {
   type UseRef,
   type SetState,
   type SearchInfo,
-} from '@/utils/TypeCustum'
+} from '@/utils/Types'
 
 async function getSearchInfo(
   event: MouseEvent,
