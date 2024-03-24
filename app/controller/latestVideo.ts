@@ -1,4 +1,4 @@
-import { type SetState } from '@/utils/Types'
+import { type SetState } from '@/utils/TypeCustum'
 import { gapi } from 'gapi-script'
 
 export default async function latestVideo(

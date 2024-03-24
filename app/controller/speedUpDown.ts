@@ -1,4 +1,4 @@
-import { type Button } from '@/utils/Types'
+import { type Button } from '@/utils/TypeCustum'
 import { type MouseEvent } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 

@@ -6,17 +6,15 @@ import {
   type UseRef,
   type SetState,
   type SearchInfo,
-} from '@/utils/Types'
+} from '@/utils/TypeCustum'
 
 async function getSearchInfo(
   event: MouseEvent,
   searchValueRef: UseRef<Input>,
 ): Promise<SearchInfo> {
   const searchKeyword = searchValueRef.current?.value.trim() ?? ''
-
   if (searchKeyword !== '') {
     event.preventDefault()
-
     const searchResult = await gapi.client.youtube.search.list({
       part: 'snippet',
       channelId: 'UCDqaUIUSJP5EVMEI178Zfag',

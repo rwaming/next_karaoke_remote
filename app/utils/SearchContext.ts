@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { type VideoInfos, type SetState } from './Types'
+import { type VideoInfos, type SetState } from './TypeCustum'
 
 const SearchContext = createContext<{
   videoInfos: VideoInfos
