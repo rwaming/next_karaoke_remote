@@ -60,10 +60,10 @@
 /* id */
 @layer components {
   .player-yt {
-    @apply h-full w-full;
+    max-width: 514px;
+    max-height: 289px;
     > iframe {
-      width: 514px;
-      height: 289px;
+      @apply h-full w-full;
     }
   }
   #controller {

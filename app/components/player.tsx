@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react'
+import { Suspense, useCallback, useContext } from 'react'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
 import Link from 'next/link'
 import { type IFrame } from '@/utils/Types'
@@ -23,8 +23,13 @@ export default function Player(): JSX.Element {
   )
   const makePlayerFullSize = useCallback((event: YouTubeEvent) => {
     const playerIframe: IFrame = event.target.getIframe()
-    playerIframe.style.width = '100%'
-    playerIframe.style.height = '100%'
+    const playerYT = playerIframe.parentElement
+    if (playerYT !== null) {
+      playerYT.style.maxWidth = '100%'
+      playerYT.style.maxHeight = '100%'
+      playerYT.style.width = '100%'
+      playerYT.style.height = '100%'
+    }
   }, [])
 
   return (
@@ -35,25 +40,35 @@ export default function Player(): JSX.Element {
       <h2 className="invisible absolute">노래 영상</h2>
 
       <div id="player-content" className="relative h-16-9vh w-full">
-        {videoID !== '' && (
-          <YouTube
-            className="player-yt"
-            videoId={videoID}
-            opts={{
-              playerVars: {
-                autoplay: 1,
-                controls: 0,
-                disablekb: 1,
-                fs: 0,
-                modestbranding: 1,
-                iv_load_policy: 3,
-                rel: 0,
-              },
-            }}
-            onReady={useThisPlayer}
-            onPlay={makePlayerFullSize}
-          />
-        )}
+        <Suspense
+          fallback={
+            <div
+              id="loading"
+              className="flex h-screen w-screen items-center justify-center bg-dark text-light">
+              <p>Loading...</p>
+            </div>
+          }>
+          {' '}
+          {videoID !== '' && (
+            <YouTube
+              className="player-yt"
+              videoId={videoID}
+              opts={{
+                playerVars: {
+                  autoplay: 1,
+                  controls: 0,
+                  disablekb: 1,
+                  fs: 0,
+                  modestbranding: 1,
+                  iv_load_policy: 3,
+                  rel: 0,
+                },
+              }}
+              onReady={useThisPlayer}
+              onPlay={makePlayerFullSize}
+            />
+          )}
+        </Suspense>
 
         {videoID !== '' && (
           <figure
