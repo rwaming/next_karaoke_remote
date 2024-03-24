@@ -59,6 +59,7 @@ export default function App(): JSX.Element {
             마지막 업데이트: 2024. 03. 24. 일요일
           </p>
         </hgroup>
+
         <main
           id="main"
           className="flex h-full w-full flex-col justify-center md:flex-row"
@@ -67,53 +68,52 @@ export default function App(): JSX.Element {
           <Search />
           <Controller />
         </main>
+
         <footer
           id="footer"
-          className="absolute bottom-0 right-0 m-3 flex items-center gap-4 opacity-75"
+          className="absolute bottom-0 right-0 m-3 flex w-full justify-center gap-4 opacity-75 md:justify-end"
         >
-          <address
-            id="contact"
-            className="flex h-10 items-center gap-4 text-sm not-italic"
-          >
-            <div id="contact-text" className="flex h-full items-center">
-              <p className="flex gap-2 text-center font-semibold">
-                <span id="contact-name__en">RWAM</span>
-                <span id="contact-name__ko">김성주</span>
-              </p>
+          <div id="contact" className="flex gap-4 text-sm not-italic">
+            <div
+              id="contact-name"
+              className="flex h-full items-center gap-2 text-center font-semibold"
+            >
+              <p id="contact-name__en">RWAM</p>
+              <p id="contact-name__ko">김성주</p>
             </div>
             <div
-              id="contact-text"
-              className="flex h-full flex-col justify-center font-light"
+              id="contact-info"
+              className="flex h-full flex-col justify-around gap-1 font-light"
             >
-              <p id="contact-text__email" className="text-xs">
+              <p id="contact-info__email" className="text-xs">
                 art.rwam@gmail.com
               </p>
-              <p id="contact-text__phone" className="text-xs">
+              <p id="contact-info__phone" className="text-xs">
                 +82 010-9716-1132
               </p>
             </div>
-          </address>
-          <div id="contact-sns" className="flex gap-3">
-            <Link href="https://www.instagram.com/rwam__kn" target="_blank">
-              <Image
-                id="contact-instagram"
-                src="/icon_instagram.png"
-                width={40}
-                height={40}
-                alt="contact_instagram"
-                className="h-7 w-7"
-              />
-            </Link>
-            <Link href="https://blog.naver.com/rwaming" target="_blank">
-              <Image
-                id="contact-naver-blog"
-                src="/icon_naver.png"
-                width={40}
-                height={40}
-                alt="contact_naver_blog"
-                className="h-7 w-7"
-              />
-            </Link>
+            <div id="contact-sns" className="flex items-center gap-3">
+              <Link href="https://www.instagram.com/rwam__kn" target="_blank">
+                <Image
+                  id="contact-sns__instagram"
+                  src="/icon_instagram.png"
+                  width={40}
+                  height={40}
+                  alt="contact_instagram"
+                  className="h-7 w-7"
+                />
+              </Link>
+              <Link href="https://blog.naver.com/rwaming" target="_blank">
+                <Image
+                  id="contact-sns__naver-blog"
+                  src="/icon_naver.png"
+                  width={40}
+                  height={40}
+                  alt="contact_naver_blog"
+                  className="h-7 w-7"
+                />
+              </Link>
+            </div>
           </div>
         </footer>
       </div>

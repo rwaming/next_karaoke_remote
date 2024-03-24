@@ -90,11 +90,14 @@
     }
   }
   /* xs */
-  @media screen and (max-width: 300px) {
+  @media screen and (max-width: 350px) {
     #search-form__clear {
       @apply hidden;
     }
     #search-form__search {
+      @apply hidden;
+    }
+    #sns {
       @apply hidden;
     }
   }
