@@ -47,13 +47,15 @@ export default function App(): JSX.Element {
   return (
     <AppContext.Provider value={appValue}>
       <Script src="https://apis.google.com/js/api.js" defer />
-      <div
-        id="app"
-        className="flex h-screen w-screen flex-col justify-center bg-dark text-light md:flex-row"
-      >
-        <Player />
-        <Search />
-        <Controller />
+      <div id="app" className="h-screen w-screen bg-dark text-light">
+        <main
+          id="main"
+          className="flex h-full w-full flex-col justify-center md:flex-row"
+        >
+          <Player />
+          <Search />
+          <Controller />
+        </main>
       </div>
     </AppContext.Provider>
   )
