@@ -77,7 +77,7 @@ export default function App(): JSX.Element {
               width={40}
               height={40}
               alt="contact_instagram"
-              className="h-8 w-8"
+              className="h-7 w-7"
             />
           </Link>
           <Link href="https://blog.naver.com/rwaming" target="_blank">
@@ -86,7 +86,7 @@ export default function App(): JSX.Element {
               width={40}
               height={40}
               alt="contact_naver"
-              className="h-8 w-8"
+              className="h-7 w-7"
             />
           </Link>
         </address>

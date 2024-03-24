@@ -18,7 +18,18 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={inter.className}>
-        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        <Suspense
+          fallback={
+            <div
+              id="loading"
+              className="flex h-screen w-screen items-center justify-center bg-dark text-light"
+            >
+              <p>Loading...</p>
+            </div>
+          }
+        >
+          {children}
+        </Suspense>
       </body>
     </html>
   )

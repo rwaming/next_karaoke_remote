@@ -8,7 +8,7 @@ export default function SearchArea(): JSX.Element {
   const { setVideoInfos, setAllVideoLength } = useContext(SearchContext)
 
   return (
-    <div id="search-area" className="flex w-full">
+    <search id="search-area" className="flex w-full">
       <form
         id="search-form"
         name="search"
@@ -56,6 +56,6 @@ export default function SearchArea(): JSX.Element {
           </fieldset>
         </fieldset>
       </form>
-    </div>
+    </search>
   )
 }
