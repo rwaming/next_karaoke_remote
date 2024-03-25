@@ -8,6 +8,9 @@ import Image from 'next/image'
 
 import AppContext from '@/utils/AppContext'
 import Script from 'next/script'
+import Player from './components/player'
+import Search from './components/search'
+import Controller from './components/controller'
 
 export default function App(): JSX.Element {
   const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)
@@ -92,8 +95,11 @@ export default function App(): JSX.Element {
 
         <main
           id='main'
-          className='flex h-full w-full flex-col justify-center sm:flex-row'
-        />
+          className='flex h-full w-full flex-col justify-center sm:flex-row'>
+          <Player />
+          <Search />
+          <Controller />
+        </main>
 
         <footer
           id='footer'

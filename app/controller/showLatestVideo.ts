@@ -14,10 +14,11 @@ export default async function showLatestVideo(
     order: 'date',
     maxResults: 1,
   })
-  const video = latestVideoList.result.items[0]
-  const videoID: string = video.id.videoId
-  const videoDate: string = video.snippet.publishedAt
-  const videoTitle: string = video.snippet.title
+  const videos = latestVideoList.result.items ?? []
+  const video = videos[0]
+  const videoID: string = video.id?.videoId ?? ''
+  const videoDate: string = video.snippet?.publishedAt ?? ''
+  const videoTitle: string = video.snippet?.title ?? ''
   // 사건의 지평선 - 윤하(Event horizon - YOUNHA) (KY.28707) / KY Karaoke
 
   let divided

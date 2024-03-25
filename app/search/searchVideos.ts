@@ -29,14 +29,16 @@ async function getSearchInfo(
       q: `${searchKeyword} KY Karaoke -노래방챌린지`,
     })
 
-    const listLengthAll: number = searchResult.result.pageInfo.totalResults
-    const listLength = searchResult.result.pageInfo.resultsPerPage
+    const listLengthAll: number =
+      searchResult.result.pageInfo?.totalResults ?? -2
+    const listLength = searchResult.result.pageInfo?.resultsPerPage
 
     const videoInfos: VideoInfos = [...Array(listLength)].map((v, i) => {
-      const video = searchResult.result.items[i]
-      const videoID: string = video.id.videoId
-      const videoDate: string = video.snippet.publishedAt
-      const videoTitle: string = video.snippet.title
+      const videos = searchResult.result.items ?? []
+      const video = videos[i]
+      const videoID: string = video.id?.videoId ?? ''
+      const videoDate: string = video.snippet?.publishedAt ?? ''
+      const videoTitle: string = video.snippet?.title ?? ''
       // 사건의 지평선 - 윤하(Event horizon - YOUNHA) (KY.28707) / KY Karaoke
 
       let divided
