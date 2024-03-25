@@ -97,12 +97,16 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 <br>
 
-> _2024.03.24.sun_
+> _2024.03.25.mon_
 
-#### #49 - Styling with Tailwind, @media and React Transition Group
+#### ~~#49 - Styling with Tailwind, @media and React Transition Group~~
 
 - Install 'prettier-plugin-tailwindcss'.
-- Wait for #61.
+- Design overall UI, though needed more, I've close this issues for now to prevent to loose focus.
+
+<br>
+
+> _2024.03.24.sun_
 
 #### ~~#61 - Use Semantic tag like H1~6, main~~
 
