@@ -103,7 +103,44 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 - I'm searching for hosting services I'll use.
 - Select 'Vercel'!
+
   - It is recommended by official document of Next.js.
+
+- Error
+
+  - ReferenceError: window is not defined
+
+    - I guess the reason why error occurs would be 'gapi'.
+
+      - at 7605 (/Users/rwam/project/next-karaoke-remote/.next/server/app/page.js:1:6619)
+        - "gapi=**window**.gapi=**window**.gapi" is cought.
+
+    - **Way to Fix**
+
+      Component, needed no server-side rendering, use the options below.
+
+      1. Use `if (typeof window !== "undefined") {`
+         => fail
+
+      1. Render in **useEffect**
+
+         ```
+         const Conponent = () => {
+           useEffect(() => {
+              return (JSX)
+           })
+         }
+         ```
+
+      1. Import component to use **dynamic**
+
+         ```
+         const Component = dynamic(
+          () => {
+            return import("@/path")
+          }, { ssr: false }
+         )
+         ```
 
 #### ~~#49 - Styling with Tailwind, @media and React Transition Group~~
 
