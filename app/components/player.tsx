@@ -1,6 +1,7 @@
-import { useCallback, useContext } from 'react'
+import { Suspense, useCallback, useContext } from 'react'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
 import Link from 'next/link'
+import { type IFrame } from '@/utils/Types'
 import AppContext from '../utils/AppContext'
 
 export default function Player(): JSX.Element {
@@ -14,46 +15,65 @@ export default function Player(): JSX.Element {
     playerRef,
   } = useContext(AppContext)
 
-  const useThisVideo = useCallback(
+  const useThisPlayer = useCallback(
     (event: YouTubeEvent) => {
       setVideoEvent(event)
     },
     [setVideoEvent],
   )
+  const makePlayerFullSize = useCallback((event: YouTubeEvent) => {
+    const playerIframe: IFrame = event.target.getIframe()
+    const playerYT = playerIframe.parentElement
+    if (playerYT !== null) {
+      playerYT.style.maxWidth = '100%'
+      playerYT.style.maxHeight = '100%'
+      playerYT.style.width = '100%'
+      playerYT.style.height = '100%'
+    }
+  }, [])
+
   return (
     <section
       ref={playerRef}
       id="player"
-      className="relative flex flex-shrink basis-16-9vh flex-col md:flex-1 md:items-end md:justify-center">
+      className="relative flex flex-shrink basis-16-9vh flex-col sm:flex-1 sm:items-end sm:justify-center">
       <h2 className="invisible absolute">노래 영상</h2>
 
-      <div
-        id="player-modal"
-        className="absolute right-0 top-0 z-10 h-full w-full cursor-default text-transparent"
-        aria-roledescription="modal_to_prevent_manipulate_player"
-      />
-
       <div id="player-content" className="relative h-16-9vh w-full">
-        {videoID !== '' && (
-          <YouTube
-            className="player-yt"
-            videoId={videoID}
-            opts={{
-              playerVars: {
-                autoplay: 1,
-                modestbranding: 1,
-                controls: 0,
-                fs: 1,
-              },
-            }}
-            onReady={useThisVideo}
-          />
-        )}
+        <Suspense
+          fallback={
+            <div
+              id="loading"
+              className="flex h-screen w-screen items-center justify-center bg-dark text-light">
+              <p>Loading...</p>
+            </div>
+          }>
+          {' '}
+          {videoID !== '' && (
+            <YouTube
+              className="player-yt"
+              videoId={videoID}
+              opts={{
+                playerVars: {
+                  autoplay: 1,
+                  controls: 0,
+                  disablekb: 1,
+                  fs: 0,
+                  modestbranding: 1,
+                  iv_load_policy: 3,
+                  rel: 0,
+                },
+              }}
+              onReady={useThisPlayer}
+              onPlay={makePlayerFullSize}
+            />
+          )}
+        </Suspense>
 
         {videoID !== '' && (
           <figure
             id="information"
-            className="absolute bottom-0 left-0 z-20 w-full bg-dark bg-opacity-50 text-xs">
+            className="absolute bottom-0 left-0 hidden w-full bg-dark bg-opacity-50 text-xs opacity-0">
             <figcaption>영상 정보</figcaption>
             <p>
               <Link

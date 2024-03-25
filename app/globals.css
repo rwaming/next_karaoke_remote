@@ -7,8 +7,8 @@
   --screen-ratio-h: 0.5625;
   --screen-ratio-h-p: 56.25;
   --screen-ratio-h-vh: 56.25vw;
-  --controller-w: 200;
-  --controller-w-px: 200px;
+  --controller-w: 320;
+  --controller-w-px: 20rem;
   --search-h-px: 58px;
 }
 
@@ -21,27 +21,89 @@
 
 /* reusable */
 @layer utilities {
+  .button-col {
+    @apply flex shrink grow flex-col gap-2;
+  }
+  .button-row {
+    @apply flex shrink grow gap-2;
+  }
+  .button {
+    @apply flex shrink grow items-center justify-center rounded-lg p-2 pb-3 text-sm xs:text-base sm:text-lg;
+    box-shadow: inset -0.25rem -0.25rem rgba(0, 0, 0, 0.15);
+    background-image: linear-gradient(
+      150deg,
+      rgba(190, 176, 255, 0.05) 30%,
+      rgba(186, 138, 206, 0.2) 100%
+    );
+  }
+  .button-bigger {
+    @apply inline-block text-xl xs:text-2xl sm:text-3xl;
+  }
+  .button-tight {
+    letter-spacing: -0.1rem;
+  }
+  .button-tighter {
+    letter-spacing: -0.55rem;
+  }
+
   .search-list__li {
     @apply mt-4 box-content flex h-4 border-b border-b-gray-800 border-opacity-50 py-2 text-center;
   }
   .search-list__li-click {
-    @apply flex max-w-full flex-grow items-center;
+    @apply flex max-w-full flex-grow items-center gap-3;
   }
   .search-list__li-title {
-    @apply flex-grow overflow-hidden text-ellipsis whitespace-nowrap text-xs;
+    @apply flex-grow overflow-hidden text-ellipsis whitespace-nowrap text-sm;
   }
   .search-list__li-artist {
-    @apply flex-shrink-0 basis-1/5vw overflow-hidden text-ellipsis whitespace-nowrap text-xs opacity-70;
+    @apply flex-shrink-0 basis-1/4vw overflow-hidden text-ellipsis whitespace-nowrap text-xs md:text-sm;
   }
   .search-list__li-number {
-    @apply hidden flex-shrink-0 basis-1/8vw overflow-hidden text-ellipsis whitespace-nowrap text-xs opacity-70 md:block;
+    @apply hidden flex-shrink-0 basis-1/8vw overflow-hidden text-ellipsis whitespace-nowrap text-sm opacity-70 md:block;
   }
 }
 
 /* id */
 @layer components {
+  #app {
+    background-image: radial-gradient(
+        at 80% 95%,
+        rgba(68, 51, 204, 0.2) 10%,
+        rgba(2, 21, 93, 0.2) 50%
+      ),
+      radial-gradient(
+        at 20% 0%,
+        rgba(130, 51, 204, 0.2) 10%,
+        rgba(9, 18, 57, 0.2) 50%
+      ),
+      radial-gradient(
+        at 0% 70%,
+        rgba(133, 3, 255, 0.2) 10%,
+        rgba(36, 46, 88, 0.2) 50%
+      ),
+      radial-gradient(
+        at 95% 0%,
+        rgba(40, 23, 149, 0.2) 10%,
+        rgba(4, 12, 46, 0.2) 50%
+      ),
+      radial-gradient(
+        at 55% 10%,
+        rgba(183, 156, 48, 0.2) 10%,
+        rgba(100, 77, 88, 0.2) 30%,
+        rgba(0, 0, 0, 0.2) 50%
+      ),
+      radial-gradient(
+        at 95% 0%,
+        rgba(40, 150, 114, 0.2) 10%,
+        rgba(33, 51, 125, 0.2) 50%
+      );
+  }
+  #player {
+    max-height: 33.33vh;
+  }
   .player-yt {
-    @apply h-full w-full;
+    max-width: 514px;
+    max-height: 289px;
     > iframe {
       @apply h-full w-full;
     }
@@ -49,7 +111,38 @@
   #controller {
     flex-basis: var(--controller-w-px);
   }
-  #search {
+  #search-box {
+    background-image: radial-gradient(
+        at 80% 95%,
+        rgba(68, 51, 204, 0.2) 10%,
+        rgba(33, 51, 125, 0.2) 50%
+      ),
+      radial-gradient(
+        at 20% 0%,
+        rgba(130, 51, 204, 0.2) 10%,
+        rgba(33, 51, 125, 0.2) 50%
+      ),
+      radial-gradient(
+        at 0% 70%,
+        rgba(130, 51, 204, 0.2) 10%,
+        rgba(33, 51, 125, 0.2) 50%
+      ),
+      radial-gradient(
+        at 95% 0%,
+        rgba(40, 23, 149, 0.2) 10%,
+        rgba(33, 51, 125, 0.2) 50%
+      ),
+      radial-gradient(
+        at 55% 10%,
+        rgba(183, 156, 48, 0.2) 10%,
+        rgba(100, 77, 88, 0.2) 30%,
+        rgba(20, 33, 86, 0.2) 50%
+      ),
+      radial-gradient(
+        at 95% 0%,
+        rgba(40, 150, 114, 0.2) 10%,
+        rgba(33, 51, 125, 0.2) 50%
+      );
     top: calc(100vh - (100vh - var(--screen-ratio-h-vh)));
     height: calc((100vh - var(--screen-ratio-h-vh)));
   }
@@ -57,44 +150,29 @@
     @apply border-0 text-base font-bold;
   }
 
-  /* md */
-  @media screen and (min-width: 768px) {
+  #upate > * {
+    transition: all 0.3s;
+    transition-timing-function: cubic-bezier(0.8, 0.2, 0.15, 0.85);
+    transform: translateX(5%) translateY(-300%) scale(0.8);
+  }
+  #upate:hover > * {
+    transform: translateX(5%) translateY(0) scale(0.8);
+  }
+  /* sm */
+  @media screen and (min-width: 640px) {
     #player {
       width: calc(100vw - var(--controller-w-px));
       /* Prevent for iframe to have blank because height is too small but width is too long. */
       max-width: calc(100vh * var(--screen-ratio-w));
+      max-height: none;
       > #player-content {
         height: calc((100vw - var(--controller-w-px)) * var(--screen-ratio-h));
       }
     }
-    #controller {
-      flex-basis: var(--controller-w-px);
-    }
     /* This is needed because of specific css styling of #search (above) */
-    #search {
+    #search-box {
       top: 0;
-      left: 0;
       height: 50vh;
     }
-  }
-  /* xs */
-  @media screen and (max-width: 350px) {
-    #search-form__clear {
-      @apply hidden;
-    }
-    #search-form__search {
-      @apply hidden;
-    }
-    #contact-sns {
-      @apply hidden;
-    }
-  }
-
-  /* Optional */
-  .player-search {
-    @apply absolute top-0 w-full md:relative md:justify-end;
-  }
-  .controller-search {
-    @apply hidden md:relative md:top-1/2vh md:z-40 md:block;
   }
 }

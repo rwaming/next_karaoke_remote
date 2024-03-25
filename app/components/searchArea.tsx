@@ -24,9 +24,9 @@ export default function SearchArea(): JSX.Element {
             name="search-form__value"
             type="search"
             minLength={1}
-            pattern="/S*"
+            pattern="\S*"
             placeholder="ex) 윤하 먹구름"
-            className="box-border h-12 flex-grow border bg-light-input p-2 text-center focus:border-2 focus:border-lime-200 focus:bg-light-input focus:outline-none md:p-4"
+            className="box-border h-12 flex-grow bg-light bg-opacity-15 p-2 text-center placeholder:text-light placeholder:text-opacity-75 focus:border-2 focus:outline-none sm:p-4"
             required
           />
           <fieldset
@@ -36,13 +36,13 @@ export default function SearchArea(): JSX.Element {
               id="search-form__clear"
               type="reset"
               value="✕"
-              className="pr-2 text-dark text-opacity-30 md:p-2"
+              className="hidden pr-2 text-dark text-opacity-30 sm:flex sm:p-2"
             />
             <input
               id="search-form__search"
               type="submit"
               value="🔍"
-              className="x-cover-instead mr-2 bg-light-input text-2xl"
+              className="x-cover-instead bg-light-input mr-2 hidden text-2xl sm:flex"
               onClick={(event) => {
                 void searchVideos(event, {
                   setVideoInfos,

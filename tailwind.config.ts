@@ -7,8 +7,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '320px',
+      },
       spacing: {
         '1/2vw': '50vw',
+        '1/3vw': '33.33vw',
+        '2/3vw': '66.66vw',
         '1/4vw': '25vw',
         '3/4vw': '75vw',
         '1/5vw': '20vw',
@@ -35,11 +40,11 @@ const config: Config = {
         '1/10vh': '10vh',
       },
       colors: {
-        dark: '#222244',
-        'dark-input': '#333355',
-
-        light: '#ffffee',
-        'light-input': '#eeeedd',
+        dark: '#111122',
+        light: '#efefdf',
+        button1: '#f4f2fa',
+        button2: '#eaec88',
+        button3: '#8890ef',
       },
     },
   },

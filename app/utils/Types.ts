@@ -9,6 +9,7 @@ export type Div = HTMLDivElement
 export type Input = HTMLInputElement
 export type Button = HTMLButtonElement
 export type Audio = HTMLAudioElement
+export type IFrame = HTMLIFrameElement
 export type SetState<T> = Dispatch<SetStateAction<T>>
 export type UseRef<T> = MutableRefObject<T | null>
 export type UseRefArray<T> = Array<MutableRefObject<T | null>>
