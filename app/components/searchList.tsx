@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react'
 import AppContext from '@/utils/AppContext'
 import SearchContext from '@/utils/SearchContext'
-import showSelectedVideo from '@/search/showSelectedVideo'
+import showSelectedVideo from '@/function/showSelectedVideo'
 
 export default function SearchList(): JSX.Element {
   const {

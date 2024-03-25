@@ -5,7 +5,7 @@ import { type YouTubeEvent } from 'react-youtube'
 import AppContext from './utils/AppContext'
 import ControllerButton from './components/controllerButton'
 import Search from './components/search'
-import Player from './components/player'
+import Player from './components/page'
 
 export default function App(): JSX.Element {
   const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)

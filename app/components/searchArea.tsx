@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import AppContext from '@/utils/AppContext'
-import searchVideos from '@/search/searchVideos'
+import searchVideos from '@/function/searchVideos'
 import SearchContext from '@/utils/SearchContext'
 
 export default function SearchArea(): JSX.Element {

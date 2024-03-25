@@ -1,15 +1,15 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
 import { type Button } from '@/utils/Types'
-import playPause from '@/controller/playPause'
-import showLatestVideo from '@/controller/showLatestVideo'
-import stopVideo from '@/controller/stopVideo'
-import timeMove from '@/controller/timeMove'
-import volumeUpDown from '@/controller/volumeUpDown'
-import speedUpDown from '@/controller/speedUpDown'
-import applause from '@/controller/applause'
+import playPause from '@/function/playPause'
+import showLatestVideo from '@/function/showLatestVideo'
+import stopVideo from '@/function/stopVideo'
+import timeMove from '@/function/timeMove'
+import volumeUpDown from '@/function/volumeUpDown'
+import speedUpDown from '@/function/speedUpDown'
+import applause from '@/function/applause'
 import AppContext from '@/utils/AppContext'
 import ApplauseAudios from '@/components/controllerApplauseAudios'
-import searchOpenClose from '@/search/searchOpenClose'
+import searchOpenClose from '@/function/searchOpenClose'
 
 export default function ControllerButton({
   id,
