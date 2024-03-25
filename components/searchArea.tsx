@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import AppContext from '@/utils/AppContext'
-import searchVideos from '@/function/searchVideos'
-import SearchContext from '@/utils/SearchContext'
+import AppContext from '../utils/AppContext'
+import searchVideos from '../function/searchVideos'
+import SearchContext from '../utils/SearchContext'
 
 export default function SearchArea(): JSX.Element {
   const { searchValueRef } = useContext(AppContext)

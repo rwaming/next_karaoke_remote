@@ -21,6 +21,10 @@
 
 /* reusable */
 @layer utilities {
+  .scroll {
+    overflow: scroll;
+    scrollbar-width: none;
+  }
   .button-col {
     @apply flex shrink grow flex-col gap-2;
   }

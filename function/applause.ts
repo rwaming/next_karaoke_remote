@@ -1,4 +1,4 @@
-import { type UseRefArray, type Audio } from '@/utils/Types'
+import { type UseRefArray, type Audio } from '../utils/Types'
 
 export default function applause(audioRefs: UseRefArray<Audio>): void {
   const refLength = audioRefs.length

@@ -2,10 +2,30 @@
 
 import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
-import AppContext from './utils/AppContext'
-import ControllerButton from './components/controllerButton'
-import Search from './components/search'
-import Player from './components/page'
+import dynamic from 'next/dynamic'
+import AppContext from '../utils/AppContext'
+
+const Search = dynamic(
+  async () => {
+    const getSearch = await import('../components/search')
+    return getSearch
+  },
+  { ssr: false },
+)
+const Player = dynamic(
+  async () => {
+    const getPlayer = await import('../components/player')
+    return getPlayer
+  },
+  { ssr: false },
+)
+const ControllerButton = dynamic(
+  async () => {
+    const getControllerButton = await import('../components/controllerButton')
+    return getControllerButton
+  },
+  { ssr: false },
+)
 
 export default function App(): JSX.Element {
   const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)
@@ -74,13 +94,13 @@ export default function App(): JSX.Element {
           <div className='button-row basis-1/5vh'>
             <div className='button-col'>
               <ControllerButton
-                id='controller-speeddown'
+                id='controller-speedup'
                 text='▲템 포'
                 emoji=''
                 className='bg-button1'
               />
               <ControllerButton
-                id='controller-speedup'
+                id='controller-speeddown'
                 text='▼템 포'
                 emoji=''
                 className='bg-button1'
@@ -157,7 +177,7 @@ export default function App(): JSX.Element {
             emoji=''
             className='basis-1/8vh bg-button3'
           />
-        </section>{' '}
+        </section>
       </main>
     </AppContext.Provider>
   )

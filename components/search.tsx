@@ -1,9 +1,9 @@
 import { useContext, useMemo, useState } from 'react'
-import { type VideoInfos } from '@/utils/Types'
-import SearchContext from '@/utils/SearchContext'
-import SearchArea from '@/components/searchArea'
-import AppContext from '@/utils/AppContext'
-import searchOpenClose from '@/function/searchOpenClose'
+import { type VideoInfos } from '../utils/Types'
+import SearchContext from '../utils/SearchContext'
+import SearchArea from './searchArea'
+import AppContext from '../utils/AppContext'
+import searchOpenClose from '../function/searchOpenClose'
 import SearchList from './searchList'
 
 export default function Search(): JSX.Element {

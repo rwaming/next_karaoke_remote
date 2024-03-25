@@ -1,4 +1,4 @@
-import { type UseRef, type Div, type Button } from '@/utils/Types'
+import { type UseRef, type Div, type Button } from '../utils/Types'
 
 export default function searchOpenClose(
   playerRef: UseRef<Div>,

@@ -21,12 +21,7 @@ export default function RootLayout({
       <body>
         <Script src='https://apis.google.com/js/api.js' defer />
         <div id='app' className='h-screen w-screen bg-black text-light'>
-          <button
-            type='button'
-            className='absolute right-0 top-0 w-2/3vw bg-white p-6 sm:hidden'>
-            앱 정보 열기
-          </button>
-          <header id='header' className='absolute left-0 top-0 w-full'>
+          <header id='header' className='absolute left-0 top-0 z-10'>
             <h1 className='absolute left-0 top-0 inline-block w-fit p-6 pr-3 text-xl xs:text-2xl sm:static'>
               홈코노
             </h1>

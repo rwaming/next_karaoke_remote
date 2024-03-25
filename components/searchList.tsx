@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react'
-import AppContext from '@/utils/AppContext'
-import SearchContext from '@/utils/SearchContext'
-import showSelectedVideo from '@/function/showSelectedVideo'
+import AppContext from '../utils/AppContext'
+import SearchContext from '../utils/SearchContext'
+import showSelectedVideo from '../function/showSelectedVideo'
 
 export default function SearchList(): JSX.Element {
   const {
@@ -46,7 +46,7 @@ export default function SearchList(): JSX.Element {
   return (
     <section
       id='search-list'
-      className='relative flex-grow overflow-scroll px-4 py-4 sm:px-1/10vw'>
+      className='scroll relative flex-grow px-4 py-4 sm:px-1/10vw'>
       <h4 className='invisible absolute'>노래 목록</h4>
       <p id='search-list__note' className='p-3 text-center text-sm'>
         {listNote}

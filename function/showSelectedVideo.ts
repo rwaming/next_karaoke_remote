@@ -1,11 +1,11 @@
+import { type MouseEvent } from 'react'
 import {
   type Div,
   type UseRef,
   type Button,
   type VideoInfos,
   type SetState,
-} from '@/utils/Types'
-import { type MouseEvent } from 'react'
+} from '../utils/Types'
 import searchOpenClose from './searchOpenClose'
 
 export default function showSelectedVideo(
