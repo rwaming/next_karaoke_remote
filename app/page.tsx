@@ -56,7 +56,9 @@ export default function App(): JSX.Element {
   )
 
   useEffect(() => {
-    void youtubeAPI()
+    if (typeof window !== 'undefined') {
+      void youtubeAPI()
+    }
   }, [])
 
   return (
