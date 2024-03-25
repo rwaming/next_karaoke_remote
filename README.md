@@ -148,7 +148,7 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
          ```
 
          - Make gapi Script component imported by dynamic
-           =>
+           => fail
 
 #### ~~#49 - Styling with Tailwind, @media and React Transition Group~~
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
+import { useState, useMemo, useRef, useCallback } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
 import Link from 'next/link'
@@ -8,7 +8,6 @@ import Image from 'next/image'
 import dynamic from 'next/dynamic'
 
 import AppContext from '@/utils/AppContext'
-import youtubeAPI from '@/youtubeAPI'
 
 const GapiScript = dynamic(
   async () => {
@@ -54,12 +53,6 @@ export default function App(): JSX.Element {
     }),
     [videoArtist, videoDate, videoEvent, videoID, videoNumber, videoTitle],
   )
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      void youtubeAPI()
-    }
-  }, [])
 
   return (
     <AppContext.Provider value={appValue}>
