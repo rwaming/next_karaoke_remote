@@ -24,19 +24,59 @@ Written at _2024.03.26.tue_
 
 ## UI
 
+### Summary
+
+- [ ] Change all ID styling to Class styling
+      
+- [ ] Make nav - move when open, close
+- [ ] Header title - open nav, back home
+      
+- [ ] Make searchbox move - base, sm
+
+  - [ ] (sm)When move, input arrive first
+        
+- [ ] (sm)Buttin to hide Controller
+
+  - **Attention**
+    - Buttons must keep size of origin.
+    - Video must get bigger when controller hide.
+      
+  - **Way to Make**
+    
+    - Video get w-screen, h-16/9
+  
+    - Change controllerbox, using absolute, left-0, top-0, flex-basis...
+      
+- [ ] Footer - move with nav, flex-col
+      
+- [ ] Footer - (sm) lay bottom, flex-row
+
+- [ ] Introduce page
+
+- [ ] Comment page
+
 ### 1. Header
 
 - Header box
 
   - Logo(H1)
+
     - [ ] click: open nav
+          
     - [ ] sm: hover: open nav
+          
     - [ ] sm: click: home
+          
   - Update date
+
     - [ ] only date
+          
     - [ ] xs: inline, top right
+          
   - Nav
+
     - [ ] left to right
+          
     - [ ] top to below in left
 
 ### ~~2. Player~~
