@@ -54,7 +54,9 @@ export default function App(): JSX.Element {
         console.log('Failed to load gapi: ', error)
       })
     }
-    void loadGapi()
+    if (typeof window !== 'undefined') {
+      void loadGapi()
+    }
   }, [])
   return (
     <AppContext.Provider value={appValue}>
