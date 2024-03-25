@@ -11,20 +11,16 @@ import AppContext from '@/utils/AppContext'
 import ApplauseAudios from '@/components/controllerApplauseAudios'
 import searchOpenClose from '@/search/searchOpenClose'
 
-ControllerButton.defaultProps = {
-  emoji: '',
-  className: '',
-}
 export default function ControllerButton({
   id,
   text,
-  emoji = '',
-  className = '',
+  emoji,
+  className,
 }: {
   id: string
   text: string
-  emoji?: string
-  className?: string
+  emoji: string
+  className: string
 }): JSX.Element {
   const {
     videoEvent,

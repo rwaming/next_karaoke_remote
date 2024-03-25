@@ -8,9 +8,9 @@ import Image from 'next/image'
 
 import AppContext from '@/utils/AppContext'
 import Script from 'next/script'
-import Player from './components/player'
-import Search from './components/search'
-import Controller from './components/controller'
+import Player from '@/components/player'
+import Search from '@/components/search'
+import Controller from '@/components/controller'
 
 export default function App(): JSX.Element {
   const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)
@@ -49,29 +49,28 @@ export default function App(): JSX.Element {
     [videoArtist, videoDate, videoEvent, videoID, videoNumber, videoTitle],
   )
 
-  useEffect(() => {
-    console.log('mount')
-    async function loadGapi(): Promise<void> {
-      await import('gapi-script')
-      gapi.load('client', () => {
-        void gapi.client.init({
-          apiKey: 'AIzaSyC1tT5znPLhZYsSivmucOTsMQFTlmx9nvA',
-          discoveryDocs: [
-            'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest',
-          ],
-          clientId:
-            '615828513895-5huljl7ui2olhl6h8tnl5r2ccgjk194d.apps.googleusercontent.com',
-          scope: 'profile',
-        })
+  const loadGapi = useCallback(async (): Promise<void> => {
+    await import('gapi-script')
+    gapi.load('client', () => {
+      void gapi.client.init({
+        apiKey: 'AIzaSyC1tT5znPLhZYsSivmucOTsMQFTlmx9nvA',
+        discoveryDocs: [
+          'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest',
+        ],
+        clientId:
+          '615828513895-5huljl7ui2olhl6h8tnl5r2ccgjk194d.apps.googleusercontent.com',
+        scope: 'profile',
       })
-    }
+    })
+  }, [])
+  useEffect(() => {
     if (typeof window !== 'undefined') {
       void loadGapi()
     }
-  }, [])
+  }, [loadGapi])
   return (
     <AppContext.Provider value={appValue}>
-      <Script src='https://apis.google.com/js/api.js' defer />{' '}
+      <Script src='https://apis.google.com/js/api.js' defer />
       <div id='app' className='h-screen w-screen bg-black text-light'>
         <button
           type='button'
