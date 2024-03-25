@@ -50,7 +50,9 @@ export default function App(): JSX.Element {
     [videoArtist, videoDate, videoEvent, videoID, videoNumber, videoTitle],
   )
   useEffect(() => {
-    void youtubeAPI()
+    if (typeof window !== 'undefined') {
+      void youtubeAPI()
+    }
   }, [])
 
   return (
