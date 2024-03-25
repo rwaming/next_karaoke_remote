@@ -91,6 +91,65 @@ Foremore
 
 <br>
 
+> _2024.03.25.mon_
+
+### [Error in build](#log2_) <a id="log2"></a>
+
+`ReferenceError: window is not defined`
+
+- I guess the reason why error occurs would be '**gapi**'.
+
+  - at 7605 (/Users/rwam/project/next-karaoke-remote/.next/server/app/page.js:1:6619)
+    - "gapi=**window**.gapi=**window**.gapi" is cought.
+
+- **Way to Fix**
+
+  Component, needed no server-side rendering, use the options below.
+
+  1. Use `if (typeof window !== "undefined") {`
+     => fail
+
+  1. Render in **useEffect**
+
+     ```
+     const Conponent = () => {
+       useEffect(() => {
+         return (JSX)
+       })
+     }
+     ```
+
+     => fail
+
+     - Then, how about to remove only code about gapi?
+       => done
+
+  1. Import component to use **dynamic**
+
+     ```
+     const Component = dynamic(
+     () => {
+       return import("@/path")
+     }, { ssr: false }
+     )
+     ```
+
+     - Make gapi Script component imported by dynamic
+       => fail
+
+     - Then, add `if (typeof window !== "undefined") {`?
+       => fail
+
+  - How about no youtubeApi, but GapiScript?
+    => done
+
+  - If only use just Script, except for youtubeApi?
+    => It's OK!
+
+  **The reason** is **_ONLY_** way to import "**youtubeAPI.ts**".
+
+<br>
+
 ## ✨ Issues <a id="issues"></a>
 
 Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1).
@@ -103,7 +162,10 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 - I'm searching for hosting services I'll use.
 - Select 'Vercel'!
+
   - It is recommended by official document of Next.js.
+
+- Error is logged in [Log](#log2) <a id="log2_"></a>
 
 #### ~~#49 - Styling with Tailwind, @media and React Transition Group~~
 

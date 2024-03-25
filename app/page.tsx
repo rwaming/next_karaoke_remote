@@ -1,17 +1,16 @@
 'use client'
 
-import { useState, useMemo, useEffect, useRef, useCallback } from 'react'
-import Script from 'next/script'
+import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import Search from './components/search'
-import Player from './components/player'
-import Controller from './components/controller'
 
-import AppContext from './utils/AppContext'
-import youtubeAPI from './youtubeAPI'
+import AppContext from '@/utils/AppContext'
+import Script from 'next/script'
+import Player from '@/components/player'
+import Search from '@/components/search'
+import Controller from '@/components/controller'
 
 export default function App(): JSX.Element {
   const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)
@@ -49,28 +48,36 @@ export default function App(): JSX.Element {
     }),
     [videoArtist, videoDate, videoEvent, videoID, videoNumber, videoTitle],
   )
+
+  const loadGapi = useCallback(async (): Promise<void> => {
+    await import('gapi-script')
+    gapi.load('client', () => {
+      void gapi.client.init({
+        apiKey: 'AIzaSyC1tT5znPLhZYsSivmucOTsMQFTlmx9nvA',
+        discoveryDocs: [
+          'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest',
+        ],
+        clientId:
+          '615828513895-5huljl7ui2olhl6h8tnl5r2ccgjk194d.apps.googleusercontent.com',
+        scope: 'profile',
+      })
+    })
+  }, [])
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      void youtubeAPI()
+      void loadGapi()
     }
-  }, [])
-
+  }, [loadGapi])
   return (
     <AppContext.Provider value={appValue}>
-      {typeof window !== 'undefined' && (
-        <Script
-          src='https://apis.google.com/js/api.js'
-          defer
-          strategy='lazyOnload'
-        />
-      )}
-      <button
-        type='button'
-        onMouseEnter={showAppInfo}
-        className='absolute right-0 top-0 w-2/3vw bg-white p-6 sm:hidden'>
-        앱 정보
-      </button>
+      <Script src='https://apis.google.com/js/api.js' defer />
       <div id='app' className='h-screen w-screen bg-black text-light'>
+        <button
+          type='button'
+          onMouseEnter={showAppInfo}
+          className='absolute right-0 top-0 w-2/3vw bg-white p-6 sm:hidden'>
+          앱 정보
+        </button>
         <header id='header' className='absolute left-0 top-0 w-full'>
           <h1 className='absolute left-0 top-0 inline-block w-fit p-6 pr-3 text-xl xs:text-2xl sm:static'>
             홈코노
