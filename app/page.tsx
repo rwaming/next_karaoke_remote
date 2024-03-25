@@ -1,17 +1,24 @@
 'use client'
 
-import { useState, useMemo, useEffect, useRef, useCallback } from 'react'
-import Script from 'next/script'
+import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
 import Link from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 
-import AppContext from './utils/AppContext'
-import youtubeAPI from './youtubeAPI'
+import AppContext from '@/utils/AppContext'
+import youtubeAPI from '@/youtubeAPI'
+
+const GapiScript = dynamic(
+  async () => {
+    const getGapiScript = await import('@/gapiScript')
+    return getGapiScript
+  },
+  { ssr: false },
+)
 
 export default function App(): JSX.Element {
-  const [gapiScript, setGapiScript] = useState(<Script />)
   const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)
   const [videoID, setVideoID] = useState('')
   const [videoTitle, setVideoTitle] = useState('')
@@ -47,22 +54,14 @@ export default function App(): JSX.Element {
     }),
     [videoArtist, videoDate, videoEvent, videoID, videoNumber, videoTitle],
   )
+
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      void youtubeAPI()
-      setGapiScript(
-        <Script
-          src='https://apis.google.com/js/api.js'
-          defer
-          strategy='lazyOnload'
-        />,
-      )
-    }
+    void youtubeAPI()
   }, [])
 
   return (
     <AppContext.Provider value={appValue}>
-      {gapiScript}
+      <GapiScript />
       <div id='app' className='h-screen w-screen bg-black text-light'>
         <button
           type='button'

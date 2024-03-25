@@ -132,6 +132,11 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
          }
          ```
 
+         => fail
+
+         - Then, how about to remove only code about gapi?
+           => done
+
       1. Import component to use **dynamic**
 
          ```
@@ -141,6 +146,8 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
           }, { ssr: false }
          )
          ```
+
+         - Make gapi Script component imported by dynamic
 
 #### ~~#49 - Styling with Tailwind, @media and React Transition Group~~
 
