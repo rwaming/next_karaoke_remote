@@ -57,7 +57,13 @@ export default function App(): JSX.Element {
 
   return (
     <AppContext.Provider value={appValue}>
-      <Script src='https://apis.google.com/js/api.js' strategy='lazyOnload' />
+      {typeof window !== 'undefined' && (
+        <Script
+          src='https://apis.google.com/js/api.js'
+          defer
+          strategy='lazyOnload'
+        />
+      )}
       <button
         type='button'
         onMouseEnter={showAppInfo}
