@@ -48,23 +48,19 @@ export default function App(): JSX.Element {
 
   useEffect(() => {
     console.log('mount')
-    async function initGapi(gapi): Promise<void> {
-      gapi.client.init({
-        apiKey: 'AIzaSyC1tT5znPLhZYsSivmucOTsMQFTlmx9nvA',
-        discoveryDocs: [
-          'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest',
-        ],
-        clientId:
-          '615828513895-5huljl7ui2olhl6h8tnl5r2ccgjk194d.apps.googleusercontent.com',
-        scope: 'profile',
-      })
-    }
     async function loadGapi(): Promise<void> {
       await import('gapi-script')
-        .then(({ gapi }) => gapi.load('client', initGapi(gapi)))
-        .catch((error) => {
-          console.log('Failed to load gapi: ', error)
+      gapi.load('client', () => {
+        void gapi.client.init({
+          apiKey: 'AIzaSyC1tT5znPLhZYsSivmucOTsMQFTlmx9nvA',
+          discoveryDocs: [
+            'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest',
+          ],
+          clientId:
+            '615828513895-5huljl7ui2olhl6h8tnl5r2ccgjk194d.apps.googleusercontent.com',
+          scope: 'profile',
         })
+      })
     }
     if (typeof window !== 'undefined') {
       void loadGapi()
