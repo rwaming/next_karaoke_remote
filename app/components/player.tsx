@@ -35,23 +35,23 @@ export default function Player(): JSX.Element {
   return (
     <section
       ref={playerRef}
-      id="player"
-      className="relative flex flex-shrink basis-16-9vh flex-col sm:flex-1 sm:items-end sm:justify-center">
-      <h2 className="invisible absolute">노래 영상</h2>
+      id='player'
+      className='relative flex flex-shrink basis-16-9vh flex-col sm:flex-1 sm:items-end sm:justify-center'>
+      <h2 className='invisible absolute'>노래 영상</h2>
 
-      <div id="player-content" className="relative h-16-9vh w-full">
+      <div id='player-content' className='relative h-16-9vh w-full'>
         <Suspense
           fallback={
             <div
-              id="loading"
-              className="flex h-screen w-screen items-center justify-center bg-dark text-light">
+              id='loading'
+              className='flex h-screen w-screen items-center justify-center bg-dark text-light'>
               <p>Loading...</p>
             </div>
           }>
           {' '}
           {videoID !== '' && (
             <YouTube
-              className="player-yt"
+              className='player-yt'
               videoId={videoID}
               opts={{
                 playerVars: {
@@ -72,17 +72,17 @@ export default function Player(): JSX.Element {
 
         {videoID !== '' && (
           <figure
-            id="information"
-            className="absolute bottom-0 left-0 hidden w-full bg-dark bg-opacity-50 text-xs opacity-0">
+            id='information'
+            className='absolute bottom-0 left-0 hidden w-full bg-dark bg-opacity-50 text-xs opacity-0'>
             <figcaption>영상 정보</figcaption>
             <p>
               <Link
                 href={`https://www.youtube.com/watch?v=${videoID}`}
-                target="_blank">{`https://www.youtube.com/watch?v=${videoID}`}</Link>
+                target='_blank'>{`https://www.youtube.com/watch?v=${videoID}`}</Link>
             </p>
-            <p className="inline">{videoTitle} / </p>
-            <p className="inline">{videoArtist} / </p>
-            <p className="inline">{videoNumber}</p>
+            <p className='inline'>{videoTitle} / </p>
+            <p className='inline'>{videoArtist} / </p>
+            <p className='inline'>{videoNumber}</p>
             <p>{videoDate}</p>
           </figure>
         )}

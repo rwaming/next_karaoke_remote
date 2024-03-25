@@ -45,19 +45,19 @@ export default function SearchList(): JSX.Element {
   )
   return (
     <section
-      id="search-list"
-      className="relative flex-grow overflow-scroll px-4 py-4 sm:px-1/10vw">
-      <h4 className="invisible absolute">노래 목록</h4>
-      <p id="search-list__note" className="p-3 text-center text-sm">
+      id='search-list'
+      className='relative flex-grow overflow-scroll px-4 py-4 sm:px-1/10vw'>
+      <h4 className='invisible absolute'>노래 목록</h4>
+      <p id='search-list__note' className='p-3 text-center text-sm'>
         {listNote}
       </p>
 
       {allVideoLength > 0 && (
-        <ul id="search-list__ul">
-          <li id="search-list__label" className="search-list__li">
-            <h6 className="search-list__li-title">제목</h6>
-            <h6 className="search-list__li-artist">가수</h6>
-            <h6 className="search-list__li-number">금영 번호</h6>
+        <ul id='search-list__ul'>
+          <li id='search-list__label' className='search-list__li'>
+            <h6 className='search-list__li-title'>제목</h6>
+            <h6 className='search-list__li-artist'>가수</h6>
+            <h6 className='search-list__li-number'>금영 번호</h6>
           </li>
 
           {videoInfos?.map((v, i) => {
@@ -66,16 +66,16 @@ export default function SearchList(): JSX.Element {
                 <li
                   key={`${v.title}`}
                   id={`search-list__li-${i}`}
-                  className="search-list__li">
+                  className='search-list__li'>
                   <button
-                    type="button"
-                    className="search-list__li-click"
+                    type='button'
+                    className='search-list__li-click'
                     onClick={(event) => {
                       showSelectedVideo(event, changeVideoArgs)
                     }}>
-                    <p className="search-list__li-title">{v.title}</p>
-                    <p className="search-list__li-artist">{v.artist}</p>
-                    <p className="search-list__li-number">{v.number}</p>
+                    <p className='search-list__li-title'>{v.title}</p>
+                    <p className='search-list__li-artist'>{v.artist}</p>
+                    <p className='search-list__li-number'>{v.number}</p>
                   </button>
                 </li>
               )

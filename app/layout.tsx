@@ -16,13 +16,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>): JSX.Element {
   return (
-    <html lang="ko">
+    <html lang='ko'>
       <body className={inter.className}>
         <Suspense
           fallback={
             <div
-              id="loading"
-              className="flex h-screen w-screen items-center justify-center bg-dark text-light">
+              id='loading'
+              className='flex h-screen w-screen items-center justify-center bg-dark text-light'>
               <p>Loading...</p>
             </div>
           }>

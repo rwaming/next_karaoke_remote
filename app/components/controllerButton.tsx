@@ -83,7 +83,7 @@ export default function ControllerButton({
   return (
     <>
       <button
-        type="button"
+        type='button'
         id={id}
         className={`button ${className}`}
         onClick={(event: MouseEvent<Button>) => {
@@ -92,20 +92,20 @@ export default function ControllerButton({
         {!className.includes('emoji') && text}
         {id.includes('pause') && (
           <>
-            <span className="button-bigger">{emoji}</span>
-            <span className="button-tight">{text}</span>
+            <span className='button-bigger'>{emoji}</span>
+            <span className='button-tight'>{text}</span>
           </>
         )}
         {id.includes('backward') && (
-          <span className="">
-            <span className="button-tighter">{emoji}</span>
+          <span className=''>
+            <span className='button-tighter'>{emoji}</span>
             {text}
           </span>
         )}
         {id.includes('forward') && (
-          <span className="button-tight">
+          <span className='button-tight'>
             {text}
-            <span className="button-tighter">{emoji}</span>
+            <span className='button-tighter'>{emoji}</span>
           </span>
         )}
       </button>

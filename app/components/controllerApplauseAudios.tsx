@@ -8,7 +8,7 @@ export default function ApplauseAudios({
   id: string
 }): JSX.Element {
   return (
-    <div id={`${id}__audio-list`} className="absolute">
+    <div id={`${id}__audio-list`} className='absolute'>
       {[...Array(4)].map((e, i) => {
         return (
           <audio
@@ -16,19 +16,19 @@ export default function ApplauseAudios({
             key={`${id}__audio-${i + 1}`}
             id={`${id}__audio-${i + 1}`}
             className={`${id}__audio`}
-            preload="auto">
-            <source src="/applause.mp3" type="audio/mpeg" />
+            preload='auto'>
+            <source src='/applause.mp3' type='audio/mpeg' />
             <track
-              src="/applause_en.vtt"
-              kind="captions"
-              srcLang="en"
-              label="English"
+              src='/applause_en.vtt'
+              kind='captions'
+              srcLang='en'
+              label='English'
             />
             <track
-              src="/applause_ko.vtt"
-              kind="captions"
-              srcLang="ko"
-              label="Korean"
+              src='/applause_ko.vtt'
+              kind='captions'
+              srcLang='ko'
+              label='Korean'
             />
           </audio>
         )

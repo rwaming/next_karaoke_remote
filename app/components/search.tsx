@@ -39,19 +39,19 @@ export default function Search(): JSX.Element {
     <SearchContext.Provider value={searchValue}>
       <div
         ref={searchRef}
-        id="search"
-        className="fixed left-0 top-0 hidden h-screen w-screen">
-        <h3 className="invisible absolute">노래 검색창</h3>
+        id='search'
+        className='fixed left-0 top-0 hidden h-screen w-screen'>
+        <h3 className='invisible absolute'>노래 검색창</h3>
 
         <section
-          id="search-box"
-          className="relative z-10 flex w-full flex-col text-light backdrop-blur">
+          id='search-box'
+          className='relative z-10 flex w-full flex-col text-light backdrop-blur'>
           <SearchArea />
           <SearchList />
           <button
-            id="search-close"
-            type="button"
-            className="absolute bottom-0 right-0 hidden p-4 sm:block"
+            id='search-close'
+            type='button'
+            className='absolute bottom-0 right-0 hidden p-4 sm:block'
             onClick={() => {
               searchOpenClose(
                 playerRef,
@@ -66,9 +66,9 @@ export default function Search(): JSX.Element {
 
         <button
           ref={searchModalRef}
-          type="button"
-          id="search-modal"
-          className="absolute left-0 top-0 hidden h-screen w-screen cursor-default bg-slate-900 bg-opacity-50 text-transparent"
+          type='button'
+          id='search-modal'
+          className='absolute left-0 top-0 hidden h-screen w-screen cursor-default bg-slate-900 bg-opacity-50 text-transparent'
           onClick={() => {
             searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
           }}>
