@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useRef, useCallback } from 'react'
+import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 
 import Link from 'next/link'
@@ -8,6 +8,7 @@ import Image from 'next/image'
 
 import AppContext from '@/utils/AppContext'
 import Script from 'next/script'
+import youtubeAPI from './youtubeAPI'
 
 export default function App(): JSX.Element {
   const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)
@@ -46,6 +47,15 @@ export default function App(): JSX.Element {
     [videoArtist, videoDate, videoEvent, videoID, videoNumber, videoTitle],
   )
 
+  useEffect(() => {
+    console.log('mount')
+    async function loadGapi(): Promise<void> {
+      await import('gapi-script').then(youtubeAPI).catch((error) => {
+        console.log('Failed to load gapi: ', error)
+      })
+    }
+    void loadGapi()
+  }, [])
   return (
     <AppContext.Provider value={appValue}>
       <Script src='https://apis.google.com/js/api.js' defer />{' '}

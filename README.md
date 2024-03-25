@@ -144,8 +144,9 @@ Foremore
     => done
 
   - If only use just Script, except for youtubeApi?
+    => It's OK!
 
-  **The reason is way to import "youtubeAPI.ts".**
+  **The reason** is **_ONLY_** way to import "**youtubeAPI.ts**".
 
 <br>
 
