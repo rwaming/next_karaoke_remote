@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useEffect, useRef } from 'react'
+import { useState, useMemo, useEffect, useRef, useCallback } from 'react'
 import Script from 'next/script'
 import { type YouTubeEvent } from 'react-youtube'
 
@@ -26,6 +26,7 @@ export default function App(): JSX.Element {
   const searchValueRef = useRef(null)
   const searchModalRef = useRef(null)
 
+  const showAppInfo = useCallback(() => {}, [])
   const appValue = useMemo(
     () => ({
       videoEvent,
@@ -55,19 +56,25 @@ export default function App(): JSX.Element {
   return (
     <AppContext.Provider value={appValue}>
       <Script src="https://apis.google.com/js/api.js" defer />
+      <button
+        type="button"
+        onMouseEnter={showAppInfo}
+        className="w-2/3vw absolute right-0 top-0 bg-white p-6 sm:hidden">
+        앱 정보
+      </button>
       <div id="app" className="h-screen w-screen bg-black text-light">
-        <header id="header" className="absolute left-0 top-0 z-20 w-full">
-          <h1 className="absolute left-0 top-0 p-6 text-xl mix-blend-difference xs:text-2xl">
+        <header id="header" className="absolute left-0 top-0 w-full">
+          <h1 className="absolute left-0 top-0 inline-block w-fit p-6 pr-3 text-xl xs:text-2xl sm:static">
             홈코노
           </h1>
-          <div id="upate">
-            <p className="absolute right-0 top-0 p-6 text-right text-xs opacity-80">
-              마지막 업데이트:{' '}
-              <time dateTime="2024-03-24" className="block xs:inline">
-                2024. 03. 25. 월요일
-              </time>
-            </p>
-          </div>
+          <p
+            id="upate"
+            className="absolute right-0 top-0 inline-block p-6 pl-0 text-right text-xs opacity-80 sm:static sm:text-left">
+            마지막 업데이트:{' '}
+            <time dateTime="2024-03-24" className="block xs:inline">
+              2024. 03. 25. 월요일
+            </time>
+          </p>
         </header>
 
         <main
@@ -80,7 +87,7 @@ export default function App(): JSX.Element {
 
         <footer
           id="footer"
-          className="absolute right-0 top-0 z-20 flex justify-center gap-4 p-3 opacity-80 sm:bottom-0 sm:w-full sm:justify-end">
+          className="bottom-0 flex h-fit w-full justify-center gap-4 p-3 opacity-80 sm:justify-end">
           <address id="contact" className="flex gap-4 text-sm not-italic">
             <div
               id="contact-name"

@@ -12,6 +12,8 @@ const config: Config = {
       },
       spacing: {
         '1/2vw': '50vw',
+        '1/3vw': '33.33vw',
+        '2/3vw': '66.66vw',
         '1/4vw': '25vw',
         '3/4vw': '75vw',
         '1/5vw': '20vw',

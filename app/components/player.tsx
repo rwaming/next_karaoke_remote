@@ -73,7 +73,7 @@ export default function Player(): JSX.Element {
         {videoID !== '' && (
           <figure
             id="information"
-            className="absolute bottom-0 left-0 z-20 w-full bg-dark bg-opacity-50 text-xs opacity-0">
+            className="absolute bottom-0 left-0 hidden w-full bg-dark bg-opacity-50 text-xs opacity-0">
             <figcaption>영상 정보</figcaption>
             <p>
               <Link
