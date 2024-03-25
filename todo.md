@@ -26,8 +26,6 @@ Written at _2024.03.26.tue_
   - Update date
   - Nav
 
-- [ ]
-
 ### ~~2. Player~~
 
 - Keep this layout
