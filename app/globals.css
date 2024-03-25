@@ -41,7 +41,7 @@
     );
   }
   .button-bigger {
-    @apply inline-block text-xl xs:text-2xl sm:text-3xl;
+    /* @apply inline-block text-xl xs:text-2xl sm:text-3xl; */
   }
   .button-tight {
     letter-spacing: -0.1rem;

@@ -20,15 +20,15 @@ export default function searchOpenClose(
     if (search.classList.contains('hidden')) {
       search.classList.remove('hidden')
       search.classList.add('flex')
-      player.classList.remove('md:justify-center')
-      player.classList.add('md:justify-end')
+      player.classList.remove('sm:justify-center')
+      player.classList.add('sm:justify-end')
       searchModal.classList.remove('hidden')
       searchModal.classList.add('block')
     } else {
       search.classList.add('hidden')
       search.classList.remove('flex')
-      player.classList.add('md:justify-center')
-      player.classList.remove('md:justify-end')
+      player.classList.add('sm:justify-center')
+      player.classList.remove('sm:justify-end')
       searchModal.classList.add('hidden')
       searchModal.classList.remove('block')
     }

@@ -40,7 +40,7 @@ export default function Search(): JSX.Element {
       <div
         ref={searchRef}
         id='search'
-        className='fixed left-0 top-0 hidden h-screen w-screen'>
+        className='fixed left-0 top-0 z-20 hidden h-screen w-screen'>
         <h3 className='invisible absolute'>노래 검색창</h3>
 
         <section
