@@ -64,9 +64,7 @@ export default function App(): JSX.Element {
     })
   }, [])
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      void loadGapi()
-    }
+    void loadGapi()
   }, [loadGapi])
   return (
     <AppContext.Provider value={appValue}>
