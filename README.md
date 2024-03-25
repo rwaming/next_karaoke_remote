@@ -102,51 +102,77 @@ Foremore
   - at 7605 (/Users/rwam/project/next-karaoke-remote/.next/server/app/page.js:1:6619)
     - "gapi=**window**.gapi=**window**.gapi" is cought.
 
-- **Way to Fix**
+1. **Search for way to fix**
 
-  Component, needed no server-side rendering, use the options below.
+   Component, needed no server-side rendering, use the options below.
 
-  1. Use `if (typeof window !== "undefined") {`
+   1. Use `if (typeof window !== "undefined") {`
+      => fail
+
+   1. Render in **useEffect**
+
+   ```
+   const Conponent = () => {
+     useEffect(() => {
+       return (JSX)
+     })
+   }
+   ```
+
+   => fail
+
+   - Then, how about to remove only code about gapi?
+     => done
+
+   1. Import component to use **dynamic**
+
+   ```
+   const Component = dynamic(
+   () => {
+     return import("@/path")
+   }, { ssr: false }
+   )
+   ```
+
+   - Make gapi Script component imported by dynamic
      => fail
 
-  1. Render in **useEffect**
+   - Then, add `if (typeof window !== "undefined") {`?
+     => fail
 
-     ```
-     const Conponent = () => {
-       useEffect(() => {
-         return (JSX)
+   - How about no youtubeApi, but GapiScript?
+     => done
+
+   - If only use just Script, except for youtubeApi?
+     => It's OK!
+
+     **The reason** is **_ONLY_** way to import "**youtubeAPI.ts**".
+
+1. **Try import in useEffect and make condition like below**
+
+   ```
+   const loadGapi = useCallback(async (): Promise<void> => {
+     await import('gapi-script')
+     gapi.load('client', () => {
+       void gapi.client.init({
+         apiKey: '____',
+         discoveryDocs: [
+           'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest',
+         ],
+         clientId:
+           '____',
+         scope: 'profile',
        })
-     }
-     ```
+     })
+   }, [])
+   useEffect(() => {
+     void loadGapi()
+   }, [loadGapi])
+   ```
 
-     => fail
+   But fail..
 
-     - Then, how about to remove only code about gapi?
-       => done
-
-  1. Import component to use **dynamic**
-
-     ```
-     const Component = dynamic(
-     () => {
-       return import("@/path")
-     }, { ssr: false }
-     )
-     ```
-
-     - Make gapi Script component imported by dynamic
-       => fail
-
-     - Then, add `if (typeof window !== "undefined") {`?
-       => fail
-
-  - How about no youtubeApi, but GapiScript?
-    => done
-
-  - If only use just Script, except for youtubeApi?
-    => It's OK!
-
-  **The reason** is **_ONLY_** way to import "**youtubeAPI.ts**".
+- I found it is possible that something against next convention would cause this error. So, It will be puased until this project get more next(react)-like.
 
 <br>
 
