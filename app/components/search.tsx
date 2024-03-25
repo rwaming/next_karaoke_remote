@@ -3,7 +3,7 @@ import { type VideoInfos } from '@/utils/Types'
 import SearchContext from '@/utils/SearchContext'
 import SearchArea from '@/components/searchArea'
 import AppContext from '@/utils/AppContext'
-import searchOpenClose from '@/search/searchOpenClose'
+import searchOpenClose from '@/function/searchOpenClose'
 import SearchList from './searchList'
 
 export default function Search(): JSX.Element {

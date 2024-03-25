@@ -64,118 +64,6 @@ Foremore
 
 <br>
 
-## Log
-
-> _2024.03.19.tue_
-
-### [Can't manipulate pitch or others](#log1_) <a id="log1"></a>
-
-#### Detail issues
-
-- Never access to elements in iframe in just my web app
-- YouTube API gives simple functions, no function to set pitch.
-  = I can't manipulate to **use just only web**.
-
-#### Consideration
-
-- Make **Chrome Extension** to have access to iframe in browser.
-
-  But, I must prepare when I fail to make Chrome Extension.
-
-#### Conclusion
-
-1. At first, Make Web APP have buttons which work in it.
-1. Try making Chrome Extension for Web APP and connecting Web APP to Chrome Extension as make buttons one by one.
-
-- If it is thought impossible now, close this project with no functions about 2.
-
-<br>
-
-> _2024.03.25.mon_
-
-### [Error in build](#log2_) <a id="log2"></a>
-
-`ReferenceError: window is not defined`
-
-- I guess the reason why error occurs would be '**gapi**'.
-
-  - at 7605 (/Users/rwam/project/next-karaoke-remote/.next/server/app/page.js:1:6619)
-    - "gapi=**window**.gapi=**window**.gapi" is cought.
-
-1. **Search for way to fix**
-
-   Component, needed no server-side rendering, use the options below.
-
-   1. Use `if (typeof window !== "undefined") {`
-      => fail
-
-   1. Render in **useEffect**
-
-   ```
-   const Conponent = () => {
-     useEffect(() => {
-       return (JSX)
-     })
-   }
-   ```
-
-   => fail
-
-   - Then, how about to remove only code about gapi?
-     => done
-
-   1. Import component to use **dynamic**
-
-   ```
-   const Component = dynamic(
-   () => {
-     return import("@/path")
-   }, { ssr: false }
-   )
-   ```
-
-   - Make gapi Script component imported by dynamic
-     => fail
-
-   - Then, add `if (typeof window !== "undefined") {`?
-     => fail
-
-   - How about no youtubeApi, but GapiScript?
-     => done
-
-   - If only use just Script, except for youtubeApi?
-     => It's OK!
-
-     **The reason** is **_ONLY_** way to import "**youtubeAPI.ts**".
-
-1. **Try import in useEffect and make condition like below**
-
-   ```
-   const loadGapi = useCallback(async (): Promise<void> => {
-     await import('gapi-script')
-     gapi.load('client', () => {
-       void gapi.client.init({
-         apiKey: '____',
-         discoveryDocs: [
-           'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest',
-         ],
-         clientId:
-           '____',
-         scope: 'profile',
-       })
-     })
-   }, [])
-   useEffect(() => {
-     void loadGapi()
-   }, [loadGapi])
-   ```
-
-   But fail..
-
-- I found it is possible that something against next convention would cause this error. So, It will be puased until this project get more next(react)-like.
-
-<br>
-
 ## ✨ Issues <a id="issues"></a>
 
 Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1).
@@ -184,7 +72,24 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.03.25.mon_
 
-#### #72 - Select hosting service, considering to use Github Page
+#### ~~#75 - Make more Next.js-like~~
+
+- **Structure**
+
+1. layout.tsx
+   - This means the page, has parts, which never change in app, like frame of blow.
+     - header
+     - footer
+     - nav
+     - quick
+2. page.tsx
+   - This means the page, has contents of one page.
+   - A page is **not** a component. It means a page to which a user move.
+
+- After some learning, I realized this project needs no more page.tsx.
+  The first to do is to check todo to get direction.
+
+#### ~~#72 - Select hosting service, considering to use Github Page~~
 
 - I'm searching for hosting services I'll use.
 - Select 'Vercel'!
@@ -192,6 +97,8 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
   - It is recommended by official document of Next.js.
 
 - Error is logged in [Log](#log2) <a id="log2_"></a>
+
+- This stops until this project is made more Next-like.
 
 #### ~~#49 - Styling with Tailwind, @media and React Transition Group~~
 
@@ -500,6 +407,118 @@ It will be made with React, but I heard official React document say "Don't use c
 #### ~~#1 - Set up basis of project~~
 
 - Update plan especially at [Goal](#goal)
+
+<br>
+
+## Log
+
+> _2024.03.19.tue_
+
+### [Can't manipulate pitch or others](#log1_) <a id="log1"></a>
+
+#### Detail issues
+
+- Never access to elements in iframe in just my web app
+- YouTube API gives simple functions, no function to set pitch.
+  = I can't manipulate to **use just only web**.
+
+#### Consideration
+
+- Make **Chrome Extension** to have access to iframe in browser.
+
+  But, I must prepare when I fail to make Chrome Extension.
+
+#### Conclusion
+
+1. At first, Make Web APP have buttons which work in it.
+1. Try making Chrome Extension for Web APP and connecting Web APP to Chrome Extension as make buttons one by one.
+
+- If it is thought impossible now, close this project with no functions about 2.
+
+<br>
+
+> _2024.03.25.mon_
+
+### [Error in build](#log2_) <a id="log2"></a>
+
+`ReferenceError: window is not defined`
+
+- I guess the reason why error occurs would be '**gapi**'.
+
+  - at 7605 (/Users/rwam/project/next-karaoke-remote/.next/server/app/page.js:1:6619)
+    - "gapi=**window**.gapi=**window**.gapi" is cought.
+
+1. **Search for way to fix**
+
+   Component, needed no server-side rendering, use the options below.
+
+   1. Use `if (typeof window !== "undefined") {`
+      => fail
+
+   1. Render in **useEffect**
+
+   ```
+   const Conponent = () => {
+     useEffect(() => {
+       return (JSX)
+     })
+   }
+   ```
+
+   => fail
+
+   - Then, how about to remove only code about gapi?
+     => done
+
+   1. Import component to use **dynamic**
+
+   ```
+   const Component = dynamic(
+   () => {
+     return import("@/path")
+   }, { ssr: false }
+   )
+   ```
+
+   - Make gapi Script component imported by dynamic
+     => fail
+
+   - Then, add `if (typeof window !== "undefined") {`?
+     => fail
+
+   - How about no youtubeApi, but GapiScript?
+     => done
+
+   - If only use just Script, except for youtubeApi?
+     => It's OK!
+
+     **The reason** is **_ONLY_** way to import "**youtubeAPI.ts**".
+
+1. **Try import in useEffect and make condition like below**
+
+   ```
+   const loadGapi = useCallback(async (): Promise<void> => {
+     await import('gapi-script')
+     gapi.load('client', () => {
+       void gapi.client.init({
+         apiKey: '____',
+         discoveryDocs: [
+           'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest',
+         ],
+         clientId:
+           '____',
+         scope: 'profile',
+       })
+     })
+   }, [])
+   useEffect(() => {
+     void loadGapi()
+   }, [loadGapi])
+   ```
+
+   But fail..
+
+- I found it is possible that something against next convention would cause this error. So, It will be puased until this project get more next(react)-like.
 
 <br>
 
