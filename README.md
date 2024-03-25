@@ -102,6 +102,8 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 #### #72 - Select hosting service, considering to use Github Page
 
 - I'm searching for hosting services I'll use.
+- Select 'Vercel'!
+  - It is recommended by official document of Next.js.
 
 #### ~~#49 - Styling with Tailwind, @media and React Transition Group~~
 
