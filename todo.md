@@ -26,7 +26,7 @@ Written at _2024.03.26.tue_
 
 ### Summary
 
-- [ ] Change all ID styling to Class styling
+- [ ] **Change all ID styling to Class styling** for now
       
 - [ ] Make nav - move when open, close
 - [ ] Header title - open nav, back home
