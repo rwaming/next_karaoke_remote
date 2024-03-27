@@ -88,22 +88,22 @@ export default async function searchVideos(
   {
     setVideoInfos,
     searchValueRef,
-    setAllVideoLength,
+    setVideoAllLength,
   }: {
     setVideoInfos: SetState<VideoInfos>
     searchValueRef: UseRef<Input>
-    setAllVideoLength: SetState<number>
+    setVideoAllLength: SetState<number>
   },
 ): Promise<void> {
   const searchInfo = await getSearchInfo(event, searchValueRef)
 
-  const getAllVideoLength = searchInfo.pop()
+  const getVideoAllLength = searchInfo.pop()
   if (isVideoInfos(searchInfo)) {
     setVideoInfos(searchInfo)
   }
-  if (typeof getAllVideoLength === 'number') {
-    setAllVideoLength(getAllVideoLength)
+  if (typeof getVideoAllLength === 'number') {
+    setVideoAllLength(getVideoAllLength)
   } else {
-    setAllVideoLength(-2)
+    setVideoAllLength(-2)
   }
 }

@@ -4,7 +4,7 @@ import { useSearchAction } from '../utils/SearchProvider'
 
 export default function SearchArea(): JSX.Element {
   const { searchValueRef } = useAppRef()
-  const { setVideoInfos, setAllVideoLength } = useSearchAction()
+  const { setVideoInfos, setVideoAllLength } = useSearchAction()
 
   return (
     <search id='search-area' className='flex w-full'>
@@ -46,7 +46,7 @@ export default function SearchArea(): JSX.Element {
                 void searchVideos(event, {
                   setVideoInfos,
                   searchValueRef,
-                  setAllVideoLength,
+                  setVideoAllLength,
                 })
               }}
             />

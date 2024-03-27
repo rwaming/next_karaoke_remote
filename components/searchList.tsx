@@ -15,7 +15,7 @@ export default function SearchList(): JSX.Element {
   const {
     videoInfos,
     searchListNote: listNote,
-    allVideoLength,
+    videoAllLength,
   } = useSearchValue()
 
   const changeVideoArgs = useMemo(
@@ -53,7 +53,7 @@ export default function SearchList(): JSX.Element {
         {listNote}
       </p>
 
-      {allVideoLength > 0 && (
+      {videoAllLength > 0 && (
         <ul id='search-list__ul'>
           <li
             id='search-list__label'
