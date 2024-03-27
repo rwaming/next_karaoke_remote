@@ -72,6 +72,11 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.03.27.wed_
 
+#### ~~#82 - Manage api key with env file~~
+
+- Best to use .env.local is to request information in server-side.
+- For now, make .env.local data enable to be used in client-side, until others are made mostly.
+
 #### ~~#80 - Change pattern of Context API~~
 
 - Reference: Velog [How to use Context API well](https://velog.io/@velopert/react-context-tutorial)

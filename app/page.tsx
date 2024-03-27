@@ -1,8 +1,9 @@
 'use client'
 
-import { useCallback, useEffect } from 'react'
+import { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import AppProvider, { useAppRef } from '../utils/AppProvider'
+import gapiInit from '../utils/gapiInit'
 
 const Search = dynamic(
   async () => {
@@ -28,23 +29,10 @@ const ControllerButton = dynamic(
 
 export default function Main(): JSX.Element {
   const { controllerRef } = useAppRef()
-  const loadGapi = useCallback(async (): Promise<void> => {
-    await import('gapi-script')
-    gapi.load('client', () => {
-      void gapi.client.init({
-        apiKey: 'AIzaSyC1tT5znPLhZYsSivmucOTsMQFTlmx9nvA',
-        discoveryDocs: [
-          'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest',
-        ],
-        clientId:
-          '615828513895-5huljl7ui2olhl6h8tnl5r2ccgjk194d.apps.googleusercontent.com',
-        scope: 'profile',
-      })
-    })
-  }, [])
+
   useEffect(() => {
-    void loadGapi()
-  }, [loadGapi])
+    void gapiInit()
+  }, [])
   return (
     <AppProvider>
       <main
