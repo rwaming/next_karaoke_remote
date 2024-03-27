@@ -72,6 +72,11 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.03.27.wed_
 
+#### ~~#82 - Manage api key with env file~~
+
+- In progress...
+- For use .env.local, it might be needed to request informationd as server-side.
+
 #### ~~#80 - Change pattern of Context API~~
 
 - Reference: Velog [How to use Context API well](https://velog.io/@velopert/react-context-tutorial)
