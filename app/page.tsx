@@ -1,9 +1,8 @@
 'use client'
 
-import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
-import { type YouTubeEvent } from 'react-youtube'
+import { useCallback, useEffect } from 'react'
 import dynamic from 'next/dynamic'
-import AppContext from '../utils/AppContext'
+import AppProvider, { useAppRef } from '../utils/AppProvider'
 
 const Search = dynamic(
   async () => {
@@ -28,40 +27,7 @@ const ControllerButton = dynamic(
 )
 
 export default function Main(): JSX.Element {
-  const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)
-  const [videoID, setVideoID] = useState('')
-  const [videoTitle, setVideoTitle] = useState('')
-  const [videoArtist, setVideoArtist] = useState('')
-  const [videoNumber, setVideoNumber] = useState('')
-  const [videoDate, setVideoDate] = useState('')
-  const playerRef = useRef(null)
-  const controllerRef = useRef(null)
-  const searchRef = useRef(null)
-  const searchValueRef = useRef(null)
-  const searchModalRef = useRef(null)
-
-  const appValue = useMemo(
-    () => ({
-      videoEvent,
-      setVideoEvent,
-      videoID,
-      setVideoID,
-      videoTitle,
-      setVideoTitle,
-      videoArtist,
-      setVideoArtist,
-      videoNumber,
-      setVideoNumber,
-      videoDate,
-      setVideoDate,
-      playerRef,
-      controllerRef,
-      searchRef,
-      searchValueRef,
-      searchModalRef,
-    }),
-    [videoArtist, videoDate, videoEvent, videoID, videoNumber, videoTitle],
-  )
+  const { controllerRef } = useAppRef()
   const loadGapi = useCallback(async (): Promise<void> => {
     await import('gapi-script')
     gapi.load('client', () => {
@@ -80,7 +46,7 @@ export default function Main(): JSX.Element {
     void loadGapi()
   }, [loadGapi])
   return (
-    <AppContext.Provider value={appValue}>
+    <AppProvider>
       <main
         id='main'
         className='flex h-full w-full flex-col justify-center sm:flex-row'>
@@ -179,6 +145,6 @@ export default function Main(): JSX.Element {
           />
         </section>
       </main>
-    </AppContext.Provider>
+    </AppProvider>
   )
 }

@@ -1,11 +1,10 @@
-import { useContext } from 'react'
-import AppContext from '../utils/AppContext'
+import { useAppRef } from '../utils/AppProvider'
 import searchVideos from '../function/searchVideos'
-import SearchContext from '../utils/SearchContext'
+import { useSearchAction } from '../utils/SearchProvider'
 
 export default function SearchArea(): JSX.Element {
-  const { searchValueRef } = useContext(AppContext)
-  const { setVideoInfos, setAllVideoLength } = useContext(SearchContext)
+  const { searchValueRef } = useAppRef()
+  const { setVideoInfos, setVideoAllLength } = useSearchAction()
 
   return (
     <search id='search-area' className='flex w-full'>
@@ -47,7 +46,7 @@ export default function SearchArea(): JSX.Element {
                 void searchVideos(event, {
                   setVideoInfos,
                   searchValueRef,
-                  setAllVideoLength,
+                  setVideoAllLength,
                 })
               }}
             />

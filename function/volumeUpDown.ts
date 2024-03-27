@@ -1,6 +1,6 @@
-import { type Button } from '../utils/Types'
 import { type MouseEvent } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
+import { type Button } from '../utils/Types'
 
 export default function speedUpDown(
   event: MouseEvent<Button>,

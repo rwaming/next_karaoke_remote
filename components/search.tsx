@@ -1,42 +1,13 @@
-import { useContext, useMemo, useState } from 'react'
-import { type VideoInfos } from '../utils/Types'
-import SearchContext from '../utils/SearchContext'
+import SearchProvider from '../utils/SearchProvider'
 import SearchArea from './searchArea'
-import AppContext from '../utils/AppContext'
+import { useAppRef } from '../utils/AppProvider'
 import searchOpenClose from '../function/searchOpenClose'
 import SearchList from './searchList'
 
 export default function Search(): JSX.Element {
-  const { playerRef, controllerRef, searchRef, searchModalRef } =
-    useContext(AppContext)
-
-  const [videoInfos, setVideoInfos] = useState<VideoInfos>([])
-  const [allVideoLength, setAllVideoLength] = useState(-1)
-
-  const listNote = useMemo(() => {
-    if (allVideoLength > 0) {
-      return `${allVideoLength}건이 검색되었습니다.`
-    }
-    if (allVideoLength === 0) {
-      return '검색된 결과가 없습니다.'
-    }
-    if (allVideoLength === -1) {
-      return '검색어를 입력해주세요.'
-    }
-    return '에러: 현재 검색이 불가합니다.'
-  }, [allVideoLength])
-  const searchValue = useMemo(
-    () => ({
-      videoInfos,
-      setVideoInfos,
-      allVideoLength,
-      setAllVideoLength,
-      listNote,
-    }),
-    [videoInfos, allVideoLength, listNote],
-  )
+  const { playerRef, controllerRef, searchRef, searchModalRef } = useAppRef()
   return (
-    <SearchContext.Provider value={searchValue}>
+    <SearchProvider>
       <div
         ref={searchRef}
         id='search'
@@ -75,6 +46,6 @@ export default function Search(): JSX.Element {
           Close
         </button>
       </div>
-    </SearchContext.Provider>
+    </SearchProvider>
   )
 }
