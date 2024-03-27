@@ -6,10 +6,10 @@ export default function searchOpenClose(
   searchRef: UseRef<Div>,
   searchModalRef: UseRef<Button>,
 ): void {
-  const player: Div | null = playerRef?.current ?? null
-  const controller: Div | null = controllerRef?.current ?? null
-  const search: Div | null = searchRef?.current ?? null
-  const searchModal: Button | null = searchModalRef?.current ?? null
+  const player: Div | null = playerRef.current
+  const controller: Div | null = controllerRef.current
+  const search: Div | null = searchRef.current
+  const searchModal: Button | null = searchModalRef.current
 
   if (
     search !== null &&

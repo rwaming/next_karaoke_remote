@@ -70,6 +70,26 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 <br>
 
+> _2024.03.27.wed_
+
+#### ~~#80 - Change pattern of Context API~~
+
+- Reference: Velog [How to use Context API well](https://velog.io/@velopert/react-context-tutorial)
+
+#### ~~#78 - Change all ID styling to Class styling~~
+
+- Complete!
+
+<br>
+
+> _2024.03.26.tue_
+
+#### ~~#77 - Fix no autoplay in mobile~~
+
+- GPT says, mobile autoplay is prevented to save energy and data.
+
+<br>
+
 > _2024.03.25.mon_
 
 #### ~~#75 - Make more Next.js-like~~
@@ -88,6 +108,11 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 - After some learning, I realized this project needs no more page.tsx.
   The first to do is to check todo to get direction.
+
+#### ~~#73 - Check if TailwindCSS treeshake can be applied(devDependencies)~~
+
+- Tailwind CSS offical document says, if some classes is not used, those'll be removed in build process.
+- If to delete some classes must be prevented, the way is to lay classes out of @layer.
 
 #### ~~#72 - Select hosting service, considering to use Github Page~~
 
