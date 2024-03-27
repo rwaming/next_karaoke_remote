@@ -1,4 +1,4 @@
-import { useCallback, useContext, useRef, type MouseEvent } from 'react'
+import { useCallback, useRef, type MouseEvent } from 'react'
 import { type Button } from '../utils/Types'
 import playPause from '../function/playPause'
 import showLatestVideo from '../function/showLatestVideo'
@@ -7,9 +7,9 @@ import timeMove from '../function/timeMove'
 import volumeUpDown from '../function/volumeUpDown'
 import speedUpDown from '../function/speedUpDown'
 import applause from '../function/applause'
-import AppContext from '../utils/AppValueContext'
 import ApplauseAudios from './controllerApplauseAudios'
 import searchOpenClose from '../function/searchOpenClose'
+import { useAppAction, useAppRef, useAppValue } from '../utils/AppProvider'
 
 export default function ControllerButton({
   id,
@@ -22,18 +22,15 @@ export default function ControllerButton({
   emoji: string
   className: string
 }): JSX.Element {
+  const { videoEvent } = useAppValue()
   const {
-    videoEvent,
     setVideoID,
     setVideoTitle,
     setVideoArtist,
     setVideoNumber,
     setVideoDate,
-    playerRef,
-    controllerRef,
-    searchRef,
-    searchModalRef,
-  } = useContext(AppContext)
+  } = useAppAction()
+  const { playerRef, controllerRef, searchRef, searchModalRef } = useAppRef()
 
   const applauseRef1 = useRef(null)
   const applauseRef2 = useRef(null)

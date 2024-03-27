@@ -1,19 +1,14 @@
-import { useCallback, useContext } from 'react'
+import { useCallback } from 'react'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
 import Link from 'next/link'
 import { type IFrame } from '../utils/Types'
-import AppContext from '../utils/AppValueContext'
+import { useAppAction, useAppRef, useAppValue } from '../utils/AppProvider'
 
 export default function Player(): JSX.Element {
-  const {
-    setVideoEvent,
-    videoID,
-    videoTitle,
-    videoArtist,
-    videoNumber,
-    videoDate,
-    playerRef,
-  } = useContext(AppContext)
+  const { videoID, videoTitle, videoArtist, videoNumber, videoDate } =
+    useAppValue()
+  const { setVideoEvent } = useAppAction()
+  const { playerRef } = useAppRef()
 
   const useThisPlayer = useCallback(
     (event: YouTubeEvent) => {
