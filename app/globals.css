@@ -40,9 +40,6 @@
       rgba(186, 138, 206, 0.2) 100%
     );
   }
-  .button-bigger {
-    /* @apply inline-block text-xl xs:text-2xl sm:text-3xl; */
-  }
   .button-tight {
     letter-spacing: -0.1rem;
   }
@@ -69,25 +66,25 @@
 
 /* id */
 @layer components {
-  #app {
+  .app {
     background-image: radial-gradient(
         at 80% 95%,
-        rgba(68, 51, 204, 0.2) 10%,
+        rgba(68, 51, 204, 0.2) 20%,
         rgba(2, 21, 93, 0.2) 50%
       ),
       radial-gradient(
         at 20% 0%,
-        rgba(130, 51, 204, 0.2) 10%,
+        rgba(130, 51, 204, 0.3) 20%,
         rgba(9, 18, 57, 0.2) 50%
       ),
       radial-gradient(
         at 0% 70%,
-        rgba(133, 3, 255, 0.2) 10%,
+        rgba(158, 54, 255, 0.5) 20%,
         rgba(36, 46, 88, 0.2) 50%
       ),
       radial-gradient(
         at 95% 0%,
-        rgba(40, 23, 149, 0.2) 10%,
+        rgba(40, 23, 149, 0.2) 20%,
         rgba(4, 12, 46, 0.2) 50%
       ),
       radial-gradient(
@@ -98,11 +95,11 @@
       ),
       radial-gradient(
         at 95% 0%,
-        rgba(40, 150, 114, 0.2) 10%,
+        rgba(40, 150, 114, 0.2) 20%,
         rgba(33, 51, 125, 0.2) 50%
       );
   }
-  #player {
+  .player {
     max-height: 33.33vh;
   }
   .player-yt {
@@ -112,10 +109,10 @@
       @apply h-full w-full;
     }
   }
-  #controller {
+  .controller {
     flex-basis: var(--controller-w-px);
   }
-  #search-box {
+  .search-box {
     background-image: radial-gradient(
         at 80% 95%,
         rgba(68, 51, 204, 0.2) 10%,
@@ -150,21 +147,21 @@
     top: calc(100vh - (100vh - var(--screen-ratio-h-vh)));
     height: calc((100vh - var(--screen-ratio-h-vh)));
   }
-  #search-list__label {
+  .search-list__label {
     @apply border-0 text-base font-bold;
   }
 
-  #upate > * {
+  .upate > * {
     transition: all 0.3s;
     transition-timing-function: cubic-bezier(0.8, 0.2, 0.15, 0.85);
     transform: translateX(5%) translateY(-300%) scale(0.8);
   }
-  #upate:hover > * {
+  .upate:hover > * {
     transform: translateX(5%) translateY(0) scale(0.8);
   }
   /* sm */
   @media screen and (min-width: 640px) {
-    #player {
+    .player {
       width: calc(100vw - var(--controller-w-px));
       /* Prevent for iframe to have blank because height is too small but width is too long. */
       max-width: calc(100vh * var(--screen-ratio-w));
@@ -174,7 +171,7 @@
       }
     }
     /* This is needed because of specific css styling of #search (above) */
-    #search-box {
+    .search-box {
       top: 0;
       height: 50vh;
     }

@@ -88,12 +88,12 @@ export default function ControllerButton({
         {!className.includes('emoji') && text}
         {id.includes('pause') && (
           <>
-            <span className='button-bigger'>{emoji}</span>
+            {emoji}
             <span className='button-tight'>{text}</span>
           </>
         )}
         {id.includes('backward') && (
-          <span className=''>
+          <span className='button-tight'>
             <span className='button-tighter'>{emoji}</span>
             {text}
           </span>

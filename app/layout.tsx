@@ -20,14 +20,14 @@ export default function RootLayout({
     <html lang='ko'>
       <body>
         <Script src='https://apis.google.com/js/api.js' defer />
-        <div id='app' className='h-screen w-screen bg-black text-light'>
+        <div id='app' className='app h-screen w-screen bg-black text-light'>
           <header id='header' className='absolute left-0 top-0 z-10'>
             <h1 className='absolute left-0 top-0 inline-block w-fit p-6 pr-3 text-xl xs:text-2xl sm:static'>
               홈코노
             </h1>
             <p
               id='upate'
-              className='absolute right-0 top-0 inline-block p-6 pl-0 text-right text-xs opacity-80 sm:static sm:text-left'>
+              className='upate absolute right-0 top-0 inline-block p-6 pl-0 text-right text-xs opacity-80 sm:static sm:text-left'>
               마지막 업데이트:{' '}
               <time dateTime='2024-03-24' className='block xs:inline'>
                 2024. 03. 25. 월요일
