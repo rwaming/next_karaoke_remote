@@ -2,7 +2,7 @@ import { useContext, useMemo, useState } from 'react'
 import { type VideoInfos } from '../utils/Types'
 import SearchContext from '../utils/SearchContext'
 import SearchArea from './searchArea'
-import AppContext from '../utils/AppContext'
+import AppContext from '../utils/AppValueContext'
 import searchOpenClose from '../function/searchOpenClose'
 import SearchList from './searchList'
 

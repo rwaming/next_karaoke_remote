@@ -7,7 +7,7 @@ import timeMove from '../function/timeMove'
 import volumeUpDown from '../function/volumeUpDown'
 import speedUpDown from '../function/speedUpDown'
 import applause from '../function/applause'
-import AppContext from '../utils/AppContext'
+import AppContext from '../utils/AppValueContext'
 import ApplauseAudios from './controllerApplauseAudios'
 import searchOpenClose from '../function/searchOpenClose'
 

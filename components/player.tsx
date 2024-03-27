@@ -2,7 +2,7 @@ import { useCallback, useContext } from 'react'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
 import Link from 'next/link'
 import { type IFrame } from '../utils/Types'
-import AppContext from '../utils/AppContext'
+import AppContext from '../utils/AppValueContext'
 
 export default function Player(): JSX.Element {
   const {
