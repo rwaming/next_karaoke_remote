@@ -54,7 +54,9 @@ export default function SearchList(): JSX.Element {
 
       {allVideoLength > 0 && (
         <ul id='search-list__ul'>
-          <li id='search-list__label' className='search-list__li'>
+          <li
+            id='search-list__label'
+            className='search-list__label search-list__li'>
             <h6 className='search-list__li-title'>제목</h6>
             <h6 className='search-list__li-artist'>가수</h6>
             <h6 className='search-list__li-number'>금영 번호</h6>

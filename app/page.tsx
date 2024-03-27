@@ -27,7 +27,7 @@ const ControllerButton = dynamic(
   { ssr: false },
 )
 
-export default function App(): JSX.Element {
+export default function Main(): JSX.Element {
   const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)
   const [videoID, setVideoID] = useState('')
   const [videoTitle, setVideoTitle] = useState('')
@@ -89,7 +89,7 @@ export default function App(): JSX.Element {
         <section
           ref={controllerRef}
           id='controller'
-          className='button-col gap-2 p-4 text-base font-bold text-dark xs:text-xl sm:shrink-0 sm:grow-0 sm:basis-80'>
+          className='controller button-col gap-2 p-4 text-base font-bold text-dark xs:text-xl sm:shrink-0 sm:grow-0 sm:basis-80'>
           <h3 className='invisible absolute'>리모콘</h3>
           <div className='button-row basis-1/5vh'>
             <div className='button-col'>
@@ -129,7 +129,7 @@ export default function App(): JSX.Element {
               />
               <ControllerButton
                 id='controller-playpause'
-                text=' 일시정지'
+                text='일시정지'
                 emoji='⏸'
                 className='emoji bg-button1'
               />
