@@ -9,17 +9,17 @@ import { type VideoInfos, type SetState } from './Types'
 
 const SearchValueContext = createContext<{
   videoInfos: VideoInfos
-  allVideoLength: number
-  listNote: string
+  videoAllLength: number
+  searchListNote: string
 }>({
   videoInfos: [],
-  allVideoLength: -1,
-  listNote: '',
+  videoAllLength: -1,
+  searchListNote: '',
 })
 function useSearchValue(): {
   videoInfos: VideoInfos
-  allVideoLength: number
-  listNote: string
+  videoAllLength: number
+  searchListNote: string
 } {
   const value = useContext(SearchValueContext)
   if (value === undefined) {
@@ -27,16 +27,17 @@ function useSearchValue(): {
   }
   return value
 }
+
 const SearchActionContext = createContext<{
   setVideoInfos: SetState<VideoInfos>
-  setAllVideoLength: SetState<number>
+  setVideoAllLength: SetState<number>
 }>({
   setVideoInfos: () => {},
-  setAllVideoLength: () => {},
+  setVideoAllLength: () => {},
 })
 function useSearchAction(): {
   setVideoInfos: SetState<VideoInfos>
-  setAllVideoLength: SetState<number>
+  setVideoAllLength: SetState<number>
 } {
   const value = useContext(SearchActionContext)
   if (value === undefined) {
@@ -51,32 +52,32 @@ export default function SearchProvider({
   children: ReactNode
 }): JSX.Element {
   const [videoInfos, setVideoInfos] = useState<VideoInfos>([])
-  const [allVideoLength, setAllVideoLength] = useState(-1)
-  const listNote = useMemo(() => {
-    if (allVideoLength > 0) {
-      return `${allVideoLength}건이 검색되었습니다.`
+  const [videoAllLength, setVideoAllLength] = useState(-1)
+  const searchListNote = useMemo(() => {
+    if (videoAllLength > 0) {
+      return `${videoAllLength}건이 검색되었습니다.`
     }
-    if (allVideoLength === 0) {
+    if (videoAllLength === 0) {
       return '검색된 결과가 없습니다.'
     }
-    if (allVideoLength === -1) {
+    if (videoAllLength === -1) {
       return '검색어를 입력해주세요.'
     }
     return '에러: 현재 검색이 불가합니다.'
-  }, [allVideoLength])
+  }, [videoAllLength])
 
   const searchValue = useMemo(
     () => ({
       videoInfos,
-      allVideoLength,
-      listNote,
+      videoAllLength,
+      searchListNote,
     }),
-    [videoInfos, allVideoLength, listNote],
+    [videoInfos, videoAllLength, searchListNote],
   )
   const searchAction = useMemo(
     () => ({
       setVideoInfos,
-      setAllVideoLength,
+      setVideoAllLength,
     }),
     [],
   )

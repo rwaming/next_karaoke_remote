@@ -12,7 +12,11 @@ export default function SearchList(): JSX.Element {
     setVideoDate,
   } = useAppAction()
   const { playerRef, controllerRef, searchRef, searchModalRef } = useAppRef()
-  const { videoInfos, listNote, allVideoLength } = useSearchValue()
+  const {
+    videoInfos,
+    searchListNote: listNote,
+    allVideoLength,
+  } = useSearchValue()
 
   const changeVideoArgs = useMemo(
     () => ({
