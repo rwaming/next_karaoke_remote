@@ -5,6 +5,7 @@ import {
   useRef,
   useMemo,
   useContext,
+  useEffect,
 } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 import {
@@ -154,6 +155,10 @@ export default function AppProvider({
     [],
   )
 
+  useEffect(() => {
+    console.log(playerRef.current)
+    console.log(controllerRef.current)
+  }, [])
   return (
     <AppValueContext.Provider value={appValue}>
       <AppActionContext.Provider value={appAction}>

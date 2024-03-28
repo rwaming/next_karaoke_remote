@@ -1,4 +1,4 @@
-import { useCallback, useRef, type MouseEvent } from 'react'
+import { useCallback, useEffect, useRef, type MouseEvent } from 'react'
 import { type Button } from '../utils/Types'
 import playPause from '../function/playPause'
 import showLatestVideo from '../function/showLatestVideo'
@@ -73,6 +73,10 @@ export default function ControllerButton({
       videoEvent,
     ],
   )
+  useEffect(() => {
+    console.log(playerRef)
+    console.log(controllerRef)
+  }, [controllerRef, playerRef])
   return (
     <>
       <button

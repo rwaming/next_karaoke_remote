@@ -1,4 +1,3 @@
-import { gapi } from 'gapi-script'
 import { type SetState } from '../utils/Types'
 
 export default async function showLatestVideo(
@@ -8,6 +7,7 @@ export default async function showLatestVideo(
   setVideoNumber: SetState<string>,
   setVideoDate: SetState<string>,
 ): Promise<void> {
+  await import('gapi-script')
   const latestVideoList = await gapi.client.youtube.search.list({
     part: 'snippet',
     channelId: 'UCDqaUIUSJP5EVMEI178Zfag',

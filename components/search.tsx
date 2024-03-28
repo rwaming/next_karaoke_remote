@@ -6,6 +6,7 @@ import SearchList from './searchList'
 
 export default function Search(): JSX.Element {
   const { playerRef, controllerRef, searchRef, searchModalRef } = useAppRef()
+
   return (
     <SearchProvider>
       <div

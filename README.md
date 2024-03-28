@@ -72,6 +72,10 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.03.27.wed_
 
+#### #84 - Make UI ready before visited(change way to import gapi)
+
+- In progress...
+
 #### ~~#82 - Manage api key with env file~~
 
 - Best to use .env.local is to request information in server-side.
