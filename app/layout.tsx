@@ -27,7 +27,7 @@ export default function RootLayout({
               className='upate absolute right-0 top-0 inline-block p-6 pl-0 text-right text-xs opacity-80 sm:static sm:text-left'>
               마지막 업데이트:{' '}
               <time dateTime='2024-03-24' className='block xs:inline'>
-                2024. 03. 25. 월요일
+                2024. 03. 28. 목요일
               </time>
             </p>
           </header>
