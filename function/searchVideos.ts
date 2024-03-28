@@ -19,25 +19,28 @@ async function getSearchInfo(
 
   if (searchKeyword !== '') {
     event.preventDefault()
-    const searchResult = await gapi.client.youtube.search.list({
+    const param = {
       part: 'snippet',
       channelId: 'UCDqaUIUSJP5EVMEI178Zfag',
       maxResults: 20,
       type: 'video',
       videoEmbeddable: 'true',
       q: `${searchKeyword} KY Karaoke -노래방챌린지`,
-    })
-
-    const listLengthAll: number =
-      searchResult.result.pageInfo?.totalResults ?? -2
-    const listLength = searchResult.result.pageInfo?.resultsPerPage
+    }
+    const fetchSearchResult = await fetch(
+      `/api?part=${param.part}&channelId=${param.channelId}&maxResults=${param.maxResults}&type=${param.type}&videoEmbeddable=${param.videoEmbeddable}&q=${param.q}`,
+    )
+    const searchResult = await fetchSearchResult.json()
+    console.log(searchResult)
+    const listLengthAll: number = searchResult.pageInfo.totalResults
+    const listLength = searchResult.pageInfo.resultsPerPage
 
     const videoInfos: VideoInfos = [...Array(listLength)].map((v, i) => {
-      const videos = searchResult.result.items ?? []
+      const videos = searchResult.items
       const video = videos[i]
-      const videoID: string = video.id?.videoId ?? ''
-      const videoDate: string = video.snippet?.publishedAt ?? ''
-      const videoTitle: string = video.snippet?.title ?? ''
+      const videoID: string = video.id.videoId
+      const videoDate: string = video.snippet.publishedAt
+      const videoTitle: string = video.snippet.title
       // 사건의 지평선 - 윤하(Event horizon - YOUNHA) (KY.28707) / KY Karaoke
 
       let divided
