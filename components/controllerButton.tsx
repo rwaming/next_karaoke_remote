@@ -54,7 +54,6 @@ export default function ControllerButton({
       `/api?part=${param.part}&channelId=${param.channelId}&order=${param.order}&maxResults=${param.maxResults}&type=${param.type}&videoEmbeddable=${param.videoEmbeddable}`,
     )
     const latestVideoInfo = await fetchLatestVideoInfo.json()
-    console.log(latestVideoInfo)
     const video = latestVideoInfo.items[0]
     const videoID: string = video.id.videoId
     const videoDate: string = video.snippet.publishedAt

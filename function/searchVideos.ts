@@ -31,7 +31,7 @@ async function getSearchInfo(
       `/api?part=${param.part}&channelId=${param.channelId}&maxResults=${param.maxResults}&type=${param.type}&videoEmbeddable=${param.videoEmbeddable}&q=${param.q}`,
     )
     const searchResult = await fetchSearchResult.json()
-    console.log(searchResult)
+
     const listLengthAll: number = searchResult.pageInfo.totalResults
     const listLength = searchResult.pageInfo.resultsPerPage
 
