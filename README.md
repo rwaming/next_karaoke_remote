@@ -70,11 +70,32 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 <br>
 
-> _2024.03.27.wed_
+> _2024.03.28.thu_
+
+#### ~~#86 - Fix error that ref.current is not applied in some case~~
+
+- Loading AppProvider after Main jsx element with ref loaded is the reason.
+- Render order
+
+  1.  Elements of parent component
+  2.  Child component
+      => This make controller which has `ref={controllerRef}` contribute render **before 'controllerRef' is rendered**.
+
+- Way to Fix
+  - I think there are a lot of methods, but I choose this way
+    => Make controller child component which has same priority to component having to use controller.
 
 #### #84 - Make UI ready before visited(change way to import gapi)
 
-- In progress...
+- In progress..
+
+#### #85 - Improve styling for uniformity
+
+- Waiting tor #84
+
+<br>
+
+> _2024.03.27.wed_
 
 #### ~~#82 - Manage api key with env file~~
 
@@ -553,6 +574,8 @@ It will be made with React, but I heard official React document say "Don't use c
    But fail..
 
 - I found it is possible that something against next convention would cause this error. So, It will be puased until this project get more next(react)-like.
+
+- Fix this to make gapi script imported in useEffect and components imported with dynamic(ssr: false).
 
 <br>
 

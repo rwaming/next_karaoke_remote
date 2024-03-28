@@ -1,6 +1,6 @@
-import { useMemo } from 'react'
-import { useAppAction, useAppRef } from '../utils/AppProvider'
-import { useSearchValue } from '../utils/SearchProvider'
+import { useContext, useMemo } from 'react'
+import { AppActionContext, AppRefContext } from '../utils/AppProvider'
+import { SearchValueContext } from '../utils/SearchProvider'
 import showSelectedVideo from '../function/showSelectedVideo'
 
 export default function SearchList(): JSX.Element {
@@ -10,13 +10,14 @@ export default function SearchList(): JSX.Element {
     setVideoArtist,
     setVideoNumber,
     setVideoDate,
-  } = useAppAction()
-  const { playerRef, controllerRef, searchRef, searchModalRef } = useAppRef()
+  } = useContext(AppActionContext)
+  const { playerRef, controllerRef, searchRef, searchModalRef } =
+    useContext(AppRefContext)
   const {
     videoInfos,
     searchListNote: listNote,
     videoAllLength,
-  } = useSearchValue()
+  } = useContext(SearchValueContext)
 
   const changeVideoArgs = useMemo(
     () => ({

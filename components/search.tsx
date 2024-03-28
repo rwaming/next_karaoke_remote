@@ -1,11 +1,13 @@
+import { useContext } from 'react'
 import SearchProvider from '../utils/SearchProvider'
 import SearchArea from './searchArea'
-import { useAppRef } from '../utils/AppProvider'
+import { AppRefContext } from '../utils/AppProvider'
 import searchOpenClose from '../function/searchOpenClose'
 import SearchList from './searchList'
 
 export default function Search(): JSX.Element {
-  const { playerRef, controllerRef, searchRef, searchModalRef } = useAppRef()
+  const { playerRef, controllerRef, searchRef, searchModalRef } =
+    useContext(AppRefContext)
 
   return (
     <SearchProvider>

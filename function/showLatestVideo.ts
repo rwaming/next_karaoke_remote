@@ -30,9 +30,10 @@ export default async function showLatestVideo(
     divided = videoTitle.split(')')
   }
   const titleArtist = divided[0].trim().split('-')
+  console.log(divided)
   let title = titleArtist[0].trim()
   let artist = titleArtist.slice(1).join('')
-  let number = divided[1].trim().split(')')[0]
+  let number = divided[1]?.trim().split(')')[0] ?? ''
   if (title === '') {
     title = 'x'
   }
