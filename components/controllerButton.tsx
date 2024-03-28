@@ -1,7 +1,6 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
 import { type Button } from '../utils/Types'
 import playPause from '../function/playPause'
-import showLatestVideo from '../function/showLatestVideo'
 import stopVideo from '../function/stopVideo'
 import timeMove from '../function/timeMove'
 import volumeUpDown from '../function/volumeUpDown'
@@ -42,18 +41,58 @@ export default function ControllerButton({
   const applauseRef3 = useRef(null)
   const applauseRef4 = useRef(null)
 
+  const showLatestVideo = useCallback(async () => {
+    const param = {
+      part: 'snippet',
+      channelId: 'UCDqaUIUSJP5EVMEI178Zfag',
+      order: 'date',
+      maxResults: 1,
+      type: 'video',
+      videoEmbeddable: 'true',
+    }
+    const fetchLatestVideoInfo = await fetch(
+      `/api?part=${param.part}&channelId=${param.channelId}&order=${param.order}&maxResults=${param.maxResults}&type=${param.type}&videoEmbeddable=${param.videoEmbeddable}`,
+    )
+    const latestVideoInfo = await fetchLatestVideoInfo.json()
+    const video = latestVideoInfo.items[0]
+    const videoID: string = video.id.videoId
+    const videoDate: string = video.snippet.publishedAt
+    const videoTitle: string = video.snippet.title
+    let divided
+
+    if (videoTitle.includes('(KY.')) {
+      divided = videoTitle.split('(KY.')
+    } else if (videoTitle.includes('[KY')) {
+      divided = videoTitle.split('[KY')
+    } else {
+      divided = videoTitle.split(')')
+    }
+    const titleArtist = divided[0].trim().split('-')
+    let title = titleArtist[0].trim()
+    let artist = titleArtist.slice(1).join('')
+    let number = divided[1]?.trim().split(')')[0] ?? ''
+    if (title === '') {
+      title = 'x'
+    }
+    if (artist === '') {
+      artist = 'x'
+    }
+    if (Number.isNaN(Number(number))) {
+      number = 'x'
+    }
+    if (title === 'x' && artist === 'x' && number === 'x') {
+      title = videoTitle
+    }
+
+    setVideoID(videoID)
+    setVideoTitle(title)
+    setVideoArtist(artist)
+    setVideoNumber(number)
+    setVideoDate(videoDate)
+  }, [setVideoArtist, setVideoDate, setVideoID, setVideoNumber, setVideoTitle])
   const controllerFunctions = useCallback(
     (event: MouseEvent<Button>) => {
-      void (
-        id.includes('latest') &&
-        showLatestVideo(
-          setVideoID,
-          setVideoTitle,
-          setVideoArtist,
-          setVideoNumber,
-          setVideoDate,
-        )
-      )
+      void (id.includes('latest') && showLatestVideo())
       id.includes('search') &&
         searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
       id.includes('playpause') && playPause(videoEvent)
@@ -70,11 +109,7 @@ export default function ControllerButton({
       playerRef,
       searchModalRef,
       searchRef,
-      setVideoArtist,
-      setVideoDate,
-      setVideoID,
-      setVideoNumber,
-      setVideoTitle,
+      showLatestVideo,
       videoEvent,
     ],
   )
