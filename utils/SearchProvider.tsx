@@ -1,10 +1,4 @@
-import {
-  type ReactNode,
-  createContext,
-  useMemo,
-  useState,
-  useContext,
-} from 'react'
+import { type ReactNode, createContext, useMemo, useState } from 'react'
 import { type VideoInfos, type SetState } from './Types'
 
 const SearchValueContext = createContext<{
@@ -16,17 +10,6 @@ const SearchValueContext = createContext<{
   videoAllLength: -1,
   searchListNote: '',
 })
-function useSearchValue(): {
-  videoInfos: VideoInfos
-  videoAllLength: number
-  searchListNote: string
-} {
-  const value = useContext(SearchValueContext)
-  if (value === undefined) {
-    throw new Error('SearchValueContext is not found')
-  }
-  return value
-}
 
 const SearchActionContext = createContext<{
   setVideoInfos: SetState<VideoInfos>
@@ -35,16 +18,6 @@ const SearchActionContext = createContext<{
   setVideoInfos: () => {},
   setVideoAllLength: () => {},
 })
-function useSearchAction(): {
-  setVideoInfos: SetState<VideoInfos>
-  setVideoAllLength: SetState<number>
-} {
-  const value = useContext(SearchActionContext)
-  if (value === undefined) {
-    throw new Error('SearchActionContext is not found')
-  }
-  return value
-}
 
 export default function SearchProvider({
   children,
@@ -90,4 +63,4 @@ export default function SearchProvider({
   )
 }
 
-export { useSearchValue, useSearchAction }
+export { SearchValueContext, SearchActionContext }

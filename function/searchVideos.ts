@@ -1,4 +1,3 @@
-import { gapi } from 'gapi-script'
 import { type MouseEvent } from 'react'
 import {
   type VideoInfos,

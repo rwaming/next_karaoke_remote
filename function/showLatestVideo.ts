@@ -1,4 +1,3 @@
-import { gapi } from 'gapi-script'
 import { type SetState } from '../utils/Types'
 
 export default async function showLatestVideo(
@@ -8,6 +7,7 @@ export default async function showLatestVideo(
   setVideoNumber: SetState<string>,
   setVideoDate: SetState<string>,
 ): Promise<void> {
+  await import('gapi-script')
   const latestVideoList = await gapi.client.youtube.search.list({
     part: 'snippet',
     channelId: 'UCDqaUIUSJP5EVMEI178Zfag',
@@ -30,9 +30,10 @@ export default async function showLatestVideo(
     divided = videoTitle.split(')')
   }
   const titleArtist = divided[0].trim().split('-')
+  console.log(divided)
   let title = titleArtist[0].trim()
   let artist = titleArtist.slice(1).join('')
-  let number = divided[1].trim().split(')')[0]
+  let number = divided[1]?.trim().split(')')[0] ?? ''
   if (title === '') {
     title = 'x'
   }

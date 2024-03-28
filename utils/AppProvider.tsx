@@ -1,11 +1,4 @@
-import {
-  type ReactNode,
-  createContext,
-  useState,
-  useRef,
-  useMemo,
-  useContext,
-} from 'react'
+import { createContext, useState, useRef, useMemo } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 import {
   type Button,
@@ -30,20 +23,6 @@ const AppValueContext = createContext<{
   videoNumber: '',
   videoDate: '',
 })
-function useAppValue(): {
-  videoEvent: YouTubeEvent | null
-  videoID: string
-  videoTitle: string
-  videoArtist: string
-  videoNumber: string
-  videoDate: string
-} {
-  const value = useContext(AppValueContext)
-  if (value === undefined) {
-    throw new Error('AppValueContext is not found')
-  }
-  return value
-}
 
 const AppActionContext = createContext<{
   setVideoEvent: SetState<YouTubeEvent | null>
@@ -60,20 +39,6 @@ const AppActionContext = createContext<{
   setVideoNumber: () => {},
   setVideoDate: () => {},
 })
-function useAppAction(): {
-  setVideoEvent: SetState<YouTubeEvent | null>
-  setVideoID: SetState<string>
-  setVideoTitle: SetState<string>
-  setVideoArtist: SetState<string>
-  setVideoNumber: SetState<string>
-  setVideoDate: SetState<string>
-} {
-  const value = useContext(AppActionContext)
-  if (value === undefined) {
-    throw new Error('AppValueContext is not found')
-  }
-  return value
-}
 
 const AppRefContext = createContext<{
   playerRef: UseRef<Div>
@@ -88,24 +53,11 @@ const AppRefContext = createContext<{
   searchValueRef: { current: null },
   searchModalRef: { current: null },
 })
-function useAppRef(): {
-  playerRef: UseRef<Div>
-  controllerRef: UseRef<Div>
-  searchRef: UseRef<Div>
-  searchValueRef: UseRef<Input>
-  searchModalRef: UseRef<Button>
-} {
-  const value = useContext(AppRefContext)
-  if (value === undefined) {
-    throw new Error('AppValueContext is not found')
-  }
-  return value
-}
 
 export default function AppProvider({
   children,
 }: {
-  children: ReactNode
+  children: React.ReactNode
 }): JSX.Element {
   const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)
   const [videoID, setVideoID] = useState('')
@@ -165,4 +117,4 @@ export default function AppProvider({
   )
 }
 
-export { useAppValue, useAppAction, useAppRef }
+export { AppValueContext, AppActionContext, AppRefContext }
