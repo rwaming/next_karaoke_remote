@@ -72,6 +72,14 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.03.28.thu_
 
+#### #84 - Make UI ready before visited(change way to import gapi)
+
+- It is completed, but I'll use Suspense and Use(?).
+
+#### #85 - Improve styling for uniformity
+
+- Waiting tor #84
+
 #### ~~#86 - Fix error that ref.current is not applied in some case~~
 
 - Loading AppProvider after Main jsx element with ref loaded is the reason.
@@ -84,14 +92,6 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 - Way to Fix
   - I think there are a lot of methods, but I choose this way
     => Make controller child component which has same priority to component having to use controller.
-
-#### #84 - Make UI ready before visited(change way to import gapi)
-
-- In progress..
-
-#### #85 - Improve styling for uniformity
-
-- Waiting tor #84
 
 <br>
 
