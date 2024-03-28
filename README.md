@@ -72,9 +72,10 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.03.28.thu_
 
-#### #84 - Make UI ready before visited(change way to import gapi)
+#### ~~#84 - Make UI ready before visited(change way to import gapi)~~
 
-- It is completed, but I'll use Suspense and Use(?).
+- It is completed to delete code to import gapi in functions. And dynamic get not to be used.
+- ~~But I'll use Suspense and Use(?)~~ => ...is postponed!
 
 #### #85 - Improve styling for uniformity
 
