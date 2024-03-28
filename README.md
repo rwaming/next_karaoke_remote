@@ -72,14 +72,19 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.03.28.thu_
 
+#### #85 - Improve styling for uniformity
+
+- In progress
+
+#### ~~#89 - Fix warning of use youtube iframe before gapi is loaded~~
+
+- An error of iframe disappear itself.
+- I change way to get information of YouTube, using route.ts and .env.local.
+
 #### ~~#84 - Make UI ready before visited(change way to import gapi)~~
 
 - It is completed to delete code to import gapi in functions. And dynamic get not to be used.
 - ~~But I'll use Suspense and Use(?)~~ => ...is postponed!
-
-#### #85 - Improve styling for uniformity
-
-- Waiting tor #84
 
 #### ~~#86 - Fix error that ref.current is not applied in some case~~
 
