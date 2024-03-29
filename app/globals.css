@@ -99,9 +99,6 @@
         rgba(33, 51, 125, 0.2) 50%
       );
   }
-  .player {
-    max-height: 33.33vh;
-  }
   .player-content__youtube {
     visibility: hidden;
     > iframe {
@@ -177,15 +174,9 @@
       width: calc(100vw - var(--controller-w-px));
       /* Prevent for iframe to have blank because height is too small but width is too long. */
       max-width: calc(100vh * var(--screen-ratio-w));
-      max-height: none;
-      > #player-content {
+      > .player-content {
         height: calc((100vw - var(--controller-w-px)) * var(--screen-ratio-h));
       }
-    }
-    /* This is needed because of specific css styling of #search (above) */
-    .search-box {
-      top: 0;
-      height: 50vh;
     }
   }
 }

@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react'
+import { useCallback, useContext, useRef } from 'react'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
 import Link from 'next/link'
 import { type IFrame } from '../utils/Types'
@@ -14,6 +14,8 @@ export default function Player(): JSX.Element {
   const { setVideoEvent } = useContext(AppActionContext)
   const { playerRef } = useContext(AppRefContext)
 
+  const playerLoadingRef = useRef(null)
+
   const useThisPlayer = useCallback(
     (event: YouTubeEvent) => {
       setVideoEvent(event)
@@ -26,6 +28,7 @@ export default function Player(): JSX.Element {
     const playerState = event.data
     if (playerYT !== null) {
       console.log(playerState)
+      const playerLoading = playerLoadingRef.current
       if (
         playerState === 0 ||
         playerState === 1 ||
@@ -34,11 +37,13 @@ export default function Player(): JSX.Element {
       ) {
         playerYT.classList.remove('mini-size')
         playerYT.classList.add('full-size')
-        event.target.setPlaybackQuality('highres')
+        playerLoading.classList.add('hidden')
       } else {
         playerYT.classList.remove('full-size')
         playerYT.classList.add('mini-size')
+        playerLoading.classList.remove('hidden')
       }
+      event.target.setPlaybackQuality('highres')
       if (playerState === 0) {
         event.target.stopVideo()
       }
@@ -49,11 +54,12 @@ export default function Player(): JSX.Element {
     <section
       ref={playerRef}
       id='player'
-      className='player relative flex flex-shrink basis-16-9vh flex-col sm:flex-1 sm:items-end sm:justify-center'>
+      className='player relative flex max-h-1/3vh flex-shrink basis-16-9vh flex-col sm:max-h-none sm:flex-1 sm:items-end sm:justify-center'>
       <h2 className='invisible absolute'>노래 영상</h2>
 
       {videoID !== '' && !videoID.includes('Error') && (
         <p
+          ref={playerLoadingRef}
           id='player-loading'
           className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
           Loading...
@@ -66,7 +72,9 @@ export default function Player(): JSX.Element {
           {videoID}
         </p>
       )}
-      <div id='player-content' className='relative h-16-9vh w-full'>
+      <div
+        id='player-content'
+        className='player-content relative h-16-9vh w-full'>
         {videoID !== '' && !videoID.includes('Error') && (
           <YouTube
             className='player-content__youtube'
