@@ -37,7 +37,7 @@ async function getSearchInfo(
       searchResult.error?.message.includes('quota') === true ?? false
     if (result) {
       setVideoID(
-        'Error: 지금은 서비스를 이용할 수 없습니다. 이후에 다시 시도해주십시오.',
+        'Error: 지금은 서비스를 이용할 수 없습니다. 잠시 후에 다시 시도해주십시오.',
       )
     } else {
       const listLengthAll: number = searchResult.pageInfo.totalResults
