@@ -1,7 +1,7 @@
 import { useCallback, useContext, useRef } from 'react'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
 import Link from 'next/link'
-import { type IFrame } from '../utils/Types'
+import { type Div, type IFrame } from '../utils/Types'
 import {
   AppActionContext,
   AppRefContext,
@@ -14,7 +14,7 @@ export default function Player(): JSX.Element {
   const { setVideoEvent } = useContext(AppActionContext)
   const { playerRef } = useContext(AppRefContext)
 
-  const playerLoadingRef = useRef(null)
+  const playerLoadingRef = useRef<Div>(null)
 
   const useThisPlayer = useCallback(
     (event: YouTubeEvent) => {
@@ -37,11 +37,15 @@ export default function Player(): JSX.Element {
       ) {
         playerYT.classList.remove('mini-size')
         playerYT.classList.add('full-size')
-        playerLoading.classList.add('hidden')
+        if (playerLoading !== null) {
+          playerLoading.classList.add('hidden')
+        }
       } else {
         playerYT.classList.remove('full-size')
         playerYT.classList.add('mini-size')
-        playerLoading.classList.remove('hidden')
+        if (playerLoading !== null) {
+          playerLoading.classList.remove('hidden')
+        }
       }
       event.target.setPlaybackQuality('highres')
       if (playerState === 0) {
