@@ -76,17 +76,20 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 - In progress
 - ~~Prevent to click 'more video'~~: Fail
+
   - For prevent for a user to be moved to new link tap when 'more video' clicked, I searched how to prevent click on a element in YouTube iframe.
   - but it might be not some proper approach, because it is prevented to access iframe however I try to do.
     1.  YouTube API: No API like this.
     2.  Make a literally iframe element: It is same to using `<Youtube />`.
-- Instead, make player show no 'more video': Height of video player just loaded must be less than 290px
+
+- Instead, make player show no 'more video': Height of video player just loaded must be less than 290px.
   - **Problem**
     1. Users get to see process of size change.
     2. ~~When second time the video was clicked, player shows 'more videos'.~~
-  - **Resolve the Problems\***
+  - **Resolve the Problems**
     1. In progress: Make buffering or loading modal.
     2. Make height of player 0px at the point, buffering state, to make 'more videos' visible or not.
+- Error message when quota exceeds.
 
 #### ~~#89 - Fix warning of use youtube iframe before gapi is loaded~~
 
