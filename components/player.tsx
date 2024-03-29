@@ -53,11 +53,18 @@ export default function Player(): JSX.Element {
       <h2 className='invisible absolute'>노래 영상</h2>
 
       {videoID !== '' && !videoID.includes('Error') && (
-        <div
+        <p
           id='player-loading'
           className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
-          <p>Loading...</p>
-        </div>
+          Loading...
+        </p>
+      )}
+      {videoID.includes('Error') && (
+        <p
+          id='player-loading'
+          className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+          {videoID}
+        </p>
       )}
       <div id='player-content' className='relative h-16-9vh w-full'>
         {videoID !== '' && !videoID.includes('Error') && (
@@ -79,7 +86,6 @@ export default function Player(): JSX.Element {
             onStateChange={noMoreVideos}
           />
         )}
-        {videoID.includes('Error') && <p>{videoID}</p>}
 
         {videoID !== '' && (
           <figure
