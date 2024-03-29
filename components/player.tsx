@@ -20,14 +20,28 @@ export default function Player(): JSX.Element {
     },
     [setVideoEvent],
   )
-  const makePlayerFullSize = useCallback((event: YouTubeEvent) => {
+  const noMoreVideos = useCallback((event: YouTubeEvent) => {
     const playerIframe: IFrame = event.target.getIframe()
     const playerYT = playerIframe.parentElement
+    const playerState = event.data
     if (playerYT !== null) {
-      playerYT.style.maxWidth = '100%'
-      playerYT.style.maxHeight = '100%'
-      playerYT.style.width = '100%'
-      playerYT.style.height = '100%'
+      console.log(playerState)
+      if (
+        playerState === 0 ||
+        playerState === 1 ||
+        playerState === 2 ||
+        playerState === 5
+      ) {
+        playerYT.classList.remove('mini-size')
+        playerYT.classList.add('full-size')
+        event.target.setPlaybackQuality('highres')
+      } else {
+        playerYT.classList.remove('full-size')
+        playerYT.classList.add('mini-size')
+      }
+      if (playerState === 0) {
+        event.target.stopVideo()
+      }
     }
   }, [])
 
@@ -38,10 +52,17 @@ export default function Player(): JSX.Element {
       className='player relative flex flex-shrink basis-16-9vh flex-col sm:flex-1 sm:items-end sm:justify-center'>
       <h2 className='invisible absolute'>노래 영상</h2>
 
+      {videoID !== '' && !videoID.includes('Error') && (
+        <div
+          id='player-loading'
+          className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+          <p>Loading...</p>
+        </div>
+      )}
       <div id='player-content' className='relative h-16-9vh w-full'>
-        {videoID !== '' && (
+        {videoID !== '' && !videoID.includes('Error') && (
           <YouTube
-            className='player-yt'
+            className='player-content__youtube'
             videoId={videoID}
             opts={{
               playerVars: {
@@ -55,9 +76,10 @@ export default function Player(): JSX.Element {
               },
             }}
             onReady={useThisPlayer}
-            onPlay={makePlayerFullSize}
+            onStateChange={noMoreVideos}
           />
         )}
+        {videoID.includes('Error') && <p>{videoID}</p>}
 
         {videoID !== '' && (
           <figure

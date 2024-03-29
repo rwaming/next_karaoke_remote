@@ -1,9 +1,10 @@
 import { useContext } from 'react'
-import { AppRefContext } from '../utils/AppProvider'
+import { AppActionContext, AppRefContext } from '../utils/AppProvider'
 import { SearchActionContext } from '../utils/SearchProvider'
 import searchVideos from '../function/searchVideos'
 
 export default function SearchArea(): JSX.Element {
+  const { setVideoID } = useContext(AppActionContext)
   const { searchValueRef } = useContext(AppRefContext)
   const { setVideoInfos, setVideoAllLength } = useContext(SearchActionContext)
 
@@ -45,6 +46,7 @@ export default function SearchArea(): JSX.Element {
               className='x-cover-instead bg-light-input mr-2 hidden text-2xl sm:flex'
               onClick={(event) => {
                 void searchVideos(event, {
+                  setVideoID,
                   setVideoInfos,
                   searchValueRef,
                   setVideoAllLength,
