@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react'
+import { useCallback, useContext, useEffect } from 'react'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
 import Link from 'next/link'
 import { type IFrame } from '../utils/Types'
@@ -9,17 +9,27 @@ import {
 } from '../utils/AppProvider'
 
 export default function Player(): JSX.Element {
-  const { videoID, videoTitle, videoArtist, videoNumber, videoDate } =
-    useContext(AppValueContext)
+  const {
+    videoEvent,
+    videoID,
+    videoTitle,
+    videoArtist,
+    videoNumber,
+    videoDate,
+  } = useContext(AppValueContext)
   const { setVideoEvent } = useContext(AppActionContext)
   const { playerRef } = useContext(AppRefContext)
 
   const useThisPlayer = useCallback(
     (event: YouTubeEvent) => {
       setVideoEvent(event)
+      videoEvent?.target.setPlaybackQuality('higher')
     },
-    [setVideoEvent],
+    [setVideoEvent, videoEvent?.target],
   )
+  const preventLinkEvent = useCallback((event: MessageEvent<unknown>) => {
+    console.log(event.target)
+  }, [])
   const makePlayerFullSize = useCallback((event: YouTubeEvent) => {
     const playerIframe: IFrame = event.target.getIframe()
     const playerYT = playerIframe.parentElement
@@ -28,6 +38,12 @@ export default function Player(): JSX.Element {
       playerYT.style.maxHeight = '100%'
       playerYT.style.width = '100%'
       playerYT.style.height = '100%'
+    }
+  }, [])
+  useEffect(() => {
+    window.addEventListener('message', preventLinkEvent)
+    return () => {
+      window.removeEventListener('message', preventLinkEvent)
     }
   }, [])
 
