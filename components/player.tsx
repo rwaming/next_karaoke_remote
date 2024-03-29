@@ -26,13 +26,18 @@ export default function Player(): JSX.Element {
     const playerState = event.data
     if (playerYT !== null) {
       console.log(playerState)
-      if (playerState === 3) {
+      if (
+        playerState === 0 ||
+        playerState === 1 ||
+        playerState === 2 ||
+        playerState === 5
+      ) {
+        playerYT.classList.remove('mini-size')
+        playerYT.classList.add('full-size')
+        event.target.setPlaybackQuality('highres')
+      } else {
         playerYT.classList.remove('full-size')
         playerYT.classList.add('mini-size')
-      } else {
-        playerYT.classList.add('full-size')
-        playerYT.classList.remove('mini-size')
-        event.target.setPlaybackQuality('highres')
       }
       if (playerState === 0) {
         event.target.stopVideo()
@@ -47,6 +52,13 @@ export default function Player(): JSX.Element {
       className='player relative flex flex-shrink basis-16-9vh flex-col sm:flex-1 sm:items-end sm:justify-center'>
       <h2 className='invisible absolute'>노래 영상</h2>
 
+      {videoID !== '' && !videoID.includes('Error') && (
+        <div
+          id='player-loading'
+          className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+          <p>Loading...</p>
+        </div>
+      )}
       <div id='player-content' className='relative h-16-9vh w-full'>
         {videoID !== '' && !videoID.includes('Error') && (
           <YouTube

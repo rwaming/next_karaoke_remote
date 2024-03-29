@@ -70,7 +70,7 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 <br>
 
-> _2024.03.28.thu_
+> _2024.03.29.fri_
 
 #### #85 - Improve styling for uniformity
 
@@ -84,12 +84,18 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 - Instead, make player show no 'more video': Height of video player just loaded must be less than 290px.
   - **Problem**
-    1. Users get to see process of size change.
+    1. ~~Users get to see process of size change.~~
     2. ~~When second time the video was clicked, player shows 'more videos'.~~
   - **Resolve the Problems**
-    1. In progress: Make buffering or loading modal.
+    1. Make player invisible in buffering or laoding.
+       => _It would be better if this get more natural._
     2. Make height of player 0px at the point, buffering state, to make 'more videos' visible or not.
 - Error message when quota exceeds.
+- Show loading message for user to see if it works.
+
+<br>
+
+> _2024.03.28.thu_
 
 #### ~~#89 - Fix warning of use youtube iframe before gapi is loaded~~
 

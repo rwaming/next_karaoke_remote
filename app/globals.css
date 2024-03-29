@@ -103,6 +103,7 @@
     max-height: 33.33vh;
   }
   .player-content__youtube {
+    visibility: hidden;
     > iframe {
       @apply h-full w-full;
     }
@@ -114,6 +115,7 @@
     max-height: 0px;
   }
   .full-size {
+    visibility: visible;
     width: 100%;
     height: 100%;
     max-width: 100%;
