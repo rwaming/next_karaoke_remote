@@ -16,7 +16,7 @@ export default function RootLayout({
 }>): JSX.Element {
   return (
     <html lang='ko'>
-      <body>
+      <body className='overflow-hidden'>
         <div
           id='app'
           className='app relative h-dvh w-dvw bg-black text-light sm:p-4'>
@@ -36,22 +36,22 @@ export default function RootLayout({
           {children}
           <footer
             id='footer'
-            className='absolute bottom-0 right-0 p-4 opacity-80'>
+            className='absolute bottom-0 w-full py-4 text-center opacity-80'>
             <address
               id='contact'
-              className='relative flex justify-center gap-3 text-xs not-italic'>
+              className='text-xs not-italic sm:relative sm:flex sm:justify-center sm:gap-3'>
               <div id='contact-name' className='font-bold'>
-                <p id='contact-name__en' className='inline'>
+                <p id='contact-name__en' className='sm:inline'>
                   RWAM
                 </p>
-                <p id='contact-name__ko' className='ml-2 hidden xs:inline'>
+                <p id='contact-name__ko' className='ml-2 sm:inline'>
                   김성주
                 </p>
               </div>
 
               <div
                 id='contact-sns'
-                className='hidden items-center gap-2 xs:flex'>
+                className='sm:flex sm:items-center sm:gap-2'>
                 <Link
                   href='https://www.instagram.com/rwam__kn'
                   target='_blank'
@@ -93,7 +93,7 @@ export default function RootLayout({
                 </Link>
               </div>
 
-              <div id='contact-info'>
+              <div id='contact-info' className='contact-info'>
                 <button type='button'>+ more</button>
                 <p id='contact-info__email' className='sm:hidden'>
                   art.rwam@gmail.com

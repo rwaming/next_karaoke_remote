@@ -50,10 +50,10 @@
     @apply flex-grow overflow-hidden text-ellipsis whitespace-nowrap text-sm;
   }
   .search-list__li-artist {
-    @apply basis-1/4dvw flex-shrink-0 overflow-hidden text-ellipsis whitespace-nowrap text-xs md:text-sm;
+    @apply flex-shrink-0 basis-1/4dvw overflow-hidden text-ellipsis whitespace-nowrap text-xs md:text-sm;
   }
   .search-list__li-number {
-    @apply basis-1/8dvw hidden flex-shrink-0 overflow-hidden text-ellipsis whitespace-nowrap text-sm opacity-70 md:block;
+    @apply hidden flex-shrink-0 basis-1/8dvw overflow-hidden text-ellipsis whitespace-nowrap text-sm opacity-70 md:block;
   }
 }
 
@@ -172,4 +172,17 @@
       }
     }
   }
+  .contact-info:hover button {
+    @apply hidden;
+  }
+  .contact-info:hover p {
+    @apply inline;
+  }
+}
+
+.player__search-open {
+  @apply sm:justify-end;
+}
+.search-modal__search-open {
+  @apply block;
 }

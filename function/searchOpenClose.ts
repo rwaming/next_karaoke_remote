@@ -21,16 +21,16 @@ export default function searchOpenClose(
       search.classList.remove('hidden')
       search.classList.add('flex')
       player.classList.remove('sm:justify-center')
-      player.classList.add('sm:justify-end')
+      player.classList.add('player__search-open')
       searchModal.classList.remove('hidden')
-      searchModal.classList.add('block')
+      searchModal.classList.add('search-modal__search-open')
     } else {
       search.classList.add('hidden')
       search.classList.remove('flex')
       player.classList.add('sm:justify-center')
-      player.classList.remove('sm:justify-end')
+      player.classList.remove('player__search-open')
       searchModal.classList.add('hidden')
-      searchModal.classList.remove('block')
+      searchModal.classList.remove('search-modal__search-open')
     }
   }
 }
