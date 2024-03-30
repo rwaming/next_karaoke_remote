@@ -22,9 +22,10 @@ export default function Player(): JSX.Element {
       // get youtube event
       setVideoEvent(event)
       const playerLoading = playerLoadingRef.current
-      const playerReady = playerReadyRef.current
       playerLoading?.classList.add('hidden')
-      playerReady?.classList.remove('hidden')
+      const playerIframe: IFrame = event.target.getIframe()
+      const playerYT = playerIframe.parentElement
+      playerYT?.classList.add('full-size')
     },
     [setVideoEvent],
   )
@@ -67,7 +68,7 @@ export default function Player(): JSX.Element {
           ref={playerLoadingRef}
           id='player-loading'
           className='absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2'>
-          플레이어를 만들고 있어요.
+          화면을 만들고 있어요.
         </p>
       )}
       <p
