@@ -58,7 +58,7 @@ export default function Player(): JSX.Element {
     <section
       ref={playerRef}
       id='player'
-      className='player max-h-1/3dvh relative flex flex-shrink flex-col sm:max-h-none sm:flex-1 sm:items-end sm:justify-center'>
+      className='player relative flex max-h-1/3dvh flex-shrink flex-col sm:max-h-none sm:flex-1 sm:items-end sm:justify-center'>
       <h2 className='invisible absolute'>노래 영상</h2>
 
       {videoID !== '' && !videoID.includes('Error') && (
@@ -78,7 +78,7 @@ export default function Player(): JSX.Element {
       )}
       <div
         id='player-content'
-        className='player-content h-16-9dvh relative w-full'>
+        className='player-content relative h-16-9dvh w-full'>
         {videoID !== '' && !videoID.includes('Error') && (
           <YouTube
             className='player-content__youtube'
