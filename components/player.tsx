@@ -37,15 +37,18 @@ export default function Player(): JSX.Element {
       const playerYT = playerIframe.parentElement
       const playerReady = playerReadyRef.current
       if (state === -1 || state === 3) {
-        playerReady?.classList.remove('hidden')
         playerYT?.classList.remove('full-size')
         playerYT?.classList.add('full-size')
         playerYT?.classList.add('sm:mini-size')
       } else {
-        playerReady?.classList.add('hidden')
         playerYT?.classList.remove('sm:mini-size')
         playerYT?.classList.remove('full-size')
         playerYT?.classList.add('full-size')
+      }
+      if (state === -1) {
+        playerReady?.classList.remove('hidden')
+      } else {
+        playerReady?.classList.add('hidden')
       }
     }
   }, [])
