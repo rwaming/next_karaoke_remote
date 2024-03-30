@@ -16,46 +16,42 @@ export default function Player(): JSX.Element {
 
   const playerLoadingRef = useRef<Div>(null)
 
-  const useThisPlayer = useCallback(
+  const readyToUsePlayer = useCallback(
     (event: YouTubeEvent) => {
+      // get youtube event
       setVideoEvent(event)
+      // ready size: full
+      const playerLoading = playerLoadingRef.current
+      const playerIframe: IFrame = event.target.getIframe()
+      const playerYT = playerIframe.parentElement
+      playerYT?.classList.remove('mini-size')
+      playerYT?.classList.add('full-size')
+      playerLoading?.classList.add('hidden')
+      // autoplay in moment player made
+      event.target.playVideo()
     },
     [setVideoEvent],
   )
-  const noMoreVideos = useCallback((event: YouTubeEvent) => {
-    const playerIframe: IFrame = event.target.getIframe()
-    const playerYT = playerIframe.parentElement
-    const playerState = event.data
-    if (playerYT !== null) {
-      console.log(playerState)
-      const playerLoading = playerLoadingRef.current
-      if (
-        playerState === 0 ||
-        playerState === 1 ||
-        playerState === 2 ||
-        playerState === 5
-      ) {
-        playerYT.classList.remove('mini-size')
-        playerYT.classList.add('full-size')
-        if (playerLoading !== null) {
-          playerLoading.classList.add('hidden')
-        }
+  const stateSize = useCallback((event: YouTubeEvent) => {
+    const state = event.data
+    console.log(state)
+    if (typeof state === 'number') {
+      const playerIframe: IFrame = event.target.getIframe()
+      const playerYT = playerIframe.parentElement
+      if (state === -1 || state === 3) {
+        playerYT?.classList.remove('full-size')
+        playerYT?.classList.add('mini-size')
       } else {
-        playerYT.classList.remove('full-size')
-        playerYT.classList.add('mini-size')
-        if (playerLoading !== null) {
-          playerLoading.classList.remove('hidden')
-        }
-      }
-      event.target.setPlaybackQuality('highres')
-      if (playerState === 0) {
-        event.target.stopVideo()
-      }
-      event.target.setPlaybackQuality('highres')
-      if (playerState === -1) {
-        event.target.playVideo()
+        playerYT?.classList.remove('mini-size')
+        playerYT?.classList.add('full-size')
       }
     }
+  }, [])
+  const playVideoHighQuility = useCallback((event: YouTubeEvent) => {
+    event.target.setPlaybackQuality('highres')
+  }, [])
+  const EndNoMoreVideos = useCallback((event: YouTubeEvent) => {
+    event.target.stopVideo()
   }, [])
 
   return (
@@ -89,7 +85,7 @@ export default function Player(): JSX.Element {
             videoId={videoID}
             opts={{
               playerVars: {
-                autoplay: 1,
+                // autoplay: 1,
                 controls: 0,
                 disablekb: 1,
                 fs: 0,
@@ -98,8 +94,10 @@ export default function Player(): JSX.Element {
                 rel: 0,
               },
             }}
-            onReady={useThisPlayer}
-            onStateChange={noMoreVideos}
+            onReady={readyToUsePlayer}
+            onPlay={playVideoHighQuility}
+            onEnd={EndNoMoreVideos}
+            onStateChange={stateSize}
           />
         )}
 
