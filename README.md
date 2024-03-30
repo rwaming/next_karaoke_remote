@@ -82,6 +82,8 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
    - Fix witdh, height styling, change all vw, vh -> dvw, dvh
 2. The reason why video don't appear only in mobile is the functions, minimize video before play while mobile environment don't give autoplay function.
    - Make player state play(1) when player is ready, like autoplay.
+     => fail
+   - No autoplay, an no minisize in mobile. (Anyway, mobile height is low)
 
 <br>
 

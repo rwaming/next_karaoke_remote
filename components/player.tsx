@@ -36,18 +36,18 @@ export default function Player(): JSX.Element {
       const playerIframe: IFrame = event.target.getIframe()
       const playerYT = playerIframe.parentElement
       const playerReady = playerReadyRef.current
-      if (state === -1 || state === 3) {
-        playerYT?.classList.remove('full-size')
-        playerYT?.classList.add('full-size')
+      if (state === -1) {
         playerYT?.classList.add('sm:mini-size')
       } else {
         playerYT?.classList.remove('sm:mini-size')
-        playerYT?.classList.remove('full-size')
-        playerYT?.classList.add('full-size')
       }
       if (state === 3) {
+        playerYT?.classList.add('mini-size')
+        playerYT?.classList.remove('full-size')
         playerReady?.classList.remove('hidden')
       } else {
+        playerYT?.classList.add('full-size')
+        playerYT?.classList.remove('mini-size')
         playerReady?.classList.add('hidden')
       }
     }
@@ -96,7 +96,7 @@ export default function Player(): JSX.Element {
             videoId={videoID}
             opts={{
               playerVars: {
-                autoplay: 1,
+                // autoplay: 1,
                 controls: 0,
                 disablekb: 1,
                 fs: 0,
