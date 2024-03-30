@@ -115,37 +115,6 @@
     max-height: 100%;
   }
   .search-box {
-    background-image: radial-gradient(
-        at 80% 95%,
-        rgba(68, 51, 204, 0.2) 10%,
-        rgba(33, 51, 125, 0.2) 50%
-      ),
-      radial-gradient(
-        at 20% 0%,
-        rgba(130, 51, 204, 0.2) 10%,
-        rgba(33, 51, 125, 0.2) 50%
-      ),
-      radial-gradient(
-        at 0% 70%,
-        rgba(130, 51, 204, 0.2) 10%,
-        rgba(33, 51, 125, 0.2) 50%
-      ),
-      radial-gradient(
-        at 95% 0%,
-        rgba(40, 23, 149, 0.2) 10%,
-        rgba(33, 51, 125, 0.2) 50%
-      ),
-      radial-gradient(
-        at 55% 10%,
-        rgba(183, 156, 48, 0.2) 10%,
-        rgba(100, 77, 88, 0.2) 30%,
-        rgba(20, 33, 86, 0.2) 50%
-      ),
-      radial-gradient(
-        at 95% 0%,
-        rgba(40, 150, 114, 0.2) 10%,
-        rgba(33, 51, 125, 0.2) 50%
-      );
     top: calc(100dvh - (100dvh - var(--screen-ratio-h-dvh)));
     height: calc((100dvh - var(--screen-ratio-h-dvh)));
   }

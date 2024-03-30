@@ -19,7 +19,7 @@ export default function Search(): JSX.Element {
 
         <section
           id='search-box'
-          className='search-box relative z-10 flex w-full flex-col text-light backdrop-blur sm:top-0 sm:h-1/2dvh'>
+          className='search-box relative z-10 flex w-full flex-col rounded-t-lg bg-dark bg-opacity-50 text-light backdrop-blur sm:top-0 sm:h-1/2dvh sm:rounded-none sm:rounded-b-lg'>
           <SearchArea />
           <SearchList />
           <button
