@@ -166,6 +166,11 @@
   #controller-stop {
     @apply sm:hidden;
   }
+  .controller {
+    * {
+      @apply p-0;
+    }
+  }
   .controller__search-open {
     @apply sm:absolute sm:h-2/5dvh sm:w-dvw sm:gap-1 sm:p-0 sm:pl-2 sm:pr-4 sm:pt-1/2dvh;
     width: 100dvw;

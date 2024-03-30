@@ -36,10 +36,10 @@ export default function RootLayout({
           {children}
           <footer
             id='footer'
-            className='absolute bottom-0 w-full py-4 text-center opacity-80'>
+            className='sm:absolute sm:bottom-0 sm:w-full sm:py-4 sm:opacity-80'>
             <address
               id='contact'
-              className='text-xs not-italic sm:relative sm:flex sm:justify-center sm:gap-3'>
+              className='not-italic sm:relative sm:flex sm:justify-center sm:gap-3 sm:text-xs'>
               <div id='contact-name' className='font-bold'>
                 <p id='contact-name__en' className='sm:inline'>
                   RWAM
