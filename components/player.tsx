@@ -62,7 +62,7 @@ export default function Player(): JSX.Element {
       ref={playerRef}
       id='player'
       className='player relative flex max-h-1/3dvh flex-shrink flex-col sm:max-h-none sm:flex-1 sm:items-end sm:justify-center'>
-      <h2 className='invisible absolute -z-10'>노래 영상</h2>
+      <h2 className='hidden'>노래 영상</h2>
 
       {videoID !== '' && !videoID.includes('Error') && (
         <p
