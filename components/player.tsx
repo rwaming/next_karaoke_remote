@@ -53,7 +53,9 @@ export default function Player(): JSX.Element {
       }
       if (readyToPlay) {
         event.target.playVideo()
-        setReadyToPlay(false)
+        if (state === 1) {
+          setReadyToPlay(false)
+        }
       }
     },
     [readyToPlay],
