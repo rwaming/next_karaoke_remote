@@ -45,7 +45,7 @@ export default function Player(): JSX.Element {
         playerYT?.classList.remove('full-size')
         playerYT?.classList.add('full-size')
       }
-      if (state === -1) {
+      if (state === 3) {
         playerReady?.classList.remove('hidden')
       } else {
         playerReady?.classList.add('hidden')
