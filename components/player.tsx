@@ -1,4 +1,4 @@
-import { useCallback, useContext, useRef } from 'react'
+import { useCallback, useContext, useRef, useState } from 'react'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
 import Link from 'next/link'
 import { type Div, type IFrame } from '../utils/Types'
@@ -14,6 +14,8 @@ export default function Player(): JSX.Element {
   const { setVideoEvent } = useContext(AppActionContext)
   const { playerRef } = useContext(AppRefContext)
 
+  const [readyToPlay, setReadyToPlay] = useState(true)
+
   const playerLoadingRef = useRef<Div>(null)
   const playerReadyRef = useRef<Div>(null)
 
@@ -28,28 +30,34 @@ export default function Player(): JSX.Element {
       playerReady?.classList.remove('hidden')
       // autoplay in moment player made
       event.target.stopVideo()
-      event.target.playVideo()
     },
     [setVideoEvent],
   )
-  const stateSize = useCallback((event: YouTubeEvent) => {
-    const state = event.data
-    console.log(state)
-    if (typeof state === 'number') {
-      const playerIframe: IFrame = event.target.getIframe()
-      const playerYT = playerIframe.parentElement
-      const playerReady = playerReadyRef.current
-      if (state === -1 || state === 3) {
-        playerReady?.classList.remove('hidden')
-        playerYT?.classList.remove('full-size')
-        playerYT?.classList.add('mini-size')
-      } else {
-        playerReady?.classList.add('hidden')
-        playerYT?.classList.remove('mini-size')
-        playerYT?.classList.add('full-size')
+  const stateSize = useCallback(
+    (event: YouTubeEvent) => {
+      const state = event.data
+      console.log(state)
+      if (typeof state === 'number') {
+        const playerIframe: IFrame = event.target.getIframe()
+        const playerYT = playerIframe.parentElement
+        const playerReady = playerReadyRef.current
+        if (state === -1 || state === 3) {
+          playerReady?.classList.remove('hidden')
+          playerYT?.classList.remove('full-size')
+          playerYT?.classList.add('mini-size')
+        } else {
+          playerReady?.classList.add('hidden')
+          playerYT?.classList.remove('mini-size')
+          playerYT?.classList.add('full-size')
+        }
       }
-    }
-  }, [])
+      if (readyToPlay) {
+        event.target.playVideo()
+        setReadyToPlay(false)
+      }
+    },
+    [readyToPlay],
+  )
   const playVideoHighQuility = useCallback((event: YouTubeEvent) => {
     event.target.setPlaybackQuality('highres')
   }, [])
