@@ -9,7 +9,7 @@ export default function Controller(): JSX.Element {
     <section
       ref={controllerRef}
       id='controller'
-      className='controller button-col m-2 text-base font-bold text-dark xs:text-xl sm:m-0 sm:mb-8 sm:ml-2 sm:shrink-0 sm:grow-0 sm:basis-64'>
+      className='controller button-col m-2 text-sm font-bold text-dark xs:text-base sm:m-0 sm:mb-8 sm:ml-2 sm:shrink-0 sm:grow-0 sm:basis-56 sm:text-sm md:basis-64 md:text-base'>
       <h3 className='hidden'>리모콘</h3>
       <div className='button-row basis-1/5dvh'>
         <div className='button-col'>

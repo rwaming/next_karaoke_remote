@@ -25,7 +25,7 @@
     @apply flex shrink grow gap-2;
   }
   .button {
-    @apply flex shrink grow items-center justify-center rounded-lg p-2 pb-3 text-sm xs:text-base sm:text-lg;
+    @apply flex shrink grow items-center justify-center rounded-lg p-2 pb-3;
     box-shadow: inset -0.25rem -0.25rem rgba(0, 0, 0, 0.15);
     background-image: linear-gradient(
       150deg,
@@ -37,7 +37,7 @@
     letter-spacing: -0.1rem;
   }
   .button-tighter {
-    letter-spacing: -0.55rem;
+    letter-spacing: -0.5rem;
   }
 
   .search-list__li {
@@ -92,6 +92,15 @@
         rgba(33, 51, 125, 0.2) 50%
       );
   }
+  .upate > * {
+    transition: all 0.3s;
+    transition-timing-function: cubic-bezier(0.8, 0.2, 0.15, 0.85);
+    transform: translateX(5%) translateY(-300%) scale(0.8);
+  }
+  .upate:hover > * {
+    transform: translateX(5%) translateY(0) scale(0.8);
+  }
+
   .player-content {
     height: calc(var(--screen-ratio-h-dvh) - 1rem);
   }
@@ -114,22 +123,28 @@
     max-width: 100%;
     max-height: 100%;
   }
+
   .search-box {
-    top: calc(100dvh - (100dvh - var(--screen-ratio-h-dvh)));
+    background-image: linear-gradient(
+      150deg,
+      rgba(190, 176, 255, 0.05) 30%,
+      rgba(186, 138, 206, 0.2) 100%
+    );
+    box-shadow: inset 0rem 0.25rem 0 rgba(0, 0, 0, 0.15);
     height: calc((100dvh - var(--screen-ratio-h-dvh)));
+    min-height: calc((66.66dvh));
   }
   .search-list__label {
     @apply border-0 text-base font-bold;
   }
 
-  .upate > * {
-    transition: all 0.3s;
-    transition-timing-function: cubic-bezier(0.8, 0.2, 0.15, 0.85);
-    transform: translateX(5%) translateY(-300%) scale(0.8);
+  .contact-info:hover button {
+    @apply hidden;
   }
-  .upate:hover > * {
-    transform: translateX(5%) translateY(0) scale(0.8);
+  .contact-info:hover p {
+    @apply inline;
   }
+
   /* sm */
   @media screen and (min-width: 640px) {
     .player {
@@ -140,12 +155,29 @@
         height: calc((100dvw - var(--controller-w-px)) * var(--screen-ratio-h));
       }
     }
+    .search-box {
+      box-shadow: inset 0 -0.25rem 0 rgba(0, 0, 0, 0.15);
+    }
   }
-  .contact-info:hover button {
-    @apply hidden;
+}
+
+/* small height */
+@media screen and (max-height: 320px) {
+  #controller-stop {
+    @apply sm:hidden;
   }
-  .contact-info:hover p {
-    @apply inline;
+  .controller__search-open {
+    @apply sm:absolute sm:h-2/5dvh sm:w-dvw sm:gap-1 sm:p-0 sm:pl-2 sm:pr-4 sm:pt-1/2dvh;
+    width: 100dvw;
+    * {
+      @apply sm:flex-row sm:p-0;
+    }
+    #controller-timebackward {
+      @apply sm:hidden;
+    }
+    #controller-timeforward {
+      @apply sm:hidden;
+    }
   }
 }
 
@@ -154,4 +186,19 @@
 }
 .search-modal__search-open {
   @apply block;
+}
+.controller__search-open {
+  @apply sm:pt-1/2dvh;
+  * {
+    @apply sm:z-20 sm:text-sm;
+  }
+  .button {
+    @apply sm:py-2;
+  }
+  #controller-search {
+    @apply sm:hidden;
+  }
+  #controller-stop {
+    @apply sm:hidden;
+  }
 }

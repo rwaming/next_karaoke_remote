@@ -14,18 +14,18 @@ export default function Search(): JSX.Element {
       <div
         ref={searchRef}
         id='search'
-        className='fixed left-0 top-0 z-20 hidden h-dvh w-dvw'>
+        className='absolute left-0 top-0 z-20 hidden h-dvh w-dvw items-end px-2 sm:items-start'>
         <h3 className='hidden'>노래 검색창</h3>
 
         <section
           id='search-box'
-          className='search-box relative z-10 flex w-full flex-col rounded-t-lg bg-dark bg-opacity-50 text-light backdrop-blur sm:top-0 sm:h-1/2dvh sm:rounded-none sm:rounded-b-lg'>
+          className='search-box z-10 flex w-full grow flex-col overflow-hidden rounded-t-lg bg-deep sm:top-0 sm:h-1/2dvh sm:min-h-0 sm:rounded-none sm:rounded-b-lg sm:drop-shadow-lg'>
           <SearchArea />
           <SearchList />
           <button
             id='search-close'
             type='button'
-            className='absolute bottom-0 right-0 hidden p-4 sm:block'
+            className='absolute bottom-0 right-0 hidden p-4 opacity-75 sm:block'
             onClick={() => {
               searchOpenClose(
                 playerRef,

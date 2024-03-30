@@ -24,6 +24,7 @@ export default function searchOpenClose(
       player.classList.add('player__search-open')
       searchModal.classList.remove('hidden')
       searchModal.classList.add('search-modal__search-open')
+      controller.classList.add('controller__search-open')
     } else {
       search.classList.add('hidden')
       search.classList.remove('flex')
@@ -31,6 +32,7 @@ export default function searchOpenClose(
       player.classList.remove('player__search-open')
       searchModal.classList.add('hidden')
       searchModal.classList.remove('search-modal__search-open')
+      controller.classList.remove('controller__search-open')
     }
   }
 }

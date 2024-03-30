@@ -47,6 +47,7 @@ const config: Config = {
       },
       colors: {
         dark: '#111122',
+        deep: '#222066',
         light: '#efefdf',
         button1: '#f4f2fa',
         button2: '#eaec88',
