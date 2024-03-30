@@ -51,6 +51,10 @@ export default function Player(): JSX.Element {
       if (playerState === 0) {
         event.target.stopVideo()
       }
+      event.target.setPlaybackQuality('highres')
+      if (playerState === -1) {
+        event.target.playVideo()
+      }
     }
   }, [])
 

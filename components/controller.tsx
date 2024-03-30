@@ -50,7 +50,7 @@ export default function Controller(): JSX.Element {
           <ControllerButton
             id='controller-playpause'
             text='일시정지'
-            emoji='⏸'
+            emoji='⏯'
             className='emoji bg-button1'
           />
         </div>
