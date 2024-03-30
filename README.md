@@ -72,18 +72,16 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.03.30.sat_
 
-#### #92 - Fix that in mobile, video isn't shown and viewport unit make page overflow
+#### #85 - Improve styling for uniformity (2)
 
 - In progress
+
+#### ~~#92 - Fix that in mobile, video isn't shown and viewport unit make page overflow~~
 
 1. Viewpror problem
    - Fix witdh, height styling, change all vw, vh -> dvw, dvh
 2. The reason why video don't appear only in mobile is the functions, minimize video before play while mobile environment don't give autoplay function.
    - Make player state play(1) when player is ready, like autoplay.
-
-#### #85 - Improve styling for uniformity (2)
-
-- In progress (wait for #92)
 
 <br>
 
