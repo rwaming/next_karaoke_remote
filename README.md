@@ -76,8 +76,10 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 - In progress
 
-1. Fix witdh, height styling, change all vw, vh -> dvw, dvh
-2. I didn't find why video is not shown.
+1. Viewpror problem
+   - Fix witdh, height styling, change all vw, vh -> dvw, dvh
+2. The reason why video don't appear only in mobile is the functions, minimize video before play while mobile environment don't give autoplay function.
+   - Make player state play(1) when player is ready, like autoplay.
 
 #### #85 - Improve styling for uniformity (2)
 
