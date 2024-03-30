@@ -51,11 +51,11 @@ export default function Player(): JSX.Element {
           playerYT?.classList.add('full-size')
         }
       }
-      if (readyToPlay) {
+      if (state === 1) {
+        setReadyToPlay(false)
+      }
+      if (readyToPlay && state === 5) {
         event.target.playVideo()
-        if (state === 1) {
-          setReadyToPlay(false)
-        }
       }
     },
     [readyToPlay],
