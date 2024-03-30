@@ -20,25 +20,25 @@ export default function RootLayout({
         <div id='app' className='app relative h-dvh w-dvw bg-black text-light'>
           <header
             id='header'
-            className='header absolute left-0 top-0 z-10 m-4 flex items-center'>
+            className='header absolute left-0 top-0 z-40 m-6 flex items-center'>
             <button
               type='button'
               id='menu__open'
-              className='button absolute left-0 top-0 h-7 w-7 bg-button1 text-deep'>
-              <span className='absolute left-2 top-2 text-xs leading-snug'>
+              className='absolute left-0 top-0 h-6 w-6 rounded-2xl bg-button1 text-deep'>
+              <span className='absolute left-1 top-1 scale-75 leading-snug'>
                 ★
               </span>
-              <span className='absolute -top-1 left-1 scale-y-90 text-2xl'>
+              <span className='absolute -top-1 left-1 scale-y-90 text-xl'>
                 ⌃
               </span>
             </button>
             <div className='relative overflow-hidden whitespace-nowrap'>
-              <h1 className='button h-8 w-16 cursor-default bg-button1 text-2xl font-bold text-deep xs:text-xl'>
+              <h1 className='box-content h-8 w-16 cursor-default rounded-xl bg-button1 pl-3 text-2xl font-bold text-deep xs:text-xl'>
                 홈코노
               </h1>
               <p
                 id='upate'
-                className='upate absolute right-5 top-1/2 -translate-y-1/2 text-xs opacity-80 sm:ml-2'>
+                className='upate absolute right-2 top-1/2 -translate-y-1/2 text-xs opacity-80 sm:ml-2'>
                 마지막 업데이트:{' '}
                 <time dateTime='2024-03-30'>2024. 03. 30. 토요일</time>
               </p>

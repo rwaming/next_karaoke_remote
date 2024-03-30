@@ -7,7 +7,7 @@
   --screen-ratio-h: 0.5625;
   --screen-ratio-h-p: 56.25;
   --screen-ratio-h-dvh: 56.25dvw;
-  --controller-w-sm: 266;
+  --controller-w-sm: 264;
   --controller-w-sm-px: 16.5rem;
   --controller-w-md: 296;
   --controller-w-md-px: 18.5rem;
@@ -134,11 +134,25 @@
       appear__menu-open 3.7s,
       spin__menu-open 4s 0s infinite;
     transition: all 0.2s;
+    box-shadow: inset -0.25rem -0.25rem rgba(0, 0, 0, 0.15);
+    background-image: linear-gradient(
+      150deg,
+      rgba(190, 176, 255, 0.05) 30%,
+      rgba(186, 138, 206, 0.2) 100%
+    );
   }
   .header > div {
     @apply w-72 opacity-0;
     animation: disappear__title 3s;
     transition: opacity 0.3s 0.1s;
+    > h1 {
+      box-shadow: inset -0.25rem -0.25rem rgba(0, 0, 0, 0.15);
+      background-image: linear-gradient(
+        150deg,
+        rgba(190, 176, 255, 0.05) 30%,
+        rgba(186, 138, 206, 0.2) 100%
+      );
+    }
   }
   .header:hover > #menu__open {
     @apply opacity-0;
@@ -208,32 +222,8 @@
 
   /* sm */
   @media screen and (min-width: 640px) {
-    .player {
-      width: calc(100dvw - var(--controller-w-sm-px));
-      /* Prevent for iframe to have blank because height is too small but width is too long. */
-      max-width: calc(100dvh * var(--screen-ratio-w));
-      > .player-content {
-        height: calc(
-          (100dvw - var(--controller-w-sm-px)) * var(--screen-ratio-h)
-        );
-      }
-    }
     .search-box {
       box-shadow: inset 0 -0.25rem 0 rgba(0, 0, 0, 0.15);
-    }
-  }
-
-  /* md */
-  @media screen and (min-width: 768px) {
-    .player {
-      width: calc(100dvw - var(--controller-w-md-px));
-      /* Prevent for iframe to have blank because height is too small but width is too long. */
-      max-width: calc(100dvh * var(--screen-ratio-w));
-      > .player-content {
-        height: calc(
-          (100dvw - var(--controller-w-md-px)) * var(--screen-ratio-h)
-        );
-      }
     }
   }
 }
@@ -270,7 +260,6 @@
 }
 
 .player__search-open {
-  @apply sm:justify-end;
 }
 .search-modal__search-open {
   @apply block;

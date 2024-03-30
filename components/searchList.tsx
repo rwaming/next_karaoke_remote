@@ -48,7 +48,7 @@ export default function SearchList(): JSX.Element {
   return (
     <section
       id='search-list'
-      className='scroll relative flex-grow px-4 py-4 sm:px-1/10dvw'>
+      className='scroll relative top-16 flex-grow overflow-scroll px-4 pb-8 pt-4 sm:px-1/10dvw'>
       <h4 className='hidden'>노래 목록</h4>
       <p id='search-list__note' className='p-3 text-center text-sm'>
         {listNote}

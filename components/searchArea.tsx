@@ -9,7 +9,9 @@ export default function SearchArea(): JSX.Element {
   const { setVideoInfos, setVideoAllLength } = useContext(SearchActionContext)
 
   return (
-    <search id='search-area' className='flex w-full'>
+    <search
+      id='search-area'
+      className='absolute left-0 top-0 z-30 w-full overflow-hidden p-4 sm:flex'>
       <form
         id='search-form'
         name='search'
@@ -26,7 +28,7 @@ export default function SearchArea(): JSX.Element {
             minLength={1}
             pattern='\S*'
             placeholder='ex) 윤하 먹구름'
-            className='box-border h-12 flex-grow bg-light bg-opacity-15 p-2 text-center placeholder:text-light placeholder:text-opacity-50 focus:border-2 focus:outline-none sm:p-4'
+            className='box-border h-10 flex-grow rounded-2xl bg-light bg-opacity-15 p-2 text-center placeholder:text-light placeholder:text-opacity-50 focus:bg-opacity-25 focus:outline-none sm:p-4'
             required
           />
           <fieldset

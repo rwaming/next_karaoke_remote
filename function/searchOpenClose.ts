@@ -11,6 +11,10 @@ export default function searchOpenClose(
   const search: Div | null = searchRef.current
   const searchModal: Button | null = searchModalRef.current
 
+  console.log(player)
+  console.log(controller)
+  console.log(search)
+  console.log(searchModal)
   if (
     search !== null &&
     player !== null &&
@@ -20,18 +24,18 @@ export default function searchOpenClose(
     if (search.classList.contains('hidden')) {
       search.classList.remove('hidden')
       search.classList.add('flex')
-      player.classList.remove('sm:justify-center')
       player.classList.add('player__search-open')
       searchModal.classList.remove('hidden')
       searchModal.classList.add('search-modal__search-open')
+      controller.classList.remove('sm:mt-16')
       controller.classList.add('controller__search-open')
     } else {
       search.classList.add('hidden')
       search.classList.remove('flex')
-      player.classList.add('sm:justify-center')
       player.classList.remove('player__search-open')
       searchModal.classList.add('hidden')
       searchModal.classList.remove('search-modal__search-open')
+      controller.classList.add('sm:mt-16')
       controller.classList.remove('controller__search-open')
     }
   }
