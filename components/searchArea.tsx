@@ -10,7 +10,6 @@ export default function SearchArea(): JSX.Element {
 
   return (
     <search id='search-area' className='flex w-full'>
-      <h4 className='invisible absolute'>노래 검색 키워드 입력란</h4>
       <form
         id='search-form'
         name='search'

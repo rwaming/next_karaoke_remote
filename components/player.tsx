@@ -15,60 +15,71 @@ export default function Player(): JSX.Element {
   const { playerRef } = useContext(AppRefContext)
 
   const playerLoadingRef = useRef<Div>(null)
+  const playerReadyRef = useRef<Div>(null)
 
-  const useThisPlayer = useCallback(
+  const readyToUsePlayer = useCallback(
     (event: YouTubeEvent) => {
+      // get youtube event
       setVideoEvent(event)
+      const playerLoading = playerLoadingRef.current
+      playerLoading?.classList.add('hidden')
+      const playerIframe: IFrame = event.target.getIframe()
+      const playerYT = playerIframe.parentElement
+      playerYT?.classList.add('full-size')
     },
     [setVideoEvent],
   )
-  const noMoreVideos = useCallback((event: YouTubeEvent) => {
-    const playerIframe: IFrame = event.target.getIframe()
-    const playerYT = playerIframe.parentElement
-    const playerState = event.data
-    if (playerYT !== null) {
-      console.log(playerState)
-      const playerLoading = playerLoadingRef.current
-      if (
-        playerState === 0 ||
-        playerState === 1 ||
-        playerState === 2 ||
-        playerState === 5
-      ) {
-        playerYT.classList.remove('mini-size')
-        playerYT.classList.add('full-size')
-        if (playerLoading !== null) {
-          playerLoading.classList.add('hidden')
-        }
+  const stateSize = useCallback((event: YouTubeEvent) => {
+    const state = event.data
+    console.log(state)
+    if (typeof state === 'number') {
+      const playerIframe: IFrame = event.target.getIframe()
+      const playerYT = playerIframe.parentElement
+      const playerReady = playerReadyRef.current
+      if (state === -1) {
+        playerYT?.classList.add('sm:mini-size')
       } else {
-        playerYT.classList.remove('full-size')
-        playerYT.classList.add('mini-size')
-        if (playerLoading !== null) {
-          playerLoading.classList.remove('hidden')
-        }
+        playerYT?.classList.remove('sm:mini-size')
       }
-      event.target.setPlaybackQuality('highres')
-      if (playerState === 0) {
-        event.target.stopVideo()
+      if (state === 3) {
+        playerYT?.classList.add('mini-size')
+        playerYT?.classList.remove('full-size')
+        playerReady?.classList.remove('hidden')
+      } else {
+        playerYT?.classList.add('full-size')
+        playerYT?.classList.remove('mini-size')
+        playerReady?.classList.add('hidden')
       }
     }
+  }, [])
+  const playVideoHighQuility = useCallback((event: YouTubeEvent) => {
+    event.target.setPlaybackQuality('highres')
+  }, [])
+  const EndNoMoreVideos = useCallback((event: YouTubeEvent) => {
+    event.target.stopVideo()
   }, [])
 
   return (
     <section
       ref={playerRef}
       id='player'
-      className='player relative flex max-h-1/3vh flex-shrink basis-16-9vh flex-col sm:max-h-none sm:flex-1 sm:items-end sm:justify-center'>
-      <h2 className='invisible absolute'>노래 영상</h2>
+      className='player relative flex max-h-1/3dvh flex-shrink flex-col sm:mb-8 sm:max-h-none sm:flex-1 sm:items-end sm:justify-center'>
+      <h2 className='hidden'>노래 영상</h2>
 
       {videoID !== '' && !videoID.includes('Error') && (
         <p
           ref={playerLoadingRef}
           id='player-loading'
-          className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
-          Loading...
+          className='absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2'>
+          화면을 만들고 있어요.
         </p>
       )}
+      <p
+        ref={playerReadyRef}
+        id='player-ready'
+        className='absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2'>
+        노래를 불러오고 있어요.
+      </p>
       {videoID.includes('Error') && (
         <p
           id='player-loading'
@@ -78,14 +89,14 @@ export default function Player(): JSX.Element {
       )}
       <div
         id='player-content'
-        className='player-content relative h-16-9vh w-full'>
+        className='player-content relative h-16-9dvh w-full bg-dark bg-opacity-50'>
         {videoID !== '' && !videoID.includes('Error') && (
           <YouTube
             className='player-content__youtube'
             videoId={videoID}
             opts={{
               playerVars: {
-                autoplay: 1,
+                // autoplay: 1,
                 controls: 0,
                 disablekb: 1,
                 fs: 0,
@@ -94,8 +105,10 @@ export default function Player(): JSX.Element {
                 rel: 0,
               },
             }}
-            onReady={useThisPlayer}
-            onStateChange={noMoreVideos}
+            onReady={readyToUsePlayer}
+            onPlay={playVideoHighQuility}
+            onEnd={EndNoMoreVideos}
+            onStateChange={stateSize}
           />
         )}
 

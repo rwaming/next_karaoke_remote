@@ -6,17 +6,10 @@
   --screen-ratio-w: 1.7777;
   --screen-ratio-h: 0.5625;
   --screen-ratio-h-p: 56.25;
-  --screen-ratio-h-vh: 56.25vw;
-  --controller-w: 320;
-  --controller-w-px: 20rem;
+  --screen-ratio-h-dvh: 56.25dvw;
+  --controller-w: 296;
+  --controller-w-px: 18.5rem;
   --search-h-px: 58px;
-}
-
-/* global */
-@layer base {
-  body {
-    @apply overflow-hidden;
-  }
 }
 
 /* reusable */
@@ -57,10 +50,10 @@
     @apply flex-grow overflow-hidden text-ellipsis whitespace-nowrap text-sm;
   }
   .search-list__li-artist {
-    @apply flex-shrink-0 basis-1/4vw overflow-hidden text-ellipsis whitespace-nowrap text-xs md:text-sm;
+    @apply flex-shrink-0 basis-1/4dvw overflow-hidden text-ellipsis whitespace-nowrap text-xs md:text-sm;
   }
   .search-list__li-number {
-    @apply hidden flex-shrink-0 basis-1/8vw overflow-hidden text-ellipsis whitespace-nowrap text-sm opacity-70 md:block;
+    @apply hidden flex-shrink-0 basis-1/8dvw overflow-hidden text-ellipsis whitespace-nowrap text-sm opacity-70 md:block;
   }
 }
 
@@ -99,6 +92,9 @@
         rgba(33, 51, 125, 0.2) 50%
       );
   }
+  .player-content {
+    height: calc(var(--screen-ratio-h-dvh) - 1rem);
+  }
   .player-content__youtube {
     visibility: hidden;
     > iframe {
@@ -117,9 +113,6 @@
     height: 100%;
     max-width: 100%;
     max-height: 100%;
-  }
-  .controller {
-    flex-basis: var(--controller-w-px);
   }
   .search-box {
     background-image: radial-gradient(
@@ -153,8 +146,8 @@
         rgba(40, 150, 114, 0.2) 10%,
         rgba(33, 51, 125, 0.2) 50%
       );
-    top: calc(100vh - (100vh - var(--screen-ratio-h-vh)));
-    height: calc((100vh - var(--screen-ratio-h-vh)));
+    top: calc(100dvh - (100dvh - var(--screen-ratio-h-dvh)));
+    height: calc((100dvh - var(--screen-ratio-h-dvh)));
   }
   .search-list__label {
     @apply border-0 text-base font-bold;
@@ -171,12 +164,25 @@
   /* sm */
   @media screen and (min-width: 640px) {
     .player {
-      width: calc(100vw - var(--controller-w-px));
+      width: calc(100dvw - var(--controller-w-px));
       /* Prevent for iframe to have blank because height is too small but width is too long. */
-      max-width: calc(100vh * var(--screen-ratio-w));
+      max-width: calc(100dvh * var(--screen-ratio-w));
       > .player-content {
-        height: calc((100vw - var(--controller-w-px)) * var(--screen-ratio-h));
+        height: calc((100dvw - var(--controller-w-px)) * var(--screen-ratio-h));
       }
     }
   }
+  .contact-info:hover button {
+    @apply hidden;
+  }
+  .contact-info:hover p {
+    @apply inline;
+  }
+}
+
+.player__search-open {
+  @apply sm:justify-end;
+}
+.search-modal__search-open {
+  @apply block;
 }

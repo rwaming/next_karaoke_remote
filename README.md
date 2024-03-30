@@ -70,11 +70,27 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 <br>
 
-> _2024.03.29.fri_
+> _2024.03.30.sat_
 
-#### #85 - Improve styling for uniformity
+#### #85 - Improve styling for uniformity (2)
 
 - In progress
+
+#### ~~#92 - Fix that in mobile, video isn't shown and viewport unit make page overflow~~
+
+1. Viewpror problem
+   - Fix witdh, height styling, change all vw, vh -> dvw, dvh
+2. The reason why video don't appear only in mobile is the functions, minimize video before play while mobile environment don't give autoplay function.
+   - Make player state play(1) when player is ready, like autoplay.
+     => fail
+   - No autoplay, an no minisize in mobile. (Anyway, mobile height is low)
+
+<br>
+
+> _2024.03.29.fri_
+
+#### #85 - Improve styling for uniformity (1)
+
 - ~~Prevent to click 'more video'~~: Fail
 
   - For prevent for a user to be moved to new link tap when 'more video' clicked, I searched how to prevent click on a element in YouTube iframe.

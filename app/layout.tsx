@@ -16,15 +16,17 @@ export default function RootLayout({
 }>): JSX.Element {
   return (
     <html lang='ko'>
-      <body>
-        <div id='app' className='app h-screen w-screen bg-black text-light'>
-          <header id='header' className='absolute left-0 top-0 z-10'>
+      <body className='overflow-hidden'>
+        <div
+          id='app'
+          className='app relative h-dvh w-dvw bg-black text-light sm:p-4'>
+          <header id='header' className='absolute left-0 top-0 z-10 p-4'>
             <h1 className='absolute left-0 top-0 inline-block w-fit text-xl xs:text-2xl sm:static'>
               홈코노
             </h1>
             <p
               id='upate'
-              className='upate absolute right-0 top-0 inline-block text-right text-xs opacity-80 sm:static sm:text-left'>
+              className='upate absolute right-0 top-0 ml-2 inline-block text-right text-xs opacity-80 sm:static sm:text-left'>
               마지막 업데이트:{' '}
               <time dateTime='2024-03-30' className='block xs:inline'>
                 2024. 03. 30. 토요일
@@ -34,31 +36,22 @@ export default function RootLayout({
           {children}
           <footer
             id='footer'
-            className='bottom-0 flex h-fit w-full justify-center gap-4 opacity-80 sm:justify-end'>
-            <address id='contact' className='flex gap-4 text-sm not-italic'>
-              <div
-                id='contact-name'
-                className='flex h-full flex-col items-center justify-center text-center font-semibold sm:flex-row sm:gap-2'>
-                <p id='contact-name__en'>RWAM</p>
-                <p id='contact-name__ko' className='hidden xs:block'>
+            className='absolute bottom-0 w-full py-4 text-center opacity-80'>
+            <address
+              id='contact'
+              className='text-xs not-italic sm:relative sm:flex sm:justify-center sm:gap-3'>
+              <div id='contact-name' className='font-bold'>
+                <p id='contact-name__en' className='sm:inline'>
+                  RWAM
+                </p>
+                <p id='contact-name__ko' className='ml-2 sm:inline'>
                   김성주
                 </p>
               </div>
 
               <div
-                id='contact-info'
-                className='flex h-full flex-col justify-around gap-1 font-light'>
-                <p id='contact-info__email' className='text-xs'>
-                  art.rwam@gmail.com
-                </p>
-                <p id='contact-info__phone' className='hidden text-xs xs:block'>
-                  +82 010-9716-1132
-                </p>
-              </div>
-
-              <div
                 id='contact-sns'
-                className='hidden items-center gap-3 xs:flex'>
+                className='sm:flex sm:items-center sm:gap-2'>
                 <Link
                   href='https://www.instagram.com/rwam__kn'
                   target='_blank'
@@ -69,7 +62,7 @@ export default function RootLayout({
                     width={40}
                     height={40}
                     alt='contact_instagram'
-                    className='h-7 w-7'
+                    className='h-4 w-4'
                   />
                 </Link>
                 <Link
@@ -82,9 +75,32 @@ export default function RootLayout({
                     width={40}
                     height={40}
                     alt='contact_naver_blog'
-                    className='h-7 w-7'
+                    className='h-4 w-4'
                   />
                 </Link>
+                <Link
+                  href='https://github.com/rwaming/next_karaoke_remote'
+                  target='_blank'
+                  aria-label='contact-sns__github'>
+                  <Image
+                    id='contact-sns__github'
+                    src='/icon_github.png'
+                    width={40}
+                    height={40}
+                    alt='contact_github'
+                    className='h-4 w-4'
+                  />
+                </Link>
+              </div>
+
+              <div id='contact-info' className='contact-info'>
+                <button type='button'>+ more</button>
+                <p id='contact-info__email' className='sm:hidden'>
+                  art.rwam@gmail.com
+                </p>
+                <p id='contact-info__phone' className='ml-2 sm:hidden'>
+                  +82 010-9716-1132
+                </p>
               </div>
             </address>
           </footer>
