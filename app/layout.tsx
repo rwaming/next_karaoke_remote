@@ -20,17 +20,13 @@ export default function RootLayout({
         <div
           id='app'
           className='app relative h-dvh w-dvw bg-black text-light sm:p-4'>
-          <header id='header' className='absolute left-0 top-0 z-10 p-4'>
-            <h1 className='absolute left-0 top-0 inline-block w-fit text-xl xs:text-2xl sm:static'>
-              홈코노
-            </h1>
+          <header id='header' className='header absolute left-0 top-0 z-10 p-4'>
+            <h1 className='inline w-fit text-xl xs:text-2xl'>홈코노</h1>
             <p
               id='upate'
-              className='upate absolute right-0 top-0 ml-2 inline-block text-right text-xs opacity-80 sm:static sm:text-left'>
+              className='upate text-xs opacity-80 sm:ml-2 sm:inline'>
               마지막 업데이트:{' '}
-              <time dateTime='2024-03-30' className='block xs:inline'>
-                2024. 03. 30. 토요일
-              </time>
+              <time dateTime='2024-03-30'>2024. 03. 30. 토요일</time>
             </p>
           </header>
           {children}
