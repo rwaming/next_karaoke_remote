@@ -14,12 +14,12 @@ export default function Search(): JSX.Element {
       <div
         ref={searchRef}
         id='search'
-        className='fixed left-0 top-0 z-20 hidden h-screen w-screen'>
+        className='fixed left-0 top-0 z-20 hidden h-dvh w-dvw'>
         <h3 className='invisible absolute'>노래 검색창</h3>
 
         <section
           id='search-box'
-          className='search-box relative z-10 flex w-full flex-col text-light backdrop-blur sm:top-0 sm:h-1/2vh'>
+          className='search-box sm:h-1/2dvh relative z-10 flex w-full flex-col text-light backdrop-blur sm:top-0'>
           <SearchArea />
           <SearchList />
           <button

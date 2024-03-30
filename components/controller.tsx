@@ -9,9 +9,9 @@ export default function Controller(): JSX.Element {
     <section
       ref={controllerRef}
       id='controller'
-      className='controller button-col gap-2 p-4 text-base font-bold text-dark xs:text-xl sm:shrink-0 sm:grow-0 sm:basis-80'>
+      className='controller button-col m-2 text-base font-bold text-dark xs:text-xl sm:m-0 sm:mb-8 sm:ml-2 sm:shrink-0 sm:grow-0 sm:basis-64'>
       <h3 className='invisible absolute'>리모콘</h3>
-      <div className='button-row basis-1/5vh'>
+      <div className='button-row basis-1/5dvh'>
         <div className='button-col'>
           <ControllerButton
             id='controller-speedup'
@@ -95,7 +95,7 @@ export default function Controller(): JSX.Element {
         id='controller-stop'
         text='취소'
         emoji=''
-        className='basis-1/8vh bg-button3'
+        className='basis-1/8dvh bg-button3'
       />
     </section>
   )
