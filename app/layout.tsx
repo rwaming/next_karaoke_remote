@@ -17,9 +17,7 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body className='overflow-hidden'>
-        <div
-          id='app'
-          className='app relative h-dvh w-dvw bg-black text-light sm:p-4'>
+        <div id='app' className='app relative h-dvh w-dvw bg-black text-light'>
           <header
             id='header'
             className='header absolute left-0 top-0 z-10 m-4 flex items-center'>
@@ -49,15 +47,15 @@ export default function RootLayout({
           {children}
           <footer
             id='footer'
-            className='transition-all hover:opacity-80 sm:absolute sm:bottom-0 sm:w-full sm:py-4 sm:opacity-50'>
+            className='mb-3 transition-all sm:absolute sm:bottom-0 sm:h-5 sm:w-full'>
             <address
               id='contact'
-              className='not-italic sm:relative sm:flex sm:justify-center sm:gap-3 sm:text-xs'>
+              className='contact not-italic sm:relative sm:flex sm:h-full sm:items-center sm:justify-center sm:gap-3 sm:text-xs'>
               <div id='contact-name' className='font-bold'>
                 <p id='contact-name__en' className='sm:inline'>
                   RWAM
                 </p>
-                <p id='contact-name__ko' className='ml-2 sm:inline'>
+                <p id='contact-name__ko' className='ml-1 sm:inline'>
                   김성주
                 </p>
               </div>
@@ -108,13 +106,13 @@ export default function RootLayout({
 
               <div
                 id='contact-info'
-                className='contact-info flex sm:h-full sm:min-w-10 sm:items-center'>
+                className='contact-info flex items-center sm:h-full sm:min-w-10 sm:items-center'>
                 <button
                   type='button'
                   className='w-10 overflow-hidden opacity-100 sm:whitespace-nowrap'>
                   + more
                 </button>
-                <div className='whitespace-nowrap opacity-0 sm:inline-block sm:h-0 sm:w-0 sm:overflow-hidden'>
+                <div className='whitespace-nowrap opacity-0 sm:flex sm:w-0 sm:items-center sm:overflow-hidden'>
                   <p id='contact-info__email' className='sm:inline-block'>
                     art.rwam@gmail.com
                   </p>
