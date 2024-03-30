@@ -14,7 +14,7 @@ export default function Search(): JSX.Element {
       <div
         ref={searchRef}
         id='search'
-        className='absolute left-0 top-0 z-20 hidden h-dvh w-dvw items-end px-2 sm:items-start'>
+        className='absolute left-0 top-0 z-20 hidden h-dvh w-dvw items-end sm:items-start'>
         <h3 className='hidden'>노래 검색창</h3>
 
         <section

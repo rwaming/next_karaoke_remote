@@ -62,23 +62,34 @@
   }
 }
 
-@keyframes disappear {
+@keyframes disappear__title {
   0% {
-    opacity: 1;
+    @apply w-72 opacity-100;
   }
-  75% {
-    opacity: 1;
+  83% {
+    @apply w-72 opacity-100;
   }
   100% {
-    opacity: 0;
+    @apply w-0 opacity-0;
   }
 }
-@keyframes appear {
+@keyframes appear__menu-open {
   0% {
-    opacity: 0;
+    @apply opacity-0;
+  }
+  75% {
+    @apply opacity-0;
   }
   100% {
-    opacity: 1;
+    @apply opacity-100;
+  }
+}
+@keyframes spin__menu-open {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 /* id */
@@ -117,14 +128,24 @@
       );
   }
 
-  .header {
-    opacity: 0;
-    animation: disappear 3s;
-    transition: opacity 0.3s;
+  .header > #menu__open {
+    @apply opacity-100;
+    animation:
+      appear__menu-open 3.7s,
+      spin__menu-open 4s 0s infinite;
+    transition: all 0.2s;
   }
-  .header:hover {
-    opacity: 1;
-    animation: none;
+  .header > div {
+    @apply w-72 opacity-0;
+    animation: disappear__title 3s;
+    transition: opacity 0.3s 0.1s;
+  }
+  .header:hover > #menu__open {
+    @apply opacity-0;
+    animation: spin__menu-open 4s 0s infinite;
+  }
+  .header:hover > div {
+    @apply animate-none opacity-100;
   }
 
   .player-content {
@@ -162,18 +183,18 @@
   }
 
   .contact-info > button {
-    transition: all 0.3s 0.2s;
+    transition: all 0.2s 0.2s cubic-bezier(0.1, 0.7, 1, 0.9);
   }
   .contact-info > div {
-    transition: all 0.3s;
+    transition: all 0.3s cubic-bezier(0.1, 0.7, 1, 0.9);
   }
   .contact-info:hover > button {
-    transition: all 0.3s;
-    @apply sm:w-0;
+    transition: all 0.1s cubic-bezier(0.1, 0.7, 1, 0.9);
+    @apply opacity-0 sm:w-0;
   }
   .contact-info:hover > div {
-    transition: all 0.3s 0.2s;
-    @apply sm:ml-2 sm:h-full sm:w-72;
+    transition: all 0.3s 0.1s cubic-bezier(0.1, 0.7, 1, 0.9);
+    @apply opacity-100 sm:ml-2 sm:h-full sm:w-72;
   }
 
   /* sm */

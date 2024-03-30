@@ -20,14 +20,31 @@ export default function RootLayout({
         <div
           id='app'
           className='app relative h-dvh w-dvw bg-black text-light sm:p-4'>
-          <header id='header' className='header absolute left-0 top-0 z-10 p-4'>
-            <h1 className='inline w-fit text-xl xs:text-2xl'>홈코노</h1>
-            <p
-              id='upate'
-              className='upate text-xs opacity-80 sm:ml-2 sm:inline'>
-              마지막 업데이트:{' '}
-              <time dateTime='2024-03-30'>2024. 03. 30. 토요일</time>
-            </p>
+          <header
+            id='header'
+            className='header absolute left-0 top-0 z-10 m-4 flex items-center'>
+            <button
+              type='button'
+              id='menu__open'
+              className='button absolute left-0 top-0 h-7 w-7 bg-button1 text-deep'>
+              <span className='absolute left-2 top-2 text-xs leading-snug'>
+                ★
+              </span>
+              <span className='absolute -top-1 left-1 scale-y-90 text-2xl'>
+                ⌃
+              </span>
+            </button>
+            <div className='relative overflow-hidden whitespace-nowrap'>
+              <h1 className='button h-8 w-16 cursor-default bg-button1 text-2xl font-bold text-deep xs:text-xl'>
+                홈코노
+              </h1>
+              <p
+                id='upate'
+                className='upate absolute right-5 top-1/2 -translate-y-1/2 text-xs opacity-80 sm:ml-2'>
+                마지막 업데이트:{' '}
+                <time dateTime='2024-03-30'>2024. 03. 30. 토요일</time>
+              </p>
+            </div>
           </header>
           {children}
           <footer
@@ -94,10 +111,10 @@ export default function RootLayout({
                 className='contact-info flex sm:h-full sm:min-w-10 sm:items-center'>
                 <button
                   type='button'
-                  className='w-10 overflow-hidden sm:whitespace-nowrap'>
+                  className='w-10 overflow-hidden opacity-100 sm:whitespace-nowrap'>
                   + more
                 </button>
-                <div className='whitespace-nowrap sm:inline-block sm:h-0 sm:w-0 sm:overflow-hidden'>
+                <div className='whitespace-nowrap opacity-0 sm:inline-block sm:h-0 sm:w-0 sm:overflow-hidden'>
                   <p id='contact-info__email' className='sm:inline-block'>
                     art.rwam@gmail.com
                   </p>
