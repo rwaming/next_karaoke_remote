@@ -45,6 +45,9 @@
   .search-list__li {
     @apply mt-4 box-content flex h-4 border-b border-b-gray-800 border-opacity-50 py-2 text-center;
   }
+  .search-list__label {
+    @apply border-0 text-base font-bold;
+  }
   .search-list__li-click {
     @apply flex max-w-full flex-grow items-center gap-3;
   }
@@ -157,15 +160,20 @@
     height: calc((100dvh - var(--screen-ratio-h-dvh)));
     min-height: calc((66.66dvh));
   }
-  .search-list__label {
-    @apply border-0 text-base font-bold;
-  }
 
-  .contact-info:hover button {
-    @apply hidden;
+  .contact-info > button {
+    transition: all 0.3s 0.2s;
   }
-  .contact-info:hover p {
-    @apply inline;
+  .contact-info > div {
+    transition: all 0.3s;
+  }
+  .contact-info:hover > button {
+    transition: all 0.3s;
+    @apply sm:w-0;
+  }
+  .contact-info:hover > div {
+    transition: all 0.3s 0.2s;
+    @apply sm:ml-2 sm:h-full sm:w-72;
   }
 
   /* sm */

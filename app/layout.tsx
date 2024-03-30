@@ -32,7 +32,7 @@ export default function RootLayout({
           {children}
           <footer
             id='footer'
-            className='sm:absolute sm:bottom-0 sm:w-full sm:py-4 sm:opacity-80'>
+            className='transition-all hover:opacity-80 sm:absolute sm:bottom-0 sm:w-full sm:py-4 sm:opacity-50'>
             <address
               id='contact'
               className='not-italic sm:relative sm:flex sm:justify-center sm:gap-3 sm:text-xs'>
@@ -89,14 +89,22 @@ export default function RootLayout({
                 </Link>
               </div>
 
-              <div id='contact-info' className='contact-info'>
-                <button type='button'>+ more</button>
-                <p id='contact-info__email' className='sm:hidden'>
-                  art.rwam@gmail.com
-                </p>
-                <p id='contact-info__phone' className='ml-2 sm:hidden'>
-                  +82 010-9716-1132
-                </p>
+              <div
+                id='contact-info'
+                className='contact-info flex sm:h-full sm:min-w-10 sm:items-center'>
+                <button
+                  type='button'
+                  className='w-10 overflow-hidden sm:whitespace-nowrap'>
+                  + more
+                </button>
+                <div className='whitespace-nowrap sm:inline-block sm:h-0 sm:w-0 sm:overflow-hidden'>
+                  <p id='contact-info__email' className='sm:inline-block'>
+                    art.rwam@gmail.com
+                  </p>
+                  <p id='contact-info__phone' className='ml-2 sm:inline-block'>
+                    +82 010-9716-1132
+                  </p>
+                </div>
               </div>
             </address>
           </footer>
