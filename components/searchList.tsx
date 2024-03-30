@@ -49,7 +49,7 @@ export default function SearchList(): JSX.Element {
     <section
       id='search-list'
       className='scroll relative flex-grow px-4 py-4 sm:px-1/10dvw'>
-      <h4 className='invisible absolute'>노래 목록</h4>
+      <h4 className='invisible absolute -z-10'>노래 목록</h4>
       <p id='search-list__note' className='p-3 text-center text-sm'>
         {listNote}
       </p>

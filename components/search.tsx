@@ -15,7 +15,7 @@ export default function Search(): JSX.Element {
         ref={searchRef}
         id='search'
         className='fixed left-0 top-0 z-20 hidden h-dvh w-dvw'>
-        <h3 className='invisible absolute'>노래 검색창</h3>
+        <h3 className='invisible absolute -z-10'>노래 검색창</h3>
 
         <section
           id='search-box'
