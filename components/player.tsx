@@ -25,7 +25,8 @@ export default function Player(): JSX.Element {
       playerLoading?.classList.add('hidden')
       const playerIframe: IFrame = event.target.getIframe()
       const playerYT = playerIframe.parentElement
-      playerYT?.classList.add('full-size')
+      playerYT?.classList.add('mini-size')
+      event.target.playVideo()
     },
     [setVideoEvent],
   )
@@ -96,7 +97,7 @@ export default function Player(): JSX.Element {
             videoId={videoID}
             opts={{
               playerVars: {
-                autoplay: 1,
+                // autoplay: 1,
                 controls: 0,
                 disablekb: 1,
                 fs: 0,

@@ -1,16 +1,16 @@
 /* header appear disappear */
 @keyframes disappear__title {
   0% {
-    @apply w-72 opacity-75;
+    @apply w-72 opacity-80;
   }
   50% {
-    @apply w-72 opacity-75;
+    @apply w-72 opacity-80;
   }
   70% {
-    @apply w-20 opacity-75;
+    @apply w-20 opacity-80;
   }
   85% {
-    @apply w-20 opacity-75;
+    @apply w-20 opacity-80;
   }
   100% {
     @apply w-0 opacity-0;
@@ -67,7 +67,6 @@
 .header:hover > #header__open {
   @apply animate-none opacity-0;
 }
-
 /* search box open & clos */
 .search-modal__search-open {
   @apply block;

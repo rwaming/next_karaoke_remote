@@ -21,17 +21,19 @@ export default function RootLayout({
         <div id='app' className='app relative h-dvh w-dvw bg-black text-light'>
           <header
             id='header'
-            className='header absolute left-0 top-0 z-40 m-5 flex items-center'>
+            className='header absolute left-0 top-0 z-40 m-4 flex items-center sm:left-1'>
             <div
               id='header__group'
               className='relative overflow-hidden whitespace-nowrap'>
-              <h1 className='h-8 w-16 select-none pl-2 text-2xl font-bold text-light xs:text-2xl'>
+              <h1
+                id='header__title'
+                className='h-8 w-16 select-none pl-2 text-2xl font-bold xs:text-2xl'>
                 <button type='button'>홈코노</button>
               </h1>
               <p
                 id='upate'
                 className='upate absolute left-16 top-3 hidden pl-2 text-xs font-light opacity-75 sm:ml-2 sm:inline'>
-                마지막 업데이트:{' '}
+                <span className='hidden md:inline'>마지막 업데이트: </span>
                 <time dateTime='2024-03-30'>2024. 03. 30. 토요일</time>
               </p>
             </div>
