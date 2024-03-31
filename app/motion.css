@@ -109,25 +109,86 @@
     margin-right: 0.8rem;
   }
 }
-#controller-close {
-  transition: all 0.3s;
-  right: -4.3rem;
+@keyframes point__controller-open {
+  0% {
+    margin-left: 0.3rem;
+  }
+  80% {
+    margin-left: 0rem;
+  }
+  100% {
+    margin-left: 0.3rem;
+  }
+}
+@keyframes point__disappear {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+#controller__open-close__disappear {
+  animation: point__disappear 0.2s;
+}
+#controller__open-close {
+  transition:
+    all 0.5s,
+    rotate 0s 0.5s;
+  right: -4.4rem;
   padding-left: 1rem;
 }
-#controller:hover > #controller-close {
-  opacity: 0.75;
+.controller:hover > #controller__open-close {
+  opacity: 0.65;
 }
-#controller:hover > #controller-close:hover {
+.controller:hover > #controller__open-close:hover {
   opacity: 1;
   animation: point__controller-close 0.8s infinite;
+  margin-top: 0.25rem;
 }
 #controller-box {
-  transition: all 0.3s;
+  transition: all 0.5s;
 }
 .controller-box__ready-close {
   bottom: 0.25rem;
   right: 0.25rem;
   opacity: 0.85;
+}
+.controller {
+  transition: all 0.5s;
+}
+.controller_closed {
+  @apply mx-0 max-w-4 overflow-hidden;
+  opacity: 0.85;
+  transition: all 0.5s;
+  > #controller-box {
+    @apply pl-4;
+    transition: all 0.5s;
+  }
+  > #controller__open-close {
+    opacity: 0.65;
+    right: 0;
+    left: -0.6rem;
+    > span {
+      rotate: 180deg;
+    }
+  }
+}
+.controller_closed:hover {
+  @apply bottom-0 right-0 mx-0 max-w-7 overflow-hidden;
+  > #controller-box {
+    @apply pl-5 opacity-85;
+  }
+  > #controller__open-close {
+    margin-top: 0;
+  }
+  > #controller__open-close:hover {
+    margin-top: 0;
+    animation: point__controller-open 0.8s infinite;
+  }
 }
 
 /* sm height */

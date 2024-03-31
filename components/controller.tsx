@@ -1,32 +1,59 @@
 import { useContext, useRef } from 'react'
 import { AppRefContext } from '../utils/AppProvider'
 import ControllerButton from './controllerButton'
-import { type Div } from '../utils/Types'
+import { type Button } from '../utils/Types'
 
 export default function Controller(): JSX.Element {
   const { controllerRef } = useContext(AppRefContext)
-  const controllerBoxRef = useRef<Div>(null)
+  const controllerOpenCloseRef = useRef<Button>(null)
 
   return (
     <section
       ref={controllerRef}
       id='controller'
-      className='controller relative m-4 mt-14 flex shrink-0 grow text-sm font-bold text-dark xs:text-base sm:mb-11 sm:ml-2 sm:mr-4 sm:mt-16 sm:shrink-0 sm:grow-0 sm:basis-56 sm:text-sm md:basis-64 md:p-1 md:text-base'>
+      className='controller relative bottom-0 right-0 m-4 mt-14 flex shrink-0 grow whitespace-nowrap text-sm font-bold text-dark xs:text-base sm:mb-11 sm:ml-2 sm:mr-4 sm:mt-16 sm:max-w-56 sm:shrink-0 sm:grow-0 sm:basis-56 sm:text-sm md:max-w-64 md:basis-64 md:p-1 md:text-base'>
       <h3 className='hidden'>리모콘</h3>
       <button
-        id='controller-close'
+        ref={controllerOpenCloseRef}
+        id='controller__open-close'
         type='button'
-        className='absolute top-1/2 z-10 mr-2 box-content hidden h-full w-14 -translate-y-1/2 whitespace-nowrap rounded-xl text-sm font-light text-light opacity-0 sm:block'
+        className='absolute top-1/2 z-10 mr-2 box-content hidden h-full w-14 -translate-y-1/2 text-sm font-light text-light opacity-0 sm:block'
         onMouseEnter={() => {
-          const controllerBox = controllerBoxRef.current
-          if (controllerBox !== null) {
-            controllerBox.classList.add('controller-box__ready-close')
+          const controller = controllerRef.current
+          if (controller !== null) {
+            controller.classList.add('controller-box__ready-close')
+          }
+          const controllerOpenClose = controllerOpenCloseRef.current
+          if (
+            controllerOpenClose !== null &&
+            controllerOpenClose.classList.contains(
+              'controller__open-close__disappear',
+            )
+          ) {
+            controllerOpenClose.classList.remove(
+              'controller__open-close__disappear',
+            )
           }
         }}
         onMouseLeave={() => {
-          const controllerBox = controllerBoxRef.current
-          if (controllerBox !== null) {
-            controllerBox.classList.remove('controller-box__ready-close')
+          const controller = controllerRef.current
+          if (controller !== null) {
+            controller.classList.remove('controller-box__ready-close')
+          }
+        }}
+        onClick={() => {
+          const controller = controllerRef.current
+          const controllerOpenClose = controllerOpenCloseRef.current
+          if (controller !== null && controllerOpenClose !== null) {
+            console.log('disappear')
+            controllerOpenClose.classList.add(
+              'controller__open-close__disappear',
+            )
+            if (!controller.classList.contains('controller_closed')) {
+              controller.classList.add('controller_closed')
+            } else {
+              controller.classList.remove('controller_closed')
+            }
           }
         }}>
         <span className='text-transparent'>리모콘 숨기기</span>
@@ -35,7 +62,6 @@ export default function Controller(): JSX.Element {
         </span>
       </button>
       <div
-        ref={controllerBoxRef}
         id='controller-box'
         className='button-col relative bottom-0 right-0 flex grow'>
         <div className='button-row basis-1/5dvh'>
