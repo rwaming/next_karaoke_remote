@@ -18,6 +18,19 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body className='overflow-hidden'>
+        <link rel='icon' href='/favicon.ico' sizes='any' />
+        <link
+          rel='icon'
+          href='/icon?<generated>'
+          type='image/<generated>'
+          sizes='<generated>'
+        />
+        <link
+          rel='apple-touch-icon'
+          href='/apple-icon?<generated>'
+          type='image/<generated>'
+          sizes='<generated>'
+        />
         <div id='app' className='app relative h-dvh w-dvw bg-black text-light'>
           <header
             id='header'
