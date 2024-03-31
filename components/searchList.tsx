@@ -1,6 +1,6 @@
 import { useContext, useMemo } from 'react'
 import { AppActionContext, AppRefContext } from '../utils/AppProvider'
-import { SearchValueContext } from '../utils/SearchProvider'
+import { SearchRefContext, SearchValueContext } from '../utils/SearchProvider'
 import showSelectedVideo from '../function/showSelectedVideo'
 
 export default function SearchList(): JSX.Element {
@@ -11,13 +11,13 @@ export default function SearchList(): JSX.Element {
     setVideoNumber,
     setVideoDate,
   } = useContext(AppActionContext)
-  const { playerRef, controllerRef, searchRef, searchModalRef } =
-    useContext(AppRefContext)
+  const { playerRef, controllerRef, searchRef } = useContext(AppRefContext)
   const {
     videoInfos,
     searchListNote: listNote,
     videoAllLength,
   } = useContext(SearchValueContext)
+  const { searchModalRef } = useContext(SearchRefContext)
 
   const changeVideoArgs = useMemo(
     () => ({
@@ -48,8 +48,8 @@ export default function SearchList(): JSX.Element {
   return (
     <section
       id='search-list'
-      className='scroll relative flex-grow px-4 py-4 sm:px-1/10vw'>
-      <h4 className='invisible absolute'>노래 목록</h4>
+      className='scroll relative top-16 flex-grow overflow-scroll px-4 pb-8 pt-4 sm:px-1/10dvw'>
+      <h4 className='hidden'>노래 목록</h4>
       <p id='search-list__note' className='p-3 text-center text-sm'>
         {listNote}
       </p>

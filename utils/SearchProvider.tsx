@@ -1,5 +1,11 @@
-import { type ReactNode, createContext, useMemo, useState } from 'react'
-import { type VideoInfos, type SetState } from './Types'
+import { type ReactNode, createContext, useMemo, useState, useRef } from 'react'
+import {
+  type VideoInfos,
+  type SetState,
+  type UseRef,
+  type Input,
+  type Button,
+} from './Types'
 
 const SearchValueContext = createContext<{
   videoInfos: VideoInfos
@@ -17,6 +23,14 @@ const SearchActionContext = createContext<{
 }>({
   setVideoInfos: () => {},
   setVideoAllLength: () => {},
+})
+
+const SearchRefContext = createContext<{
+  searchValueRef: UseRef<Input>
+  searchModalRef: UseRef<Button>
+}>({
+  searchValueRef: { current: null },
+  searchModalRef: { current: null },
 })
 
 export default function SearchProvider({
@@ -38,6 +52,8 @@ export default function SearchProvider({
     }
     return '에러: 현재 검색이 불가합니다.'
   }, [videoAllLength])
+  const searchValueRef = useRef(null)
+  const searchModalRef = useRef(null)
 
   const searchValue = useMemo(
     () => ({
@@ -54,13 +70,22 @@ export default function SearchProvider({
     }),
     [],
   )
+  const searchRef = useMemo(
+    () => ({
+      searchValueRef,
+      searchModalRef,
+    }),
+    [],
+  )
   return (
     <SearchValueContext.Provider value={searchValue}>
       <SearchActionContext.Provider value={searchAction}>
-        {children}
+        <SearchRefContext.Provider value={searchRef}>
+          {children}
+        </SearchRefContext.Provider>
       </SearchActionContext.Provider>
     </SearchValueContext.Provider>
   )
 }
 
-export { SearchValueContext, SearchActionContext }
+export { SearchValueContext, SearchActionContext, SearchRefContext }

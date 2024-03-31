@@ -7,12 +7,7 @@ import volumeUpDown from '../function/volumeUpDown'
 import speedUpDown from '../function/speedUpDown'
 import applause from '../function/applause'
 import ApplauseAudios from './controllerApplauseAudios'
-import searchOpenClose from '../function/searchOpenClose'
-import {
-  AppActionContext,
-  AppRefContext,
-  AppValueContext,
-} from '../utils/AppProvider'
+import { AppActionContext, AppValueContext } from '../utils/AppProvider'
 import showLatestVideo from '../function/showLatestVideo'
 
 export default function ControllerButton({
@@ -34,8 +29,6 @@ export default function ControllerButton({
     setVideoNumber,
     setVideoDate,
   } = useContext(AppActionContext)
-  const { playerRef, controllerRef, searchRef, searchModalRef } =
-    useContext(AppRefContext)
 
   const applauseRef1 = useRef(null)
   const applauseRef2 = useRef(null)
@@ -54,8 +47,6 @@ export default function ControllerButton({
           setVideoDate,
         )
       )
-      id.includes('search') &&
-        searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
       id.includes('playpause') && playPause(videoEvent)
       id.includes('stop') && stopVideo(videoEvent)
       id.includes('time') && timeMove(event, videoEvent)
@@ -65,11 +56,7 @@ export default function ControllerButton({
         applause([applauseRef1, applauseRef2, applauseRef3, applauseRef4])
     },
     [
-      controllerRef,
       id,
-      playerRef,
-      searchModalRef,
-      searchRef,
       setVideoArtist,
       setVideoDate,
       setVideoID,

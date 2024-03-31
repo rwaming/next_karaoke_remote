@@ -1,34 +1,41 @@
 import { useContext } from 'react'
 import { AppActionContext, AppRefContext } from '../utils/AppProvider'
-import { SearchActionContext } from '../utils/SearchProvider'
+import { SearchActionContext, SearchRefContext } from '../utils/SearchProvider'
 import searchVideos from '../function/searchVideos'
+import searchOpenClose from '../function/searchOpenClose'
 
 export default function SearchArea(): JSX.Element {
   const { setVideoID } = useContext(AppActionContext)
-  const { searchValueRef } = useContext(AppRefContext)
+  const { playerRef, controllerRef, searchRef } = useContext(AppRefContext)
+  const { searchValueRef, searchModalRef } = useContext(SearchRefContext)
   const { setVideoInfos, setVideoAllLength } = useContext(SearchActionContext)
 
   return (
-    <search id='search-area' className='flex w-full'>
-      <h4 className='invisible absolute'>노래 검색 키워드 입력란</h4>
-      <form
-        id='search-form'
-        name='search'
-        action='#'
-        className='flex flex-grow'>
+    <search
+      id='search-area'
+      className='search-area absolute flex min-h-2/3dvh w-full flex-col p-4 pt-3'>
+      <form id='search-form' name='search' action='#' className='flex'>
         <fieldset
           id='search-form__inputbox'
-          className='relative flex flex-grow items-center'>
+          className='relative z-30 flex min-w-0 flex-grow items-start'>
           <input
             ref={searchValueRef}
             id='search-form__value'
             name='search-form__value'
-            type='search'
+            type='text'
             minLength={1}
             pattern='\S*'
             placeholder='ex) 윤하 먹구름'
-            className='box-border h-12 flex-grow bg-light bg-opacity-15 p-2 text-center placeholder:text-light placeholder:text-opacity-75 focus:border-2 focus:outline-none sm:p-4'
+            className='box-border h-8 min-w-0 flex-grow rounded-2xl bg-light bg-opacity-15 p-2 text-center placeholder:text-light placeholder:text-opacity-50 focus:bg-opacity-25 focus:outline-none sm:h-10 sm:p-4'
             required
+            onFocus={() => {
+              searchOpenClose(
+                playerRef,
+                controllerRef,
+                searchRef,
+                searchModalRef,
+              )
+            }}
           />
           <fieldset
             id='search-form__buttonbox'
@@ -37,7 +44,7 @@ export default function SearchArea(): JSX.Element {
               id='search-form__clear'
               type='reset'
               value='✕'
-              className='hidden pr-2 text-dark text-opacity-30 sm:flex sm:p-2'
+              className='hidden pr-2 opacity-50 sm:flex sm:p-2'
             />
             <input
               id='search-form__search'

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import './motion.css'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -16,49 +17,59 @@ export default function RootLayout({
 }>): JSX.Element {
   return (
     <html lang='ko'>
-      <body>
-        <div id='app' className='app h-screen w-screen bg-black text-light'>
-          <header id='header' className='absolute left-0 top-0 z-10'>
-            <h1 className='absolute left-0 top-0 inline-block w-fit p-6 pr-3 text-xl xs:text-2xl sm:static'>
-              홈코노
-            </h1>
-            <p
-              id='upate'
-              className='upate absolute right-0 top-0 inline-block p-6 pl-0 text-right text-xs opacity-80 sm:static sm:text-left'>
-              마지막 업데이트:{' '}
-              <time dateTime='2024-03-24' className='block xs:inline'>
-                2024. 03. 29. 금요일
-              </time>
-            </p>
+      <body className='overflow-hidden'>
+        <div id='app' className='app relative h-dvh w-dvw bg-black text-light'>
+          <header
+            id='header'
+            className='header absolute left-0 top-0 z-40 m-4 flex items-center sm:left-1'>
+            <div
+              id='header__group'
+              className='relative overflow-hidden whitespace-nowrap'>
+              <h1
+                id='header__title'
+                className='h-8 w-16 select-none pl-2 text-2xl font-bold xs:text-2xl'>
+                <button type='button'>홈코노</button>
+              </h1>
+              <p
+                id='upate'
+                className='upate absolute left-16 top-3 hidden pl-2 text-xs font-light opacity-75 sm:ml-2 sm:inline'>
+                <span className='hidden md:inline'>마지막 업데이트: </span>
+                <time dateTime='2024-03-30'>2024. 03. 30. 토요일</time>
+              </p>
+            </div>
+            <button
+              type='button'
+              id='header__open'
+              className='absolute left-1 top-1 h-6 w-6 select-none rounded-2xl bg-button1 text-deep'>
+              <span className='absolute left-1 top-1 scale-75 leading-snug'>
+                ★
+              </span>
+              <span className='absolute -top-1 left-1 scale-y-90 text-xl'>
+                ⌃
+              </span>
+            </button>
           </header>
+
           {children}
+
           <footer
             id='footer'
-            className='bottom-0 flex h-fit w-full justify-center gap-4 p-3 opacity-80 sm:justify-end'>
-            <address id='contact' className='flex gap-4 text-sm not-italic'>
-              <div
-                id='contact-name'
-                className='flex h-full flex-col items-center justify-center text-center font-semibold sm:flex-row sm:gap-2'>
-                <p id='contact-name__en'>RWAM</p>
-                <p id='contact-name__ko' className='hidden xs:block'>
+            className='mb-3 transition-all sm:absolute sm:bottom-0 sm:h-5 sm:w-full'>
+            <address
+              id='contact'
+              className='contact not-italic sm:relative sm:flex sm:h-full sm:items-center sm:justify-center sm:gap-3 sm:text-xs'>
+              <div id='contact-name' className='font-bold'>
+                <p id='contact-name__en' className='sm:inline'>
+                  RWAM
+                </p>
+                <p id='contact-name__ko' className='ml-1 sm:inline'>
                   김성주
                 </p>
               </div>
 
               <div
-                id='contact-info'
-                className='flex h-full flex-col justify-around gap-1 font-light'>
-                <p id='contact-info__email' className='text-xs'>
-                  art.rwam@gmail.com
-                </p>
-                <p id='contact-info__phone' className='hidden text-xs xs:block'>
-                  +82 010-9716-1132
-                </p>
-              </div>
-
-              <div
                 id='contact-sns'
-                className='hidden items-center gap-3 xs:flex'>
+                className='sm:flex sm:items-center sm:gap-2'>
                 <Link
                   href='https://www.instagram.com/rwam__kn'
                   target='_blank'
@@ -69,7 +80,7 @@ export default function RootLayout({
                     width={40}
                     height={40}
                     alt='contact_instagram'
-                    className='h-7 w-7'
+                    className='h-4 w-4'
                   />
                 </Link>
                 <Link
@@ -82,9 +93,40 @@ export default function RootLayout({
                     width={40}
                     height={40}
                     alt='contact_naver_blog'
-                    className='h-7 w-7'
+                    className='h-4 w-4'
                   />
                 </Link>
+                <Link
+                  href='https://github.com/rwaming/next_karaoke_remote'
+                  target='_blank'
+                  aria-label='contact-sns__github'>
+                  <Image
+                    id='contact-sns__github'
+                    src='/icon_github.png'
+                    width={40}
+                    height={40}
+                    alt='contact_github'
+                    className='h-4 w-4'
+                  />
+                </Link>
+              </div>
+
+              <div
+                id='contact-info'
+                className='contact-info flex items-center sm:h-full sm:min-w-10 sm:items-center'>
+                <button
+                  type='button'
+                  className='w-10 overflow-hidden opacity-100 sm:whitespace-nowrap'>
+                  + more
+                </button>
+                <div className='whitespace-nowrap opacity-0 sm:flex sm:w-0 sm:items-center sm:overflow-hidden'>
+                  <p id='contact-info__email' className='sm:inline-block'>
+                    art.rwam@gmail.com
+                  </p>
+                  <p id='contact-info__phone' className='ml-2 sm:inline-block'>
+                    +82 010-9716-1132
+                  </p>
+                </div>
               </div>
             </address>
           </footer>
