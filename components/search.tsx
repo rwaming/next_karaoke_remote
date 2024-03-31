@@ -13,7 +13,7 @@ function SearchModal(): JSX.Element {
       ref={searchModalRef}
       type='button'
       id='search-modal'
-      className='absolute left-0 top-0 z-10 hidden h-screen w-screen cursor-default bg-slate-900 bg-opacity-50 text-transparent'
+      className='search-modal__search-close absolute left-0 top-0 z-10 h-screen w-screen cursor-default bg-slate-900 bg-opacity-50 text-transparent'
       onClick={() => {
         searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
       }}>
