@@ -34,7 +34,7 @@ export default function RootLayout({
                 id='upate'
                 className='upate absolute left-16 top-3 hidden pl-2 text-xs font-light opacity-75 sm:ml-2 sm:inline'>
                 <span className='hidden md:inline'>마지막 업데이트: </span>
-                <time dateTime='2024-03-30'>2024. 03. 30. 토요일</time>
+                <time dateTime='2024-03-30'>2024. 04. 01. 월요일</time>
               </p>
             </div>
             <button
