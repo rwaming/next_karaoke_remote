@@ -97,20 +97,22 @@
   }
 }
 
+/* controller hide */
 @keyframes point__controller-close {
   0% {
-    margin-right: 0.6rem;
+    margin-right: 0.8rem;
   }
-  85% {
-    @apply mr-1;
+  80% {
+    margin-right: 0.5rem;
   }
   100% {
-    margin-right: 0.6rem;
+    margin-right: 0.8rem;
   }
 }
 #controller-close {
   transition: all 0.3s;
-  right: -1.55rem;
+  right: -4.3rem;
+  padding-left: 1rem;
 }
 #controller:hover > #controller-close {
   opacity: 0.75;
@@ -118,6 +120,14 @@
 #controller:hover > #controller-close:hover {
   opacity: 1;
   animation: point__controller-close 0.8s infinite;
+}
+#controller-box {
+  transition: all 0.3s;
+}
+.controller-box__ready-close {
+  bottom: 0.25rem;
+  right: 0.25rem;
+  opacity: 0.85;
 }
 
 /* sm height */
