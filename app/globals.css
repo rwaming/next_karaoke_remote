@@ -43,7 +43,7 @@
   }
 
   .search-list__li {
-    @apply mt-4 box-content flex h-4 border-b border-b-gray-800 border-opacity-50 py-2 text-center;
+    @apply mt-2 box-content flex h-4 border-b border-b-gray-800 border-opacity-50 py-2 text-center;
   }
   .search-list__label {
     @apply border-0 text-base font-bold;

@@ -28,13 +28,25 @@ export default function SearchArea(): JSX.Element {
             placeholder='ex) 윤하 먹구름'
             className='box-border h-8 min-w-0 flex-grow rounded-2xl bg-light bg-opacity-15 p-2 text-center placeholder:text-light placeholder:text-opacity-50 focus:bg-opacity-25 focus:outline-none sm:h-10 sm:p-4'
             required
-            onFocus={() => {
-              searchOpenClose(
-                playerRef,
-                controllerRef,
-                searchRef,
-                searchModalRef,
-              )
+            onFocus={(evnet) => {
+              if (searchRef.current?.classList.contains('hidden') === true) {
+                searchOpenClose(
+                  playerRef,
+                  controllerRef,
+                  searchRef,
+                  searchModalRef,
+                )
+              }
+            }}
+            onClick={(event) => {
+              if (searchRef.current?.classList.contains('hidden') === true) {
+                searchOpenClose(
+                  playerRef,
+                  controllerRef,
+                  searchRef,
+                  searchModalRef,
+                )
+              }
             }}
           />
           <fieldset

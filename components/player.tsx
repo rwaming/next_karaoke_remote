@@ -32,7 +32,6 @@ export default function Player(): JSX.Element {
   )
   const stateSize = useCallback((event: YouTubeEvent) => {
     const state = event.data
-    console.log(state)
     if (typeof state === 'number') {
       const playerIframe: IFrame = event.target.getIframe()
       const playerYT = playerIframe.parentElement
