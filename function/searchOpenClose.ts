@@ -29,6 +29,7 @@ export default function searchOpenClose(
       player.classList.add('player__search-open')
       searchModal.classList.remove('search-modal__search-close')
       searchModal.classList.add('search-modal__search-open')
+      controller.classList.remove('controller__search-close')
       controller.classList.add('controller__search-open')
     } else {
       search.classList.add('hidden')
@@ -37,6 +38,7 @@ export default function searchOpenClose(
       player.classList.remove('player__search-open')
       searchModal.classList.add('search-modal__search-close')
       searchModal.classList.remove('search-modal__search-open')
+      controller.classList.add('controller__search-close')
       controller.classList.remove('controller__search-open')
     }
   }
