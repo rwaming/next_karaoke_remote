@@ -70,9 +70,27 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 <br>
 
+> _2024.03.31.sun_
+
+#### #95 - Finish UI/UX
+
+- In progress.
+
+#### ~~#85 - Improve styling for uniformity (3)~~
+
+- Make entire UI/UX which looks clean.
+- But, no footer in mobile, no nav, and no states like those of volume, speed.
+
+#### ~~#85 - Improve styling for uniformity (3)~~
+
+- Make entire UI/UX which looks clean.
+- But, no footer in mobile, no nav, and no states like those of volume, speed.
+
+<br>
+
 > _2024.03.30.sat_
 
-#### #85 - Improve styling for uniformity (2)
+#### ~~#85 - Improve styling for uniformity (2)~~
 
 - In progress
 
