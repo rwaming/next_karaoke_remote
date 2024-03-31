@@ -53,7 +53,7 @@ export default function SearchList(): JSX.Element {
       className='search-box z-20 hidden min-h-2/3dvh w-full grow flex-col overflow-hidden bg-deep sm:top-0 sm:h-1/2dvh sm:min-h-0 sm:rounded-b-lg sm:drop-shadow-lg'>
       <section
         id='search-list'
-        className='scroll relative top-16 flex-grow overflow-scroll px-4 pb-8 pt-4 sm:px-1/10dvw'>
+        className='scroll relative top-16 flex-grow overflow-scroll px-4 pb-8 pt-4 sm:px-1/10vw'>
         <h4 className='hidden'>노래 목록</h4>
         <p id='search-list__note' className='p-3 text-center text-sm'>
           {listNote}

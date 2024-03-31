@@ -6,7 +6,7 @@
   --screen-ratio-w: 1.7777;
   --screen-ratio-h: 0.5625;
   --screen-ratio-h-p: 56.25;
-  --screen-ratio-h-dvh: 56.25dvw;
+  --screen-ratio-h-dvh: 56.25vw;
   --controller-w-sm: 264;
   --controller-w-sm-px: 16.5rem;
   --controller-w-md: 296;
@@ -58,10 +58,10 @@
     @apply flex-grow overflow-hidden text-ellipsis whitespace-nowrap text-sm;
   }
   .search-list__li-artist {
-    @apply flex-shrink-0 basis-1/4dvw overflow-hidden text-ellipsis whitespace-nowrap text-xs md:text-sm;
+    @apply flex-shrink-0 basis-1/4vw overflow-hidden text-ellipsis whitespace-nowrap text-xs md:text-sm;
   }
   .search-list__li-number {
-    @apply hidden flex-shrink-0 basis-1/8dvw overflow-hidden text-ellipsis whitespace-nowrap text-sm opacity-70 md:block;
+    @apply hidden flex-shrink-0 basis-1/8vw overflow-hidden text-ellipsis whitespace-nowrap text-sm opacity-70 md:block;
   }
 }
 
@@ -160,9 +160,7 @@
   /* sm */
   @media screen and (min-width: 640px) {
     .player-content__youtube {
-      height: calc(
-        (100dvw - var(--controller-w-sm-px)) * var(--screen-ratio-h)
-      );
+      height: calc((100vw - var(--controller-w-sm-px)) * var(--screen-ratio-h));
       max-width: calc(
         (100dvh - var(--player-y-space-px)) * var(--screen-ratio-w)
       );
@@ -175,9 +173,7 @@
   /* md */
   @media screen and (min-width: 768px) {
     .player-content__youtube {
-      height: calc(
-        (100dvw - var(--controller-w-md-px)) * var(--screen-ratio-h)
-      );
+      height: calc((100vw - var(--controller-w-md-px)) * var(--screen-ratio-h));
     }
   }
 }
