@@ -120,8 +120,17 @@
     margin-left: 0.3rem;
   }
 }
-
 @media screen and (min-width: 640px) {
+  .player__controller-closed {
+    .player-content__youtube {
+      height: calc(
+        (100dvw - var(--controller-close-w-px)) * var(--screen-ratio-h)
+      );
+      max-width: calc(
+        (100dvh - var(--player-y-space-px)) * var(--screen-ratio-w)
+      );
+    }
+  }
   .controller {
     transition:
       right 0.3s,

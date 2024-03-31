@@ -4,7 +4,7 @@ import ControllerButton from './controllerButton'
 import { type Button } from '../utils/Types'
 
 export default function Controller(): JSX.Element {
-  const { controllerRef } = useContext(AppRefContext)
+  const { playerRef, controllerRef } = useContext(AppRefContext)
   const controllerOpenCloseRef = useRef<Button>(null)
 
   return (
@@ -33,14 +33,21 @@ export default function Controller(): JSX.Element {
         onClick={() => {
           const controller = controllerRef.current
           const controllerOpenClose = controllerOpenCloseRef.current
-          if (controller !== null && controllerOpenClose !== null) {
+          const player = playerRef.current
+          if (
+            controller !== null &&
+            controllerOpenClose !== null &&
+            player !== null
+          ) {
             controllerOpenClose.style.visibility = 'hidden'
             setTimeout(() => {
               controllerOpenClose.style.visibility = 'visible'
             }, 100)
             if (!controller.classList.contains('controller_closed')) {
+              player.classList.add('player__controller-closed')
               controller.classList.add('controller_closed')
             } else {
+              player.classList.remove('player__controller-closed')
               controller.classList.remove('controller_closed')
             }
           }
