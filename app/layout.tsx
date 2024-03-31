@@ -25,7 +25,7 @@ export default function RootLayout({
 }>): JSX.Element {
   return (
     <html lang='ko'>
-      <body className='m-0 h-dvh w-screen overflow-hidden p-0'>
+      <body>
         <div
           id='app'
           className='app relative h-dvh w-screen bg-black text-light'>
