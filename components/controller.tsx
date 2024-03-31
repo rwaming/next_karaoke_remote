@@ -17,22 +17,11 @@ export default function Controller(): JSX.Element {
         ref={controllerOpenCloseRef}
         id='controller__open-close'
         type='button'
-        className='absolute top-1/2 z-10 mr-2 box-content hidden h-full w-14 -translate-y-1/2 text-sm font-light text-light opacity-0 sm:block'
+        className='controller__open-close absolute top-1/2 z-10 mr-2 box-content hidden h-full w-14 -translate-y-1/2 text-sm font-light text-light opacity-0 sm:block'
         onMouseEnter={() => {
           const controller = controllerRef.current
           if (controller !== null) {
             controller.classList.add('controller-box__ready-close')
-          }
-          const controllerOpenClose = controllerOpenCloseRef.current
-          if (
-            controllerOpenClose !== null &&
-            controllerOpenClose.classList.contains(
-              'controller__open-close__disappear',
-            )
-          ) {
-            controllerOpenClose.classList.remove(
-              'controller__open-close__disappear',
-            )
           }
         }}
         onMouseLeave={() => {
@@ -45,10 +34,10 @@ export default function Controller(): JSX.Element {
           const controller = controllerRef.current
           const controllerOpenClose = controllerOpenCloseRef.current
           if (controller !== null && controllerOpenClose !== null) {
-            console.log('disappear')
-            controllerOpenClose.classList.add(
-              'controller__open-close__disappear',
-            )
+            controllerOpenClose.style.opacity = '0'
+            setTimeout(() => {
+              controllerOpenClose.style.opacity = '0.75'
+            }, 700)
             if (!controller.classList.contains('controller_closed')) {
               controller.classList.add('controller_closed')
             } else {
@@ -57,13 +46,13 @@ export default function Controller(): JSX.Element {
           }
         }}>
         <span className='text-transparent'>리모콘 숨기기</span>
-        <span className='absolute left-3 inline-block scale-x-75 scale-y-150'>
+        <span className='absolute left-3 inline-block scale-x-75 scale-y-150 font-bold'>
           {'>'}
         </span>
       </button>
       <div
         id='controller-box'
-        className='button-col relative bottom-0 right-0 flex grow'>
+        className='button-col relative bottom-0 right-0 flex min-w-56 grow'>
         <div className='button-row basis-1/5dvh'>
           <div className='button-col'>
             <ControllerButton

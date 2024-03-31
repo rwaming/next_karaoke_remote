@@ -52,7 +52,7 @@
   @apply opacity-100;
   animation:
     appear__menu-open 5s,
-    spin__menu-open 4s 0s infinite;
+    spin__menu-open 5s 0s infinite;
   transition:
     opacity 0.2s,
     rotate 0s 0.2s;
@@ -100,13 +100,13 @@
 /* controller hide */
 @keyframes point__controller-close {
   0% {
-    margin-right: 0.8rem;
-  }
-  80% {
     margin-right: 0.5rem;
   }
+  80% {
+    margin-right: 0.2rem;
+  }
   100% {
-    margin-right: 0.8rem;
+    margin-right: 0.5rem;
   }
 }
 @keyframes point__controller-open {
@@ -120,41 +120,30 @@
     margin-left: 0.3rem;
   }
 }
-@keyframes point__disappear {
-  0% {
-    opacity: 1;
-  }
-  20% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-#controller__open-close__disappear {
-  animation: point__disappear 0.2s;
-}
-#controller__open-close {
+.controller__open-close {
   transition:
     all 0.5s,
-    rotate 0s 0.5s;
+    right 0s,
+    opacity 0.2s;
   right: -4.4rem;
   padding-left: 1rem;
+  > span {
+    rotate: 0deg;
+    transition: rotate 0s 0.2s;
+  }
 }
-.controller:hover > #controller__open-close {
+.controller:hover > .controller__open-close {
   opacity: 0.65;
 }
-.controller:hover > #controller__open-close:hover {
+.controller:hover > .controller__open-close:hover {
   opacity: 1;
   animation: point__controller-close 0.8s infinite;
-  margin-top: 0.25rem;
 }
 #controller-box {
   transition: all 0.5s;
 }
 .controller-box__ready-close {
-  bottom: 0.25rem;
-  right: 0.25rem;
+  right: 0.5rem;
   opacity: 0.85;
 }
 .controller {
@@ -163,12 +152,10 @@
 .controller_closed {
   @apply mx-0 max-w-4 overflow-hidden;
   opacity: 0.85;
-  transition: all 0.5s;
   > #controller-box {
     @apply pl-4;
-    transition: all 0.5s;
   }
-  > #controller__open-close {
+  > .controller__open-close {
     opacity: 0.65;
     right: 0;
     left: -0.6rem;
@@ -182,10 +169,10 @@
   > #controller-box {
     @apply pl-5 opacity-85;
   }
-  > #controller__open-close {
+  > .controller__open-close {
     margin-top: 0;
   }
-  > #controller__open-close:hover {
+  > .controller__open-close:hover {
     margin-top: 0;
     animation: point__controller-open 0.8s infinite;
   }
