@@ -97,6 +97,29 @@
   }
 }
 
+@keyframes point__controller-close {
+  0% {
+    margin-right: 0.6rem;
+  }
+  85% {
+    @apply mr-1;
+  }
+  100% {
+    margin-right: 0.6rem;
+  }
+}
+#controller-close {
+  transition: all 0.3s;
+  right: -1.55rem;
+}
+#controller:hover > #controller-close {
+  opacity: 0.75;
+}
+#controller:hover > #controller-close:hover {
+  opacity: 1;
+  animation: point__controller-close 0.8s infinite;
+}
+
 /* sm height */
 @media screen and (max-height: 550px) {
   #controller-stop {
