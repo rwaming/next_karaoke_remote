@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import './motion.css'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -21,10 +22,23 @@ export default function RootLayout({
           <header
             id='header'
             className='header absolute left-0 top-0 z-40 m-5 flex items-center'>
+            <div
+              id='header__group'
+              className='relative overflow-hidden whitespace-nowrap'>
+              <h1 className='h-8 w-16 select-none pl-2 text-2xl font-bold text-light xs:text-2xl'>
+                <button type='button'>홈코노</button>
+              </h1>
+              <p
+                id='upate'
+                className='upate absolute left-16 top-3 hidden pl-2 text-xs font-light opacity-75 sm:ml-2 sm:inline'>
+                마지막 업데이트:{' '}
+                <time dateTime='2024-03-30'>2024. 03. 30. 토요일</time>
+              </p>
+            </div>
             <button
               type='button'
-              id='menu__open'
-              className='absolute left-1 top-1 h-6 w-6 rounded-2xl bg-button1 text-deep'>
+              id='header__open'
+              className='absolute left-1 top-1 h-6 w-6 select-none rounded-2xl bg-button1 text-deep'>
               <span className='absolute left-1 top-1 scale-75 leading-snug'>
                 ★
               </span>
@@ -32,19 +46,10 @@ export default function RootLayout({
                 ⌃
               </span>
             </button>
-            <div className='relative overflow-hidden whitespace-nowrap'>
-              <h1 className='h-8 w-16 pl-3 text-2xl font-bold text-light xs:text-2xl'>
-                홈코노
-              </h1>
-              <p
-                id='upate'
-                className='upate absolute right-2 top-1/2 hidden -translate-y-1/2 text-xs opacity-80 sm:ml-2 sm:inline'>
-                마지막 업데이트:{' '}
-                <time dateTime='2024-03-30'>2024. 03. 30. 토요일</time>
-              </p>
-            </div>
           </header>
+
           {children}
+
           <footer
             id='footer'
             className='mb-3 transition-all sm:absolute sm:bottom-0 sm:h-5 sm:w-full'>

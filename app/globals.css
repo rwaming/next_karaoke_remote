@@ -14,7 +14,7 @@
   --search-h-px: 58px;
 }
 
-/* reusable */
+/* uitils */
 @layer utilities {
   .scroll {
     overflow: scroll;
@@ -62,36 +62,6 @@
   }
 }
 
-@keyframes disappear__title {
-  0% {
-    @apply w-72 opacity-100;
-  }
-  83% {
-    @apply w-72 opacity-100;
-  }
-  100% {
-    @apply w-0 opacity-0;
-  }
-}
-@keyframes appear__menu-open {
-  0% {
-    @apply opacity-0;
-  }
-  75% {
-    @apply opacity-0;
-  }
-  100% {
-    @apply opacity-100;
-  }
-}
-@keyframes spin__menu-open {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 /* id */
 @layer components {
   .app {
@@ -126,32 +96,6 @@
         rgba(40, 150, 114, 0.2) 20%,
         rgba(33, 51, 125, 0.2) 50%
       );
-  }
-
-  .header > #menu__open {
-    @apply opacity-100;
-    animation:
-      appear__menu-open 3.7s,
-      spin__menu-open 4s 0s infinite;
-    transition: all 0.2s;
-    box-shadow: inset -0.25rem -0.25rem rgba(0, 0, 0, 0.15);
-    background-image: linear-gradient(
-      150deg,
-      rgba(190, 176, 255, 0.05) 30%,
-      rgba(186, 138, 206, 0.2) 100%
-    );
-  }
-  .header > div {
-    @apply w-72 opacity-0;
-    animation: disappear__title 3s;
-    transition: opacity 0.3s 0.1s;
-  }
-  .header:hover > #menu__open {
-    @apply opacity-0;
-    animation: spin__menu-open 4s 0s infinite;
-  }
-  .header:hover > div {
-    @apply animate-none opacity-100;
   }
 
   .player-content {
@@ -248,24 +192,5 @@
     #controller-timeforward {
       @apply sm:hidden;
     }
-  }
-}
-
-.search-modal__search-open {
-  @apply block;
-}
-.controller__search-open {
-  @apply sm:pt-1/2dvh;
-  * {
-    @apply sm:z-20 sm:text-sm;
-  }
-  .button {
-    @apply sm:py-2;
-  }
-  #controller-search {
-    @apply sm:hidden;
-  }
-  #controller-stop {
-    @apply sm:hidden;
   }
 }
