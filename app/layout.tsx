@@ -4,6 +4,7 @@ import './motion.css'
 
 import Link from 'next/link'
 import Image from 'next/image'
+import Menu from '../components/menu'
 
 export const metadata: Metadata = {
   title: '홈코노 - 집에서 즐기는 나만의 노래방',
@@ -21,14 +22,12 @@ export default function RootLayout({
         <div id='app' className='app relative h-dvh w-dvw bg-black text-light'>
           <header
             id='header'
-            className='header absolute left-0 top-0 z-40 m-4 flex items-center sm:left-1'>
+            className='header absolute left-0 top-0 z-40 ml-4 mt-4 flex items-center sm:left-1'>
             <div
               id='header__group'
               className='relative overflow-hidden whitespace-nowrap'>
-              <h1
-                id='header__title'
-                className='h-8 w-16 select-none pl-2 text-2xl font-bold xs:text-2xl'>
-                <button type='button'>홈코노</button>
+              <h1 className='h-8 select-none pl-2 text-2xl font-bold xs:text-2xl'>
+                홈코노
               </h1>
               <p
                 id='upate'
@@ -48,13 +47,14 @@ export default function RootLayout({
                 ⌃
               </span>
             </button>
+            <Menu />
           </header>
 
           {children}
 
           <footer
             id='footer'
-            className='mb-3 transition-all sm:absolute sm:bottom-0 sm:h-5 sm:w-full'>
+            className='mb-3 hidden transition-all sm:absolute sm:bottom-0 sm:block sm:h-5 sm:w-full'>
             <address
               id='contact'
               className='contact not-italic sm:relative sm:flex sm:h-full sm:items-center sm:justify-center sm:gap-3 sm:text-xs'>
