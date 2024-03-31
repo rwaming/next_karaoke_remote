@@ -11,7 +11,9 @@
   --controller-w-sm-px: 16.5rem;
   --controller-w-md: 296;
   --controller-w-md-px: 18.5rem;
+  --controller-open-w-md-px: 26.5rem;
   --search-h-px: 58px;
+  --player-y-space-px: 6.75rem;
 }
 
 /* uitils */
@@ -114,7 +116,7 @@
     visibility: visible;
     width: 100%;
     height: 100%;
-    max-width: 100%;
+    max-width: calc(33.33dvh * var(--screen-ratio-w));
     max-height: 100%;
   }
 
@@ -156,8 +158,25 @@
 
   /* sm */
   @media screen and (min-width: 640px) {
+    .player-content__youtube {
+      height: calc(
+        (100dvw - var(--controller-w-sm-px)) * var(--screen-ratio-h)
+      );
+      max-width: calc(
+        (100dvh - var(--player-y-space-px)) * var(--screen-ratio-w)
+      );
+    }
     .search-box {
       box-shadow: inset 0 -0.25rem 0 rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  /* md */
+  @media screen and (min-width: 768px) {
+    .player-content__youtube {
+      height: calc(
+        (100dvw - var(--controller-w-md-px)) * var(--screen-ratio-h)
+      );
     }
   }
 }

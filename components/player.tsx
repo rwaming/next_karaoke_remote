@@ -63,7 +63,7 @@ export default function Player(): JSX.Element {
     <section
       ref={playerRef}
       id='player'
-      className='player relative z-10 flex max-h-1/3dvh flex-shrink flex-col sm:m-4 sm:mb-11 sm:mr-0 sm:mt-16 sm:max-h-none sm:flex-1 sm:items-end'>
+      className='player relative z-10 flex max-h-1/3dvh flex-shrink flex-col sm:m-4 sm:mb-11 sm:mr-0 sm:mt-16 sm:max-h-none sm:flex-1'>
       <h2 className='hidden'>노래 영상</h2>
 
       {videoID !== '' && !videoID.includes('Error') && (
@@ -89,14 +89,13 @@ export default function Player(): JSX.Element {
       )}
       <div
         id='player-content'
-        className='player-content relative h-16-9dvh w-full overflow-hidden bg-dark bg-opacity-50 sm:h-full sm:rounded-lg'>
+        className='player-content relative flex h-16-9dvh w-full justify-center overflow-hidden bg-dark bg-opacity-50 sm:h-full sm:flex-col sm:items-center sm:rounded-lg'>
         {videoID !== '' && !videoID.includes('Error') && (
           <YouTube
             className='player-content__youtube'
             videoId={videoID}
             opts={{
               playerVars: {
-                // autoplay: 1,
                 controls: 0,
                 disablekb: 1,
                 fs: 0,
