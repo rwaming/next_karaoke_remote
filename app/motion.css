@@ -120,61 +120,66 @@
     margin-left: 0.3rem;
   }
 }
-.controller__open-close {
-  transition:
-    all 0.5s,
-    right 0s,
-    opacity 0.2s;
-  right: -4.4rem;
-  padding-left: 1rem;
-  > span {
-    rotate: 0deg;
-    transition: rotate 0s 0.2s;
+
+@media screen and (min-width: 640px) {
+  .controller {
+    transition:
+      right 0.3s,
+      opacity 0.3s;
   }
-}
-.controller:hover > .controller__open-close {
-  opacity: 0.65;
-}
-.controller:hover > .controller__open-close:hover {
-  opacity: 1;
-  animation: point__controller-close 0.8s infinite;
-}
-#controller-box {
-  transition: all 0.5s;
-}
-.controller-box__ready-close {
-  right: 0.5rem;
-  opacity: 0.85;
-}
-.controller {
-  transition: all 0.5s;
-}
-.controller_closed {
-  @apply mx-0 max-w-4 overflow-hidden;
-  opacity: 0.85;
-  > #controller-box {
-    @apply pl-4;
+  .controller-box__ready-close {
+    right: 0.5rem;
+    opacity: 0.85;
   }
-  > .controller__open-close {
-    opacity: 0.65;
-    right: 0;
-    left: -0.6rem;
+  .controller__open-close {
+    transition:
+      all 0.3s,
+      right 0s,
+      opacity 0.3s;
+    right: -4.4rem;
+    padding-left: 1rem;
     > span {
-      rotate: 180deg;
+      rotate: 0deg;
+      transition: rotate 0s 0.01s;
     }
   }
-}
-.controller_closed:hover {
-  @apply bottom-0 right-0 mx-0 max-w-7 overflow-hidden;
-  > #controller-box {
-    @apply pl-5 opacity-85;
+  .controller:hover > .controller__open-close {
+    opacity: 0.65;
   }
-  > .controller__open-close {
-    margin-top: 0;
+  .controller:hover > .controller__open-close:hover {
+    opacity: 1;
+    animation: point__controller-close 0.8s infinite;
   }
-  > .controller__open-close:hover {
-    margin-top: 0;
-    animation: point__controller-open 0.8s infinite;
+  .controller_closed {
+    @apply right-0 mx-0 max-w-4 overflow-hidden;
+    transition: max-width 0.3s;
+    opacity: 0.85;
+    > #controller-box {
+      @apply pl-4;
+      transition: padding-left 0.3s;
+    }
+    > .controller__open-close {
+      opacity: 0.65;
+      right: 0;
+      left: -0.6rem;
+      > span {
+        rotate: 180deg;
+      }
+    }
+  }
+  .controller_closed:hover {
+    @apply max-w-7;
+    > #controller-box {
+      @apply pl-5 opacity-85;
+      transition: padding-left 0.3s;
+    }
+    > .controller__open-close {
+      margin-top: 0;
+    }
+    > .controller__open-close:hover {
+      margin-top: 0;
+      animation: point__controller-open 0.8s infinite;
+    }
   }
 }
 

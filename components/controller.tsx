@@ -11,7 +11,7 @@ export default function Controller(): JSX.Element {
     <section
       ref={controllerRef}
       id='controller'
-      className='controller relative bottom-0 right-0 m-4 mt-14 flex shrink-0 grow whitespace-nowrap text-sm font-bold text-dark xs:text-base sm:mb-11 sm:ml-2 sm:mr-4 sm:mt-16 sm:max-w-56 sm:shrink-0 sm:grow-0 sm:basis-56 sm:text-sm md:max-w-64 md:basis-64 md:p-1 md:text-base'>
+      className='controller relative bottom-0 right-0 m-4 mt-14 flex shrink-0 grow whitespace-nowrap text-sm font-bold text-dark xs:text-base sm:mb-11 sm:ml-2 sm:mr-4 sm:mt-16 sm:shrink-0 sm:grow-0 sm:basis-56 sm:p-1 sm:text-sm md:basis-64 md:text-base'>
       <h3 className='hidden'>리모콘</h3>
       <button
         ref={controllerOpenCloseRef}
@@ -34,10 +34,10 @@ export default function Controller(): JSX.Element {
           const controller = controllerRef.current
           const controllerOpenClose = controllerOpenCloseRef.current
           if (controller !== null && controllerOpenClose !== null) {
-            controllerOpenClose.style.opacity = '0'
+            controllerOpenClose.style.visibility = 'hidden'
             setTimeout(() => {
-              controllerOpenClose.style.opacity = '0.75'
-            }, 700)
+              controllerOpenClose.style.visibility = 'visible'
+            }, 100)
             if (!controller.classList.contains('controller_closed')) {
               controller.classList.add('controller_closed')
             } else {
@@ -52,7 +52,7 @@ export default function Controller(): JSX.Element {
       </button>
       <div
         id='controller-box'
-        className='button-col relative bottom-0 right-0 flex min-w-56 grow'>
+        className='button-col relative bottom-0 right-0 flex grow'>
         <div className='button-row basis-1/5dvh'>
           <div className='button-col'>
             <ControllerButton
