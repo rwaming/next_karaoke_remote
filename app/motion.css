@@ -16,6 +16,17 @@
     @apply w-0 opacity-0;
   }
 }
+@keyframes disappear__menu-button {
+  0% {
+    @apply w-20;
+  }
+  85% {
+    @apply w-20;
+  }
+  100% {
+    @apply w-0;
+  }
+}
 @keyframes appear__menu-open {
   0% {
     @apply opacity-0;
@@ -39,6 +50,13 @@
   100% {
     transform: rotate(0deg);
   }
+}
+.header #menu-_open {
+  @apply w-0;
+  animation: disappear__menu-button 4s;
+}
+.header:hover #menu-_open {
+  @apply w-20 animate-none;
 }
 .header > #header__group {
   @apply w-8 opacity-0;
@@ -67,7 +85,36 @@
   @apply animate-none opacity-0;
 }
 
-/* search box open & clos */
+/* menu open & close */
+.menu-box {
+  @apply -top-4;
+  left: calc(-66.66dvw - 1rem);
+}
+@media screen and (min-width: 320px) {
+  .menu-box {
+    left: calc(-50dvw - 1.25rem);
+  }
+}
+@media screen and (min-width: 640px) {
+  .menu-box {
+    left: calc(-40dvw - 1.25rem);
+  }
+}
+@media screen and (min-width: 768px) {
+  .menu-box {
+    left: calc(-33.33dvw - 1.25rem);
+  }
+}
+.menu-opened {
+  left: -1rem;
+}
+@media screen and (min-width: 640px) {
+  .menu-opened {
+    left: -1.25rem;
+  }
+}
+
+/* search box open & close */
 .player__search-close {
   .player-content {
     @apply sm:justify-center;
