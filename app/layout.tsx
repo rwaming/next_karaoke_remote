@@ -18,7 +18,7 @@ export default function RootLayout({
 }>): JSX.Element {
   return (
     <html lang='ko'>
-      <body className='overflow-hidden'>
+      <body className='h-dvh w-dvw overflow-hidden'>
         <div id='app' className='app relative h-dvh w-dvw bg-black text-light'>
           <header
             id='header'
