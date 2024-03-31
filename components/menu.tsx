@@ -24,7 +24,7 @@ export default function Menu(): JSX.Element {
       <nav
         ref={menuRef}
         id='menu-box'
-        className='menu-box absolute h-dvh w-2/3dvw bg-deep xs:w-1/2dvw sm:w-2/5dvw md:w-1/3dvw'>
+        className='menu-box absolute h-dvh w-2/3vw bg-deep xs:w-1/2vw sm:w-2/5vw md:w-1/3vw'>
         <ul>
           <li>홈코노</li>
           <li>RWAM</li>

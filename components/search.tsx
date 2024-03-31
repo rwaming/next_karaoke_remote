@@ -27,7 +27,7 @@ export default function Search(): JSX.Element {
     <SearchProvider>
       <section
         id='search'
-        className='absolute left-0 top-0 flex h-dvh w-dvw items-end sm:items-start'>
+        className='absolute left-0 top-0 flex h-dvh w-screen items-end sm:items-start'>
         <h3 className='hidden'>노래 검색창</h3>
         <SearchArea />
         <SearchList />
