@@ -89,7 +89,7 @@ export default function Player(): JSX.Element {
       )}
       <div
         id='player-content'
-        className='player-content relative h-16-9dvh w-full overflow-hidden bg-dark bg-opacity-50 sm:rounded-lg'>
+        className='player-content relative h-16-9dvh w-full overflow-hidden bg-dark bg-opacity-50 sm:h-full sm:rounded-lg'>
         {videoID !== '' && !videoID.includes('Error') && (
           <YouTube
             className='player-content__youtube'

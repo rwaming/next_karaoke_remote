@@ -21,13 +21,13 @@ export default function searchOpenClose(
     controller !== null &&
     searchModal !== null
   ) {
+    console.log('open close')
     if (search.classList.contains('hidden')) {
       search.classList.remove('hidden')
       search.classList.add('flex')
       player.classList.add('player__search-open')
       searchModal.classList.remove('hidden')
       searchModal.classList.add('search-modal__search-open')
-      controller.classList.remove('sm:mt-16')
       controller.classList.add('controller__search-open')
     } else {
       search.classList.add('hidden')
@@ -35,7 +35,6 @@ export default function searchOpenClose(
       player.classList.remove('player__search-open')
       searchModal.classList.add('hidden')
       searchModal.classList.remove('search-modal__search-open')
-      controller.classList.add('sm:mt-16')
       controller.classList.remove('controller__search-open')
     }
   }

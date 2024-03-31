@@ -98,9 +98,6 @@
       );
   }
 
-  .player-content {
-    height: calc(var(--screen-ratio-h-dvh) - 1rem);
-  }
   .player-content__youtube {
     visibility: hidden;
     > iframe {
@@ -121,15 +118,16 @@
     max-height: 100%;
   }
 
+  .search-area {
+    height: calc(100dvh - var(--screen-ratio-h-dvh));
+  }
   .search-box {
     background-image: linear-gradient(
       150deg,
       rgba(190, 176, 255, 0.05) 30%,
       rgba(186, 138, 206, 0.2) 100%
     );
-    box-shadow: inset 0rem 0.25rem 0 rgba(0, 0, 0, 0.15);
-    height: calc((100dvh - var(--screen-ratio-h-dvh)));
-    min-height: calc((66.66dvh));
+    height: calc(100dvh - var(--screen-ratio-h-dvh));
   }
 
   .contact > div {
@@ -160,37 +158,6 @@
   @media screen and (min-width: 640px) {
     .search-box {
       box-shadow: inset 0 -0.25rem 0 rgba(0, 0, 0, 0.15);
-    }
-  }
-}
-
-/* sm height */
-@media screen and (max-height: 500px) {
-  #controller-stop {
-    @apply hidden sm:flex;
-  }
-}
-/* xs height */
-@media screen and (max-height: 372px) {
-  #controller-stop {
-    @apply sm:hidden;
-  }
-  .controller {
-    * {
-      @apply p-0;
-    }
-  }
-  .controller__search-open {
-    @apply sm:absolute sm:h-2/5dvh sm:w-dvw sm:gap-1 sm:p-0 sm:pl-2 sm:pr-4 sm:pt-1/2dvh;
-    width: 100dvw;
-    * {
-      @apply sm:flex-row sm:p-0;
-    }
-    #controller-timebackward {
-      @apply sm:hidden;
-    }
-    #controller-timeforward {
-      @apply sm:hidden;
     }
   }
 }

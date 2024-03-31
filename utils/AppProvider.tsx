@@ -1,12 +1,6 @@
 import { createContext, useState, useRef, useMemo } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
-import {
-  type Button,
-  type Div,
-  type Input,
-  type SetState,
-  type UseRef,
-} from './Types'
+import { type Div, type SetState, type UseRef } from './Types'
 
 const AppValueContext = createContext<{
   videoEvent: YouTubeEvent | null
@@ -44,14 +38,10 @@ const AppRefContext = createContext<{
   playerRef: UseRef<Div>
   controllerRef: UseRef<Div>
   searchRef: UseRef<Div>
-  searchValueRef: UseRef<Input>
-  searchModalRef: UseRef<Button>
 }>({
   playerRef: { current: null },
   controllerRef: { current: null },
   searchRef: { current: null },
-  searchValueRef: { current: null },
-  searchModalRef: { current: null },
 })
 
 export default function AppProvider({
