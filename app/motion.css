@@ -131,6 +131,9 @@
 .search-modal__search-open {
   @apply block;
 }
+.controller__search-close {
+  @apply sm:mt-16;
+}
 .controller__search-open {
   @apply pt-2 sm:mt-1/2dvh;
   * {
@@ -266,9 +269,6 @@
   }
   #controller-stop {
     @apply sm:hidden;
-  }
-  .controller__search-close {
-    @apply sm:mt-16;
   }
   .controller__search-open {
     @apply sm:basis-96 sm:gap-1;

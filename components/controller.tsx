@@ -11,7 +11,7 @@ export default function Controller(): JSX.Element {
     <section
       ref={controllerRef}
       id='controller'
-      className='controller relative bottom-0 right-0 m-4 mt-14 flex shrink-0 grow whitespace-nowrap text-sm font-bold text-dark xs:text-base sm:mb-11 sm:ml-2 sm:mr-4 sm:shrink-0 sm:grow-0 sm:basis-56 sm:p-1 sm:text-sm md:basis-64 md:text-base'>
+      className='controller controller__search-close relative bottom-0 right-0 m-4 mt-14 flex shrink-0 grow whitespace-nowrap text-sm font-bold text-dark xs:text-base sm:mb-11 sm:ml-2 sm:mr-4 sm:shrink-0 sm:grow-0 sm:basis-56 sm:p-1 sm:text-sm md:basis-64 md:text-base'>
       <h3 className='hidden'>리모콘</h3>
       <button
         ref={controllerOpenCloseRef}
