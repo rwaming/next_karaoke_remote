@@ -16,7 +16,7 @@ export default async function showLatestVideo(
     videoEmbeddable: 'true',
   }
   const fetchLatestVideoInfo = await fetch(
-    `/api?part=${param.part}&channelId=${param.channelId}&order=${param.order}&maxResults=${param.maxResults}&type=${param.type}&videoEmbeddable=${param.videoEmbeddable}`,
+    `/homekono/api?part=${param.part}&channelId=${param.channelId}&order=${param.order}&maxResults=${param.maxResults}&type=${param.type}&videoEmbeddable=${param.videoEmbeddable}`,
   )
   const latestVideoInfo = await fetchLatestVideoInfo.json()
 

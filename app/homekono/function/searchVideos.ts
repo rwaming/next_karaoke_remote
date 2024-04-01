@@ -29,7 +29,7 @@ async function getSearchInfo(
       q: `${searchKeyword} KY Karaoke -노래방챌린지`,
     }
     const fetchSearchResult = await fetch(
-      `/api?part=${param.part}&channelId=${param.channelId}&maxResults=${param.maxResults}&type=${param.type}&videoEmbeddable=${param.videoEmbeddable}&q=${param.q}`,
+      `/homekono/api?part=${param.part}&channelId=${param.channelId}&maxResults=${param.maxResults}&type=${param.type}&videoEmbeddable=${param.videoEmbeddable}&q=${param.q}`,
     )
     const searchResult = await fetchSearchResult.json()
 
