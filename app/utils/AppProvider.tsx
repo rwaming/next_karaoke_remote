@@ -3,6 +3,7 @@ import { type YouTubeEvent } from 'react-youtube'
 import { type Div, type SetState, type UseRef } from './Types'
 
 const AppValueContext = createContext<{
+  videoHref: string
   videoEvent: YouTubeEvent | null
   videoID: string
   videoTitle: string
@@ -10,6 +11,7 @@ const AppValueContext = createContext<{
   videoNumber: string
   videoDate: string
 }>({
+  videoHref: '',
   videoEvent: null,
   videoID: '',
   videoTitle: '',
@@ -19,6 +21,7 @@ const AppValueContext = createContext<{
 })
 
 const AppActionContext = createContext<{
+  setVideoHref: SetState<string>
   setVideoEvent: SetState<YouTubeEvent | null>
   setVideoID: SetState<string>
   setVideoTitle: SetState<string>
@@ -26,6 +29,7 @@ const AppActionContext = createContext<{
   setVideoNumber: SetState<string>
   setVideoDate: SetState<string>
 }>({
+  setVideoHref: () => {},
   setVideoEvent: () => {},
   setVideoID: () => {},
   setVideoTitle: () => {},
@@ -49,6 +53,7 @@ export default function AppProvider({
 }: {
   children: React.ReactNode
 }): JSX.Element {
+  const [videoHref, setVideoHref] = useState<string>('')
   const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)
   const [videoID, setVideoID] = useState('')
   const [videoTitle, setVideoTitle] = useState('')
@@ -63,6 +68,7 @@ export default function AppProvider({
 
   const appValue = useMemo(
     () => ({
+      videoHref,
       videoEvent,
       videoID,
       videoTitle,
@@ -70,11 +76,20 @@ export default function AppProvider({
       videoNumber,
       videoDate,
     }),
-    [videoArtist, videoDate, videoEvent, videoID, videoNumber, videoTitle],
+    [
+      videoArtist,
+      videoDate,
+      videoEvent,
+      videoHref,
+      videoID,
+      videoNumber,
+      videoTitle,
+    ],
   )
 
   const appAction = useMemo(
     () => ({
+      setVideoHref,
       setVideoEvent,
       setVideoID,
       setVideoTitle,

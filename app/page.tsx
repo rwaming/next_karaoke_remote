@@ -1,9 +1,9 @@
 'use client'
 
-import AppProvider from '../utils/AppProvider'
-import Controller from '../components/controller'
-import Search from '../components/search'
-import Player from '../components/player'
+import AppProvider from './utils/AppProvider'
+import Controller from './components/controller'
+import Search from './components/search'
+import Player from './components/player'
 
 export default function Main(): JSX.Element {
   return (
