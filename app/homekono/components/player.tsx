@@ -70,14 +70,14 @@ export default function Player(): JSX.Element {
         <p
           ref={playerLoadingRef}
           id='player-loading'
-          className='absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2'>
+          className='absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 opacity-75'>
           화면을 만들고 있어요.
         </p>
       )}
       <p
         ref={playerReadyRef}
         id='player-ready'
-        className='absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2'>
+        className='absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 opacity-75'>
         노래를 불러오고 있어요.
       </p>
       {videoID.includes('Error') && (

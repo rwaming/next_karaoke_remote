@@ -151,7 +151,7 @@
   @apply block;
 }
 .controller__search-close {
-  @apply sm:mt-16;
+  @apply m-4 mt-14 sm:mb-11 sm:ml-2 sm:mr-4 sm:mt-16;
 }
 .controller__search-open {
   @apply pt-2 sm:mt-1/2dvh;
@@ -293,6 +293,9 @@
     @apply sm:basis-96 sm:gap-1;
     * {
       @apply sm:m-0 sm:flex-row sm:gap-1 sm:p-0 sm:text-xs sm:tracking-tighter;
+    }
+    .inessential {
+      @apply hidden;
     }
     #controller-timebackward {
       @apply sm:hidden;
