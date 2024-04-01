@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import './globals.css'
-import './motion.css'
+import '@/styles/globals.css'
+import '@/styles/motion.css'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -25,10 +25,10 @@ export default function RootLayout({
         <div id='app' className='app w-scree bg relative h-dvh text-light'>
           <header
             id='header'
-            className='header absolute left-0 top-0 z-40 ml-4 mt-4 flex items-center sm:left-1'>
+            className='header absolute left-0 top-0 ml-4 mt-4 flex items-center sm:left-1'>
             <div
               id='header__group'
-              className='relative overflow-hidden whitespace-nowrap'>
+              className='relative z-50 overflow-hidden whitespace-nowrap'>
               <h1 className='h-8 select-none pl-2 text-2xl font-bold xs:text-2xl'>
                 홈코노
               </h1>
@@ -42,7 +42,7 @@ export default function RootLayout({
             <button
               type='button'
               id='header__open'
-              className='absolute left-1 top-1 h-6 w-6'>
+              className='absolute left-1 top-1 z-50 h-6 w-6'>
               <Image
                 src='/homekono_light.png'
                 width={1080}

@@ -1,18 +1,27 @@
 'use client'
 
-import { useRef } from 'react'
+import { useCallback, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { type Div } from '../../utils/Types'
 
 export default function Menu(): JSX.Element {
+  const router = useRouter()
   const menuRef = useRef<Div>(null)
+  const menuClose = useCallback(() => {
+    const menu = menuRef.current
+    if (menu !== null) {
+      menu.classList.remove('menu-opened')
+    }
+  }, [])
+  let menuCloseWait: NodeJS.Timeout
   return (
     <section id='menu'>
       <button
         id='menu__open'
         type='button'
-        className='absolute left-0 top-0 h-8 w-20 overflow-hidden whitespace-nowrap text-transparent'
+        className='absolute left-0 top-0 z-50 h-8 w-20 overflow-hidden whitespace-nowrap text-transparent'
         onMouseEnter={() => {
           const menu = menuRef.current
           if (menu !== null && window.innerWidth > 640) {
@@ -22,7 +31,11 @@ export default function Menu(): JSX.Element {
         onClick={() => {
           const menu = menuRef.current
           if (menu !== null) {
-            menu.classList.add('menu-opened')
+            if (window.innerWidth < 640) {
+              menu.classList.add('menu-opened')
+            } else {
+              router.push('/homekono')
+            }
           }
         }}>
         메뉴 열기, 홈으로 이동
@@ -30,13 +43,16 @@ export default function Menu(): JSX.Element {
       <nav
         ref={menuRef}
         id='menu-box'
-        className='menu-box absolute h-dvh w-2/3vw bg-deep xs:w-1/2vw sm:w-2/5vw md:w-1/3vw'
+        className='menu-box absolute z-40 h-dvh w-2/3vw bg-deep xs:w-1/2vw sm:w-2/5vw md:w-1/3vw'
+        onMouseEnter={() => {
+          if (window.innerWidth > 640) {
+            clearTimeout(menuCloseWait)
+          }
+        }}
         onMouseLeave={() => {
-          const menu = menuRef.current
-          if (menu !== null && window.innerWidth > 640) {
-            setTimeout(() => {
-              menu.classList.remove('menu-opened')
-            }, 2000)
+          console.log('in')
+          if (window.innerWidth > 640) {
+            menuCloseWait = setTimeout(menuClose, 4000)
           }
         }}>
         <ul>

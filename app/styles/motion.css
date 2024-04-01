@@ -108,6 +108,7 @@
 .menu-box {
   @apply -top-4;
   left: calc(-66.66vw - 1rem);
+  transition: left 1s cubic-bezier(0.5, 0.2, 0.1, 0.8);
 }
 @media screen and (min-width: 320px) {
   .menu-box {

@@ -12,7 +12,7 @@ export default function LoadingBody({
   return (
     <div
       id='loading'
-      className={`${!goHome && 'loading__disappear'} bg absolute z-50 flex h-dvh w-dvw flex-col items-center justify-center`}>
+      className='bg absolute z-50 flex h-dvh w-dvw flex-col items-center justify-center'>
       <Image
         src='/homekono_light.png'
         width={1080}

@@ -7,8 +7,8 @@ import {
   SearchActionContext,
   SearchRefContext,
 } from '../../utils/SearchProvider'
-import searchVideos from '../function/searchVideos'
-import searchOpenClose from '../function/searchOpenClose'
+import searchVideos from '../functions/searchVideos'
+import searchOpenClose from '../functions/searchOpenClose'
 
 export default function SearchArea(): JSX.Element {
   const { setVideoID } = useContext(HomekonoActionContext)

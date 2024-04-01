@@ -8,8 +8,8 @@ import {
   SearchRefContext,
   SearchValueContext,
 } from '../../utils/SearchProvider'
-import videoSelected from '../function/videoSelected'
-import searchOpenClose from '../function/searchOpenClose'
+import videoSelected from '../functions/videoSelected'
+import searchOpenClose from '../functions/searchOpenClose'
 
 export default function SearchList(): JSX.Element {
   const {

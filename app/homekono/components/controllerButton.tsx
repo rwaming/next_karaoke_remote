@@ -1,17 +1,17 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
 import { type Button } from '../../utils/Types'
-import playPause from '../function/playPause'
-import stopVideo from '../function/stopVideo'
-import timeMove from '../function/timeMove'
-import volumeUpDown from '../function/volumeUpDown'
-import speedUpDown from '../function/speedUpDown'
-import applause from '../function/applause'
+import playPause from '../functions/playPause'
+import stopVideo from '../functions/stopVideo'
+import timeMove from '../functions/timeMove'
+import volumeUpDown from '../functions/volumeUpDown'
+import speedUpDown from '../functions/speedUpDown'
+import applause from '../functions/applause'
 import ApplauseAudios from './controllerApplauseAudios'
 import {
   HomekonoActionContext,
   HomekonoValueContext,
 } from '../../utils/HomekonoProvider'
-import showLatestVideo from '../function/showLatestVideo'
+import showLatestVideo from '../functions/showLatestVideo'
 
 export default function ControllerButton({
   id,
