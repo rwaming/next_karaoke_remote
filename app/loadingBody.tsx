@@ -25,7 +25,10 @@ export default function LoadingBody({
           }
         }}
       />
-      <p className='dim pt-5'>Loading...</p>
+      <p className='dim pt-5'>
+        {isHome && '홈코노로 이동하고 있어요.'}
+        {!isHome && '화면을 구성하고 있어요.'}
+      </p>
     </div>
   )
 }
