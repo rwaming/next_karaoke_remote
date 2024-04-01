@@ -51,11 +51,11 @@
     transform: rotate(0deg);
   }
 }
-.header #menu-_open {
+.header #menu__open {
   @apply w-0;
   animation: disappear__menu-button 4s;
 }
-.header:hover #menu-_open {
+.header:hover #menu__open {
   @apply w-20 animate-none;
 }
 .header > #header__group {
@@ -74,12 +74,6 @@
   transition:
     opacity 0.2s,
     rotate 0s 0.2s;
-  box-shadow: inset -0.25rem -0.25rem rgba(0, 0, 0, 0.15);
-  background-image: linear-gradient(
-    150deg,
-    rgba(190, 176, 255, 0.05) 30%,
-    rgba(186, 138, 206, 0.2) 100%
-  );
 }
 .header:hover > #header__open {
   @apply animate-none opacity-0;
