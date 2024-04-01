@@ -1,5 +1,5 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
-import { type Button } from '../utils/Types'
+import { type Button } from '../../utils/Types'
 import playPause from '../function/playPause'
 import stopVideo from '../function/stopVideo'
 import timeMove from '../function/timeMove'
@@ -7,7 +7,7 @@ import volumeUpDown from '../function/volumeUpDown'
 import speedUpDown from '../function/speedUpDown'
 import applause from '../function/applause'
 import ApplauseAudios from './controllerApplauseAudios'
-import { AppActionContext, AppValueContext } from '../utils/AppProvider'
+import { AppActionContext, AppValueContext } from '../../utils/AppProvider'
 import showLatestVideo from '../function/showLatestVideo'
 
 export default function ControllerButton({

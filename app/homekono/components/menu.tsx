@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { type Div } from '../utils/Types'
+import { type Div } from '../../utils/Types'
 
 export default function Menu(): JSX.Element {
   const menuRef = useRef<Div>(null)

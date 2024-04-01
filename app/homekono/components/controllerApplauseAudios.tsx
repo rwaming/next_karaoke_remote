@@ -1,4 +1,4 @@
-import { type Audio, type UseRefArray } from '../utils/Types'
+import { type Audio, type UseRefArray } from '../../utils/Types'
 
 export default function ApplauseAudios({
   audioRefs,

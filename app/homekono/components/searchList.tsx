@@ -1,6 +1,9 @@
 import { useContext, useMemo } from 'react'
-import { AppActionContext, AppRefContext } from '../utils/AppProvider'
-import { SearchRefContext, SearchValueContext } from '../utils/SearchProvider'
+import { AppActionContext, AppRefContext } from '../../utils/AppProvider'
+import {
+  SearchRefContext,
+  SearchValueContext,
+} from '../../utils/SearchProvider'
 import showSelectedVideo from '../function/showSelectedVideo'
 import searchOpenClose from '../function/searchOpenClose'
 

@@ -1,6 +1,9 @@
 import { useContext } from 'react'
-import { AppActionContext, AppRefContext } from '../utils/AppProvider'
-import { SearchActionContext, SearchRefContext } from '../utils/SearchProvider'
+import { AppActionContext, AppRefContext } from '../../utils/AppProvider'
+import {
+  SearchActionContext,
+  SearchRefContext,
+} from '../../utils/SearchProvider'
 import searchVideos from '../function/searchVideos'
 import searchOpenClose from '../function/searchOpenClose'
 

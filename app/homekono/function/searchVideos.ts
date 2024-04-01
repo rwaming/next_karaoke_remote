@@ -5,7 +5,7 @@ import {
   type UseRef,
   type SetState,
   type SearchInfo,
-} from '../utils/Types'
+} from '../../utils/Types'
 
 function isVideoInfos(value: SearchInfo): value is VideoInfos {
   return value.every((info) => typeof info === 'object')

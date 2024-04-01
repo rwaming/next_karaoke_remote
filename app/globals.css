@@ -30,6 +30,40 @@
 
 /* uitils */
 @layer utilities {
+  .bg {
+    @apply bg-black;
+    background-image: radial-gradient(
+        at 80% 95%,
+        rgba(68, 51, 204, 0.2) 20%,
+        rgba(2, 21, 93, 0.2) 50%
+      ),
+      radial-gradient(
+        at 20% 0%,
+        rgba(130, 51, 204, 0.3) 20%,
+        rgba(9, 18, 57, 0.2) 50%
+      ),
+      radial-gradient(
+        at 0% 70%,
+        rgba(158, 54, 255, 0.5) 20%,
+        rgba(36, 46, 88, 0.2) 50%
+      ),
+      radial-gradient(
+        at 95% 0%,
+        rgba(40, 23, 149, 0.2) 20%,
+        rgba(4, 12, 46, 0.2) 50%
+      ),
+      radial-gradient(
+        at 55% 10%,
+        rgba(183, 156, 48, 0.2) 10%,
+        rgba(100, 77, 88, 0.2) 30%,
+        rgba(0, 0, 0, 0.2) 50%
+      ),
+      radial-gradient(
+        at 95% 0%,
+        rgba(40, 150, 114, 0.2) 20%,
+        rgba(33, 51, 125, 0.2) 50%
+      );
+  }
   .scroll {
     overflow: scroll;
     scrollbar-width: none;
@@ -78,40 +112,6 @@
 
 /* id */
 @layer components {
-  .app {
-    background-image: radial-gradient(
-        at 80% 95%,
-        rgba(68, 51, 204, 0.2) 20%,
-        rgba(2, 21, 93, 0.2) 50%
-      ),
-      radial-gradient(
-        at 20% 0%,
-        rgba(130, 51, 204, 0.3) 20%,
-        rgba(9, 18, 57, 0.2) 50%
-      ),
-      radial-gradient(
-        at 0% 70%,
-        rgba(158, 54, 255, 0.5) 20%,
-        rgba(36, 46, 88, 0.2) 50%
-      ),
-      radial-gradient(
-        at 95% 0%,
-        rgba(40, 23, 149, 0.2) 20%,
-        rgba(4, 12, 46, 0.2) 50%
-      ),
-      radial-gradient(
-        at 55% 10%,
-        rgba(183, 156, 48, 0.2) 10%,
-        rgba(100, 77, 88, 0.2) 30%,
-        rgba(0, 0, 0, 0.2) 50%
-      ),
-      radial-gradient(
-        at 95% 0%,
-        rgba(40, 150, 114, 0.2) 20%,
-        rgba(33, 51, 125, 0.2) 50%
-      );
-  }
-
   .player-content__youtube {
     visibility: hidden;
     > iframe {
