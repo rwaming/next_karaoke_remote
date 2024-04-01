@@ -294,6 +294,9 @@
     * {
       @apply sm:m-0 sm:flex-row sm:gap-1 sm:p-0 sm:text-xs sm:tracking-tighter;
     }
+    .inessential {
+      @apply hidden;
+    }
     #controller-timebackward {
       @apply sm:hidden;
     }

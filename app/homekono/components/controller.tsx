@@ -104,7 +104,7 @@ export default function Controller(): JSX.Element {
             />
           </div>
         </div>
-        <div className='button-row'>
+        <div className='button-row inessential'>
           <ControllerButton
             id='controller-timebackward'
             text='◀️ 마디점프'
