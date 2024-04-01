@@ -7,7 +7,10 @@ import volumeUpDown from '../function/volumeUpDown'
 import speedUpDown from '../function/speedUpDown'
 import applause from '../function/applause'
 import ApplauseAudios from './controllerApplauseAudios'
-import { AppActionContext, AppValueContext } from '../../utils/AppProvider'
+import {
+  HomekonoActionContext,
+  HomekonoValueContext,
+} from '../../utils/HomekonoProvider'
 import showLatestVideo from '../function/showLatestVideo'
 
 export default function ControllerButton({
@@ -21,14 +24,14 @@ export default function ControllerButton({
   emoji: string
   className: string
 }): JSX.Element {
-  const { videoEvent } = useContext(AppValueContext)
+  const { playerEvent } = useContext(HomekonoValueContext)
   const {
     setVideoID,
     setVideoTitle,
     setVideoArtist,
     setVideoNumber,
     setVideoDate,
-  } = useContext(AppActionContext)
+  } = useContext(HomekonoActionContext)
 
   const applauseRef1 = useRef(null)
   const applauseRef2 = useRef(null)
@@ -47,11 +50,11 @@ export default function ControllerButton({
           setVideoDate,
         )
       )
-      id.includes('playpause') && playPause(videoEvent)
-      id.includes('stop') && stopVideo(videoEvent)
-      id.includes('time') && timeMove(event, videoEvent)
-      id.includes('volume') && volumeUpDown(event, videoEvent)
-      id.includes('speed') && speedUpDown(event, videoEvent)
+      id.includes('playpause') && playPause(playerEvent)
+      id.includes('stop') && stopVideo(playerEvent)
+      id.includes('time') && timeMove(event, playerEvent)
+      id.includes('volume') && volumeUpDown(event, playerEvent)
+      id.includes('speed') && speedUpDown(event, playerEvent)
       id.includes('applause') &&
         applause([applauseRef1, applauseRef2, applauseRef3, applauseRef4])
     },
@@ -62,7 +65,7 @@ export default function ControllerButton({
       setVideoID,
       setVideoNumber,
       setVideoTitle,
-      videoEvent,
+      playerEvent,
     ],
   )
   return (

@@ -1,5 +1,8 @@
 import { useContext, useMemo } from 'react'
-import { AppActionContext, AppRefContext } from '../../utils/AppProvider'
+import {
+  HomekonoActionContext,
+  HomekonoRefContext,
+} from '../../utils/HomekonoProvider'
 import {
   SearchRefContext,
   SearchValueContext,
@@ -14,8 +17,8 @@ export default function SearchList(): JSX.Element {
     setVideoArtist,
     setVideoNumber,
     setVideoDate,
-  } = useContext(AppActionContext)
-  const { playerRef, controllerRef, searchRef } = useContext(AppRefContext)
+  } = useContext(HomekonoActionContext)
+  const { playerRef, controllerRef, searchRef } = useContext(HomekonoRefContext)
   const {
     videoInfos,
     searchListNote: listNote,

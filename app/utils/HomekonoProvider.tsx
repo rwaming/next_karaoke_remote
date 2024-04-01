@@ -2,9 +2,9 @@ import { createContext, useState, useRef, useMemo } from 'react'
 import { type YouTubeEvent } from 'react-youtube'
 import { type Div, type SetState, type UseRef } from './Types'
 
-const AppValueContext = createContext<{
+const HomekonoValueContext = createContext<{
   videoHref: string
-  videoEvent: YouTubeEvent | null
+  playerEvent: YouTubeEvent | null
   videoID: string
   videoTitle: string
   videoArtist: string
@@ -12,7 +12,7 @@ const AppValueContext = createContext<{
   videoDate: string
 }>({
   videoHref: '',
-  videoEvent: null,
+  playerEvent: null,
   videoID: '',
   videoTitle: '',
   videoArtist: '',
@@ -20,9 +20,9 @@ const AppValueContext = createContext<{
   videoDate: '',
 })
 
-const AppActionContext = createContext<{
+const HomekonoActionContext = createContext<{
   setVideoHref: SetState<string>
-  setVideoEvent: SetState<YouTubeEvent | null>
+  setPlayerEvent: SetState<YouTubeEvent | null>
   setVideoID: SetState<string>
   setVideoTitle: SetState<string>
   setVideoArtist: SetState<string>
@@ -30,7 +30,7 @@ const AppActionContext = createContext<{
   setVideoDate: SetState<string>
 }>({
   setVideoHref: () => {},
-  setVideoEvent: () => {},
+  setPlayerEvent: () => {},
   setVideoID: () => {},
   setVideoTitle: () => {},
   setVideoArtist: () => {},
@@ -38,29 +38,35 @@ const AppActionContext = createContext<{
   setVideoDate: () => {},
 })
 
-const AppRefContext = createContext<{
+const HomekonoRefContext = createContext<{
   playerRef: UseRef<Div>
+  playerLoadingRef: UseRef<Div>
+  playerReadyRef: UseRef<Div>
   controllerRef: UseRef<Div>
   searchRef: UseRef<Div>
 }>({
   playerRef: { current: null },
+  playerLoadingRef: { current: null },
+  playerReadyRef: { current: null },
   controllerRef: { current: null },
   searchRef: { current: null },
 })
 
-export default function AppProvider({
+export default function HomekonoProvider({
   children,
 }: {
   children: React.ReactNode
 }): JSX.Element {
   const [videoHref, setVideoHref] = useState<string>('')
-  const [videoEvent, setVideoEvent] = useState<YouTubeEvent | null>(null)
+  const [playerEvent, setPlayerEvent] = useState<YouTubeEvent | null>(null)
   const [videoID, setVideoID] = useState('')
   const [videoTitle, setVideoTitle] = useState('')
   const [videoArtist, setVideoArtist] = useState('')
   const [videoNumber, setVideoNumber] = useState('')
   const [videoDate, setVideoDate] = useState('')
   const playerRef = useRef(null)
+  const playerLoadingRef = useRef<Div>(null)
+  const playerReadyRef = useRef<Div>(null)
   const controllerRef = useRef(null)
   const searchRef = useRef(null)
   const searchValueRef = useRef(null)
@@ -69,7 +75,7 @@ export default function AppProvider({
   const appValue = useMemo(
     () => ({
       videoHref,
-      videoEvent,
+      playerEvent,
       videoID,
       videoTitle,
       videoArtist,
@@ -79,7 +85,7 @@ export default function AppProvider({
     [
       videoArtist,
       videoDate,
-      videoEvent,
+      playerEvent,
       videoHref,
       videoID,
       videoNumber,
@@ -90,7 +96,7 @@ export default function AppProvider({
   const appAction = useMemo(
     () => ({
       setVideoHref,
-      setVideoEvent,
+      setPlayerEvent,
       setVideoID,
       setVideoTitle,
       setVideoArtist,
@@ -103,6 +109,8 @@ export default function AppProvider({
   const appRef = useMemo(
     () => ({
       playerRef,
+      playerLoadingRef,
+      playerReadyRef,
       controllerRef,
       searchRef,
       searchValueRef,
@@ -112,14 +120,14 @@ export default function AppProvider({
   )
 
   return (
-    <AppValueContext.Provider value={appValue}>
-      <AppActionContext.Provider value={appAction}>
-        <AppRefContext.Provider value={appRef}>
+    <HomekonoValueContext.Provider value={appValue}>
+      <HomekonoActionContext.Provider value={appAction}>
+        <HomekonoRefContext.Provider value={appRef}>
           {children}
-        </AppRefContext.Provider>
-      </AppActionContext.Provider>
-    </AppValueContext.Provider>
+        </HomekonoRefContext.Provider>
+      </HomekonoActionContext.Provider>
+    </HomekonoValueContext.Provider>
   )
 }
 
-export { AppValueContext, AppActionContext, AppRefContext }
+export { HomekonoValueContext, HomekonoActionContext, HomekonoRefContext }

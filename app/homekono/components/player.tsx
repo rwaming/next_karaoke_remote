@@ -1,63 +1,19 @@
-import { useCallback, useContext, useRef } from 'react'
-import YouTube, { type YouTubeEvent } from 'react-youtube'
+import { useContext } from 'react'
 import Link from 'next/link'
-import { type Div, type IFrame } from '../../utils/Types'
 import {
-  AppActionContext,
-  AppRefContext,
-  AppValueContext,
-} from '../../utils/AppProvider'
+  HomekonoRefContext,
+  HomekonoValueContext,
+} from '@/utils/HomekonoProvider'
 
-export default function Player(): JSX.Element {
+export default function Player({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>): JSX.Element {
   const { videoID, videoTitle, videoArtist, videoNumber, videoDate } =
-    useContext(AppValueContext)
-  const { setVideoEvent } = useContext(AppActionContext)
-  const { playerRef } = useContext(AppRefContext)
-
-  const playerLoadingRef = useRef<Div>(null)
-  const playerReadyRef = useRef<Div>(null)
-
-  const readyToUsePlayer = useCallback(
-    (event: YouTubeEvent) => {
-      // get youtube event
-      setVideoEvent(event)
-      const playerLoading = playerLoadingRef.current
-      playerLoading?.classList.add('hidden')
-      const playerIframe: IFrame = event.target.getIframe()
-      const playerYT = playerIframe.parentElement
-      playerYT?.classList.add('mini-size')
-      event.target.playVideo()
-    },
-    [setVideoEvent],
-  )
-  const stateSize = useCallback((event: YouTubeEvent) => {
-    const state = event.data
-    if (typeof state === 'number') {
-      const playerIframe: IFrame = event.target.getIframe()
-      const playerYT = playerIframe.parentElement
-      const playerReady = playerReadyRef.current
-      if (state === -1) {
-        playerYT?.classList.add('sm:mini-size')
-      } else {
-        playerYT?.classList.remove('sm:mini-size')
-      }
-      if (state === 3) {
-        playerYT?.classList.add('mini-size')
-        playerYT?.classList.remove('full-size')
-        playerReady?.classList.remove('hidden')
-      } else {
-        playerYT?.classList.add('full-size')
-        playerYT?.classList.remove('mini-size')
-        playerReady?.classList.add('hidden')
-      }
-    }
-  }, [])
-  const playVideoHighQuility = useCallback((event: YouTubeEvent) => {
-    event.target.setPlaybackQuality('highres')
-  }, [])
-  const EndNoMoreVideos = useCallback((event: YouTubeEvent) => {
-    event.target.stopVideo()
-  }, [])
+    useContext(HomekonoValueContext)
+  const { playerRef, playerLoadingRef, playerReadyRef } =
+    useContext(HomekonoRefContext)
 
   return (
     <section
@@ -82,34 +38,16 @@ export default function Player(): JSX.Element {
       </p>
       {videoID.includes('Error') && (
         <p
-          id='player-loading'
+          id='player-error'
           className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
           {videoID}
         </p>
       )}
+
       <div
         id='player-content'
         className='player-content relative flex h-16-9dvh w-full justify-center overflow-hidden bg-dark bg-opacity-50 sm:h-full sm:flex-col sm:items-center sm:rounded-lg'>
-        {videoID !== '' && !videoID.includes('Error') && (
-          <YouTube
-            className='player-content__youtube'
-            videoId={videoID}
-            opts={{
-              playerVars: {
-                controls: 0,
-                disablekb: 1,
-                fs: 0,
-                modestbranding: 1,
-                iv_load_policy: 3,
-                rel: 0,
-              },
-            }}
-            onReady={readyToUsePlayer}
-            onPlay={playVideoHighQuility}
-            onEnd={EndNoMoreVideos}
-            onStateChange={stateSize}
-          />
-        )}
+        {children}
 
         {videoID !== '' && (
           <figure
