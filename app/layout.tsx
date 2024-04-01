@@ -4,7 +4,7 @@ import './motion.css'
 
 import Link from 'next/link'
 import Image from 'next/image'
-// import Menu from '../components/menu'
+import Menu from '@/homekono/components/menu'
 
 export const metadata: Metadata = {
   title: '홈코노 - 집에서 즐기는 나만의 노래방',
@@ -51,7 +51,7 @@ export default function RootLayout({
                 className='h-6 w-6'
               />
             </button>
-            {/* <Menu /> */}
+            <Menu />
           </header>
 
           {children}

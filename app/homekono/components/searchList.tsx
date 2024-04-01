@@ -1,4 +1,5 @@
 import { useContext, useMemo } from 'react'
+import { useRouter } from 'next/navigation'
 import {
   HomekonoActionContext,
   HomekonoRefContext,
@@ -7,7 +8,7 @@ import {
   SearchRefContext,
   SearchValueContext,
 } from '../../utils/SearchProvider'
-import showSelectedVideo from '../function/showSelectedVideo'
+import videoSelected from '../function/videoSelected'
 import searchOpenClose from '../function/searchOpenClose'
 
 export default function SearchList(): JSX.Element {
@@ -26,6 +27,7 @@ export default function SearchList(): JSX.Element {
   } = useContext(SearchValueContext)
   const { searchModalRef } = useContext(SearchRefContext)
 
+  const router = useRouter()
   const changeVideoArgs = useMemo(
     () => ({
       playerRef,
@@ -38,6 +40,7 @@ export default function SearchList(): JSX.Element {
       setVideoArtist,
       setVideoNumber,
       setVideoDate,
+      router,
     }),
     [
       controllerRef,
@@ -50,6 +53,7 @@ export default function SearchList(): JSX.Element {
       setVideoNumber,
       setVideoTitle,
       videoInfos,
+      router,
     ],
   )
   return (
@@ -86,7 +90,7 @@ export default function SearchList(): JSX.Element {
                       type='button'
                       className='search-list__li-click'
                       onClick={(event) => {
-                        showSelectedVideo(event, changeVideoArgs)
+                        videoSelected(event, changeVideoArgs)
                       }}>
                       <p className='search-list__li-title'>{v.title}</p>
                       <p className='search-list__li-artist'>{v.artist}</p>

@@ -13,18 +13,32 @@ export default function Menu(): JSX.Element {
         id='menu__open'
         type='button'
         className='absolute left-0 top-0 h-8 w-20 overflow-hidden whitespace-nowrap text-transparent'
+        onMouseEnter={() => {
+          const menu = menuRef.current
+          if (menu !== null && window.innerWidth > 640) {
+            menu.classList.add('menu-opened')
+          }
+        }}
         onClick={() => {
           const menu = menuRef.current
           if (menu !== null) {
             menu.classList.add('menu-opened')
           }
         }}>
-        메뉴 바 열기
+        메뉴 열기, 홈으로 이동
       </button>
       <nav
         ref={menuRef}
         id='menu-box'
-        className='menu-box absolute h-dvh w-2/3vw bg-deep xs:w-1/2vw sm:w-2/5vw md:w-1/3vw'>
+        className='menu-box absolute h-dvh w-2/3vw bg-deep xs:w-1/2vw sm:w-2/5vw md:w-1/3vw'
+        onMouseLeave={() => {
+          const menu = menuRef.current
+          if (menu !== null && window.innerWidth > 640) {
+            setTimeout(() => {
+              menu.classList.remove('menu-opened')
+            }, 2000)
+          }
+        }}>
         <ul>
           <li>홈코노</li>
           <li>RWAM</li>

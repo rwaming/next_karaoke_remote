@@ -1,4 +1,5 @@
 import { type MouseEvent } from 'react'
+import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
 import {
   type Div,
   type UseRef,
@@ -8,19 +9,20 @@ import {
 } from '../../utils/Types'
 import searchOpenClose from './searchOpenClose'
 
-export default function showSelectedVideo(
+export default function videoSelected(
   event: MouseEvent,
   {
-    playerRef,
     controllerRef,
-    searchRef,
+    playerRef,
     searchModalRef,
-    videoInfos,
-    setVideoID,
-    setVideoTitle,
+    searchRef,
     setVideoArtist,
-    setVideoNumber,
     setVideoDate,
+    setVideoID,
+    setVideoNumber,
+    setVideoTitle,
+    videoInfos,
+    router,
   }: {
     playerRef: UseRef<Div>
     controllerRef: UseRef<Div>
@@ -32,6 +34,7 @@ export default function showSelectedVideo(
     setVideoArtist: SetState<string>
     setVideoNumber: SetState<string>
     setVideoDate: SetState<string>
+    router: AppRouterInstance
   },
 ): void {
   event.preventDefault()
@@ -50,5 +53,6 @@ export default function showSelectedVideo(
     setVideoArtist(artist)
     setVideoNumber(number)
     setVideoDate(date)
+    router.push(`/homekono/konoplayer/${id}`)
   }
 }
