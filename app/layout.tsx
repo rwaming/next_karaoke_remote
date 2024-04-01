@@ -28,15 +28,16 @@ export default function RootLayout({
             className='header absolute left-0 top-0 ml-4 mt-4 flex items-center sm:left-1'>
             <div
               id='header__group'
-              className='relative z-50 overflow-hidden whitespace-nowrap'>
+              className='relative z-50 overflow-x-hidden whitespace-nowrap'>
               <h1 className='h-8 select-none pl-2 text-2xl font-bold xs:text-2xl'>
                 홈코노
               </h1>
               <p
-                id='upate'
-                className='upate absolute left-16 top-3 hidden pl-2 text-xs font-light opacity-75 sm:ml-2 sm:inline'>
-                <span className='hidden md:inline'>마지막 업데이트: </span>
-                <time dateTime='2024-03-30'>2024. 04. 01. 월요일</time>
+                id='update'
+                className='update absolute left-16 top-3 z-50 hidden pl-2 text-xs font-light opacity-75 sm:ml-2 sm:inline'>
+                <time dateTime='2024-03-30' className='inline-block'>
+                  2024. 04. 01. 월요일
+                </time>
               </p>
             </div>
             <button

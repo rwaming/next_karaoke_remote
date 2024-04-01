@@ -9,6 +9,13 @@ import { type Div } from '../../utils/Types'
 export default function Menu(): JSX.Element {
   const router = useRouter()
   const menuRef = useRef<Div>(null)
+
+  const menuOpen = useCallback(() => {
+    const menu = menuRef.current
+    if (menu !== null) {
+      menu.classList.add('menu-opened')
+    }
+  }, [])
   const menuClose = useCallback(() => {
     const menu = menuRef.current
     if (menu !== null) {
@@ -19,23 +26,25 @@ export default function Menu(): JSX.Element {
   return (
     <section id='menu'>
       <button
+        type='button'
+        id='menu-modal'
+        className='absolute -left-4 -top-4 z-40 h-dvh w-dvw bg-slate-900 bg-opacity-50 text-transparent sm:-left-5'>
+        메뉴 닫기
+      </button>
+      <button
         id='menu__open'
         type='button'
         className='absolute left-0 top-0 z-50 h-8 w-20 overflow-hidden whitespace-nowrap text-transparent'
         onMouseEnter={() => {
-          const menu = menuRef.current
-          if (menu !== null && window.innerWidth > 640) {
-            menu.classList.add('menu-opened')
+          if (window.innerWidth > 640) {
+            menuOpen()
           }
         }}
         onClick={() => {
-          const menu = menuRef.current
-          if (menu !== null) {
-            if (window.innerWidth < 640) {
-              menu.classList.add('menu-opened')
-            } else {
-              router.push('/homekono')
-            }
+          if (window.innerWidth < 640) {
+            menuOpen()
+          } else {
+            router.push('/homekono')
           }
         }}>
         메뉴 열기, 홈으로 이동
@@ -50,7 +59,6 @@ export default function Menu(): JSX.Element {
           }
         }}
         onMouseLeave={() => {
-          console.log('in')
           if (window.innerWidth > 640) {
             menuCloseWait = setTimeout(menuClose, 4000)
           }
