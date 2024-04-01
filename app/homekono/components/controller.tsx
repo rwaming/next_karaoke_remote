@@ -1,7 +1,7 @@
 import { useContext, useRef } from 'react'
-import { AppRefContext } from '../utils/AppProvider'
+import { AppRefContext } from '../../utils/AppProvider'
 import ControllerButton from './controllerButton'
-import { type Button } from '../utils/Types'
+import { type Button } from '../../utils/Types'
 
 export default function Controller(): JSX.Element {
   const { playerRef, controllerRef } = useContext(AppRefContext)

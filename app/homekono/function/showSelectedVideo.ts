@@ -5,7 +5,7 @@ import {
   type Button,
   type VideoInfos,
   type SetState,
-} from '../utils/Types'
+} from '../../utils/Types'
 import searchOpenClose from './searchOpenClose'
 
 export default function showSelectedVideo(

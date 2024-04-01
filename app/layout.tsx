@@ -22,9 +22,7 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body>
-        <div
-          id='app'
-          className='app relative h-dvh w-screen bg-black text-light'>
+        <div id='app' className='app w-scree bg relative h-dvh text-light'>
           <header
             id='header'
             className='header absolute left-0 top-0 z-40 ml-4 mt-4 flex items-center sm:left-1'>

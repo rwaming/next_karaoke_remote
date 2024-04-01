@@ -1,12 +1,12 @@
 import { useCallback, useContext, useRef } from 'react'
 import YouTube, { type YouTubeEvent } from 'react-youtube'
 import Link from 'next/link'
-import { type Div, type IFrame } from '../utils/Types'
+import { type Div, type IFrame } from '../../utils/Types'
 import {
   AppActionContext,
   AppRefContext,
   AppValueContext,
-} from '../utils/AppProvider'
+} from '../../utils/AppProvider'
 
 export default function Player(): JSX.Element {
   const { videoID, videoTitle, videoArtist, videoNumber, videoDate } =

@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import SearchProvider, { SearchRefContext } from '../utils/SearchProvider'
+import SearchProvider, { SearchRefContext } from '../../utils/SearchProvider'
 import SearchArea from './searchArea'
-import { AppRefContext } from '../utils/AppProvider'
+import { AppRefContext } from '../../utils/AppProvider'
 import searchOpenClose from '../function/searchOpenClose'
 import SearchList from './searchList'
 
