@@ -151,7 +151,7 @@
   @apply block;
 }
 .controller__search-close {
-  @apply sm:mt-16;
+  @apply m-4 mt-14 sm:mb-11 sm:ml-2 sm:mr-4 sm:mt-16;
 }
 .controller__search-open {
   @apply pt-2 sm:mt-1/2dvh;
