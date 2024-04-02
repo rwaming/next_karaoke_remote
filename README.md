@@ -70,9 +70,21 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 <br>
 
+> _2024.04.02.tue_
+
+#### #101 - Dynamic route player page(2)
+
+- Make these functions
+  1.  A user can access to link giving youtube video though type keywords in URL bar.
+      - It makes it possible to get information
+        1. how many users select a specific song
+        1. where user access to that page from.
+
+<br>
+
 > _2024.04.01.mon_
 
-#### #101 - Dynamic route player page
+#### #101 - Dynamic route player page(1)
 
 - In progress
 
@@ -80,7 +92,7 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.03.31.sun_
 
-#### #95 - Finish UI/UX
+#### ~~#95 - Finish UI/UX~~
 
 - Make layout clean.
 - Pause for make dynamic routing for player page.
