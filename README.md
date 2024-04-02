@@ -79,6 +79,12 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
       - It makes it possible to get information
         1. how many users select a specific song
         1. where user access to that page from.
+  1.  Remote controller can be hided.
+  1.  Open and hide nav, menu bar.
+  1.  Entities will be decoded. (html-entities)
+  1.  Motions in mobile and PC is divided. (Especially for mobile which has only tap, not hover)
+- Remove unnecessary variable.
+  1. states like videoTitle, videoArtist...
 
 <br>
 
