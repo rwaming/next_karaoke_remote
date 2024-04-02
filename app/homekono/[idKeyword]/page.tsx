@@ -6,9 +6,10 @@ import {
   HomekonoActionContext,
   HomekonoRefContext,
 } from '@/utils/HomekonoProvider'
+import { useRouter } from 'next/navigation'
 import {
   EndNoMoreVideos,
-  checkID,
+  playOrSearch,
   playVideoHighQuility,
   readyToUsePlayer,
   stateSize,
@@ -19,15 +20,43 @@ export default function Video({
 }: {
   params: { idKeyword: string }
 }): JSX.Element {
-  const idKeyword = decodeURIComponent(params.idKeyword)
-  const { setPlayerEvent, setVideoID } = useContext(HomekonoActionContext)
+  const {
+    setPlayerEvent,
+    setVideoID,
+    setVideoTitle,
+    setVideoArtist,
+    setVideoNumber,
+    setVideoDate,
+  } = useContext(HomekonoActionContext)
   const { playerLoadingRef, playerReadyRef } = useContext(HomekonoRefContext)
 
+  const router = useRouter()
+  const idKeyword = decodeURIComponent(params.idKeyword)
   const [isNotID, setIsNotID] = useState(false)
 
   useEffect(() => {
-    void checkID(idKeyword, setVideoID, setIsNotID)
-  }, [idKeyword, setVideoID])
+    void playOrSearch(
+      idKeyword,
+      isNotID,
+      setIsNotID,
+      setVideoID,
+      setVideoTitle,
+      setVideoArtist,
+      setVideoNumber,
+      setVideoDate,
+      router,
+    )
+  }, [
+    idKeyword,
+    isNotID,
+    router,
+    setVideoArtist,
+    setVideoDate,
+    setVideoID,
+    setVideoNumber,
+    setVideoTitle,
+  ])
+
   return isNotID ? (
     <div id='player-content__search'>
       <p className='font-light'>{`${idKeyword}`}를 검색하고 있어요.</p>
