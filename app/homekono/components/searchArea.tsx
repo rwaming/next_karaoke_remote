@@ -8,7 +8,7 @@ import videoSearch from '@/homekono/functions/videoSearch'
 import searchOpenClose from '@/homekono/functions/searchOpenClose'
 
 export default function SearchArea(): JSX.Element {
-  const { setVideoID } = useContext(HomekonoActionContext)
+  const { setPlayerState } = useContext(HomekonoActionContext)
   const { playerRef, controllerRef, searchRef } = useContext(HomekonoRefContext)
   const { searchValueRef, searchModalRef } = useContext(SearchRefContext)
   const { setVideoInfos, setVideoAllLength } = useContext(SearchActionContext)
@@ -72,7 +72,7 @@ export default function SearchArea(): JSX.Element {
                   event.preventDefault()
                   void videoSearch(
                     searchKeyword,
-                    setVideoID,
+                    setPlayerState,
                     setVideoInfos,
                     setVideoAllLength,
                   )

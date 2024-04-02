@@ -5,37 +5,21 @@ import { type Div, type SetState, type UseRef } from './Types'
 const HomekonoValueContext = createContext<{
   videoHref: string
   playerEvent: YouTubeEvent | null
-  videoID: string
-  videoTitle: string
-  videoArtist: string
-  videoNumber: string
-  videoDate: string
+  playerState: string
 }>({
   videoHref: '',
   playerEvent: null,
-  videoID: '',
-  videoTitle: '',
-  videoArtist: '',
-  videoNumber: '',
-  videoDate: '',
+  playerState: '',
 })
 
 const HomekonoActionContext = createContext<{
   setVideoHref: SetState<string>
   setPlayerEvent: SetState<YouTubeEvent | null>
-  setVideoID: SetState<string>
-  setVideoTitle: SetState<string>
-  setVideoArtist: SetState<string>
-  setVideoNumber: SetState<string>
-  setVideoDate: SetState<string>
+  setPlayerState: SetState<string>
 }>({
   setVideoHref: () => {},
   setPlayerEvent: () => {},
-  setVideoID: () => {},
-  setVideoTitle: () => {},
-  setVideoArtist: () => {},
-  setVideoNumber: () => {},
-  setVideoDate: () => {},
+  setPlayerState: () => {},
 })
 
 const HomekonoRefContext = createContext<{
@@ -59,11 +43,7 @@ export default function HomekonoProvider({
 }): JSX.Element {
   const [videoHref, setVideoHref] = useState<string>('')
   const [playerEvent, setPlayerEvent] = useState<YouTubeEvent | null>(null)
-  const [videoID, setVideoID] = useState('')
-  const [videoTitle, setVideoTitle] = useState('')
-  const [videoArtist, setVideoArtist] = useState('')
-  const [videoNumber, setVideoNumber] = useState('')
-  const [videoDate, setVideoDate] = useState('')
+  const [playerState, setPlayerState] = useState('')
   const playerRef = useRef(null)
   const playerLoadingRef = useRef<Div>(null)
   const playerReadyRef = useRef<Div>(null)
@@ -76,32 +56,16 @@ export default function HomekonoProvider({
     () => ({
       videoHref,
       playerEvent,
-      videoID,
-      videoTitle,
-      videoArtist,
-      videoNumber,
-      videoDate,
+      playerState,
     }),
-    [
-      videoArtist,
-      videoDate,
-      playerEvent,
-      videoHref,
-      videoID,
-      videoNumber,
-      videoTitle,
-    ],
+    [playerEvent, playerState, videoHref],
   )
 
   const appAction = useMemo(
     () => ({
       setVideoHref,
       setPlayerEvent,
-      setVideoID,
-      setVideoTitle,
-      setVideoArtist,
-      setVideoNumber,
-      setVideoDate,
+      setPlayerState,
     }),
     [],
   )

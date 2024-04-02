@@ -12,13 +12,7 @@ import videoSelected from '../functions/videoSelected'
 import searchOpenClose from '../functions/searchOpenClose'
 
 export default function SearchList(): JSX.Element {
-  const {
-    setVideoID,
-    setVideoTitle,
-    setVideoArtist,
-    setVideoNumber,
-    setVideoDate,
-  } = useContext(HomekonoActionContext)
+  const { setPlayerState } = useContext(HomekonoActionContext)
   const { playerRef, controllerRef, searchRef } = useContext(HomekonoRefContext)
   const {
     videoInfos,
@@ -35,25 +29,17 @@ export default function SearchList(): JSX.Element {
       searchRef,
       searchModalRef,
       videoInfos,
-      setVideoID,
-      setVideoTitle,
-      setVideoArtist,
-      setVideoNumber,
-      setVideoDate,
+      setPlayerState,
       router,
     }),
     [
       controllerRef,
       playerRef,
+      router,
       searchModalRef,
       searchRef,
-      setVideoArtist,
-      setVideoDate,
-      setVideoID,
-      setVideoNumber,
-      setVideoTitle,
+      setPlayerState,
       videoInfos,
-      router,
     ],
   )
   return (

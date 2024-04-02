@@ -20,14 +20,7 @@ export default function Video({
 }: {
   params: { idKeyword: string }
 }): JSX.Element {
-  const {
-    setPlayerEvent,
-    setVideoID,
-    setVideoTitle,
-    setVideoArtist,
-    setVideoNumber,
-    setVideoDate,
-  } = useContext(HomekonoActionContext)
+  const { setPlayerEvent, setPlayerState } = useContext(HomekonoActionContext)
   const { playerLoadingRef, playerReadyRef } = useContext(HomekonoRefContext)
 
   const router = useRouter()
@@ -35,27 +28,8 @@ export default function Video({
   const [isNotID, setIsNotID] = useState(false)
 
   useEffect(() => {
-    void playOrSearch(
-      idKeyword,
-      isNotID,
-      setIsNotID,
-      setVideoID,
-      setVideoTitle,
-      setVideoArtist,
-      setVideoNumber,
-      setVideoDate,
-      router,
-    )
-  }, [
-    idKeyword,
-    isNotID,
-    router,
-    setVideoArtist,
-    setVideoDate,
-    setVideoID,
-    setVideoNumber,
-    setVideoTitle,
-  ])
+    void playOrSearch(idKeyword, isNotID, setIsNotID, setPlayerState, router)
+  }, [idKeyword, isNotID, router, setPlayerState])
 
   return isNotID ? (
     <div id='player-content__search'>

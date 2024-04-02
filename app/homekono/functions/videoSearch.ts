@@ -7,7 +7,7 @@ function isVideoInfos(value: SearchInfo): value is VideoInfos {
 
 async function getSearchInfo(
   searchKeyword: string,
-  setVideoID: SetState<string>,
+  setPlayerState: SetState<string>,
 ): Promise<SearchInfo> {
   const param = {
     part: 'snippet',
@@ -24,7 +24,7 @@ async function getSearchInfo(
 
   const result = searchResult.error?.message.includes('quota') === true ?? false
   if (result) {
-    setVideoID(exceedQuotaMessage)
+    setPlayerState(exceedQuotaMessage)
   } else {
     const listLengthAll: number = searchResult.pageInfo.totalResults
     const listLength = searchResult.pageInfo.resultsPerPage
@@ -32,18 +32,18 @@ async function getSearchInfo(
     const videoInfos: VideoInfos = [...Array(listLength)].map((v, i) => {
       const videos = searchResult.items
       const video = videos[i]
-      const videoID: string = video.id.videoId
-      const videoDate: string = video.snippet.publishedAt
-      const videoTitle: string = video.snippet.title
+      const id: string = video.id.videoId
+      const date: string = video.snippet.publishedAt
+      const wholeTitle: string = video.snippet.title
       // 사건의 지평선 - 윤하(Event horizon - YOUNHA) (KY.28707) / KY Karaoke
 
       let divided
-      if (videoTitle.includes('(KY.')) {
-        divided = videoTitle.split('(KY.')
-      } else if (videoTitle.includes('[KY')) {
-        divided = videoTitle.split('[KY')
+      if (wholeTitle.includes('(KY.')) {
+        divided = wholeTitle.split('(KY.')
+      } else if (wholeTitle.includes('[KY')) {
+        divided = wholeTitle.split('[KY')
       } else {
-        divided = videoTitle.split(')')
+        divided = wholeTitle.split(')')
       }
       const titleArtist = divided[0].trim().split('-')
       let title = titleArtist[0].trim()
@@ -59,15 +59,15 @@ async function getSearchInfo(
         number = 'x'
       }
       if (title === 'x' && artist === 'x' && number === 'x') {
-        title = videoTitle
+        title = wholeTitle
       }
 
       const videoInfo = {
-        id: videoID,
+        id,
         title,
         artist,
         number,
-        date: videoDate,
+        date,
       }
       return videoInfo
     })
@@ -81,11 +81,11 @@ async function getSearchInfo(
 
 export default async function videoSearch(
   searchKeyword: string,
-  setVideoID: SetState<string>,
+  setPlayerState: SetState<string>,
   setVideoInfos: SetState<VideoInfos>,
   setVideoAllLength: SetState<number>,
 ): Promise<void> {
-  const searchInfo = await getSearchInfo(searchKeyword, setVideoID)
+  const searchInfo = await getSearchInfo(searchKeyword, setPlayerState)
 
   const getVideoAllLength = searchInfo.pop()
   if (isVideoInfos(searchInfo)) {

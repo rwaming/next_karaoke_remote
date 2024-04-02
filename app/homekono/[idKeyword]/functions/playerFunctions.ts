@@ -52,9 +52,9 @@ export function EndNoMoreVideos(event: YouTubeEvent): void {
   event.target.stopVideo()
 }
 
-export async function checkID(
+export async function checkIdOrNot(
   idKeyword: string,
-  setVideoID: SetState<string>,
+  setPlayerState: SetState<string>,
   setIsNotID: SetState<boolean>,
 ): Promise<void> {
   const fetchSearchResult = await fetch(`/homekono/api?id=${idKeyword}`)
@@ -62,11 +62,11 @@ export async function checkID(
   const checkQuota =
     searchResult.error?.message.includes('quota') === true ?? false
   if (checkQuota) {
-    setVideoID(exceedQuotaMessage)
+    setPlayerState(exceedQuotaMessage)
   } else {
     const listLength = searchResult.pageInfo.resultsPerPage
     if (listLength === 1) {
-      setVideoID(idKeyword)
+      setPlayerState(idKeyword)
     } else {
       setIsNotID(true)
     }
@@ -75,11 +75,7 @@ export async function checkID(
 
 export async function searchKeywordVideo(
   idKeyword: string,
-  setVideoID: SetState<string>,
-  setVideoTitle: SetState<string>,
-  setVideoArtist: SetState<string>,
-  setVideoNumber: SetState<string>,
-  setVideoDate: SetState<string>,
+  setPlayerState: SetState<string>,
 ): Promise<string> {
   const param = {
     part: 'snippet',
@@ -97,45 +93,14 @@ export async function searchKeywordVideo(
   const result =
     keywordVideoInfo.error?.message.includes('quota') === true ?? false
   if (result) {
-    setVideoID(exceedQuotaMessage)
+    setPlayerState(exceedQuotaMessage)
     return ''
   }
   if (keywordVideoInfo.pageInfo.totalResults > 0) {
     const video = keywordVideoInfo.items[0]
     const id: string = video.id.videoId
-    const date: string = video.snippet.publishedAt
-    const wholeTitle: string = video.snippet.title
 
-    let divided
-    if (wholeTitle.includes('(KY.')) {
-      divided = wholeTitle.split('(KY.')
-    } else if (wholeTitle.includes('[KY')) {
-      divided = wholeTitle.split('[KY')
-    } else {
-      divided = wholeTitle.split(')')
-    }
-    const titleArtist = divided[0].trim().split('-')
-    let title = titleArtist[0].trim()
-    let artist = titleArtist.slice(1).join('')
-    let number = divided[1]?.trim().split(')')[0] ?? ''
-    if (title === '') {
-      title = 'x'
-    }
-    if (artist === '') {
-      artist = 'x'
-    }
-    if (Number.isNaN(Number(number))) {
-      number = 'x'
-    }
-    if (title === 'x' && artist === 'x' && number === 'x') {
-      title = wholeTitle
-    }
-
-    setVideoID(id)
-    setVideoTitle(title)
-    setVideoArtist(artist)
-    setVideoNumber(number)
-    setVideoDate(date)
+    setPlayerState(id)
     return id
   }
   return ''
@@ -145,23 +110,12 @@ export async function playOrSearch(
   idKeyword: string,
   isNotID: boolean,
   setIsNotID: SetState<boolean>,
-  setVideoID: SetState<string>,
-  setVideoTitle: SetState<string>,
-  setVideoArtist: SetState<string>,
-  setVideoNumber: SetState<string>,
-  setVideoDate: SetState<string>,
+  setPlayerState: SetState<string>,
   router: AppRouterInstance,
 ): Promise<void> {
-  await checkID(idKeyword, setVideoID, setIsNotID)
+  await checkIdOrNot(idKeyword, setPlayerState, setIsNotID)
   if (isNotID) {
-    const id = await searchKeywordVideo(
-      idKeyword,
-      setVideoID,
-      setVideoTitle,
-      setVideoArtist,
-      setVideoNumber,
-      setVideoDate,
-    )
+    const id = await searchKeywordVideo(idKeyword, setPlayerState)
     if (id !== '') {
       router.push(`/homekono/${id}`)
     } else {

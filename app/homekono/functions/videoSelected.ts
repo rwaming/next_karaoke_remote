@@ -16,11 +16,7 @@ export default function videoSelected(
     playerRef,
     searchModalRef,
     searchRef,
-    setVideoArtist,
-    setVideoDate,
-    setVideoID,
-    setVideoNumber,
-    setVideoTitle,
+    setPlayerState,
     videoInfos,
     router,
   }: {
@@ -29,11 +25,7 @@ export default function videoSelected(
     searchRef: UseRef<Div>
     searchModalRef: UseRef<Button>
     videoInfos: VideoInfos
-    setVideoID: SetState<string>
-    setVideoTitle: SetState<string>
-    setVideoArtist: SetState<string>
-    setVideoNumber: SetState<string>
-    setVideoDate: SetState<string>
+    setPlayerState: SetState<string>
     router: AppRouterInstance
   },
 ): void {
@@ -45,14 +37,9 @@ export default function videoSelected(
 
   if (Array.isArray(getIndexFromID)) {
     const index = parseInt(getIndexFromID[0], 10)
-    const videoInfo = videoInfos[index]
-    const { id, title, artist, number, date } = videoInfo
+    const { id } = videoInfos[index]
 
-    setVideoID(id)
-    setVideoTitle(title)
-    setVideoArtist(artist)
-    setVideoNumber(number)
-    setVideoDate(date)
+    setPlayerState(id)
     router.push(`/homekono/${id}`)
   }
 }
