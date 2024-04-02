@@ -2,15 +2,15 @@ import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.
 import { type YouTubeEvent } from 'react-youtube'
 
 export default function playStop(
-  videoEvent: null | YouTubeEvent,
+  playerEvent: null | YouTubeEvent,
   router: AppRouterInstance,
 ): void {
-  if (videoEvent != null) {
-    const state = videoEvent.target.getPlayerState()
+  if (playerEvent != null) {
+    const state = playerEvent.target.getPlayerState()
     if (state === 5 || state === -1) {
       router.push('/homekono')
     } else {
-      videoEvent.target.stopVideo()
+      playerEvent.target.stopVideo()
     }
   }
 }

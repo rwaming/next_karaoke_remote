@@ -1,6 +1,5 @@
-import { useCallback, useContext, useRef, type MouseEvent } from 'react'
+import { useCallback, useContext, useRef } from 'react'
 import { useRouter } from 'next/navigation'
-import { type Button } from '../../../utils/Types'
 import playPause from '../functions/playPause'
 import timeMove from '../functions/timeMove'
 import volumeUpDown from '../functions/volumeUpDown'
@@ -27,25 +26,22 @@ export default function ControllerButton({
   const applauseRef3 = useRef(null)
   const applauseRef4 = useRef(null)
 
-  const controllerFunctions = useCallback(
-    (event: MouseEvent<Button>) => {
-      className.includes('playpause') && playPause(playerEvent)
-      className.includes('stop') && playStop(playerEvent, router)
-      className.includes('time') && timeMove(event, playerEvent)
-      className.includes('volume') && volumeUpDown(event, playerEvent)
-      className.includes('speed') && speedUpDown(event, playerEvent)
-      className.includes('applause') &&
-        applause([applauseRef1, applauseRef2, applauseRef3, applauseRef4])
-    },
-    [className, playerEvent, router],
-  )
+  const controllerFunctions = useCallback(() => {
+    className.includes('playpause') && playPause(playerEvent)
+    className.includes('stop') && playStop(playerEvent, router)
+    className.includes('time') && timeMove(className, playerEvent)
+    className.includes('volume') && volumeUpDown(className, playerEvent)
+    className.includes('speed') && speedUpDown(className, playerEvent)
+    className.includes('applause') &&
+      applause([applauseRef1, applauseRef2, applauseRef3, applauseRef4])
+  }, [className, playerEvent, router])
   return (
     <>
       <button
         type='button'
         className={`button ${className}`}
-        onClick={(event: MouseEvent<Button>) => {
-          controllerFunctions(event)
+        onClick={() => {
+          controllerFunctions()
         }}>
         {!className.includes('emoji') && text}
         {className.includes('pause') && (
