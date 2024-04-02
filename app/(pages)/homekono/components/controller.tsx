@@ -15,7 +15,7 @@ export default function Controller(): JSX.Element {
       <button
         ref={controllerHideRef}
         type='button'
-        className='controller-hide absolute top-1/2 z-50 mr-2 box-content hidden h-full w-14 -translate-y-1/2 text-sm font-light text-light opacity-0 sm:block'
+        className='controller-hide absolute top-1/2 z-30 mr-2 box-content hidden h-full w-14 -translate-y-1/2 text-sm font-light text-light opacity-0 sm:block'
         onMouseEnter={() => {
           const controller = controllerRef.current
           if (controller !== null) {
