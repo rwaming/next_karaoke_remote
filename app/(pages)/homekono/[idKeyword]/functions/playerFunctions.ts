@@ -15,11 +15,11 @@ export function readyToUsePlayer(
 ): void {
   setPlayerEvent(event)
   const playerLoading = playerLoadingRef.current
-  playerLoading?.classList.add('hidden')
   const playerIframe: IFrame = event.target.getIframe()
   const playerYT = playerIframe.parentElement
   playerYT?.classList.add('mini-size')
   event.target.playVideo()
+  playerLoading?.classList.add('hidden')
 }
 
 export function playVideoHighQuility(event: YouTubeEvent): void {
