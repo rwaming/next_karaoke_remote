@@ -40,11 +40,6 @@ export default function Video({
         const playerIframe: IFrame = event.target.getIframe()
         const playerYT = playerIframe.parentElement
         const playerReady = playerReadyRef.current
-        if (state === -1) {
-          playerYT?.classList.remove('sm:mini-size')
-        } else {
-          playerYT?.classList.remove('sm:mini-size')
-        }
         if (state === 3) {
           playerYT?.classList.add('mini-size')
           playerYT?.classList.remove('full-size')
