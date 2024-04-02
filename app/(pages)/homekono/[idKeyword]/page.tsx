@@ -34,34 +34,42 @@ export default function Video({
     void playOrSearch(idKeyword, isNotID, setIsNotID, setPlayerState, router)
   }, [idKeyword, isNotID, router, setPlayerState])
 
-  return isNotID ? (
-    <div className='player-content__search'>
-      {playerState === '' && (
-        <p className='font-light'>{`${idKeyword}`}를 검색하고 있어요.</p>
+  return (
+    <>
+      {isNotID && (
+        <div className='player-content__search'>
+          {playerState === '' && (
+            <p className='font-light'>{`${idKeyword}`}를 검색하고 있어요.</p>
+          )}
+        </div>
       )}
-    </div>
-  ) : (
-    <YouTube
-      className='player-content__youtube'
-      videoId={idKeyword}
-      opts={{
-        playerVars: {
-          controls: 0,
-          disablekb: 1,
-          fs: 0,
-          modestbranding: 1,
-          iv_load_policy: 3,
-          rel: 0,
-        },
-      }}
-      onReady={(event) => {
-        readyToUsePlayer(event, setPlayerEvent)
-      }}
-      onPlay={playVideoHighQuility}
-      onStateChange={(event) => {
-        stateSize(event, playerLoadingRef, playerReadyRef)
-      }}
-      onEnd={EndNoMoreVideos}
-    />
+
+      {playerState !== '' ? (
+        <YouTube
+          className='player-content__youtube'
+          videoId={idKeyword}
+          opts={{
+            playerVars: {
+              controls: 0,
+              disablekb: 1,
+              fs: 0,
+              modestbranding: 1,
+              iv_load_policy: 3,
+              rel: 0,
+            },
+          }}
+          onReady={(event) => {
+            readyToUsePlayer(event, setPlayerEvent)
+          }}
+          onPlay={playVideoHighQuility}
+          onStateChange={(event) => {
+            stateSize(event, playerLoadingRef, playerReadyRef)
+          }}
+          onEnd={EndNoMoreVideos}
+        />
+      ) : (
+        <div className='player-content__wait-result' />
+      )}
+    </>
   )
 }
