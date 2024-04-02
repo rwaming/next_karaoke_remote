@@ -53,6 +53,6 @@ export default function videoSelected(
     setVideoArtist(artist)
     setVideoNumber(number)
     setVideoDate(date)
-    router.push(`/homekono/konoplayer/${id}`)
+    router.push(`/homekono/${id}`)
   }
 }
