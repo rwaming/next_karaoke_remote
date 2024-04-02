@@ -4,31 +4,40 @@ import { useCallback, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { type Div } from '../../utils/Types'
+import { type Button, type Div } from '../../utils/Types'
 
 export default function Menu(): JSX.Element {
   const router = useRouter()
   const menuRef = useRef<Div>(null)
+  const menuModalRef = useRef<Button>(null)
 
   const menuOpen = useCallback(() => {
     const menu = menuRef.current
-    if (menu !== null) {
+    const menuModal = menuModalRef.current
+    if (menu !== null && menuModal !== null) {
       menu.classList.add('menu-opened')
+      menuModal.classList.remove('menu-modal__closed')
+      menuModal.classList.add('menu-modal__opened')
     }
   }, [])
   const menuClose = useCallback(() => {
     const menu = menuRef.current
-    if (menu !== null) {
+    const menuModal = menuModalRef.current
+    if (menu !== null && menuModal !== null) {
       menu.classList.remove('menu-opened')
+      menuModal.classList.remove('menu-modal__opened')
+      menuModal.classList.add('menu-modal__closed')
     }
   }, [])
   let menuCloseWait: NodeJS.Timeout
   return (
     <section id='menu'>
       <button
+        ref={menuModalRef}
         type='button'
         id='menu-modal'
-        className='absolute -left-4 -top-4 z-40 h-dvh w-dvw bg-slate-900 bg-opacity-50 text-transparent sm:-left-5'>
+        className='menu-modal menu-modal__closed absolute -left-4 -top-4 z-40 h-dvh w-dvw bg-slate-900 bg-opacity-50 text-transparent sm:-left-5'
+        onClick={menuClose}>
         메뉴 닫기
       </button>
       <button

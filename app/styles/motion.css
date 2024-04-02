@@ -74,12 +74,24 @@
   @apply animate-none opacity-0;
 }
 
-@keyframes loading__disappear {
+@keyframes appear {
   0% {
-    opacity: 1;
+    opacity: 0;
+    display: block;
   }
   100% {
+    opacity: 1;
+  }
+}
+@keyframes disappear {
+  0% {
+    display: block;
+    opacity: 1;
+  }
+  99.99% {
     opacity: 0;
+  }
+  100% {
     display: none;
   }
 }
@@ -101,10 +113,17 @@
   animation: dim 2s infinite;
 }
 .loading__disappear {
-  animation: loading__disappear 0.5s forwards;
+  animation: disappear 0.5s forwards;
 }
 
 /* menu open & close */
+.menu-modal__closed {
+  display: none;
+  animation: disappear 1s forwards;
+}
+.menu-modal__opened {
+  animation: appear 1s forwards;
+}
 .menu-box {
   @apply -top-4;
   left: calc(-66.66vw - 10rem);
@@ -133,9 +152,6 @@
   .menu-opened {
     left: -1.25rem;
   }
-}
-.update > span {
-  transition: width 0.5s;
 }
 
 /* search box open & close */
