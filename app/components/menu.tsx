@@ -76,10 +76,8 @@ export default function Menu(): JSX.Element {
           <li>홈코노</li>
           <li>RWAM</li>
         </ul> */}
-        <address className='menu-contact absolute bottom-0 not-italic sm:flex sm:h-10 sm:items-center sm:justify-center sm:gap-3 sm:text-xs'>
-          <div
-            id='menu-contact-sns'
-            className='sm:flex sm:items-center sm:gap-2'>
+        <address className='menu-contact absolute bottom-0 mb-4 flex w-full flex-col items-center justify-end text-xs not-italic sm:hidden'>
+          <div className='menu-contact-sns flex items-center gap-4'>
             <Link
               href='https://www.instagram.com/rwam__kn'
               target='_blank'
@@ -121,21 +119,15 @@ export default function Menu(): JSX.Element {
             </Link>
           </div>
 
-          <div
-            id='menu_contact-info'
-            className='menu_contact-info flex items-center sm:h-full sm:min-w-10 sm:items-center'>
+          <div className='menu-contact-more mt-3 flex h-full min-w-10 grow flex-col items-center'>
             <button
               type='button'
-              className='w-10 overflow-hidden opacity-100 sm:whitespace-nowrap'>
+              className='h-4 w-10 overflow-hidden whitespace-nowrap opacity-100'>
               + more
             </button>
-            <div className='whitespace-nowrap opacity-0 sm:flex sm:w-0 sm:items-center sm:overflow-hidden'>
-              <p id='menu_contact-info__email' className='sm:inline-block'>
-                art.rwam@gmail.com
-              </p>
-              <p id='menu_contact-info__phone' className='ml-2 sm:inline-block'>
-                +82 010-9716-1132
-              </p>
+            <div className='mb-3 flex h-0 flex-col items-center overflow-hidden whitespace-nowrap text-center opacity-0'>
+              <p>art.rwam@gmail.com</p>
+              <p className='mt-2'>+82 10-9716-1132</p>
             </div>
           </div>
         </address>

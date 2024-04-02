@@ -108,6 +108,31 @@
 
 /* Specific element */
 @layer components {
+  .menu-contact-sns > * {
+    @apply opacity-50 hover:opacity-80;
+  }
+  .menu-contact-more {
+    @apply opacity-50 hover:opacity-80;
+  }
+  .menu-contact-more > button {
+    transition:
+      all 0.2s 0.3s cubic-bezier(0.1, 0.7, 1, 0.9),
+      height 0.3s cubic-bezier(0.1, 0.7, 1, 0.9);
+  }
+  .menu-contact-more > div {
+    transition: all 0.3s cubic-bezier(0.1, 0.7, 1, 0.9);
+  }
+  .menu-contact-more:hover > button {
+    transition:
+      all 0.2s cubic-bezier(0.1, 0.7, 1, 0.9),
+      height 0.3s 0.2s cubic-bezier(0.1, 0.7, 1, 0.9);
+    @apply h-0 opacity-0;
+  }
+  .menu-contact-more:hover > div {
+    transition: all 0.3s 0.2s cubic-bezier(0.1, 0.7, 1, 0.9);
+    @apply mt-1 h-10 w-full opacity-100;
+  }
+
   .player-content__youtube {
     visibility: hidden;
     > iframe {
