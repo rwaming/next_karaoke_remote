@@ -1,13 +1,13 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import { type Button } from '../../utils/Types'
+import { type Button } from '../../../utils/Types'
 import playPause from '../functions/playPause'
 import timeMove from '../functions/timeMove'
 import volumeUpDown from '../functions/volumeUpDown'
 import speedUpDown from '../functions/speedUpDown'
 import applause from '../functions/applause'
 import ApplauseAudios from './controllerApplauseAudios'
-import { HomekonoValueContext } from '../../utils/HomekonoProvider'
+import { HomekonoValueContext } from '../../../utils/HomekonoProvider'
 import playStop from '../functions/playStop'
 
 export default function ControllerButton({

@@ -3,11 +3,11 @@ import { useRouter } from 'next/navigation'
 import {
   HomekonoActionContext,
   HomekonoRefContext,
-} from '../../utils/HomekonoProvider'
+} from '../../../utils/HomekonoProvider'
 import {
   SearchRefContext,
   SearchValueContext,
-} from '../../utils/SearchProvider'
+} from '../../../utils/SearchProvider'
 import videoSelected from '../functions/videoSelected'
 import searchOpenClose from '../functions/searchOpenClose'
 

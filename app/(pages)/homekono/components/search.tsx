@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import SearchProvider, { SearchRefContext } from '../../utils/SearchProvider'
+import SearchProvider, { SearchRefContext } from '../../../utils/SearchProvider'
 import SearchArea from './searchArea'
-import { HomekonoRefContext } from '../../utils/HomekonoProvider'
+import { HomekonoRefContext } from '../../../utils/HomekonoProvider'
 import searchOpenClose from '../functions/searchOpenClose'
 import SearchList from './searchList'
 

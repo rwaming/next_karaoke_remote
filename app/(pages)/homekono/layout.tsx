@@ -1,8 +1,8 @@
 'use client'
 
 import HomekonoProvider from '@/utils/HomekonoProvider'
-import Search from '@/homekono/components/search'
-import Controller from '@/homekono/components/controller'
+import Search from '@/(pages)/homekono/components/search'
+import Controller from '@/(pages)/homekono/components/controller'
 import Player from './components/player'
 
 export default function HomekonoLayout({

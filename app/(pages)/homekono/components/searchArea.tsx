@@ -4,8 +4,8 @@ import {
   HomekonoRefContext,
 } from '@/utils/HomekonoProvider'
 import { SearchActionContext, SearchRefContext } from '@/utils/SearchProvider'
-import videoSearch from '@/homekono/functions/videoSearch'
-import searchOpenClose from '@/homekono/functions/searchOpenClose'
+import videoSearch from '@/(pages)/homekono/functions/videoSearch'
+import searchOpenClose from '@/(pages)/homekono/functions/searchOpenClose'
 
 export default function SearchArea(): JSX.Element {
   const { setPlayerState } = useContext(HomekonoActionContext)
