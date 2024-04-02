@@ -1,5 +1,6 @@
 import { type VideoInfos, type SetState, type SearchInfo } from '@/utils/Types'
 import { exceedQuotaMessage, qFilterKeyword } from '@/utils/utilities'
+import { decode } from 'html-entities'
 
 function isVideoInfos(value: SearchInfo): value is VideoInfos {
   return value.every((info) => typeof info === 'object')
@@ -34,7 +35,8 @@ async function getSearchInfo(
       const video = videos[i]
       const id: string = video.id.videoId
       const date: string = video.snippet.publishedAt
-      const wholeTitle: string = video.snippet.title
+      const rawTitle: string = video.snippet.title
+      const wholeTitle: string = decode(rawTitle)
       // 사건의 지평선 - 윤하(Event horizon - YOUNHA) (KY.28707) / KY Karaoke
 
       let divided
