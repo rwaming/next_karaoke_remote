@@ -1,11 +1,15 @@
 import { useContext, useMemo } from 'react'
-import { AppActionContext, AppRefContext } from '../../utils/AppProvider'
+import { useRouter } from 'next/navigation'
+import {
+  HomekonoActionContext,
+  HomekonoRefContext,
+} from '../../utils/HomekonoProvider'
 import {
   SearchRefContext,
   SearchValueContext,
 } from '../../utils/SearchProvider'
-import showSelectedVideo from '../function/showSelectedVideo'
-import searchOpenClose from '../function/searchOpenClose'
+import videoSelected from '../functions/videoSelected'
+import searchOpenClose from '../functions/searchOpenClose'
 
 export default function SearchList(): JSX.Element {
   const {
@@ -14,8 +18,8 @@ export default function SearchList(): JSX.Element {
     setVideoArtist,
     setVideoNumber,
     setVideoDate,
-  } = useContext(AppActionContext)
-  const { playerRef, controllerRef, searchRef } = useContext(AppRefContext)
+  } = useContext(HomekonoActionContext)
+  const { playerRef, controllerRef, searchRef } = useContext(HomekonoRefContext)
   const {
     videoInfos,
     searchListNote: listNote,
@@ -23,6 +27,7 @@ export default function SearchList(): JSX.Element {
   } = useContext(SearchValueContext)
   const { searchModalRef } = useContext(SearchRefContext)
 
+  const router = useRouter()
   const changeVideoArgs = useMemo(
     () => ({
       playerRef,
@@ -35,6 +40,7 @@ export default function SearchList(): JSX.Element {
       setVideoArtist,
       setVideoNumber,
       setVideoDate,
+      router,
     }),
     [
       controllerRef,
@@ -47,6 +53,7 @@ export default function SearchList(): JSX.Element {
       setVideoNumber,
       setVideoTitle,
       videoInfos,
+      router,
     ],
   )
   return (
@@ -83,7 +90,7 @@ export default function SearchList(): JSX.Element {
                       type='button'
                       className='search-list__li-click'
                       onClick={(event) => {
-                        showSelectedVideo(event, changeVideoArgs)
+                        videoSelected(event, changeVideoArgs)
                       }}>
                       <p className='search-list__li-title'>{v.title}</p>
                       <p className='search-list__li-artist'>{v.artist}</p>

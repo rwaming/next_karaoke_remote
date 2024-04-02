@@ -107,30 +107,35 @@
 /* menu open & close */
 .menu-box {
   @apply -top-4;
-  left: calc(-66.66vw - 1rem);
+  left: calc(-66.66vw - 10rem);
+  transition: left 1s cubic-bezier(0.7, 0.2, 0.1, 0.4);
 }
 @media screen and (min-width: 320px) {
   .menu-box {
-    left: calc(-50vw - 1.25rem);
+    left: calc(-50vw - 10rem);
   }
 }
 @media screen and (min-width: 640px) {
   .menu-box {
-    left: calc(-40vw - 1.25rem);
+    left: calc(-40vw - 10rem);
   }
 }
 @media screen and (min-width: 768px) {
   .menu-box {
-    left: calc(-33.33vw - 1.25rem);
+    left: calc(-33.33vw - 10rem);
   }
 }
 .menu-opened {
+  transition: left 1s cubic-bezier(0.1, 0.2, 0.1, 0.8);
   left: -1rem;
 }
 @media screen and (min-width: 640px) {
   .menu-opened {
     left: -1.25rem;
   }
+}
+.update > span {
+  transition: width 0.5s;
 }
 
 /* search box open & close */
@@ -155,14 +160,8 @@
 }
 .controller__search-open {
   @apply m-4 mt-14 pt-2 sm:mb-11 sm:ml-2 sm:mr-4 sm:mt-1/2dvh;
-  * {
-    @apply sm:z-20 sm:text-sm;
-  }
   .button {
-    @apply sm:py-2;
-  }
-  #controller-search {
-    @apply sm:hidden;
+    @apply sm:z-20 sm:py-2 sm:text-sm;
   }
 }
 
@@ -207,7 +206,6 @@
   }
   .controller-box__ready-close {
     right: 0.5rem;
-    opacity: 0.85;
   }
   .controller__open-close {
     transition:
@@ -221,17 +219,13 @@
       transition: rotate 0s 0.01s;
     }
   }
-  .controller:hover > .controller__open-close {
-    opacity: 0.65;
-  }
   .controller:hover > .controller__open-close:hover {
     opacity: 1;
     animation: point__controller-close 0.8s infinite;
   }
   .controller_closed {
-    @apply right-0 mx-0 max-w-4 overflow-hidden;
+    @apply right-0 z-40 mx-0 max-w-4 overflow-hidden;
     transition: max-width 0.3s;
-    opacity: 0.85;
     > #controller-box {
       @apply pl-4;
       transition: padding-left 0.3s;
@@ -262,16 +256,6 @@
 }
 
 /* sm height */
-@media screen and (max-height: 550px) {
-  #controller-stop {
-    @apply hidden sm:block;
-  }
-}
-@media screen and (max-height: 500px) {
-  #controller-stop {
-    @apply sm:hidden;
-  }
-}
 @media screen and (max-height: 400px) {
   .player__search-open .full-size {
     height: calc(
@@ -285,9 +269,6 @@
     * {
       @apply p-0 text-sm sm:p-0 sm:text-base;
     }
-  }
-  #controller-stop {
-    @apply sm:hidden;
   }
   .controller__search-open {
     @apply sm:basis-96 sm:gap-1;

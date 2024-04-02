@@ -1,30 +1,68 @@
 'use client'
 
-import { useRef } from 'react'
+import { useCallback, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { type Div } from '../../utils/Types'
 
 export default function Menu(): JSX.Element {
+  const router = useRouter()
   const menuRef = useRef<Div>(null)
+
+  const menuOpen = useCallback(() => {
+    const menu = menuRef.current
+    if (menu !== null) {
+      menu.classList.add('menu-opened')
+    }
+  }, [])
+  const menuClose = useCallback(() => {
+    const menu = menuRef.current
+    if (menu !== null) {
+      menu.classList.remove('menu-opened')
+    }
+  }, [])
+  let menuCloseWait: NodeJS.Timeout
   return (
     <section id='menu'>
       <button
+        type='button'
+        id='menu-modal'
+        className='absolute -left-4 -top-4 z-40 h-dvh w-dvw bg-slate-900 bg-opacity-50 text-transparent sm:-left-5'>
+        메뉴 닫기
+      </button>
+      <button
         id='menu__open'
         type='button'
-        className='absolute left-0 top-0 h-8 w-20 overflow-hidden whitespace-nowrap text-transparent'
+        className='absolute left-0 top-0 z-50 h-8 w-20 overflow-hidden whitespace-nowrap text-transparent'
+        onMouseEnter={() => {
+          if (window.innerWidth > 640) {
+            menuOpen()
+          }
+        }}
         onClick={() => {
-          const menu = menuRef.current
-          if (menu !== null) {
-            menu.classList.add('menu-opened')
+          if (window.innerWidth < 640) {
+            menuOpen()
+          } else {
+            router.push('/homekono')
           }
         }}>
-        메뉴 바 열기
+        메뉴 열기, 홈으로 이동
       </button>
       <nav
         ref={menuRef}
         id='menu-box'
-        className='menu-box absolute h-dvh w-2/3vw bg-deep xs:w-1/2vw sm:w-2/5vw md:w-1/3vw'>
+        className='menu-box absolute z-40 h-dvh w-2/3vw bg-deep xs:w-1/2vw sm:w-2/5vw md:w-1/3vw'
+        onMouseEnter={() => {
+          if (window.innerWidth > 640) {
+            clearTimeout(menuCloseWait)
+          }
+        }}
+        onMouseLeave={() => {
+          if (window.innerWidth > 640) {
+            menuCloseWait = setTimeout(menuClose, 4000)
+          }
+        }}>
         <ul>
           <li>홈코노</li>
           <li>RWAM</li>

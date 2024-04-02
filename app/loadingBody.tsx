@@ -4,28 +4,30 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 export default function LoadingBody({
-  isHome,
+  goHome,
 }: {
-  isHome: boolean
+  goHome: boolean
 }): JSX.Element {
   const router = useRouter()
   return (
     <div
       id='loading'
-      className={`${!isHome && 'loading__disappear'} bg absolute z-50 flex h-dvh w-dvw flex-col items-center justify-center`}>
+      className='bg absolute z-50 flex h-dvh w-dvw flex-col items-center justify-center'>
       <Image
         src='/homekono_light.png'
         width={1080}
         height={1080}
         alt='homekono_loading'
-        className='spin w-1/10vmin'
+        className={`${goHome ? 'dim' : 'spin'} w-1/10vmin`}
         onLoad={() => {
-          if (isHome) {
+          if (goHome) {
             router.push('/homekono')
           }
         }}
       />
-      <p className='dim pt-5'>페이지로 이동하고 있어요.</p>
+      <p className='dim pt-5'>
+        {goHome ? '홈코노에 입장하고 있어요.' : '화면 요소를 가져오고 있어요.'}
+      </p>
     </div>
   )
 }

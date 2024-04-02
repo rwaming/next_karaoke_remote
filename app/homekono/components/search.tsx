@@ -1,12 +1,12 @@
 import { useContext } from 'react'
 import SearchProvider, { SearchRefContext } from '../../utils/SearchProvider'
 import SearchArea from './searchArea'
-import { AppRefContext } from '../../utils/AppProvider'
-import searchOpenClose from '../function/searchOpenClose'
+import { HomekonoRefContext } from '../../utils/HomekonoProvider'
+import searchOpenClose from '../functions/searchOpenClose'
 import SearchList from './searchList'
 
 function SearchModal(): JSX.Element {
-  const { playerRef, controllerRef, searchRef } = useContext(AppRefContext)
+  const { playerRef, controllerRef, searchRef } = useContext(HomekonoRefContext)
   const { searchModalRef } = useContext(SearchRefContext)
   return (
     <button

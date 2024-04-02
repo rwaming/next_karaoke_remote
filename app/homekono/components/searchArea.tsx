@@ -1,15 +1,18 @@
 import { useContext } from 'react'
-import { AppActionContext, AppRefContext } from '../../utils/AppProvider'
+import {
+  HomekonoActionContext,
+  HomekonoRefContext,
+} from '../../utils/HomekonoProvider'
 import {
   SearchActionContext,
   SearchRefContext,
 } from '../../utils/SearchProvider'
-import searchVideos from '../function/searchVideos'
-import searchOpenClose from '../function/searchOpenClose'
+import searchVideos from '../functions/searchVideos'
+import searchOpenClose from '../functions/searchOpenClose'
 
 export default function SearchArea(): JSX.Element {
-  const { setVideoID } = useContext(AppActionContext)
-  const { playerRef, controllerRef, searchRef } = useContext(AppRefContext)
+  const { setVideoID } = useContext(HomekonoActionContext)
+  const { playerRef, controllerRef, searchRef } = useContext(HomekonoRefContext)
   const { searchValueRef, searchModalRef } = useContext(SearchRefContext)
   const { setVideoInfos, setVideoAllLength } = useContext(SearchActionContext)
 

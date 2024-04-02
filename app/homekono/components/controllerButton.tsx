@@ -1,14 +1,13 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
+import { useRouter } from 'next/navigation'
 import { type Button } from '../../utils/Types'
-import playPause from '../function/playPause'
-import stopVideo from '../function/stopVideo'
-import timeMove from '../function/timeMove'
-import volumeUpDown from '../function/volumeUpDown'
-import speedUpDown from '../function/speedUpDown'
-import applause from '../function/applause'
+import playPause from '../functions/playPause'
+import timeMove from '../functions/timeMove'
+import volumeUpDown from '../functions/volumeUpDown'
+import speedUpDown from '../functions/speedUpDown'
+import applause from '../functions/applause'
 import ApplauseAudios from './controllerApplauseAudios'
-import { AppActionContext, AppValueContext } from '../../utils/AppProvider'
-import showLatestVideo from '../function/showLatestVideo'
+import { HomekonoValueContext } from '../../utils/HomekonoProvider'
 
 export default function ControllerButton({
   id,
@@ -21,15 +20,9 @@ export default function ControllerButton({
   emoji: string
   className: string
 }): JSX.Element {
-  const { videoEvent } = useContext(AppValueContext)
-  const {
-    setVideoID,
-    setVideoTitle,
-    setVideoArtist,
-    setVideoNumber,
-    setVideoDate,
-  } = useContext(AppActionContext)
+  const { playerEvent } = useContext(HomekonoValueContext)
 
+  const router = useRouter()
   const applauseRef1 = useRef(null)
   const applauseRef2 = useRef(null)
   const applauseRef3 = useRef(null)
@@ -37,33 +30,15 @@ export default function ControllerButton({
 
   const controllerFunctions = useCallback(
     (event: MouseEvent<Button>) => {
-      void (
-        id.includes('latest') &&
-        showLatestVideo(
-          setVideoID,
-          setVideoTitle,
-          setVideoArtist,
-          setVideoNumber,
-          setVideoDate,
-        )
-      )
-      id.includes('playpause') && playPause(videoEvent)
-      id.includes('stop') && stopVideo(videoEvent)
-      id.includes('time') && timeMove(event, videoEvent)
-      id.includes('volume') && volumeUpDown(event, videoEvent)
-      id.includes('speed') && speedUpDown(event, videoEvent)
+      id.includes('playpause') && playPause(playerEvent)
+      id.includes('stop') && router.push('/homekono')
+      id.includes('time') && timeMove(event, playerEvent)
+      id.includes('volume') && volumeUpDown(event, playerEvent)
+      id.includes('speed') && speedUpDown(event, playerEvent)
       id.includes('applause') &&
         applause([applauseRef1, applauseRef2, applauseRef3, applauseRef4])
     },
-    [
-      id,
-      setVideoArtist,
-      setVideoDate,
-      setVideoID,
-      setVideoNumber,
-      setVideoTitle,
-      videoEvent,
-    ],
+    [id, playerEvent, router],
   )
   return (
     <>

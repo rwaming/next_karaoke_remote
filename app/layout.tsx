@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import './globals.css'
-import './motion.css'
+import '@/styles/globals.css'
+import '@/styles/motion.css'
 
 import Link from 'next/link'
 import Image from 'next/image'
-// import Menu from '../components/menu'
+// import Menu from '@/homekono/components/menu'
 
 export const metadata: Metadata = {
   title: '홈코노 - 집에서 즐기는 나만의 노래방',
@@ -25,24 +25,25 @@ export default function RootLayout({
         <div id='app' className='app w-scree bg relative h-dvh text-light'>
           <header
             id='header'
-            className='header absolute left-0 top-0 z-40 ml-4 mt-4 flex items-center sm:left-1'>
+            className='header absolute left-0 top-0 ml-4 mt-4 flex items-center sm:left-1'>
             <div
               id='header__group'
-              className='relative overflow-hidden whitespace-nowrap'>
+              className='relative z-50 overflow-x-hidden whitespace-nowrap'>
               <h1 className='h-8 select-none pl-2 text-2xl font-bold xs:text-2xl'>
                 홈코노
               </h1>
               <p
-                id='upate'
-                className='upate absolute left-16 top-3 hidden pl-2 text-xs font-light opacity-75 sm:ml-2 sm:inline'>
-                <span className='hidden md:inline'>마지막 업데이트: </span>
-                <time dateTime='2024-03-30'>2024. 04. 01. 월요일</time>
+                id='update'
+                className='update absolute left-16 top-3 z-50 hidden pl-2 text-xs font-light opacity-75 sm:ml-2 sm:inline'>
+                <time dateTime='2024-03-30' className='inline-block'>
+                  2024. 04. 01. 월요일
+                </time>
               </p>
             </div>
             <button
               type='button'
               id='header__open'
-              className='absolute left-1 top-1 h-6 w-6'>
+              className='absolute left-1 top-1 z-50 h-6 w-6'>
               <Image
                 src='/homekono_light.png'
                 width={1080}
