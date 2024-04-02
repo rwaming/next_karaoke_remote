@@ -165,7 +165,7 @@ export async function playOrSearch(
     if (id !== '') {
       router.push(`/homekono/${id}`)
     } else {
-      router.push('homekono/no-video')
+      router.push('/homekono/novideo')
     }
   }
 }

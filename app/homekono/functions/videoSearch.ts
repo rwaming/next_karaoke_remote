@@ -1,5 +1,5 @@
 import { type VideoInfos, type SetState, type SearchInfo } from '@/utils/Types'
-import { exceedQuotaMessage, filterKeyword } from '@/utils/utilities'
+import { exceedQuotaMessage, qFilterKeyword } from '@/utils/utilities'
 
 function isVideoInfos(value: SearchInfo): value is VideoInfos {
   return value.every((info) => typeof info === 'object')
@@ -15,7 +15,7 @@ async function getSearchInfo(
     maxResults: 20,
     type: 'video',
     videoEmbeddable: 'true',
-    q: `${searchKeyword} ${filterKeyword}`,
+    q: `${searchKeyword} ${qFilterKeyword}`,
   }
   const fetchSearchResult = await fetch(
     `/homekono/api?part=${param.part}&channelId=${param.channelId}&maxResults=${param.maxResults}&type=${param.type}&videoEmbeddable=${param.videoEmbeddable}&q=${param.q}`,
