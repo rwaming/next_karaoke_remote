@@ -31,7 +31,6 @@ export function stateSize(
   playerReadyRef: UseRef<Div>,
 ): void {
   const state = event.data
-  console.log(state)
   if (typeof state === 'number') {
     const playerIframe: IFrame = event.target.getIframe()
     const playerYT = playerIframe.parentElement
