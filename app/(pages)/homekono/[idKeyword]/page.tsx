@@ -5,6 +5,7 @@ import YouTube from 'react-youtube'
 import {
   HomekonoActionContext,
   HomekonoRefContext,
+  HomekonoValueContext,
 } from '@/utils/HomekonoProvider'
 import { useRouter } from 'next/navigation'
 import {
@@ -20,6 +21,7 @@ export default function Video({
 }: {
   params: { idKeyword: string }
 }): JSX.Element {
+  const { playerState } = useContext(HomekonoValueContext)
   const { setPlayerEvent, setPlayerState } = useContext(HomekonoActionContext)
   const { playerLoadingRef, playerReadyRef } = useContext(HomekonoRefContext)
 
@@ -28,12 +30,15 @@ export default function Video({
   const [isNotID, setIsNotID] = useState(false)
 
   useEffect(() => {
+    setPlayerState('')
     void playOrSearch(idKeyword, isNotID, setIsNotID, setPlayerState, router)
   }, [idKeyword, isNotID, router, setPlayerState])
 
   return isNotID ? (
     <div className='player-content__search'>
-      <p className='font-light'>{`${idKeyword}`}를 검색하고 있어요.</p>
+      {playerState === '' && (
+        <p className='font-light'>{`${idKeyword}`}를 검색하고 있어요.</p>
+      )}
     </div>
   ) : (
     <YouTube
