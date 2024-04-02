@@ -8,6 +8,7 @@ import speedUpDown from '../functions/speedUpDown'
 import applause from '../functions/applause'
 import ApplauseAudios from './controllerApplauseAudios'
 import { HomekonoValueContext } from '../../utils/HomekonoProvider'
+import playStop from '../functions/playStop'
 
 export default function ControllerButton({
   id,
@@ -31,7 +32,7 @@ export default function ControllerButton({
   const controllerFunctions = useCallback(
     (event: MouseEvent<Button>) => {
       id.includes('playpause') && playPause(playerEvent)
-      id.includes('stop') && router.push('/homekono')
+      id.includes('stop') && playStop(playerEvent, router)
       id.includes('time') && timeMove(event, playerEvent)
       id.includes('volume') && volumeUpDown(event, playerEvent)
       id.includes('speed') && speedUpDown(event, playerEvent)
