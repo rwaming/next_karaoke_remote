@@ -63,7 +63,7 @@ export default function Menu(): JSX.Element {
       <nav
         ref={menuRef}
         id='menu-box'
-        className='menu-box absolute z-40 h-dvh w-2/3dvw bg-deep xs:w-1/2dvw sm:w-2/5dvw md:w-1/3dvw'
+        className='menu-box absolute z-40 h-dvh w-2/3dvw bg-deep p-10 xs:w-1/2dvw sm:w-2/5dvw md:w-1/3dvw'
         onMouseEnter={() => {
           if (!('ontouchstart' in window)) {
             clearTimeout(menuCloseWait)
@@ -74,13 +74,31 @@ export default function Menu(): JSX.Element {
             menuCloseWait = setTimeout(menuClose, 1500)
           }
         }}>
-        {/* <ul>
-          <li>홈코노</li>
-          <li>RWAM</li>
-        </ul> */}
-        <p className='ml-6 mt-12 text-xs opacity-75 transition-opacity sm:opacity-0'>
+        <p className='ml-6 mt-2 text-xs opacity-75 transition-opacity sm:opacity-0'>
           <time dateTime={updateDate}>{updateDateText}</time>
         </p>
+        <ul className='my-7 flex flex-col items-start gap-4 text-sm opacity-25'>
+          <li>
+            <button type='button' className='h-full w-full'>
+              RWAM
+            </button>
+          </li>
+          <li>
+            <button type='button' className='h-full w-full'>
+              홈코노 이야기
+            </button>
+          </li>
+          <li>
+            <button type='button' className='h-full w-full'>
+              의견 보내기
+            </button>
+          </li>
+        </ul>
+        <p className='font-light leading-relaxed opacity-75'>
+          다양한 기능을 준비하고 있어요.
+          <br /> 조금만 기다려주세요 :D
+        </p>
+
         <address className='menu-contact absolute bottom-0 mb-4 flex w-full flex-col items-center justify-end text-xs not-italic sm:hidden'>
           <div className='menu-contact-sns flex items-center gap-4'>
             <Link
