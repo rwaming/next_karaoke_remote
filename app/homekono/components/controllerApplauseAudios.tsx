@@ -2,20 +2,17 @@ import { type Audio, type UseRefArray } from '../../utils/Types'
 
 export default function ApplauseAudios({
   audioRefs,
-  id,
 }: {
   audioRefs: UseRefArray<Audio>
-  id: string
 }): JSX.Element {
   return (
-    <div id={`${id}__audio-list`} className='absolute'>
+    <div className='controller-applause__audio-list absolute'>
       {[...Array(4)].map((e, i) => {
         return (
           <audio
             ref={audioRefs[i]}
-            key={`${id}__audio-${i + 1}`}
-            id={`${id}__audio-${i + 1}`}
-            className={`${id}__audio`}
+            key={`controller-applause__audio-${i + 1}`}
+            className='controller-applause__audio'
             preload='auto'>
             <source src='/applause.mp3' type='audio/mpeg' />
             <track

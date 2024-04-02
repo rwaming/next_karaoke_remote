@@ -4,12 +4,13 @@ import { useCallback, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { type Button, type Div } from '../../utils/Types'
+import { type Button, type Div } from '../utils/Types'
 
 export default function Menu(): JSX.Element {
   const router = useRouter()
   const menuRef = useRef<Div>(null)
   const menuModalRef = useRef<Button>(null)
+  let menuCloseWait: NodeJS.Timeout
 
   const menuOpen = useCallback(() => {
     const menu = menuRef.current
@@ -20,6 +21,7 @@ export default function Menu(): JSX.Element {
       menuModal.classList.add('menu-modal__opened')
     }
   }, [])
+
   const menuClose = useCallback(() => {
     const menu = menuRef.current
     const menuModal = menuModalRef.current
@@ -29,21 +31,19 @@ export default function Menu(): JSX.Element {
       menuModal.classList.add('menu-modal__closed')
     }
   }, [])
-  let menuCloseWait: NodeJS.Timeout
+
   return (
     <section id='menu'>
       <button
         ref={menuModalRef}
         type='button'
-        id='menu-modal'
         className='menu-modal menu-modal__closed absolute -left-4 -top-4 z-40 h-dvh w-dvw bg-slate-900 bg-opacity-50 text-transparent sm:-left-5'
         onClick={menuClose}>
         메뉴 닫기
       </button>
       <button
-        id='menu__open'
         type='button'
-        className='absolute left-0 top-0 z-50 h-8 w-20 overflow-hidden whitespace-nowrap text-transparent'
+        className='menu__open absolute left-0 top-0 z-50 h-8 w-20 overflow-hidden whitespace-nowrap text-transparent'
         onMouseEnter={() => {
           if (window.innerWidth > 640) {
             menuOpen()
@@ -69,16 +69,16 @@ export default function Menu(): JSX.Element {
         }}
         onMouseLeave={() => {
           if (window.innerWidth > 640) {
-            menuCloseWait = setTimeout(menuClose, 4000)
+            menuCloseWait = setTimeout(menuClose, 3000)
           }
         }}>
-        <ul>
+        {/* <ul>
           <li>홈코노</li>
           <li>RWAM</li>
-        </ul>
+        </ul> */}
         <address
           id='menu-contact'
-          className='contact not-italic sm:relative sm:flex sm:h-full sm:items-center sm:justify-center sm:gap-3 sm:text-xs'>
+          className='menu-contact not-italic sm:relative sm:flex sm:h-full sm:items-center sm:justify-center sm:gap-3 sm:text-xs'>
           <div
             id='menu-contact-sns'
             className='sm:flex sm:items-center sm:gap-2'>

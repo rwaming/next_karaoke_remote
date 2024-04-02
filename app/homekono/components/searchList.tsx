@@ -45,21 +45,14 @@ export default function SearchList(): JSX.Element {
   return (
     <div
       ref={searchRef}
-      id='search-box'
       className='search-box z-20 hidden min-h-2/3dvh w-full grow flex-col overflow-hidden bg-deep sm:top-0 sm:h-1/2dvh sm:min-h-0 sm:rounded-b-lg sm:drop-shadow-lg'>
-      <section
-        id='search-list'
-        className='scroll relative top-16 flex-grow overflow-scroll px-4 pb-8 pt-4 sm:px-1/10vw'>
+      <section className='search-list relative top-16 flex-grow overflow-scroll px-4 pb-10 sm:px-1/10vw'>
         <h4 className='hidden'>노래 목록</h4>
-        <p id='search-list__note' className='p-3 text-center text-sm'>
-          {listNote}
-        </p>
+        <p className='search-list__note p-3 text-center text-sm'>{listNote}</p>
 
         {videoAllLength > 0 && (
-          <ul id='search-list__ul'>
-            <li
-              id='search-list__label'
-              className='search-list__label search-list__li'>
+          <ul className='search-list__ul'>
+            <li className='search-list__label search-list__li'>
               <h6 className='search-list__li-title'>제목</h6>
               <h6 className='search-list__li-artist'>가수</h6>
               <h6 className='search-list__li-number'>금영 번호</h6>
@@ -89,11 +82,10 @@ export default function SearchList(): JSX.Element {
             })}
           </ul>
         )}
-      </section>{' '}
+      </section>
       <button
-        id='search-close'
         type='button'
-        className='absolute bottom-0 right-0 hidden p-4 opacity-75 sm:block'
+        className='search-close absolute bottom-0 right-0 hidden p-4 opacity-75 sm:block'
         onClick={() => {
           searchOpenClose(playerRef, controllerRef, searchRef, searchModalRef)
         }}>

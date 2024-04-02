@@ -5,50 +5,48 @@ import { type Button } from '../../utils/Types'
 
 export default function Controller(): JSX.Element {
   const { playerRef, controllerRef } = useContext(HomekonoRefContext)
-  const controllerOpenCloseRef = useRef<Button>(null)
+  const controllerHideRef = useRef<Button>(null)
 
   return (
     <section
       ref={controllerRef}
-      id='controller'
-      className='controller controller__search-close relative bottom-0 right-0 flex shrink-0 grow whitespace-nowrap text-sm font-bold text-dark xs:text-base sm:shrink-0 sm:grow-0 sm:basis-56 sm:p-1 sm:text-sm md:basis-64 md:text-base'>
+      className='controller controller__search-closed relative bottom-0 right-0 flex shrink-0 grow whitespace-nowrap text-sm font-bold text-dark xs:text-base sm:shrink-0 sm:grow-0 sm:basis-56 sm:p-1 sm:text-sm md:basis-64 md:text-base'>
       <h3 className='hidden'>리모콘</h3>
       <button
-        ref={controllerOpenCloseRef}
-        id='controller__open-close'
+        ref={controllerHideRef}
         type='button'
-        className='controller__open-close absolute top-1/2 z-10 mr-2 box-content hidden h-full w-14 -translate-y-1/2 text-sm font-light text-light opacity-0 sm:block'
+        className='controller-hide absolute top-1/2 z-50 mr-2 box-content hidden h-full w-14 -translate-y-1/2 text-sm font-light text-light opacity-0 sm:block'
         onMouseEnter={() => {
           const controller = controllerRef.current
           if (controller !== null) {
-            controller.classList.add('controller-box__ready-close')
+            controller.classList.add('controller__ready-close')
           }
         }}
         onMouseLeave={() => {
           const controller = controllerRef.current
           if (controller !== null) {
-            controller.classList.remove('controller-box__ready-close')
+            controller.classList.remove('controller__ready-close')
           }
         }}
         onClick={() => {
           const controller = controllerRef.current
-          const controllerOpenClose = controllerOpenCloseRef.current
+          const controllerHide = controllerHideRef.current
           const player = playerRef.current
           if (
             controller !== null &&
-            controllerOpenClose !== null &&
+            controllerHide !== null &&
             player !== null
           ) {
-            controllerOpenClose.style.visibility = 'hidden'
+            controllerHide.style.visibility = 'hidden'
             setTimeout(() => {
-              controllerOpenClose.style.visibility = 'visible'
+              controllerHide.style.visibility = 'visible'
             }, 100)
-            if (!controller.classList.contains('controller_closed')) {
+            if (!controller.classList.contains('controller__closed')) {
               player.classList.add('player__controller-closed')
-              controller.classList.add('controller_closed')
+              controller.classList.add('controller__closed')
             } else {
               player.classList.remove('player__controller-closed')
-              controller.classList.remove('controller_closed')
+              controller.classList.remove('controller__closed')
             }
           }
         }}>
@@ -57,79 +55,67 @@ export default function Controller(): JSX.Element {
           {'>'}
         </span>
       </button>
-      <div
-        id='controller-box'
-        className='button-col relative bottom-0 right-0 flex grow'>
+      <div className='controller-box button-col relative bottom-0 right-0 flex grow'>
         <div className='button-row basis-1/5dvh'>
           <div className='button-col'>
             <ControllerButton
-              id='controller-speedup'
               text='▲템 포'
               emoji=''
-              className='bg-button1'
+              className='controller-speedup bg-button1'
             />
             <ControllerButton
-              id='controller-speeddown'
               text='▼템 포'
               emoji=''
-              className='bg-button1'
+              className='controller-speeddown bg-button1'
             />
           </div>
           <div className='button-col'>
             <ControllerButton
-              id='controller-volumeup'
               text='▲뮤 직'
               emoji=''
-              className='bg-button1'
+              className='controller-volumeup bg-button1'
             />
             <ControllerButton
-              id='controller-volumedown'
               text='▼뮤 직'
               emoji=''
-              className='bg-button1'
+              className='controller-volumedown bg-button1'
             />
           </div>
           <div className='button-col'>
             <ControllerButton
-              id='controller-applause'
               text='👏박 수'
               emoji=''
-              className='bg-button2'
+              className='controller-applause bg-button2'
             />
             <ControllerButton
-              id='controller-volumemute'
               text='🔇음소거'
               emoji=''
-              className='bg-button1'
+              className='controller-volumemute bg-button1'
             />
           </div>
         </div>
         <div className='button-row inessential basis-0'>
           <ControllerButton
-            id='controller-timebackward'
             text='◀️ 마디점프'
             emoji='◀️'
-            className='emoji bg-button1'
+            className='controller-timebackward emoji bg-button1'
           />
           <ControllerButton
-            id='controller-timeforward'
             text='마디점프 '
             emoji='▶️▶️'
-            className='emoji bg-button1'
+            className='controller-timeforward emoji bg-button1'
           />
         </div>
         <div className='button-row'>
           <ControllerButton
-            id='controller-playpause'
             text='일시정지'
             emoji='⏯'
-            className='emoji bg-button2'
+            className='controller-playpause emoji bg-button2'
           />
           <ControllerButton
-            id='controller-stop'
             text='취소'
             emoji=''
-            className='basis-1/2 bg-button3'
+            className='controller-stop basis-1/2 bg-button3'
           />
         </div>
       </div>

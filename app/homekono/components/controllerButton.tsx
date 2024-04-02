@@ -11,12 +11,10 @@ import { HomekonoValueContext } from '../../utils/HomekonoProvider'
 import playStop from '../functions/playStop'
 
 export default function ControllerButton({
-  id,
   text,
   emoji,
   className,
 }: {
-  id: string
   text: string
   emoji: string
   className: string
@@ -31,39 +29,38 @@ export default function ControllerButton({
 
   const controllerFunctions = useCallback(
     (event: MouseEvent<Button>) => {
-      id.includes('playpause') && playPause(playerEvent)
-      id.includes('stop') && playStop(playerEvent, router)
-      id.includes('time') && timeMove(event, playerEvent)
-      id.includes('volume') && volumeUpDown(event, playerEvent)
-      id.includes('speed') && speedUpDown(event, playerEvent)
-      id.includes('applause') &&
+      className.includes('playpause') && playPause(playerEvent)
+      className.includes('stop') && playStop(playerEvent, router)
+      className.includes('time') && timeMove(event, playerEvent)
+      className.includes('volume') && volumeUpDown(event, playerEvent)
+      className.includes('speed') && speedUpDown(event, playerEvent)
+      className.includes('applause') &&
         applause([applauseRef1, applauseRef2, applauseRef3, applauseRef4])
     },
-    [id, playerEvent, router],
+    [className, playerEvent, router],
   )
   return (
     <>
       <button
         type='button'
-        id={id}
         className={`button ${className}`}
         onClick={(event: MouseEvent<Button>) => {
           controllerFunctions(event)
         }}>
         {!className.includes('emoji') && text}
-        {id.includes('pause') && (
+        {className.includes('pause') && (
           <>
             {emoji}
             <span className='button-tight'>{text}</span>
           </>
         )}
-        {id.includes('backward') && (
+        {className.includes('backward') && (
           <span className='button-tight'>
             <span className='button-tighter'>{emoji}</span>
             {text}
           </span>
         )}
-        {id.includes('forward') && (
+        {className.includes('forward') && (
           <span className='button-tight'>
             {text}
             <span className='button-tighter'>{emoji}</span>
@@ -71,10 +68,9 @@ export default function ControllerButton({
         )}
       </button>
 
-      {id.includes('applause') && (
+      {className.includes('applause') && (
         <ApplauseAudios
           audioRefs={[applauseRef1, applauseRef2, applauseRef3, applauseRef4]}
-          id={id}
         />
       )}
     </>

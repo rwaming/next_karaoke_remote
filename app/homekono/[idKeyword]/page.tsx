@@ -32,7 +32,7 @@ export default function Video({
   }, [idKeyword, isNotID, router, setPlayerState])
 
   return isNotID ? (
-    <div id='player-content__search'>
+    <div className='player-content__search'>
       <p className='font-light'>{`${idKeyword}`}를 검색하고 있어요.</p>
     </div>
   ) : (

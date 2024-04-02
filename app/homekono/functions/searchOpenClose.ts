@@ -20,21 +20,21 @@ export default function searchOpenClose(
     if (search.classList.contains('hidden')) {
       search.classList.remove('hidden')
       search.classList.add('flex')
-      player.classList.remove('player__search-close')
-      player.classList.add('player__search-open')
-      searchModal.classList.remove('search-modal__search-close')
-      searchModal.classList.add('search-modal__search-open')
-      controller.classList.remove('controller__search-close')
-      controller.classList.add('controller__search-open')
+      player.classList.remove('player__search-closed')
+      player.classList.add('player__search-opened')
+      searchModal.classList.remove('search-modal__search-closed')
+      searchModal.classList.add('search-modal__search-opened')
+      controller.classList.remove('controller__search-closed')
+      controller.classList.add('controller__search-opened')
     } else {
       search.classList.add('hidden')
       search.classList.remove('flex')
-      player.classList.add('player__search-close')
-      player.classList.remove('player__search-open')
-      searchModal.classList.add('search-modal__search-close')
-      searchModal.classList.remove('search-modal__search-open')
-      controller.classList.add('controller__search-close')
-      controller.classList.remove('controller__search-open')
+      player.classList.add('player__search-closed')
+      player.classList.remove('player__search-opened')
+      searchModal.classList.add('search-modal__search-closed')
+      searchModal.classList.remove('search-modal__search-opened')
+      controller.classList.add('controller__search-closed')
+      controller.classList.remove('controller__search-opened')
     }
   }
 }

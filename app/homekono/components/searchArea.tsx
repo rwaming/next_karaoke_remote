@@ -14,17 +14,12 @@ export default function SearchArea(): JSX.Element {
   const { setVideoInfos, setVideoAllLength } = useContext(SearchActionContext)
 
   return (
-    <search
-      id='search-area'
-      className='search-area absolute flex min-h-2/3dvh w-full flex-col p-4 pt-3'>
-      <form id='search-form' name='search' action='#' className='flex'>
-        <fieldset
-          id='search-form__inputbox'
-          className='relative z-30 flex min-w-0 flex-grow items-start'>
+    <search className='search-song absolute flex min-h-2/3dvh w-full flex-col p-4 pt-3'>
+      <form name='search-song' action='#' className='flex'>
+        <fieldset className='search-song__field relative z-30 flex min-w-0 flex-grow items-start'>
           <input
             ref={searchValueRef}
-            id='search-form__value'
-            name='search-form__value'
+            name='search-song__input'
             type='text'
             minLength={1}
             pattern='\S*'
@@ -52,20 +47,16 @@ export default function SearchArea(): JSX.Element {
               }
             }}
           />
-          <fieldset
-            id='search-form__buttonbox'
-            className='absolute right-0 flex items-center'>
+          <fieldset className='search-song__button-box absolute right-0 flex items-center'>
             <input
-              id='search-form__clear'
               type='reset'
               value='✕'
-              className='hidden pr-2 opacity-50 sm:flex sm:p-2'
+              className='search-song__button-clear hidden pr-2 opacity-50 sm:flex sm:p-2'
             />
             <input
-              id='search-form__search'
               type='submit'
               value='🔍'
-              className='x-cover-instead bg-light-input mr-2 hidden text-2xl sm:flex'
+              className='search-song__button-search bg-light-input mr-2 hidden text-2xl sm:flex'
               onClick={(event) => {
                 const searchKeyword = searchValueRef.current?.value.trim() ?? ''
                 if (searchKeyword !== '') {

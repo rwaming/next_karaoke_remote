@@ -10,9 +10,7 @@ export default function LoadingBody({
 }): JSX.Element {
   const router = useRouter()
   return (
-    <div
-      id='loading'
-      className='bg absolute z-50 flex h-dvh w-dvw flex-col items-center justify-center'>
+    <div className='loading bg absolute z-50 flex h-dvh w-dvw flex-col items-center justify-center'>
       <Image
         src='/homekono_light.png'
         width={1080}

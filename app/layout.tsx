@@ -4,7 +4,7 @@ import '@/styles/motion.css'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import Menu from '@/homekono/components/menu'
+import Menu from '@/components/menu'
 
 export const metadata: Metadata = {
   title: '홈코노 - 집에서 즐기는 나만의 노래방',
@@ -22,19 +22,13 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body>
-        <div id='app' className='app w-scree bg relative h-dvh text-light'>
-          <header
-            id='header'
-            className='header absolute left-0 top-0 ml-4 mt-4 flex items-center sm:left-1'>
-            <div
-              id='header__group'
-              className='relative z-50 overflow-x-hidden whitespace-nowrap'>
-              <h1 className='h-8 select-none pl-2 text-2xl font-bold xs:text-2xl'>
+        <div className='app w-scree bg relative h-dvh text-light'>
+          <header className='header absolute left-0 top-0 ml-4 mt-4 flex items-center sm:left-1'>
+            <div className='title-group relative z-50 overflow-x-hidden whitespace-nowrap'>
+              <h1 className='title h-8 select-none pl-2 text-2xl font-bold xs:text-2xl'>
                 홈코노
               </h1>
-              <p
-                id='update'
-                className='update absolute left-16 top-3 z-50 hidden pl-2 text-xs font-light opacity-75 sm:ml-2 sm:inline'>
+              <p className='update absolute left-16 top-3 z-50 hidden pl-2 text-xs font-light opacity-75 sm:ml-2 sm:inline'>
                 <time dateTime='2024-03-30' className='inline-block'>
                   2024. 04. 02. 화요일
                 </time>
@@ -42,8 +36,7 @@ export default function RootLayout({
             </div>
             <button
               type='button'
-              id='header__open'
-              className='absolute left-1 top-1 z-50 h-6 w-6'>
+              className='title-group__open absolute left-1 top-1 z-50 h-6 w-6'>
               <Image
                 src='/homekono_light.png'
                 width={1080}
@@ -57,30 +50,19 @@ export default function RootLayout({
 
           {children}
 
-          <footer
-            id='footer'
-            className='mb-3 hidden transition-all sm:absolute sm:bottom-0 sm:block sm:h-5 sm:w-full'>
-            <address
-              id='contact'
-              className='contact not-italic sm:relative sm:flex sm:h-full sm:items-center sm:justify-center sm:gap-3 sm:text-xs'>
-              <div id='contact-name' className='font-bold'>
-                <p id='contact-name__en' className='sm:inline'>
-                  RWAM
-                </p>
-                <p id='contact-name__ko' className='ml-1 sm:inline'>
-                  김성주
-                </p>
+          <footer className='absolute bottom-0 mb-3 hidden h-5 w-full transition-all sm:block'>
+            <address className='contact relative flex h-full items-center justify-center gap-3 text-xs not-italic'>
+              <div className='contact-names font-bold'>
+                <p className='inline'>RWAM</p>
+                <p className='ml-1 inline'>김성주</p>
               </div>
 
-              <div
-                id='contact-sns'
-                className='sm:flex sm:items-center sm:gap-2'>
+              <div className='contact-sns flex items-center gap-2'>
                 <Link
                   href='https://www.instagram.com/rwam__kn'
                   target='_blank'
                   aria-label='contact-sns__instagram'>
                   <Image
-                    id='contact-sns__instagram'
                     src='/icon_instagram.png'
                     width={40}
                     height={40}
@@ -93,7 +75,6 @@ export default function RootLayout({
                   target='_blank'
                   aria-label='contact-sns__naver-blog'>
                   <Image
-                    id='contact-sns__naver-blog'
                     src='/icon_naver.png'
                     width={40}
                     height={40}
@@ -106,7 +87,6 @@ export default function RootLayout({
                   target='_blank'
                   aria-label='contact-sns__github'>
                   <Image
-                    id='contact-sns__github'
                     src='/icon_github.png'
                     width={40}
                     height={40}
@@ -116,21 +96,15 @@ export default function RootLayout({
                 </Link>
               </div>
 
-              <div
-                id='contact-info'
-                className='contact-info flex items-center sm:h-full sm:min-w-10 sm:items-center'>
+              <div className='contact-more flex h-full min-w-10 items-center'>
                 <button
                   type='button'
-                  className='w-10 overflow-hidden opacity-100 sm:whitespace-nowrap'>
+                  className='w-10 overflow-hidden whitespace-nowrap opacity-100'>
                   + more
                 </button>
-                <div className='whitespace-nowrap opacity-0 sm:flex sm:w-0 sm:items-center sm:overflow-hidden'>
-                  <p id='contact-info__email' className='sm:inline-block'>
-                    art.rwam@gmail.com
-                  </p>
-                  <p id='contact-info__phone' className='ml-2 sm:inline-block'>
-                    +82 010-9716-1132
-                  </p>
+                <div className='contact-emailphone flex w-0 items-center overflow-hidden whitespace-nowrap opacity-0'>
+                  <p className='inline-block'>art.rwam@gmail.com</p>
+                  <p className='ml-2 inline-block'>+82 010-9716-1132</p>
                 </div>
               </div>
             </address>

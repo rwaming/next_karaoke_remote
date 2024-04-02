@@ -19,7 +19,6 @@ export default function Player({
   return (
     <section
       ref={playerRef}
-      id='player'
       className='player relative z-10 flex max-h-1/3dvh flex-shrink flex-col sm:m-4 sm:mb-11 sm:mr-0 sm:mt-16 sm:max-h-none sm:flex-1'>
       <h2 className='hidden'>노래 영상</h2>
 
@@ -28,30 +27,24 @@ export default function Player({
         !playerState.includes('Error') && (
           <p
             ref={playerLoadingRef}
-            id='player-loading'
-            className='absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 opacity-75'>
+            className='player-loading absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 opacity-75'>
             화면을 만들고 있어요.
           </p>
         )}
       {pathname !== '/homekono' && (
         <p
           ref={playerReadyRef}
-          id='player-ready'
-          className='absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 opacity-75'>
+          className='player-ready absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 opacity-75'>
           노래를 불러오고 있어요.
         </p>
       )}
       {playerState.includes('Error') && (
-        <p
-          id='player-error'
-          className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+        <p className='player-error absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
           {playerState}
         </p>
       )}
 
-      <div
-        id='player-content'
-        className='player-content relative flex h-16-9dvh w-full justify-center overflow-hidden bg-dark bg-opacity-50 sm:h-full sm:flex-col sm:items-center sm:rounded-lg'>
+      <div className='player-content relative flex h-16-9dvh w-full justify-center overflow-hidden bg-dark bg-opacity-50 sm:h-full sm:flex-col sm:items-center sm:rounded-lg'>
         {children}
       </div>
     </section>
