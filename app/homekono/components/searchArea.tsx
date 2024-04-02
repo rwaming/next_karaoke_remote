@@ -67,12 +67,16 @@ export default function SearchArea(): JSX.Element {
               value='🔍'
               className='x-cover-instead bg-light-input mr-2 hidden text-2xl sm:flex'
               onClick={(event) => {
-                void videoSearch(event, {
-                  setVideoID,
-                  setVideoInfos,
-                  searchValueRef,
-                  setVideoAllLength,
-                })
+                const searchKeyword = searchValueRef.current?.value.trim() ?? ''
+                if (searchKeyword !== '') {
+                  event.preventDefault()
+                  void videoSearch(
+                    searchKeyword,
+                    setVideoID,
+                    setVideoInfos,
+                    setVideoAllLength,
+                  )
+                }
               }}
             />
           </fieldset>
