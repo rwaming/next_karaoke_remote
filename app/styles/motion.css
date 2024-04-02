@@ -127,30 +127,30 @@
 }
 .menu-box {
   @apply -top-4;
-  left: calc(-66.66vw - 10rem);
+  left: calc(-66.66dvw - 10rem);
   transition: left 1s cubic-bezier(0.7, 0.2, 0.1, 0.4);
 }
 @media screen and (min-width: 320px) {
   .menu-box {
-    left: calc(-50vw - 10rem);
+    left: calc(-50dvw - 10rem);
   }
 }
 @media screen and (min-width: 640px) {
   .menu-box {
-    left: calc(-40vw - 10rem);
+    left: calc(-40dvw - 10rem);
   }
 }
 @media screen and (min-width: 768px) {
   .menu-box {
-    left: calc(-33.33vw - 10rem);
+    left: calc(-33.33dvw - 10rem);
   }
 }
-.menu-opened {
+.menu__opened {
   transition: left 1s cubic-bezier(0.1, 0.2, 0.1, 0.8);
   left: -1rem;
 }
 @media screen and (min-width: 640px) {
-  .menu-opened {
+  .menu__opened {
     left: -1.25rem;
   }
 }
@@ -209,7 +209,7 @@
   .player__controller-closed {
     .player-content__youtube {
       height: calc(
-        (100vw - var(--controller-close-w-px)) * var(--screen-ratio-h)
+        (100dvw - var(--controller-close-w-px)) * var(--screen-ratio-h)
       );
       max-width: calc(
         (100dvh - var(--player-y-space-px)) * var(--screen-ratio-w)
@@ -276,10 +276,10 @@
 @media screen and (max-height: 400px) {
   .player__search-opened .full-size {
     height: calc(
-      (100vw - var(--controller-open-w-md-px)) * var(--screen-ratio-h)
+      (100dvw - var(--controller-open-w-md-px)) * var(--screen-ratio-h)
     );
     max-height: calc(
-      (100vw - var(--controller-open-w-md-px)) * var(--screen-ratio-h)
+      (100dvw - var(--controller-open-w-md-px)) * var(--screen-ratio-h)
     );
   }
   .controller {

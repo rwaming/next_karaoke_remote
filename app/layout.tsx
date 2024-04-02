@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body>
-        <div className='app w-scree bg relative h-dvh text-light'>
+        <div className='app bg relative h-dvh w-dvw text-light'>
           <header className='header absolute left-0 top-0 ml-4 mt-4 flex items-center sm:left-1'>
             <div className='title-group relative z-50 overflow-x-hidden whitespace-nowrap'>
               <h1 className='title h-8 select-none pl-2 text-2xl font-bold xs:text-2xl'>
@@ -51,7 +51,7 @@ export default function RootLayout({
           {children}
 
           <footer className='absolute bottom-0 mb-3 hidden h-5 w-full transition-all sm:block'>
-            <address className='contact relative flex h-full items-center justify-center gap-3 text-xs not-italic'>
+            <address className='contact flex h-full items-center justify-center gap-3 text-xs not-italic'>
               <div className='contact-names font-bold'>
                 <p className='inline'>RWAM</p>
                 <p className='ml-1 inline'>김성주</p>

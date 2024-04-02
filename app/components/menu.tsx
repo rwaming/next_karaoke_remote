@@ -16,7 +16,7 @@ export default function Menu(): JSX.Element {
     const menu = menuRef.current
     const menuModal = menuModalRef.current
     if (menu !== null && menuModal !== null) {
-      menu.classList.add('menu-opened')
+      menu.classList.add('menu__opened')
       menuModal.classList.remove('menu-modal__closed')
       menuModal.classList.add('menu-modal__opened')
     }
@@ -26,7 +26,7 @@ export default function Menu(): JSX.Element {
     const menu = menuRef.current
     const menuModal = menuModalRef.current
     if (menu !== null && menuModal !== null) {
-      menu.classList.remove('menu-opened')
+      menu.classList.remove('menu__opened')
       menuModal.classList.remove('menu-modal__opened')
       menuModal.classList.add('menu-modal__closed')
     }
@@ -43,7 +43,7 @@ export default function Menu(): JSX.Element {
       </button>
       <button
         type='button'
-        className='menu__open absolute left-0 top-0 z-50 h-8 w-20 overflow-hidden whitespace-nowrap text-transparent'
+        className='menu-open absolute left-0 top-0 z-50 h-8 w-20 overflow-hidden whitespace-nowrap text-transparent'
         onMouseEnter={() => {
           if (window.innerWidth > 640) {
             menuOpen()
@@ -61,7 +61,7 @@ export default function Menu(): JSX.Element {
       <nav
         ref={menuRef}
         id='menu-box'
-        className='menu-box absolute z-40 h-dvh w-2/3vw bg-deep xs:w-1/2vw sm:w-2/5vw md:w-1/3vw'
+        className='menu-box absolute z-40 h-dvh w-2/3dvw bg-deep xs:w-1/2dvw sm:w-2/5dvw md:w-1/3dvw'
         onMouseEnter={() => {
           if (window.innerWidth > 640) {
             clearTimeout(menuCloseWait)
@@ -76,9 +76,7 @@ export default function Menu(): JSX.Element {
           <li>홈코노</li>
           <li>RWAM</li>
         </ul> */}
-        <address
-          id='menu-contact'
-          className='menu-contact not-italic sm:relative sm:flex sm:h-full sm:items-center sm:justify-center sm:gap-3 sm:text-xs'>
+        <address className='menu-contact absolute bottom-0 not-italic sm:flex sm:h-10 sm:items-center sm:justify-center sm:gap-3 sm:text-xs'>
           <div
             id='menu-contact-sns'
             className='sm:flex sm:items-center sm:gap-2'>
