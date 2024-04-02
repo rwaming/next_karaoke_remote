@@ -1,5 +1,5 @@
 /* Update */
-const updateDate = '2024-04-02'
+const updateDate = '2024-04-03'
 const updateDateText = updateDate.split('-').map((number, index) => {
   if (index !== 2) {
     return `${number}. `
