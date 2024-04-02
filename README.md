@@ -75,6 +75,10 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 #### #101 - Dynamic route player page(2)
 
 - Make these functions
+  1. Make structure for dynamic routing.
+     - app/(pages)/homekono/[idKeyword]
+  - Search page will be made soon.
+  - History page is idle yet.
   1.  A user can access to link giving youtube video though type keywords in URL bar.
       - It makes it possible to get information
         1. how many users select a specific song
