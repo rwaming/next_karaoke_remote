@@ -11,15 +11,12 @@ import { type YouTubeEvent } from 'react-youtube'
 export function readyToUsePlayer(
   event: YouTubeEvent,
   setPlayerEvent: SetState<YouTubeEvent | null>,
-  playerLoadingRef: UseRef<Div>,
 ): void {
   setPlayerEvent(event)
-  const playerLoading = playerLoadingRef.current
   const playerIframe: IFrame = event.target.getIframe()
   const playerYT = playerIframe.parentElement
   playerYT?.classList.add('mini-size')
   event.target.playVideo()
-  playerLoading?.classList.add('hidden')
 }
 
 export function playVideoHighQuility(event: YouTubeEvent): void {
@@ -28,12 +25,17 @@ export function playVideoHighQuility(event: YouTubeEvent): void {
 
 export function stateSize(
   event: YouTubeEvent,
+  playerLoadingRef: UseRef<Div>,
   playerReadyRef: UseRef<Div>,
 ): void {
   const state = event.data
   if (typeof state === 'number') {
     const playerIframe: IFrame = event.target.getIframe()
     const playerYT = playerIframe.parentElement
+    const playerLoading = playerLoadingRef.current
+    if (playerLoading !== null && !playerLoading.classList.contains('hidden')) {
+      playerLoading.classList.add('hidden')
+    }
     const playerReady = playerReadyRef.current
     if (state === 3) {
       playerYT?.classList.add('mini-size')

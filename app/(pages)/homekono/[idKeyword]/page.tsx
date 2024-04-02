@@ -55,11 +55,11 @@ export default function Video({
         },
       }}
       onReady={(event) => {
-        readyToUsePlayer(event, setPlayerEvent, playerLoadingRef)
+        readyToUsePlayer(event, setPlayerEvent)
       }}
       onPlay={playVideoHighQuility}
       onStateChange={(event) => {
-        stateSize(event, playerReadyRef)
+        stateSize(event, playerLoadingRef, playerReadyRef)
       }}
       onEnd={EndNoMoreVideos}
     />

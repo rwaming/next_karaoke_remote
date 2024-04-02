@@ -23,6 +23,7 @@ export default function Player({
       <h2 className='hidden'>노래 영상</h2>
 
       {pathname !== '/homekono' &&
+        pathname.includes('/homekono') &&
         playerState !== '' &&
         !playerState.includes('Error') && (
           <p
@@ -31,7 +32,7 @@ export default function Player({
             화면을 만들고 있어요.
           </p>
         )}
-      {pathname !== '/homekono' && (
+      {pathname !== '/homekono' && pathname.includes('/homekono') && (
         <p
           ref={playerReadyRef}
           className='player-ready absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 opacity-75'>
