@@ -4,6 +4,7 @@ import { useCallback, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { updateDate, updateDateText } from '@/utils/utilities'
 import { type Button, type Div } from '../utils/Types'
 
 export default function Menu(): JSX.Element {
@@ -70,13 +71,16 @@ export default function Menu(): JSX.Element {
         }}
         onMouseLeave={() => {
           if (!('ontouchstart' in window)) {
-            menuCloseWait = setTimeout(menuClose, 3000)
+            menuCloseWait = setTimeout(menuClose, 1500)
           }
         }}>
         {/* <ul>
           <li>홈코노</li>
           <li>RWAM</li>
         </ul> */}
+        <p className='ml-6 mt-12 text-xs opacity-75 transition-opacity sm:opacity-0'>
+          <time dateTime={updateDate}>{updateDateText}</time>
+        </p>
         <address className='menu-contact absolute bottom-0 mb-4 flex w-full flex-col items-center justify-end text-xs not-italic sm:hidden'>
           <div className='menu-contact-sns flex items-center gap-4'>
             <Link

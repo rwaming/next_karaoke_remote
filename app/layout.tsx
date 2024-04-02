@@ -5,6 +5,7 @@ import '@/styles/motion.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import Menu from '@/components/menu'
+import { updateDate, updateDateText } from './utils/utilities'
 
 export const metadata: Metadata = {
   title: '홈코노 - 집에서 즐기는 나만의 노래방',
@@ -28,10 +29,8 @@ export default function RootLayout({
               <h1 className='title h-8 select-none pl-2 text-2xl font-bold xs:text-2xl'>
                 홈코노
               </h1>
-              <p className='update absolute left-16 top-3 z-50 hidden pl-2 text-xs font-light opacity-75 sm:ml-2 sm:inline'>
-                <time dateTime='2024-03-30' className='inline-block'>
-                  2024. 04. 02. 화요일
-                </time>
+              <p className='update absolute left-16 top-3 z-50 pl-2 text-xs font-light opacity-0 transition-opacity sm:ml-2 sm:inline sm:opacity-75'>
+                <time dateTime={updateDate}>{updateDateText}</time>
               </p>
             </div>
             <button
