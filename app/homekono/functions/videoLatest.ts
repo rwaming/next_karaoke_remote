@@ -1,6 +1,6 @@
 import { type SetState } from '../../utils/Types'
 
-export default async function showLatestVideo(
+export default async function videoLatest(
   setVideoID: SetState<string>,
   setVideoTitle: SetState<string>,
   setVideoArtist: SetState<string>,

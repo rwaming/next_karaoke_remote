@@ -2,13 +2,10 @@ import { useContext } from 'react'
 import {
   HomekonoActionContext,
   HomekonoRefContext,
-} from '../../utils/HomekonoProvider'
-import {
-  SearchActionContext,
-  SearchRefContext,
-} from '../../utils/SearchProvider'
-import searchVideos from '../functions/searchVideos'
-import searchOpenClose from '../functions/searchOpenClose'
+} from '@/utils/HomekonoProvider'
+import { SearchActionContext, SearchRefContext } from '@/utils/SearchProvider'
+import videoListSearch from '@/homekono/functions/videoListSearch'
+import searchOpenClose from '@/homekono/functions/searchOpenClose'
 
 export default function SearchArea(): JSX.Element {
   const { setVideoID } = useContext(HomekonoActionContext)
@@ -70,7 +67,7 @@ export default function SearchArea(): JSX.Element {
               value='🔍'
               className='x-cover-instead bg-light-input mr-2 hidden text-2xl sm:flex'
               onClick={(event) => {
-                void searchVideos(event, {
+                void videoListSearch(event, {
                   setVideoID,
                   setVideoInfos,
                   searchValueRef,
