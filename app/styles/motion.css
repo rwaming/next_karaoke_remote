@@ -160,14 +160,8 @@
 }
 .controller__search-open {
   @apply m-4 mt-14 pt-2 sm:mb-11 sm:ml-2 sm:mr-4 sm:mt-1/2dvh;
-  * {
-    @apply sm:z-20 sm:text-sm;
-  }
   .button {
-    @apply sm:py-2;
-  }
-  #controller-search {
-    @apply sm:hidden;
+    @apply sm:z-20 sm:py-2 sm:text-sm;
   }
 }
 
@@ -212,7 +206,6 @@
   }
   .controller-box__ready-close {
     right: 0.5rem;
-    opacity: 0.85;
   }
   .controller__open-close {
     transition:
@@ -226,17 +219,13 @@
       transition: rotate 0s 0.01s;
     }
   }
-  .controller:hover > .controller__open-close {
-    opacity: 0.65;
-  }
   .controller:hover > .controller__open-close:hover {
     opacity: 1;
     animation: point__controller-close 0.8s infinite;
   }
   .controller_closed {
-    @apply right-0 mx-0 max-w-4 overflow-hidden;
+    @apply right-0 z-40 mx-0 max-w-4 overflow-hidden;
     transition: max-width 0.3s;
-    opacity: 0.85;
     > #controller-box {
       @apply pl-4;
       transition: padding-left 0.3s;
@@ -267,16 +256,6 @@
 }
 
 /* sm height */
-@media screen and (max-height: 550px) {
-  #controller-stop {
-    @apply hidden sm:block;
-  }
-}
-@media screen and (max-height: 500px) {
-  #controller-stop {
-    @apply sm:hidden;
-  }
-}
 @media screen and (max-height: 400px) {
   .player__search-open .full-size {
     height: calc(
@@ -290,9 +269,6 @@
     * {
       @apply p-0 text-sm sm:p-0 sm:text-base;
     }
-  }
-  #controller-stop {
-    @apply sm:hidden;
   }
   .controller__search-open {
     @apply sm:basis-96 sm:gap-1;

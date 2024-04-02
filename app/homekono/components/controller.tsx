@@ -91,20 +91,20 @@ export default function Controller(): JSX.Element {
           </div>
           <div className='button-col'>
             <ControllerButton
+              id='controller-applause'
+              text='👏박 수'
+              emoji=''
+              className='bg-button2'
+            />
+            <ControllerButton
               id='controller-volumemute'
               text='🔇음소거'
               emoji=''
               className='bg-button1'
             />
-            <ControllerButton
-              id='controller-playpause'
-              text='일시정지'
-              emoji='⏯'
-              className='emoji bg-button1'
-            />
           </div>
         </div>
-        <div className='button-row inessential'>
+        <div className='button-row inessential basis-0'>
           <ControllerButton
             id='controller-timebackward'
             text='◀️ 마디점프'
@@ -120,24 +120,18 @@ export default function Controller(): JSX.Element {
         </div>
         <div className='button-row'>
           <ControllerButton
-            id='controller-applause'
-            text='👏박 수'
-            emoji=''
-            className='basis-1/4 bg-button2'
+            id='controller-playpause'
+            text='일시정지'
+            emoji='⏯'
+            className='emoji bg-button2'
           />
           <ControllerButton
-            id='controller-latest'
-            text='🌟신곡연습'
+            id='controller-stop'
+            text='취소'
             emoji=''
-            className='basis-1/2 bg-button2'
+            className='basis-1/2 bg-button3'
           />
         </div>
-        <ControllerButton
-          id='controller-stop'
-          text='취소'
-          emoji=''
-          className='basis-1/8dvh bg-button3'
-        />
       </div>
     </section>
   )

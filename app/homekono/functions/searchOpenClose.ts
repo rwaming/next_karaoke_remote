@@ -11,17 +11,12 @@ export default function searchOpenClose(
   const search: Div | null = searchRef.current
   const searchModal: Button | null = searchModalRef.current
 
-  console.log(player)
-  console.log(controller)
-  console.log(search)
-  console.log(searchModal)
   if (
     search !== null &&
     player !== null &&
     controller !== null &&
     searchModal !== null
   ) {
-    console.log('open close')
     if (search.classList.contains('hidden')) {
       search.classList.remove('hidden')
       search.classList.add('flex')

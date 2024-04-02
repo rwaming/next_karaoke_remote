@@ -1,17 +1,13 @@
 import { useCallback, useContext, useRef, type MouseEvent } from 'react'
+import { useRouter } from 'next/navigation'
 import { type Button } from '../../utils/Types'
 import playPause from '../functions/playPause'
-import stopVideo from '../functions/stopVideo'
 import timeMove from '../functions/timeMove'
 import volumeUpDown from '../functions/volumeUpDown'
 import speedUpDown from '../functions/speedUpDown'
 import applause from '../functions/applause'
 import ApplauseAudios from './controllerApplauseAudios'
-import {
-  HomekonoActionContext,
-  HomekonoValueContext,
-} from '../../utils/HomekonoProvider'
-import showLatestVideo from '../functions/showLatestVideo'
+import { HomekonoValueContext } from '../../utils/HomekonoProvider'
 
 export default function ControllerButton({
   id,
@@ -25,14 +21,8 @@ export default function ControllerButton({
   className: string
 }): JSX.Element {
   const { playerEvent } = useContext(HomekonoValueContext)
-  const {
-    setVideoID,
-    setVideoTitle,
-    setVideoArtist,
-    setVideoNumber,
-    setVideoDate,
-  } = useContext(HomekonoActionContext)
 
+  const router = useRouter()
   const applauseRef1 = useRef(null)
   const applauseRef2 = useRef(null)
   const applauseRef3 = useRef(null)
@@ -40,33 +30,15 @@ export default function ControllerButton({
 
   const controllerFunctions = useCallback(
     (event: MouseEvent<Button>) => {
-      void (
-        id.includes('latest') &&
-        showLatestVideo(
-          setVideoID,
-          setVideoTitle,
-          setVideoArtist,
-          setVideoNumber,
-          setVideoDate,
-        )
-      )
       id.includes('playpause') && playPause(playerEvent)
-      id.includes('stop') && stopVideo(playerEvent)
+      id.includes('stop') && router.push('/homekono')
       id.includes('time') && timeMove(event, playerEvent)
       id.includes('volume') && volumeUpDown(event, playerEvent)
       id.includes('speed') && speedUpDown(event, playerEvent)
       id.includes('applause') &&
         applause([applauseRef1, applauseRef2, applauseRef3, applauseRef4])
     },
-    [
-      id,
-      setVideoArtist,
-      setVideoDate,
-      setVideoID,
-      setVideoNumber,
-      setVideoTitle,
-      playerEvent,
-    ],
+    [id, playerEvent, router],
   )
   return (
     <>
