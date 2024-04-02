@@ -4,7 +4,7 @@ import {
   HomekonoRefContext,
 } from '@/utils/HomekonoProvider'
 import { SearchActionContext, SearchRefContext } from '@/utils/SearchProvider'
-import videoListSearch from '@/homekono/functions/videoListSearch'
+import videoSearch from '@/homekono/functions/videoSearch'
 import searchOpenClose from '@/homekono/functions/searchOpenClose'
 
 export default function SearchArea(): JSX.Element {
@@ -67,7 +67,7 @@ export default function SearchArea(): JSX.Element {
               value='🔍'
               className='x-cover-instead bg-light-input mr-2 hidden text-2xl sm:flex'
               onClick={(event) => {
-                void videoListSearch(event, {
+                void videoSearch(event, {
                   setVideoID,
                   setVideoInfos,
                   searchValueRef,

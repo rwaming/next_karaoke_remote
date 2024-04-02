@@ -94,7 +94,7 @@ async function getSearchInfo(
   return [-1]
 }
 
-export default async function videoListSearch(
+export default async function videoSearch(
   event: MouseEvent,
   {
     setVideoID,

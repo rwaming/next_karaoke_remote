@@ -11,9 +11,9 @@ import { type IFrame } from '@/utils/Types'
 export default function Video({
   params,
 }: {
-  params: { videoID: string }
+  params: { id: string }
 }): JSX.Element {
-  const { videoID } = params
+  const { id } = params
   const { setPlayerEvent } = useContext(HomekonoActionContext)
   const { playerLoadingRef, playerReadyRef } = useContext(HomekonoRefContext)
 
@@ -26,7 +26,9 @@ export default function Video({
       const playerIframe: IFrame = event.target.getIframe()
       const playerYT = playerIframe.parentElement
       playerYT?.classList.add('mini-size')
-      event.target.playVideo()
+      setTimeout(() => {
+        event.target.playVideo()
+      }, 1000)
     },
     [playerLoadingRef, setPlayerEvent],
   )
@@ -64,9 +66,10 @@ export default function Video({
   return (
     <YouTube
       className='player-content__youtube'
-      videoId={videoID}
+      videoId={id}
       opts={{
         playerVars: {
+          autoplay: 1,
           controls: 0,
           disablekb: 1,
           fs: 0,
