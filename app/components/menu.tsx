@@ -16,8 +16,9 @@ export default function Menu(): JSX.Element {
     const menu = menuRef.current
     const menuModal = menuModalRef.current
     if (menu !== null && menuModal !== null) {
-      menu.classList.add('menu__opened')
+      menuModal.classList.remove('hidden')
       menuModal.classList.remove('menu-modal__closed')
+      menu.classList.add('menu__opened')
       menuModal.classList.add('menu-modal__opened')
     }
   }, [])
@@ -37,7 +38,7 @@ export default function Menu(): JSX.Element {
       <button
         ref={menuModalRef}
         type='button'
-        className='menu-modal menu-modal__closed absolute -left-4 -top-4 z-40 h-dvh w-dvw bg-slate-900 bg-opacity-50 text-transparent sm:-left-5'
+        className='menu-modal absolute -left-4 -top-4 z-40 hidden h-dvh w-dvw bg-slate-900 bg-opacity-50 text-transparent sm:-left-5'
         onClick={menuClose}>
         메뉴 닫기
       </button>
@@ -45,12 +46,12 @@ export default function Menu(): JSX.Element {
         type='button'
         className='menu-open absolute left-0 top-0 z-50 h-8 w-20 overflow-hidden whitespace-nowrap text-transparent'
         onMouseEnter={() => {
-          if (window.innerWidth > 640) {
+          if (!('ontouchstart' in window)) {
             menuOpen()
           }
         }}
         onClick={() => {
-          if (window.innerWidth < 640) {
+          if ('ontouchstart' in window) {
             menuOpen()
           } else {
             router.push('/homekono')
@@ -63,12 +64,12 @@ export default function Menu(): JSX.Element {
         id='menu-box'
         className='menu-box absolute z-40 h-dvh w-2/3dvw bg-deep xs:w-1/2dvw sm:w-2/5dvw md:w-1/3dvw'
         onMouseEnter={() => {
-          if (window.innerWidth > 640) {
+          if (!('ontouchstart' in window)) {
             clearTimeout(menuCloseWait)
           }
         }}
         onMouseLeave={() => {
-          if (window.innerWidth > 640) {
+          if (!('ontouchstart' in window)) {
             menuCloseWait = setTimeout(menuClose, 3000)
           }
         }}>
