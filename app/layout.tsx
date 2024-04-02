@@ -36,7 +36,7 @@ export default function RootLayout({
                 id='update'
                 className='update absolute left-16 top-3 z-50 hidden pl-2 text-xs font-light opacity-75 sm:ml-2 sm:inline'>
                 <time dateTime='2024-03-30' className='inline-block'>
-                  2024. 04. 01. 월요일
+                  2024. 04. 02. 화요일
                 </time>
               </p>
             </div>
