@@ -6,12 +6,22 @@ import { type Div, type Button } from '../../../utils/Types'
 export default function Controller(): JSX.Element {
   const { playerRef, controllerRef } = useContext(HomekonoRefContext)
   const controllerHideRef = useRef<Button>(null)
+  const controllerTopButtonsRef = useRef<Div>(null)
   const controllerVolumesRef = useRef<Div>(null)
 
   useEffect(() => {
+    const controllerTopButtons = controllerVolumesRef.current
     const controllerVolumes = controllerVolumesRef.current
-    if (controllerVolumes !== null && 'ontouchstart' in window) {
+    if (
+      controllerTopButtons !== null &&
+      controllerVolumes !== null &&
+      'ontouchstart' in window
+    ) {
       controllerVolumes.style.display = 'none'
+      controllerTopButtons.style.flexDirection = 'row-reverse'
+      controllerTopButtons.querySelectorAll('.button-col').forEach((button) => {
+        button.classList.add('base-0')
+      })
     }
   })
   return (
@@ -63,7 +73,7 @@ export default function Controller(): JSX.Element {
         </span>
       </button>
       <div className='controller-box button-col relative bottom-0 right-0 flex grow'>
-        <div className='button-row basis-1/5dvh'>
+        <div ref={controllerTopButtonsRef} className='button-row basis-1/5dvh'>
           <div className='button-col'>
             <ControllerButton
               text='▲템 포'
