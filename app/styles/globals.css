@@ -108,6 +108,9 @@
 
 /* Specific element */
 @layer components {
+  .menu-contact-more {
+    transition: all 0.3s 0.2s cubic-bezier(0.1, 0.7, 1, 0.9);
+  }
   .menu-contact-sns > * {
     @apply opacity-50 hover:opacity-80;
   }
@@ -130,7 +133,7 @@
   }
   .menu-contact-more:hover > div {
     transition: all 0.3s 0.2s cubic-bezier(0.1, 0.7, 1, 0.9);
-    @apply mt-1 h-10 w-full opacity-100;
+    @apply h-12 w-full pt-2 opacity-100;
   }
 
   .player-content__youtube {
