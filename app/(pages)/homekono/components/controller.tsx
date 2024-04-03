@@ -1,12 +1,19 @@
-import { useContext, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { HomekonoRefContext } from '../../../utils/HomekonoProvider'
 import ControllerButton from './controllerButton'
-import { type Button } from '../../../utils/Types'
+import { type Div, type Button } from '../../../utils/Types'
 
 export default function Controller(): JSX.Element {
   const { playerRef, controllerRef } = useContext(HomekonoRefContext)
   const controllerHideRef = useRef<Button>(null)
+  const controllerVolumesRef = useRef<Div>(null)
 
+  useEffect(() => {
+    const controllerVolumes = controllerVolumesRef.current
+    if (controllerVolumes !== null && 'ontouchstart' in window) {
+      controllerVolumes.classList.remove('hidden')
+    }
+  })
   return (
     <section
       ref={controllerRef}
@@ -69,21 +76,19 @@ export default function Controller(): JSX.Element {
               className='controller-speeddown bg-button1'
             />
           </div>
-          {!('ontouchstart' in window) && (
-            <div className='button-col'>
-              <ControllerButton
-                text='▲뮤 직'
-                emoji=''
-                className='controller-volumeup bg-button1'
-              />
-              <ControllerButton
-                text='▼뮤 직'
-                emoji=''
-                className='controller-volumedown bg-button1'
-              />
-            </div>
-          )}
           <div className='button-col'>
+            <ControllerButton
+              text='▲뮤 직'
+              emoji=''
+              className='controller-volumeup bg-button1'
+            />
+            <ControllerButton
+              text='▼뮤 직'
+              emoji=''
+              className='controller-volumedown bg-button1'
+            />
+          </div>
+          <div ref={controllerVolumesRef} className='button-col hidden'>
             <ControllerButton
               text='👏박 수'
               emoji=''
