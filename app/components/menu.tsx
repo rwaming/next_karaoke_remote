@@ -20,6 +20,7 @@ export default function Menu(): JSX.Element {
       menuModal.classList.remove('hidden')
       menuModal.classList.remove('menu-modal__closed')
       menu.classList.add('menu__opened')
+      menu.classList.remove('hidden')
       menuModal.classList.add('menu-modal__opened')
     }
   }, [])
@@ -63,7 +64,7 @@ export default function Menu(): JSX.Element {
       <nav
         ref={menuRef}
         id='menu-box'
-        className='menu-box absolute z-40 h-dvh w-2/3dvw bg-deep p-10 xs:w-1/2dvw sm:w-2/5dvw md:w-1/3dvw'
+        className='menu-box absolute z-40 h-dvh w-2/3dvw bg-deep p-8 xs:w-1/2dvw sm:w-2/5dvw sm:p-10 md:w-1/3dvw'
         onMouseEnter={() => {
           if (!('ontouchstart' in window)) {
             clearTimeout(menuCloseWait)
@@ -74,10 +75,10 @@ export default function Menu(): JSX.Element {
             menuCloseWait = setTimeout(menuClose, 1500)
           }
         }}>
-        <p className='ml-6 mt-2 text-xs opacity-75 transition-opacity sm:opacity-0'>
+        <p className='absolute left-6 top-12 text-xs opacity-75 transition-opacity sm:opacity-0'>
           <time dateTime={updateDate}>{updateDateText}</time>
         </p>
-        <ul className='my-7 flex flex-col items-start gap-4 text-sm opacity-25'>
+        <ul className='mb-6 mt-14 flex flex-col items-start gap-4 text-sm opacity-25 sm:mt-8'>
           <li>
             <button type='button' className='h-full w-full'>
               RWAM
@@ -94,12 +95,12 @@ export default function Menu(): JSX.Element {
             </button>
           </li>
         </ul>
-        <p className='font-light leading-relaxed opacity-75'>
-          다양한 기능을 준비하고 있어요.
-          <br /> 조금만 기다려주세요 :D
+        <p className='text-xs font-light leading-relaxed opacity-75 sm:text-sm'>
+          다양한 기능을 준비하고 있어요.{' '}
+          <span className='sm:mt-2 sm:block'>조금만 기다려주세요 :D</span>
         </p>
 
-        <address className='menu-contact absolute bottom-0 mb-4 flex w-full flex-col items-center justify-end text-xs not-italic sm:hidden'>
+        <address className='menu-contact absolute bottom-0 left-1/2 mb-4 flex -translate-x-1/2 flex-col items-center justify-end text-xs not-italic sm:hidden'>
           <div className='menu-contact-sns flex items-center gap-4'>
             <Link
               href='https://www.instagram.com/rwam__kn'
