@@ -69,18 +69,20 @@ export default function Controller(): JSX.Element {
               className='controller-speeddown bg-button1'
             />
           </div>
-          <div className='button-col'>
-            <ControllerButton
-              text='▲뮤 직'
-              emoji=''
-              className='controller-volumeup bg-button1'
-            />
-            <ControllerButton
-              text='▼뮤 직'
-              emoji=''
-              className='controller-volumedown bg-button1'
-            />
-          </div>
+          {!('ontouchstart' in window) && (
+            <div className='button-col'>
+              <ControllerButton
+                text='▲뮤 직'
+                emoji=''
+                className='controller-volumeup bg-button1'
+              />
+              <ControllerButton
+                text='▼뮤 직'
+                emoji=''
+                className='controller-volumedown bg-button1'
+              />
+            </div>
+          )}
           <div className='button-col'>
             <ControllerButton
               text='👏박 수'
