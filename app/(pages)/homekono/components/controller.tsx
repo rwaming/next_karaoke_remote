@@ -6,30 +6,18 @@ import { type Div, type Button } from '../../../utils/Types'
 export default function Controller(): JSX.Element {
   const { playerRef, controllerRef } = useContext(HomekonoRefContext)
   const controllerHideRef = useRef<Button>(null)
-  const controllerTopButtonsRef = useRef<Div>(null)
   const controllerVolumesRef = useRef<Div>(null)
 
   useEffect(() => {
-    const controller = controllerRef.current
-    const controllerTopButtons = controllerVolumesRef.current
     const controllerVolumes = controllerVolumesRef.current
-    if (
-      controllerTopButtons !== null &&
-      controllerVolumes !== null &&
-      'ontouchstart' in window
-    ) {
+    if (controllerVolumes !== null && 'ontouchstart' in window) {
       controllerVolumes.style.display = 'none'
-      controllerTopButtons.style.flexDirection = 'row-reverse'
-      controllerTopButtons.querySelectorAll('.button-col').forEach((button) => {
-        button.classList.add('basis-0')
-      })
     }
-    controller?.classList.remove('invisible')
   })
   return (
     <section
       ref={controllerRef}
-      className='controller controller__search-closed invisible relative bottom-0 right-0 flex shrink-0 grow whitespace-nowrap text-sm font-bold text-dark xs:text-base sm:shrink-0 sm:grow-0 sm:basis-56 sm:p-1 sm:text-sm md:basis-64 md:text-base'>
+      className='controller controller__search-closed relative bottom-0 right-0 flex shrink-0 grow whitespace-nowrap text-sm font-bold text-dark xs:text-base sm:shrink-0 sm:grow-0 sm:basis-56 sm:p-1 sm:text-sm md:basis-64 md:text-base'>
       <h3 className='hidden'>리모콘</h3>
       <button
         ref={controllerHideRef}
@@ -75,7 +63,7 @@ export default function Controller(): JSX.Element {
         </span>
       </button>
       <div className='controller-box button-col relative bottom-0 right-0 flex grow'>
-        <div ref={controllerTopButtonsRef} className='button-row basis-1/5dvh'>
+        <div className='button-row basis-1/5dvh'>
           <div className='button-col'>
             <ControllerButton
               text='▲템 포'
