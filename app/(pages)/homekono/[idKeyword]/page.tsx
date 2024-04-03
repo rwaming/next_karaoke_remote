@@ -50,7 +50,7 @@ export default function Video({
           videoId={idKeyword}
           opts={{
             playerVars: {
-              controls: 0,
+              controls: 1,
               disablekb: 1,
               fs: 0,
               modestbranding: 1,
