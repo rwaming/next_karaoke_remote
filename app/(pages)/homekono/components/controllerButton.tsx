@@ -27,7 +27,6 @@ export default function ControllerButton({
   const applauseRef4 = useRef(null)
 
   const controllerFunctions = useCallback(() => {
-    console.log('button')
     className.includes('playpause') && playPause(playerEvent)
     className.includes('stop') && playStop(playerEvent, router)
     className.includes('time') && timeMove(className, playerEvent)

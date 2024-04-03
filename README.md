@@ -72,23 +72,24 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.04.02.tue_
 
+#### #101 - Dynamic route player page(3)
+
+- Mobile
+
+<br>
+
+> _2024.04.02.tue_
+
 #### #101 - Dynamic route player page(2)
 
-- Make these functions
-  1. Make structure for dynamic routing.
-     - app/(pages)/homekono/[idKeyword]
-  - Search page will be made soon.
-  - History page is idle yet.
-  1.  A user can access to link giving youtube video though type keywords in URL bar.
-      - It makes it possible to get information
-        1. how many users select a specific song
-        1. where user access to that page from.
-  1.  Remote controller can be hided.
-  1.  Open and hide nav, menu bar.
-  1.  Entities will be decoded. (html-entities)
-  1.  Motions in mobile and PC is divided. (Especially for mobile which has only tap, not hover)
-- Remove unnecessary variable.
-  1. states like videoTitle, videoArtist...
+- Volume buttons do not work in mobile
+  - Check
+    1.  Acturally, the volume of player can be turned up and down.
+    2.  The button of mute, and rest buttons works well.
+    3.  I Searched information about this.
+        - In mobile, volume cannot be change.
+  - Solution
+    - Hide button in mobile.
 
 <br>
 
