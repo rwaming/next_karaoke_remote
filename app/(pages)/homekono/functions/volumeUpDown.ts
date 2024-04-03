@@ -7,6 +7,7 @@ export default function speedUpDown(
   if (videoEvent != null) {
     const video = videoEvent.target
     const volume = video.getVolume()
+    console.log('volume')
 
     if (className.includes('down')) {
       console.log('down')
