@@ -11,7 +11,7 @@ export default function Controller(): JSX.Element {
   useEffect(() => {
     const controllerVolumes = controllerVolumesRef.current
     if (controllerVolumes !== null && 'ontouchstart' in window) {
-      controllerVolumes.classList.remove('hidden')
+      controllerVolumes.style.display = 'none'
     }
   })
   return (
@@ -76,7 +76,7 @@ export default function Controller(): JSX.Element {
               className='controller-speeddown bg-button1'
             />
           </div>
-          <div className='button-col'>
+          <div ref={controllerVolumesRef} className='button-col'>
             <ControllerButton
               text='▲뮤 직'
               emoji=''
@@ -88,7 +88,7 @@ export default function Controller(): JSX.Element {
               className='controller-volumedown bg-button1'
             />
           </div>
-          <div ref={controllerVolumesRef} className='button-col hidden'>
+          <div className='button-col'>
             <ControllerButton
               text='👏박 수'
               emoji=''
