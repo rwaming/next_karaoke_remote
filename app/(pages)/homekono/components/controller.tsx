@@ -10,6 +10,7 @@ export default function Controller(): JSX.Element {
   const controllerVolumesRef = useRef<Div>(null)
 
   useEffect(() => {
+    const controller = controllerRef.current
     const controllerTopButtons = controllerVolumesRef.current
     const controllerVolumes = controllerVolumesRef.current
     if (
@@ -20,14 +21,15 @@ export default function Controller(): JSX.Element {
       controllerVolumes.style.display = 'none'
       controllerTopButtons.style.flexDirection = 'row-reverse'
       controllerTopButtons.querySelectorAll('.button-col').forEach((button) => {
-        button.classList.add('base-0')
+        button.classList.add('basis-0')
       })
     }
+    controller?.classList.remove('invisible')
   })
   return (
     <section
       ref={controllerRef}
-      className='controller controller__search-closed relative bottom-0 right-0 flex shrink-0 grow whitespace-nowrap text-sm font-bold text-dark xs:text-base sm:shrink-0 sm:grow-0 sm:basis-56 sm:p-1 sm:text-sm md:basis-64 md:text-base'>
+      className='controller controller__search-closed invisible relative bottom-0 right-0 flex shrink-0 grow whitespace-nowrap text-sm font-bold text-dark xs:text-base sm:shrink-0 sm:grow-0 sm:basis-56 sm:p-1 sm:text-sm md:basis-64 md:text-base'>
       <h3 className='hidden'>리모콘</h3>
       <button
         ref={controllerHideRef}

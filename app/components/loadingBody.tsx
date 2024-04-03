@@ -1,20 +1,17 @@
 'use client'
 
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
-export default function LoadingBody({
-  goHome,
-}: {
-  goHome: boolean
-}): JSX.Element {
+export default function LoadingBody(): JSX.Element {
   const router = useRouter()
+  const pathname = usePathname()
   useEffect(() => {
-    if (goHome) {
+    if (pathname === '/') {
       router.push('/homekono')
     }
-  }, [goHome, router])
+  }, [pathname, router])
   return (
     <div className='loading bg absolute z-50 flex h-dvh w-dvw flex-col items-center justify-center'>
       <Image
@@ -22,10 +19,12 @@ export default function LoadingBody({
         width={1080}
         height={1080}
         alt='homekono_loading'
-        className={`${goHome ? 'dim' : 'spin'} w-1/10vmin`}
+        className={`${pathname === '/' ? 'dim' : 'spin'} w-1/10vmin`}
       />
       <p className='dim pt-5'>
-        {goHome ? '홈코노에 입장하고 있어요.' : '화면 요소를 가져오고 있어요.'}
+        {pathname === '/'
+          ? '홈코노에 입장하고 있어요.'
+          : '화면 요소를 가져오고 있어요.'}
       </p>
     </div>
   )

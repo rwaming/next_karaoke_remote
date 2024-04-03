@@ -90,6 +90,7 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
         - In mobile, volume cannot be change.
   - Solution
     - Hide button in mobile.
+    - Use differnet layout in mobile.
 
 <br>
 
