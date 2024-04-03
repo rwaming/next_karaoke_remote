@@ -20,7 +20,7 @@
 @layer base {
   html,
   body {
-    width: 100vw;
+    width: 100dvw;
     height: 100dvh;
     margin: 0;
     padding: 0;
@@ -64,10 +64,6 @@
         rgba(33, 51, 125, 0.2) 50%
       );
   }
-  .scroll {
-    overflow: scroll;
-    scrollbar-width: none;
-  }
   .button-col {
     @apply flex shrink grow flex-col gap-2;
   }
@@ -94,7 +90,7 @@
     @apply mt-2 box-content flex h-4 border-b border-b-gray-800 border-opacity-50 py-2 text-center;
   }
   .search-list__label {
-    @apply border-0 text-base font-bold;
+    @apply gap-3 border-0 text-base font-bold;
   }
   .search-list__li-click {
     @apply flex max-w-full flex-grow items-center gap-3;
@@ -110,8 +106,33 @@
   }
 }
 
-/* id */
+/* Specific element */
 @layer components {
+  .menu-contact-sns > * {
+    @apply opacity-50 hover:opacity-80;
+  }
+  .menu-contact-more {
+    @apply opacity-50 hover:opacity-80;
+  }
+  .menu-contact-more > button {
+    transition:
+      all 0.2s 0.3s cubic-bezier(0.1, 0.7, 1, 0.9),
+      height 0.3s cubic-bezier(0.1, 0.7, 1, 0.9);
+  }
+  .menu-contact-more > div {
+    transition: all 0.3s cubic-bezier(0.1, 0.7, 1, 0.9);
+  }
+  .menu-contact-more:hover > button {
+    transition:
+      all 0.2s cubic-bezier(0.1, 0.7, 1, 0.9),
+      height 0.3s 0.2s cubic-bezier(0.1, 0.7, 1, 0.9);
+    @apply h-0 opacity-0;
+  }
+  .menu-contact-more:hover > div {
+    transition: all 0.3s 0.2s cubic-bezier(0.1, 0.7, 1, 0.9);
+    @apply mt-1 h-10 w-full opacity-100;
+  }
+
   .player-content__youtube {
     visibility: hidden;
     > iframe {
@@ -132,7 +153,7 @@
     max-height: 100%;
   }
 
-  .search-area {
+  .search-song {
     height: calc(100dvh - var(--screen-ratio-h-dvh));
   }
   .search-box {
@@ -143,29 +164,32 @@
     );
     height: calc(100dvh - var(--screen-ratio-h-dvh));
   }
+  .search-list {
+    scrollbar-width: none;
+  }
 
-  .contact > div {
-    @apply sm:opacity-50 sm:hover:opacity-80;
+  .contact-names {
+    @apply opacity-50 hover:opacity-80;
   }
-  #contact-sns {
-    @apply sm:opacity-100;
-    > * {
-      @apply sm:opacity-50 sm:hover:opacity-80;
-    }
+  .contact-sns > * {
+    @apply opacity-50 hover:opacity-80;
   }
-  .contact-info > button {
+  .contact-more {
+    @apply opacity-50 hover:opacity-80;
+  }
+  .contact-more > button {
     transition: all 0.2s 0.2s cubic-bezier(0.1, 0.7, 1, 0.9);
   }
-  .contact-info > div {
+  .contact-more > div {
     transition: all 0.3s cubic-bezier(0.1, 0.7, 1, 0.9);
   }
-  .contact-info:hover > button {
+  .contact-more:hover > button {
     transition: all 0.1s cubic-bezier(0.1, 0.7, 1, 0.9);
-    @apply opacity-0 sm:w-0;
+    @apply w-0 opacity-0;
   }
-  .contact-info:hover > div {
+  .contact-more:hover > div {
     transition: all 0.3s 0.1s cubic-bezier(0.1, 0.7, 1, 0.9);
-    @apply opacity-100 sm:ml-2 sm:h-full sm:w-72;
+    @apply ml-2 h-full w-72 opacity-100;
   }
 
   /* sm */

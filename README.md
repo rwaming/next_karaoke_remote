@@ -70,9 +70,33 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 <br>
 
+> _2024.04.02.tue_
+
+#### #101 - Dynamic route player page(3)
+
+- Mobile
+
+<br>
+
+> _2024.04.02.tue_
+
+#### #101 - Dynamic route player page(2)
+
+- Volume buttons do not work in mobile
+  - Check
+    1.  Acturally, the volume of player can be turned up and down.
+    2.  The button of mute, and rest buttons works well.
+    3.  I Searched information about this.
+        - In mobile, volume cannot be change.
+  - Solution
+    - Hide button in mobile.
+    - Use differnet layout in mobile.
+
+<br>
+
 > _2024.04.01.mon_
 
-#### #101 - Dynamic route player page
+#### #101 - Dynamic route player page(1)
 
 - In progress
 
@@ -80,7 +104,7 @@ Issues are listed by completion date, written since [_2024.03.15.fri_](#issues_1
 
 > _2024.03.31.sun_
 
-#### #95 - Finish UI/UX
+#### ~~#95 - Finish UI/UX~~
 
 - Make layout clean.
 - Pause for make dynamic routing for player page.

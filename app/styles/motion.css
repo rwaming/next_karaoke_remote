@@ -1,4 +1,52 @@
-/* header appear disappear */
+/* Utilities */
+@keyframes appear {
+  0% {
+    opacity: 0;
+    display: block;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes disappear {
+  0% {
+    display: block;
+    opacity: 1;
+  }
+  99.99% {
+    opacity: 0;
+  }
+  100% {
+    display: none;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dim {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.spin {
+  animation: spin 3s infinite;
+}
+.dim {
+  animation: dim 2s infinite;
+}
+
+/* Header appear & disappear */
 @keyframes disappear__title {
   0% {
     @apply w-72 opacity-80;
@@ -38,30 +86,22 @@
     @apply opacity-100;
   }
 }
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.header #menu__open {
+.header .menu__open {
   @apply w-0;
   animation: disappear__menu-button 4s;
 }
-.header:hover #menu__open {
+.header:hover .menu__open {
   @apply w-20 animate-none;
 }
-.header > #header__group {
+.header > .title-group {
   @apply w-8 opacity-0;
   animation: disappear__title 4s;
   transition: opacity 0.3s 0.15s;
 }
-.header:hover > #header__group {
+.header:hover > .title-group {
   @apply w-72 animate-none opacity-100;
 }
-.header > #header__open {
+.header > .title-group__open {
   @apply opacity-100;
   animation:
     appear__menu-open 5s,
@@ -70,102 +110,79 @@
     opacity 0.2s,
     rotate 0s 0.2s;
 }
-.header:hover > #header__open {
+.header:hover > .title-group__open {
   @apply animate-none opacity-0;
 }
-
-@keyframes loading__disappear {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    display: none;
-  }
-}
-@keyframes dim {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.spin {
-  animation: spin 3s infinite;
-}
-.dim {
-  animation: dim 2s infinite;
-}
 .loading__disappear {
-  animation: loading__disappear 0.5s forwards;
+  animation: disappear 0.5s forwards;
 }
 
-/* menu open & close */
+/* Menu open & close */
+.menu-modal__closed {
+  display: none;
+  animation: disappear 1s forwards;
+}
+.menu-modal__opened {
+  animation: appear 1s forwards;
+}
 .menu-box {
   @apply -top-4;
-  left: calc(-66.66vw - 10rem);
+  left: calc(-66.66dvw - 10rem);
   transition: left 1s cubic-bezier(0.7, 0.2, 0.1, 0.4);
 }
 @media screen and (min-width: 320px) {
   .menu-box {
-    left: calc(-50vw - 10rem);
+    left: calc(-50dvw - 10rem);
   }
 }
 @media screen and (min-width: 640px) {
   .menu-box {
-    left: calc(-40vw - 10rem);
+    left: calc(-40dvw - 10rem);
   }
 }
 @media screen and (min-width: 768px) {
   .menu-box {
-    left: calc(-33.33vw - 10rem);
+    left: calc(-33.33dvw - 10rem);
   }
 }
-.menu-opened {
+.menu__opened {
   transition: left 1s cubic-bezier(0.1, 0.2, 0.1, 0.8);
   left: -1rem;
 }
 @media screen and (min-width: 640px) {
-  .menu-opened {
+  .menu__opened {
     left: -1.25rem;
   }
 }
-.update > span {
-  transition: width 0.5s;
-}
 
-/* search box open & close */
-.player__search-close {
+/* Search-box open & close */
+.player__search-closed {
   .player-content {
     @apply sm:justify-center;
   }
 }
-.player__search-open {
+.player__search-opened {
   .player-content {
     @apply sm:justify-end;
   }
 }
-.search-modal__search-close {
+.search-modal__search-closed {
   @apply hidden;
 }
 .search-modal__search-open {
   @apply block;
 }
-.controller__search-close {
+.controller__search-closed {
   @apply m-4 mt-14 sm:mb-11 sm:ml-2 sm:mr-4 sm:mt-16;
 }
-.controller__search-open {
+.controller__search-opened {
   @apply m-4 mt-14 pt-2 sm:mb-11 sm:ml-2 sm:mr-4 sm:mt-1/2dvh;
   .button {
     @apply sm:z-20 sm:py-2 sm:text-sm;
   }
 }
 
-/* controller hide */
+/* Controller hide & show */
 @keyframes point__controller-close {
   0% {
     margin-right: 0.5rem;
@@ -192,7 +209,7 @@
   .player__controller-closed {
     .player-content__youtube {
       height: calc(
-        (100vw - var(--controller-close-w-px)) * var(--screen-ratio-h)
+        (100dvw - var(--controller-close-w-px)) * var(--screen-ratio-h)
       );
       max-width: calc(
         (100dvh - var(--player-y-space-px)) * var(--screen-ratio-w)
@@ -204,10 +221,10 @@
       right 0.3s,
       opacity 0.3s;
   }
-  .controller-box__ready-close {
+  .controller__ready-close {
     right: 0.5rem;
   }
-  .controller__open-close {
+  .controller-hide {
     transition:
       all 0.3s,
       right 0s,
@@ -219,18 +236,18 @@
       transition: rotate 0s 0.01s;
     }
   }
-  .controller:hover > .controller__open-close:hover {
+  .controller:hover > .controller-hide:hover {
     opacity: 1;
     animation: point__controller-close 0.8s infinite;
   }
-  .controller_closed {
+  .controller__closed {
     @apply right-0 z-40 mx-0 max-w-4 overflow-hidden;
     transition: max-width 0.3s;
-    > #controller-box {
+    > .controller-box {
       @apply pl-4;
       transition: padding-left 0.3s;
     }
-    > .controller__open-close {
+    > .controller-hide {
       opacity: 0.65;
       right: 0;
       left: -0.6rem;
@@ -239,30 +256,30 @@
       }
     }
   }
-  .controller_closed:hover {
+  .controller__closed:hover {
     @apply max-w-7;
-    > #controller-box {
+    > .controller-box {
       @apply pl-5 opacity-85;
       transition: padding-left 0.3s;
     }
-    > .controller__open-close {
+    > .controller-hide {
       margin-top: 0;
     }
-    > .controller__open-close:hover {
+    > .controller-hide:hover {
       margin-top: 0;
       animation: point__controller-open 0.8s infinite;
     }
   }
 }
 
-/* sm height */
+/* Too low height */
 @media screen and (max-height: 400px) {
-  .player__search-open .full-size {
+  .player__search-opened .full-size {
     height: calc(
-      (100vw - var(--controller-open-w-md-px)) * var(--screen-ratio-h)
+      (100dvw - var(--controller-open-w-md-px)) * var(--screen-ratio-h)
     );
     max-height: calc(
-      (100vw - var(--controller-open-w-md-px)) * var(--screen-ratio-h)
+      (100dvw - var(--controller-open-w-md-px)) * var(--screen-ratio-h)
     );
   }
   .controller {
@@ -278,10 +295,10 @@
     .inessential {
       @apply hidden;
     }
-    #controller-timebackward {
+    .controller-timebackward {
       @apply sm:hidden;
     }
-    #controller-timeforward {
+    .controller-timeforward {
       @apply sm:hidden;
     }
   }
