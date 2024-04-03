@@ -9,12 +9,17 @@ export default function speedUpDown(
     const volume = video.getVolume()
 
     if (className.includes('down')) {
+      console.log('down')
       const volumeDown = volume - 5
       video.setVolume(volumeDown)
+      console.log(volume)
     } else if (className.includes('up')) {
+      console.log('up')
       const volumeUp = volume + 5
       video.setVolume(volumeUp)
+      console.log(volume)
     } else if (className.includes('mute')) {
+      console.log('mute')
       if (video.isMuted() === false) {
         video.mute()
       } else {
